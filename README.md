@@ -21,10 +21,16 @@ A modern, minimal SaaS landing page for "A generative slice" startup, featuring 
 
 ```
 a-generative-slice/
-├── index.html          # Main HTML file
-├── styles.css          # All CSS styles and animations
-├── script.js           # JavaScript functionality
-└── README.md           # Project documentation
+├── .github/
+│   └── workflows/
+│       ├── deploy-pages.yml    # GitHub Pages auto-deployment
+│       ├── auto-assign.yml     # Auto-assign issues/PRs
+│       └── proof-html.yml      # HTML validation
+├── index.html                  # Main HTML file
+├── styles.css                  # All CSS styles and animations
+├── script.js                   # JavaScript functionality
+├── package.json               # Project metadata
+└── README.md                   # Project documentation
 ```
 
 ## 🌟 Features
@@ -53,14 +59,19 @@ a-generative-slice/
 3. For local server: `python -m http.server 8000` or use Live Server extension in VS Code
 
 ### GitHub Pages Deployment
-1. Create a new repository on GitHub
-2. Upload all files to the repository
-3. Go to repository Settings
-4. Scroll to "Pages" section
-5. Select "Deploy from a branch"
-6. Choose "main" branch and "/ (root)" folder
-7. Click "Save"
-8. Your site will be available at `https://username.github.io/repository-name`
+
+#### Automatic Deployment (Recommended)
+This repository includes a GitHub Actions workflow for automatic deployment:
+1. Push changes to the `main` branch
+2. GitHub Actions will automatically build and deploy to GitHub Pages
+3. Your site will be available at `https://username.github.io/repository-name`
+
+#### Manual Deployment
+1. Go to repository Settings
+2. Scroll to "Pages" section
+3. Select "Deploy from a branch"
+4. Choose "main" branch and "/ (root)" folder
+5. Click "Save"
 
 ### Alternative Hosting Platforms
 - **Netlify**: Drag and drop the folder to Netlify
