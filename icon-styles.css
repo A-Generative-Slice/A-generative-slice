@@ -1,0 +1,19 @@
+.bg-textured-icon {
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-radius: 50%;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-icon.bg-textured-icon {
+    width: 40px !important;
+    height: 40px !important;
+}

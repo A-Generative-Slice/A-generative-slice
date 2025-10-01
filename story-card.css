@@ -1,0 +1,84 @@
+/* Success Story Card Styling */
+.success-story-card {
+    background-color: #ffffff;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+    border-top: 4px solid #eb6107;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.success-story-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(235, 97, 7, 0.1), transparent);
+    z-index: 0;
+}
+
+.success-story-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.success-story-card h3 {
+    color: #eb6107;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    font-weight: 700;
+}
+
+.success-story-card p {
+    color: #333;
+    margin-bottom: 1.2rem;
+    position: relative;
+    z-index: 1;
+    font-size: 1.05rem;
+}
+
+.success-story-card strong {
+    color: #eb6107;
+    font-weight: 600;
+}
+
+.success-story-list {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.success-story-list li {
+    color: #333;
+    margin-bottom: 0.75rem;
+    position: relative;
+    padding-left: 0.5rem;
+    line-height: 1.5;
+}
+
+.success-story-list li::marker {
+    color: #eb6107;
+}
+
+.story-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background-color: #eb6107;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(235, 97, 7, 0.3);
+    z-index: 2;
+}

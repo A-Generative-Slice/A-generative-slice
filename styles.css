@@ -13,7 +13,9 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #ffffff;
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    background-attachment: fixed;
     overflow-x: hidden;
 }
 
@@ -45,7 +47,7 @@ h3 {
 
 p {
     margin-bottom: 1rem;
-    color: #666;
+    color: #444;
 }
 
 /* Header & Navigation */
@@ -53,10 +55,9 @@ p {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background-color: #ffffff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     transition: all 0.3s ease-in-out;
 }
@@ -74,7 +75,7 @@ p {
 .nav-logo h1 {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #333;
+    color: #eb6107;
     margin: 0;
 }
 
@@ -87,8 +88,8 @@ p {
 
 .nav-link {
     text-decoration: none;
-    color: #666;
-    font-weight: 500;
+    color: #333333;
+    font-weight: 600;
     font-size: 0.95rem;
     transition: all 0.3s ease-in-out;
     padding: 0.5rem 1rem;
@@ -146,12 +147,19 @@ p {
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    color: #333;
+    color: #222;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .hero-highlight {
-    color: #eb6107;
     position: relative;
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
 }
 
 .hero-subtitle {
@@ -182,15 +190,18 @@ p {
 }
 
 .btn-primary {
-    background-color: #eb6107;
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    background-position: center;
     color: white;
-    box-shadow: 0 4px 20px rgba(235, 97, 7, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .btn-primary:hover {
-    background-color: #d55406;
+    filter: brightness(1.1);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(235, 97, 7, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 .btn-secondary {
@@ -201,8 +212,13 @@ p {
 
 .btn-secondary:hover {
     background-color: #f8f9fa;
-    border-color: #eb6107;
-    color: #eb6107;
+    border-image: url('images/bg.jpg') 30 stretch;
+    color: transparent;
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 
 .btn-large {
@@ -232,7 +248,9 @@ p {
 .shape-1 {
     width: 120px;
     height: 120px;
-    background: linear-gradient(135deg, #eb6107, #ff8533);
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    background-position: center;
     top: 10%;
     left: 20%;
     animation-delay: 0s;
@@ -242,7 +260,8 @@ p {
     width: 80px;
     height: 80px;
     background: linear-gradient(135deg, #ffffff, #f0f0f0);
-    border: 2px solid #eb6107;
+    border: 2px solid transparent;
+    border-image: url('images/bg.jpg') 30 stretch;
     top: 60%;
     left: 10%;
     animation-delay: 2s;
@@ -251,7 +270,9 @@ p {
 .shape-3 {
     width: 100px;
     height: 100px;
-    background: linear-gradient(135deg, #eb6107, #cc5506);
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    background-position: center;
     top: 20%;
     right: 15%;
     animation-delay: 1s;
@@ -261,7 +282,8 @@ p {
     width: 60px;
     height: 60px;
     background: #ffffff;
-    border: 3px solid #eb6107;
+    border: 3px solid transparent;
+    border-image: url('images/bg.jpg') 30 stretch;
     bottom: 20%;
     right: 30%;
     animation-delay: 3s;
@@ -270,7 +292,9 @@ p {
 /* Features Section */
 .features {
     padding: 100px 0;
-    background-color: #ffffff;
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .section-header {
@@ -280,36 +304,44 @@ p {
 
 .section-title {
     font-size: 2.5rem;
-    color: #333;
+    color: white;
     margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .section-subtitle {
     font-size: 1.1rem;
-    color: #666;
+    color: white;
     max-width: 600px;
     margin: 0 auto;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
 }
 
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
+    align-items: stretch;
 }
 
 .feature-card {
     background: #ffffff;
     padding: 2.5rem 2rem;
     border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(235, 97, 7, 0.1);
     transition: all 0.3s ease-in-out;
     text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .feature-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 12px 35px rgba(235, 97, 7, 0.2);
+    border: 1px solid rgba(235, 97, 7, 0.3);
 }
 
 .feature-icon {
@@ -323,21 +355,36 @@ p {
     margin: 0 auto 1.5rem;
 }
 
+.title-icon {
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+}
+
 .feature-title {
     font-size: 1.3rem;
-    color: #333;
+    color: #eb6107;
     margin-bottom: 1rem;
+    font-weight: 600;
+    text-align: center;
+    min-height: 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .feature-description {
-    color: #666;
+    color: #eb6107;
     line-height: 1.6;
+    flex-grow: 1;
 }
 
 /* Stats Section */
 .stats {
     padding: 80px 0;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .stats-grid {
@@ -370,16 +417,18 @@ p {
 
 .stat-label {
     font-size: 1rem;
-    color: #666;
+    color: #444;
     font-weight: 500;
 }
 
 /* CTA Section */
 .cta {
     padding: 100px 0;
-    background: linear-gradient(135deg, #eb6107 0%, #ff8533 100%);
-    color: white;
+    background-color: #ffffff;
+    color: #eb6107;
     text-align: center;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
+    position: relative;
 }
 
 .cta-content {
@@ -389,24 +438,27 @@ p {
 
 .cta-title {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: white;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    color: #eb6107;
 }
 
 .cta-subtitle {
     font-size: 1.1rem;
-    margin-bottom: 2.5rem;
-    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    color: #ff8533;
 }
 
 .cta .btn-primary {
-    background-color: #ffffff;
-    color: #eb6107;
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    color: #ffffff;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: none;
 }
 
 .cta .btn-primary:hover {
-    background-color: #f8f9fa;
+    filter: brightness(1.1);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
@@ -414,7 +466,9 @@ p {
 /* Contact Section */
 .contact {
     padding: 100px 0;
-    background-color: #f8f9fa;
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .contact-content {
@@ -554,9 +608,10 @@ p {
 }
 
 .footer-section a {
-    color: #ccc;
+    color: #ffffff;
     text-decoration: none;
     transition: color 0.3s ease-in-out;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .footer-section a:hover {

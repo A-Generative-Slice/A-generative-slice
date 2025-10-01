@@ -1,0 +1,159 @@
+/* Registration section styles */
+.registration-section {
+    padding: 80px 0;
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.registration-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.registration-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    padding: 40px 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.registration-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card-student {
+    border-top: 4px solid #eb6107;
+}
+
+.card-business {
+    border-top: 4px solid #2d71e5;
+}
+
+.registration-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.registration-subtitle {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.benefits-list {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+
+.benefits-list li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 10px;
+}
+
+.benefits-list li:before {
+    content: "•";
+    color: #eb6107;
+    font-weight: bold;
+    position: absolute;
+    left: -15px;
+}
+
+.card-business .benefits-list li:before {
+    color: #2d71e5;
+}
+
+.registration-form {
+    margin-top: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #eb6107;
+}
+
+.card-business .form-control:focus {
+    border-color: #2d71e5;
+}
+
+.btn-register-student {
+    background-color: #eb6107;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.btn-register-student:hover {
+    background-color: #d55500;
+}
+
+.btn-register-business {
+    background-color: #2d71e5;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.btn-register-business:hover {
+    background-color: #2160c7;
+}
+
+.registration-note {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 15px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .registration-container {
+        flex-direction: column;
+    }
+    
+    .registration-card {
+        max-width: 100%;
+    }
+}

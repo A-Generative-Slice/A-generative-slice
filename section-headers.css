@@ -1,0 +1,28 @@
+/* Special section headers for sections with texture backgrounds */
+.registration-section .section-title,
+.why-us .section-title,
+.features .section-title,
+.stats .section-title,
+.contact .section-title {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.registration-section .section-subtitle,
+.why-us .section-subtitle,
+.features .section-subtitle,
+.stats .section-subtitle,
+.contact .section-subtitle {
+    color: #ffffff;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Enhance white card contrast against textured backgrounds */
+.feature-card, 
+.registration-card,
+.stat-card {
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
