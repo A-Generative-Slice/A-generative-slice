@@ -327,3 +327,93 @@ if ('ontouchstart' in window) {
         el.style.webkitTapHighlightColor = 'rgba(235, 97, 7, 0.2)';
     });
 }
+
+// ============================================
+// EMAIL FORM HANDLING WITH EMAILJS
+// ============================================
+
+// Initialize EmailJS with your User ID
+// TO SET UP: 
+// 1. Go to https://www.emailjs.com/ and create a free account
+// 2. Get your User ID from the dashboard
+// 3. Create an email service and template
+// 4. Replace 'YOUR_USER_ID', 'YOUR_SERVICE_ID', and 'YOUR_TEMPLATE_ID' below
+
+(function() {
+    // Initialize EmailJS with your Public Key
+    emailjs.init('gBM0W-G2RDT8Qw7vq');
+})();
+
+// Handle Student Registration Form
+const studentForm = document.querySelector('.card-student .registration-form');
+if (studentForm) {
+    studentForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const submitBtn = this.querySelector('.btn-register-student');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
+        // Get form data
+        const formData = {
+            from_name: this.querySelector('#student-name').value,
+            from_email: this.querySelector('#student-email').value,
+            phone: this.querySelector('#student-phone').value,
+            interest: this.querySelector('#student-program').value,
+            career_goals: this.querySelector('#student-goals').value,
+            form_type: 'Student Registration'
+        };
+        
+        // Send email - Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID'
+        emailjs.send('service_e3uauzm', 'template_rxhjqhu', formData)
+            .then(function() {
+                alert('Thank you for registering! We\'ll contact you soon about our Saturday seminars.');
+                studentForm.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, function(error) {
+                alert('Oops! Something went wrong. Please try again or email us directly.');
+                console.error('EmailJS Error:', error);
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+    });
+}
+
+// Handle Business Consultation Form
+const businessForm = document.querySelector('.card-business .registration-form');
+if (businessForm) {
+    businessForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const submitBtn = this.querySelector('.btn-register-business');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
+        // Get form data
+        const formData = {
+            business_name: this.querySelector('#business-name').value,
+            contact_person: this.querySelector('#contact-person').value,
+            from_email: this.querySelector('#business-email').value,
+            service_interest: this.querySelector('#service-interest').value,
+            project_description: this.querySelector('#project-description').value,
+            form_type: 'Business Consultation'
+        };
+        
+        // Send email - Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID'
+        emailjs.send('service_e3uauzm', 'template_rxhjqhu', formData)
+            .then(function() {
+                alert('Thank you for your interest! We\'ll send you a tailored proposal within 48 hours.');
+                businessForm.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, function(error) {
+                alert('Oops! Something went wrong. Please try again or email us directly.');
+                console.error('EmailJS Error:', error);
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+    });
+}
