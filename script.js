@@ -341,14 +341,19 @@ if ('ontouchstart' in window) {
 
 (function() {
     // Initialize EmailJS with your Public Key
+    console.log('Initializing EmailJS...');
     emailjs.init('gBM0W-G2RDT8Qw7vq');
+    console.log('EmailJS initialized successfully!');
 })();
 
 // Handle Student Registration Form
 const studentForm = document.querySelector('.card-student .registration-form');
+console.log('Student form found:', studentForm ? 'Yes' : 'No');
+
 if (studentForm) {
     studentForm.addEventListener('submit', function(e) {
         e.preventDefault();
+        console.log('Student form submitted!');
         
         const submitBtn = this.querySelector('.btn-register-student');
         const originalText = submitBtn.textContent;
@@ -365,16 +370,19 @@ if (studentForm) {
             form_type: 'Student Registration'
         };
         
-        // Send email - Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID'
+        console.log('Sending email with data:', formData);
+        
+        // Send email
         emailjs.send('service_e3uauzm', 'template_vdm5zyo', formData)
-            .then(function() {
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
                 alert('Thank you for registering! We\'ll contact you soon about our Saturday seminars.');
                 studentForm.reset();
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             }, function(error) {
-                alert('Oops! Something went wrong. Please try again or email us directly.');
-                console.error('EmailJS Error:', error);
+                console.error('FAILED...', error);
+                alert('Error: ' + (error.text || error.message || 'Unknown error') + '. Check console for details (Press F12).');
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             });
@@ -383,9 +391,12 @@ if (studentForm) {
 
 // Handle Business Consultation Form
 const businessForm = document.querySelector('.card-business .registration-form');
+console.log('Business form found:', businessForm ? 'Yes' : 'No');
+
 if (businessForm) {
     businessForm.addEventListener('submit', function(e) {
         e.preventDefault();
+        console.log('Business form submitted!');
         
         const submitBtn = this.querySelector('.btn-register-business');
         const originalText = submitBtn.textContent;
@@ -402,16 +413,19 @@ if (businessForm) {
             form_type: 'Business Consultation'
         };
         
-        // Send email - Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID'
+        console.log('Sending business email with data:', formData);
+        
+        // Send email
         emailjs.send('service_e3uauzm', 'template_vdm5zyo', formData)
-            .then(function() {
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
                 alert('Thank you for your interest! We\'ll send you a tailored proposal within 48 hours.');
                 businessForm.reset();
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             }, function(error) {
-                alert('Oops! Something went wrong. Please try again or email us directly.');
-                console.error('EmailJS Error:', error);
+                console.error('FAILED...', error);
+                alert('Error: ' + (error.text || error.message || 'Unknown error') + '. Check console for details (Press F12).');
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             });
