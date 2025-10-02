@@ -1,0 +1,116 @@
+/* Service icons styles - Using background texture */
+.feature-card {
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card .feature-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon background decorations */
+.feature-card .feature-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* White icon overlays */
+.feature-card .feature-icon img {
+    position: relative;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+}
+
+/* Custom icons for each service */
+.feature-icon-ai {
+    background-image: url('images/bg.jpg'), linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2));
+    background-blend-mode: overlay;
+}
+
+.feature-icon-web {
+    background-image: url('images/bg.jpg'), linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2));
+    background-blend-mode: overlay;
+}
+
+.feature-icon-marketing {
+    background-image: url('images/bg.jpg'), linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2));
+    background-blend-mode: overlay;
+}
+
+.feature-icon-training {
+    background-image: url('images/bg.jpg'), linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2));
+    background-blend-mode: overlay;
+}
+
+.feature-icon-leads {
+    background-image: url('images/bg.jpg'), linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2));
+    background-blend-mode: overlay;
+}
+
+.feature-icon-scaling {
+    background-image: url('images/bg.jpg'), linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2));
+    background-blend-mode: overlay;
+}
+
+/* Hover effects */
+.feature-card:hover .feature-icon {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Title styling */
+.feature-title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.feature-description {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Make the feature cards look like the template */
+.features-grid {
+    gap: 30px;
+}
+
+.feature-card {
+    padding: 25px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.feature-card:hover {
+    border-color: rgba(0, 0, 0, 0.1);
+}

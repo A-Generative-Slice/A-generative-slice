@@ -1,0 +1,48 @@
+/* Background texture styles */
+.bg-texture {
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Override all instances of orange background with texture */
+.btn-primary, .hero-cta .btn-primary, .cta-button, 
+.pricing-card.featured, .service-card:hover .icon-container, 
+.testimonial-card .quote-icon, .contact-form .btn-submit,
+[style*="background-color: #eb6107"] {
+    background-image: url('images/bg.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-color: transparent !important;
+}
+
+/* For elements with orange border */
+[style*="border-color: #eb6107"], [style*="border: 2px solid #eb6107"], 
+[style*="border: 3px solid #eb6107"], [style*="outline: 2px solid #eb6107"] {
+    border-color: transparent !important;
+    border-image: url('images/bg.jpg') 30 stretch !important;
+}
+
+/* For SVG elements */
+[fill="#eb6107"] {
+    fill: url(#bg-texture-pattern) !important;
+}
+
+/* For text with orange color */
+[style*="color: #eb6107"], .nav-link:hover, .nav-link.active, 
+.text-primary, .service-card:hover .service-title,
+.pricing-card .price, .footer-link:hover, .contact-info-item i {
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+}
+
+/* For gradient backgrounds that use orange */
+[style*="background: linear-gradient"] {
+    background: url('images/bg.jpg') !important;
+    background-size: cover !important;
+}

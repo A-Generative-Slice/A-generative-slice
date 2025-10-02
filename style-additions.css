@@ -1,0 +1,101 @@
+/* Additional styling to enhance the existing website */
+
+/* Add a gentle highlight to the hero section */
+.hero-highlight {
+    color: #eb6107;
+    position: relative;
+    display: inline-block;
+}
+
+.hero-highlight:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    background: rgba(235, 97, 7, 0.1);
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 10px;
+}
+
+/* About section styling */
+.about-content p {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* Service cards styling */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h3 {
+    color: #eb6107;
+    margin-bottom: 1rem;
+}
+
+/* Success story styling */
+.story {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.story h3 {
+    color: #eb6107;
+    margin-bottom: 1rem;
+}
+
+.story ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Why Choose Us section styling */
+.why-us {
+    background-image: url('images/bg.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 5rem 0;
+}
+
+.why-us-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.why-us-content h3 {
+    color: #ffffff;
+    margin: 2rem 0 0.5rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Style updates for responsive design */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-content, .why-us-content {
+        padding: 0 1rem;
+    }
+}
