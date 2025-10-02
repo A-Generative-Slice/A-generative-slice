@@ -366,7 +366,7 @@ if (studentForm) {
         };
         
         // Send email - Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID'
-        emailjs.send('service_e3uauzm', 'template_rxhjqhu', formData)
+        emailjs.send('service_e3uauzm', 'template_vdm5zyo', formData)
             .then(function() {
                 alert('Thank you for registering! We\'ll contact you soon about our Saturday seminars.');
                 studentForm.reset();
@@ -403,7 +403,7 @@ if (businessForm) {
         };
         
         // Send email - Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID'
-        emailjs.send('service_e3uauzm', 'template_rxhjqhu', formData)
+        emailjs.send('service_e3uauzm', 'template_vdm5zyo', formData)
             .then(function() {
                 alert('Thank you for your interest! We\'ll send you a tailored proposal within 48 hours.');
                 businessForm.reset();

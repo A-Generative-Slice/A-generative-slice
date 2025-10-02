@@ -1,0 +1,80 @@
+====================================================================
+COPY THIS ENTIRE TEMPLATE INTO YOUR EMAILJS TEMPLATE EDITOR
+====================================================================
+
+STEP 1: Go to https://dashboard.emailjs.com/admin/templates
+STEP 2: Click on your template (template_rxhjqhu) OR create a new one
+STEP 3: Copy the content below into the template body
+
+====================================================================
+TEMPLATE SETTINGS:
+====================================================================
+Template Name: Student & Business Form Submissions
+Template ID: template_rxhjqhu (or create new one)
+Subject Line: New {{form_type}} from {{from_name}}
+To Email: YOUR_EMAIL_ADDRESS_HERE
+
+====================================================================
+TEMPLATE BODY (Copy everything below this line):
+====================================================================
+
+Hello,
+
+You have received a new form submission from your website!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 FORM TYPE: {{form_type}}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👤 CONTACT INFORMATION:
+
+Name: {{from_name}}
+Email: {{from_email}}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 STUDENT DETAILS (if student form):
+
+Phone Number: {{phone}}
+Area of Interest: {{interest}}
+Career Goals: {{career_goals}}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💼 BUSINESS DETAILS (if business form):
+
+Business Name: {{business_name}}
+Contact Person: {{contact_person}}
+Service Interest: {{service_interest}}
+Project Description: {{project_description}}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⏰ This submission was received from: A Generative Slice Website
+📧 Please respond to this inquiry promptly.
+
+Best regards,
+A Generative Slice Automated System
+
+====================================================================
+END OF TEMPLATE
+====================================================================
+
+IMPORTANT NOTES:
+✓ Make sure "To Email" is set to YOUR actual email address
+✓ All variable names MUST be exactly as shown above with {{double braces}}
+✓ Don't change the variable names - they match your JavaScript code
+✓ Empty fields (like business fields in student form) will just show blank
+✓ Click SAVE after pasting the template
+
+TESTING:
+After saving, click "Test it" button in EmailJS to send yourself a test email
+Fill in the test values and check if you receive the email
+
+If you still don't receive emails after this:
+1. Check your spam/junk folder
+2. Verify your email service is connected in EmailJS dashboard
+3. Make sure you verified your email address with EmailJS
+4. Check the EmailJS dashboard for any error logs
