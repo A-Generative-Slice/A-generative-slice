@@ -1,499 +1,124 @@
-// DOM elements
-const navToggle = document.getElementById('nav-toggle');
-const navMenu = document.getElementById('nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
 
-// Mobile menu toggle
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    navToggle.classList.toggle('active');
-});
-
-// Close mobile menu when clicking on a link
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
-    });
-});
-
-// Active link highlighting based on scroll position
-function setActiveLink() {
-    const sections = document.querySelectorAll('section[id]');
-    const scrollPosition = window.scrollY + 100;
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
-}
-
-// Header background on scroll
-function handleHeaderScroll() {
-    const header = document.querySelector('.header');
-
-    if (window.scrollY > 50) {
-        header.style.background = 'rgba(255, 255, 255, 0.98)';
-        header.style.borderBottom = '1px solid rgba(0, 0, 0, 0.15)';
-    } else {
-        header.style.background = 'rgba(255, 255, 255, 0.95)';
-        header.style.borderBottom = '1px solid rgba(0, 0, 0, 0.1)';
-    }
-}
-
-// Smooth scroll behavior
-function initSmoothScroll() {
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-
-            if (targetId.startsWith('#')) {
-                const targetSection = document.querySelector(targetId);
-                if (targetSection) {
-                    const headerHeight = document.querySelector('.header').offsetHeight;
-                    const targetPosition = targetSection.offsetTop - headerHeight;
-
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            }
-        });
-    });
-}
-
-// Intersection Observer for animations
-function initScrollAnimations() {
-    const animateElements = document.querySelectorAll('.feature-card, .stat-card');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-
-    animateElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-        observer.observe(el);
-    });
-}
-
-// Counter animation for stats
-function animateCounters() {
-    const statNumbers = document.querySelectorAll('.stat-number');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const target = entry.target;
-                const text = target.textContent;
-                const number = text.match(/[\d,]+/);
-
-                if (number) {
-                    const finalNumber = parseInt(number[0].replace(/,/g, ''));
-                    const suffix = text.replace(number[0], '');
-                    animateNumber(target, 0, finalNumber, suffix, 2000);
-                    observer.unobserve(target);
-                }
-            }
-        });
-    }, { threshold: 0.5 });
-
-    statNumbers.forEach(el => observer.observe(el));
-}
-
-function animateNumber(element, start, end, suffix, duration) {
-    const startTime = Date.now();
-    const range = end - start;
-
-    function update() {
-        const elapsed = Date.now() - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const easedProgress = easeOutQuart(progress);
-        const current = Math.floor(start + (range * easedProgress));
-
-        let displayNumber = current;
-        if (current >= 1000) {
-            displayNumber = (current / 1000).toFixed(current >= 10000 ? 0 : 1) + 'K';
-        }
-
-        element.textContent = displayNumber + suffix;
-
-        if (progress < 1) {
-            requestAnimationFrame(update);
-        }
-    }
-
-    update();
-}
-
-function easeOutQuart(t) {
-    return 1 - (--t) * t * t * t;
-}
-
-// Button hover effects
-function initButtonEffects() {
-    const buttons = document.querySelectorAll('.btn');
-
-    buttons.forEach(button => {
-        button.addEventListener('mouseenter', () => {
-            button.style.transform = 'translateY(-2px)';
-        });
-
-        button.addEventListener('mouseleave', () => {
-            if (!button.matches(':active')) {
-                button.style.transform = 'translateY(0)';
-            }
-        });
-
-        button.addEventListener('mousedown', () => {
-            button.style.transform = 'translateY(0)';
-        });
-
-        button.addEventListener('mouseup', () => {
-            button.style.transform = 'translateY(-2px)';
-        });
-    });
-}
-
-// Parallax effect for hero shapes
-function initParallax() {
-    const shapes = document.querySelectorAll('.shape');
-
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const parallaxSpeed = 0.5;
-
-        shapes.forEach((shape, index) => {
-            const speed = parallaxSpeed * (index + 1) * 0.3;
-            shape.style.transform = `translateY(${scrolled * speed}px)`;
-        });
-    });
-}
-
-// Form handling (for future contact forms)
-function initFormHandling() {
-    const ctaButtons = document.querySelectorAll('.btn-primary');
-
-    ctaButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            // Add click effect
-            button.style.transform = 'scale(0.98)';
-            setTimeout(() => {
-                button.style.transform = '';
-            }, 150);
-
-            // Here you would typically handle form submission or redirect
-            console.log('CTA clicked:', button.textContent);
-        });
-    });
-}
-
-// Keyboard navigation
-function initKeyboardNavigation() {
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-        }
-    });
-}
-
-// Theme detection and respect for user preferences
-function initThemeSupport() {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    if (prefersReducedMotion.matches) {
-        document.body.style.setProperty('--animation-duration', '0s');
-        document.querySelectorAll('*').forEach(el => {
-            el.style.animationDuration = '0s';
-            el.style.transitionDuration = '0s';
-        });
-    }
-}
-
-// Performance optimization
-function initPerformanceOptimizations() {
-    // Debounce scroll events
-    let scrollTimer = null;
-    window.addEventListener('scroll', () => {
-        if (scrollTimer !== null) {
-            clearTimeout(scrollTimer);
-        }
-        scrollTimer = setTimeout(() => {
-            setActiveLink();
-            handleHeaderScroll();
-        }, 10);
-    });
-
-    // Preload critical resources
-    const criticalImages = ['hero-bg', 'feature-icons'];
-    criticalImages.forEach(id => {
-        const img = document.getElementById(id);
-        if (img) {
-            img.loading = 'eager';
-        }
-    });
-}
-
-// Error handling
-function initErrorHandling() {
-    window.addEventListener('error', (e) => {
-        console.error('JavaScript error:', e.error);
-        // In production, you might want to send this to an error tracking service
-    });
-}
-
-// Initialize all functionality
-function init() {
-    // Core functionality
-    initSmoothScroll();
-    initScrollAnimations();
-    animateCounters();
-    initButtonEffects();
-    initParallax();
-    initFormHandling();
-    initKeyboardNavigation();
-
-    // Optimization and accessibility
-    initThemeSupport();
-    initThemeToggle(); // New
-    initCharacterParallax(); // New
-    initPerformanceOptimizations();
-    initErrorHandling();
-
-    // Set initial active link
-    setActiveLink();
-}
-
-// Wait for DOM to be fully loaded
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-} else {
-    init();
-}
-
-// Theme Toggle Logic
-function initThemeToggle() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-    const icon = themeToggle.querySelector('svg');
-
-    // Check for saved preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.classList.add('dark-mode');
-    }
-
-    themeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-
-        // Save preference
-        if (body.classList.contains('dark-mode')) {
-            localStorage.setItem('theme', 'dark');
-        } else {
-            localStorage.setItem('theme', 'light');
-        }
-
-        // Animate icon
-        themeToggle.style.transform = 'scale(0.8) rotate(180deg)';
-        setTimeout(() => {
-            themeToggle.style.transform = 'scale(1) rotate(0deg)';
-        }, 300);
-    });
-}
-
-// Mouse Parallax for Characters
-function initCharacterParallax() {
-    const heroSection = document.querySelector('.hero-modern');
-    const characters = document.querySelectorAll('.char-img');
-
-    if (!heroSection || characters.length === 0) return;
-
-    heroSection.addEventListener('mousemove', (e) => {
-        const x = (window.innerWidth - e.pageX * 2) / 100;
-        const y = (window.innerHeight - e.pageY * 2) / 100;
-
-        characters.forEach((char, index) => {
-            const speed = (index + 1) * 0.5;
-            const xOffset = x * speed;
-            const yOffset = y * speed;
-
-            // Keep the float animation but add mouse offset
-            // We use CSS variable to pass the offset to avoid overwriting the animation transform completely
-            // But since we are using 'transform' in CSS animation, we might conflict.
-            // Better approach: Apply transform to a wrapper or use margin/translate.
-            // Simple approach for now: Just slight movement
-
-            char.style.transform = `translate(${xOffset}px, ${yOffset}px) scale(1)`;
-        });
-    });
-
-    // Reset on mouse leave
-    heroSection.addEventListener('mouseleave', () => {
-        characters.forEach(char => {
-            char.style.transform = 'translate(0, 0)';
-        });
-    });
-}
-
-// Handle page visibility changes for performance
-document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-        // Pause animations when tab is not visible
-        document.body.style.animationPlayState = 'paused';
-    } else {
-        document.body.style.animationPlayState = 'running';
-    }
-});
-
-// Resize handler for responsive adjustments
-let resizeTimer;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-        // Close mobile menu on resize
-        if (window.innerWidth > 768) {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-        }
-
-        // Recalculate positions
-        setActiveLink();
-    }, 250);
-});
-
-// Touch event handlers for mobile
-if ('ontouchstart' in window) {
-    document.addEventListener('touchstart', () => { }, { passive: true });
-
-    // Improve touch responsiveness
-    const touchElements = document.querySelectorAll('.btn, .feature-card, .nav-link');
-    touchElements.forEach(el => {
-        el.style.webkitTapHighlightColor = 'rgba(235, 97, 7, 0.2)';
-    });
-}
-
-// ============================================
-// EMAIL FORM HANDLING WITH EMAILJS
-// ============================================
-
-// Initialize EmailJS with your User ID
-// TO SET UP: 
-// 1. Go to https://www.emailjs.com/ and create a free account
-// 2. Get your User ID from the dashboard
-// 3. Create an email service and template
-// 4. Replace 'YOUR_USER_ID', 'YOUR_SERVICE_ID', and 'YOUR_TEMPLATE_ID' below
-
+// Initialize EmailJS
 (function () {
-    // Initialize EmailJS with your Public Key
-    console.log('Initializing EmailJS...');
-    emailjs.init('gBM0W-G2RDT8Qw7vq');
-    console.log('EmailJS initialized successfully!');
+    emailjs.init("gBM0W-G2RDT8Qw7vq");
 })();
 
-// Handle Student Registration Form
-const studentForm = document.querySelector('.card-student .registration-form');
-console.log('Student form found:', studentForm ? 'Yes' : 'No');
+// Modal Functionality
+window.openModal = function (modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+};
 
-if (studentForm) {
-    studentForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        console.log('Student form submitted!');
+window.closeModal = function (modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+};
 
-        const submitBtn = this.querySelector('.btn-register-student');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Sending...';
-        submitBtn.disabled = true;
+// Close modal when clicking outside content
+window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal')) {
+        closeModal(e.target.id);
+    }
+});
 
-        // Get form data
-        const formData = {
-            from_name: this.querySelector('#student-name').value,
-            from_email: this.querySelector('#student-email').value,
-            phone: this.querySelector('#student-phone').value,
-            interest: this.querySelector('#student-program').value,
-            career_goals: this.querySelector('#student-goals').value,
-            form_type: 'Student Registration'
-        };
+document.addEventListener('DOMContentLoaded', () => {
+    const boxes = document.querySelectorAll('.bento-box');
 
-        console.log('Sending email with data:', formData);
+    // Grid Interactivity (Tilt)
+    document.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
 
-        // Send email
-        emailjs.send('service_e3uauzm', 'template_vdm5zyo', formData)
-            .then(function (response) {
-                console.log('SUCCESS!', response.status, response.text);
-                alert('Thank you for registering! We\'ll contact you soon about our Saturday seminars.');
-                studentForm.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, function (error) {
-                console.error('FAILED...', error);
-                alert('Error: ' + (error.text || error.message || 'Unknown error') + '. Check console for details (Press F12).');
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            });
+        boxes.forEach(box => {
+            const rect = box.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const dist = Math.hypot(mouseX - centerX, mouseY - centerY);
+
+            if (dist < 400) {
+                const angleX = (centerY - mouseY) / 30;
+                const angleY = (mouseX - centerX) / 30;
+                box.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-5px)`;
+            } else {
+                box.style.transform = '';
+            }
+        });
     });
-}
 
-// Handle Business Consultation Form
-const businessForm = document.querySelector('.card-business .registration-form');
-console.log('Business form found:', businessForm ? 'Yes' : 'No');
+    // Handle Student Registration Form
+    const studentForm = document.getElementById('student-form');
+    if (studentForm) {
+        studentForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
 
-if (businessForm) {
-    businessForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        console.log('Business form submitted!');
+            const formData = {
+                from_name: document.getElementById('student-name').value,
+                from_email: document.getElementById('student-email').value,
+                phone: document.getElementById('student-phone').value,
+                interest: document.getElementById('student-program').value,
+                career_goals: document.getElementById('student-goals').value,
+                form_type: 'Student Registration'
+            };
 
-        const submitBtn = this.querySelector('.btn-register-business');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Sending...';
-        submitBtn.disabled = true;
+            emailjs.send('service_e3uauzm', 'template_vdm5zyo', formData)
+                .then(function () {
+                    alert('Registration Successful! We will contact you soon.');
+                    studentForm.reset();
+                    closeModal('student-modal');
+                }, function (error) {
+                    alert('Failed to send registration. Please try again.');
+                    console.error('EmailJS Error:', error);
+                })
+                .finally(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                });
+        });
+    }
 
-        // Get form data
-        const formData = {
-            business_name: this.querySelector('#business-name').value,
-            contact_person: this.querySelector('#contact-person').value,
-            from_email: this.querySelector('#business-email').value,
-            service_interest: this.querySelector('#service-interest').value,
-            project_description: this.querySelector('#project-description').value,
-            form_type: 'Business Consultation'
-        };
+    // Handle Business Consultation Form
+    const businessForm = document.getElementById('business-form');
+    if (businessForm) {
+        businessForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
 
-        console.log('Sending business email with data:', formData);
+            const formData = {
+                business_name: document.getElementById('business-name').value,
+                contact_person: document.getElementById('contact-person').value,
+                from_email: document.getElementById('business-email').value,
+                service_interest: document.getElementById('service-interest').value,
+                project_description: document.getElementById('project-description').value,
+                form_type: 'Business Consultation'
+            };
 
-        // Send email
-        emailjs.send('service_e3uauzm', 'template_vdm5zyo', formData)
-            .then(function (response) {
-                console.log('SUCCESS!', response.status, response.text);
-                alert('Thank you for your interest! We\'ll send you a tailored proposal within 48 hours.');
-                businessForm.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, function (error) {
-                console.error('FAILED...', error);
-                alert('Error: ' + (error.text || error.message || 'Unknown error') + '. Check console for details (Press F12).');
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            });
-    });
-}
+            emailjs.send('service_e3uauzm', 'template_vdm5zyo', formData)
+                .then(function () {
+                    alert('Inquiry Sent! We will get back to you within 48 hours.');
+                    businessForm.reset();
+                    closeModal('business-modal');
+                }, function (error) {
+                    alert('Failed to send inquiry. Please try again.');
+                    console.error('EmailJS Error:', error);
+                })
+                .finally(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                });
+        });
+    }
+});
