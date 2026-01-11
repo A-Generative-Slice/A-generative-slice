@@ -979,6 +979,7 @@ body {
         height: 150px;
     }
 }
+
 /* Modal Styles */
 .modal {
     display: none;
@@ -996,8 +997,13 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .modal-content {
@@ -1013,8 +1019,15 @@ body {
 }
 
 @keyframes slideUp {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .close-btn {
@@ -1120,7 +1133,229 @@ body {
         padding: 30px 20px;
         margin: 10% auto;
     }
+
     .modal-title {
         font-size: 28px !important;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Global Mobile Adjustments */
+    .bento-box {
+        padding: 30px 25px !important;
+        /* Slightly more padding for breathability */
+        min-height: auto !important;
+    }
+
+    /* Font Size Reductions */
+    .community-title,
+    .who-title,
+    .hero-header .header-slogan,
+    .service-card h3,
+    .training-left h3,
+    .leadgen-card h3,
+    .marketing-card h3,
+    .clients-card h3,
+    .getintouch-card h3,
+    .list-card h3 {
+        font-size: 32px !important;
+        /* Reduced from 48px */
+        line-height: 1.2 !important;
+        margin-bottom: 15px !important;
+    }
+
+    .community-subtitle,
+    .who-desc p,
+    .service-card p,
+    .service-card span,
+    .training-left p,
+    .training-right p,
+    .leadgen-card p,
+    .marketing-card p,
+    .clients-card p,
+    .getintouch-card p {
+        font-size: 18px !important;
+        /* Reduced from 28px */
+        line-height: 1.5 !important;
+    }
+
+    .clients-card h4 {
+        font-size: 22px !important;
+        /* Reduced from 32px */
+    }
+
+    .community-btn,
+    .cta-button,
+    .rose-btn,
+    .orange-btn {
+        font-size: 18px !important;
+        /* Reduced from 28px/18px */
+        padding: 12px 25px !important;
+        width: 100% !important;
+        /* Full width buttons on mobile */
+        text-align: center;
+        display: block;
+        box-sizing: border-box;
+    }
+
+    /* Image Placement & Scaling Fixes */
+
+    /* 1. Hero Mascot (Hidden in smaller definition already, ensure consistency) */
+    .mascot-headshot {
+        display: none;
+    }
+
+    /* 2. Slide Mascot (Who We Are) */
+    .slide-mascot {
+        width: 70% !important;
+        /* Reduced from 80% */
+        margin: 0 auto 20px auto !important;
+        display: block;
+    }
+
+    .who-we-are-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* 3. Community Paw */
+    .community-paw {
+        position: relative !important;
+        width: 50% !important;
+        /* Reduced from 60% */
+        height: auto !important;
+        margin: 10px auto 0 auto !important;
+        left: 0 !important;
+        transform: none !important;
+        display: block;
+        bottom: auto !important;
+    }
+
+    .community-box {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding-bottom: 0 !important;
+        /* Let image handle bottom space */
+    }
+
+    .community-content {
+        margin-bottom: 15px;
+    }
+
+    .community-ctas {
+        width: 100%;
+        align-items: stretch !important;
+    }
+
+    /* 4. Service Card Mascots (General) */
+    .automation-mascot,
+    .webdev-mascot,
+    .leadgen-mascot,
+    .marketing-mascot {
+        position: relative !important;
+        /* Stop absolute positioning overlap */
+        width: 45% !important;
+        /* Reduced significantly from 60% to make them "smaller" but visible */
+        height: auto !important;
+        display: block !important;
+        margin: 15px auto 0 auto !important;
+        /* Center and push down */
+        top: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+        border-radius: 0 !important;
+        /* Remove corner radius if it looks weird */
+    }
+
+    /* Training Cat - Can be slightly larger as it's a bigger box */
+    .training-mascot {
+        position: relative !important;
+        width: 55% !important;
+        height: auto !important;
+        display: block !important;
+        margin: 20px auto 20px auto !important;
+        transform: none !important;
+    }
+
+    /* Clients Cat */
+    .clients-mascot {
+        position: relative !important;
+        width: 50% !important;
+        height: auto !important;
+        display: block !important;
+        margin: 15px auto 0 auto !important;
+        transform: none !important;
+        right: auto !important;
+        bottom: auto !important;
+        top: auto !important;
+        /* Ensure no top override conflicts */
+        left: auto !important;
+    }
+
+    /* Specific adjustments if needed */
+    .service-card,
+    .training-card,
+    .leadgen-card,
+    .marketing-card,
+    .clients-card {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+    }
+
+    .service-content,
+    .training-left,
+    .training-right,
+    .leadgen-content,
+    .marketing-content,
+    .clients-content {
+        z-index: 5;
+        width: 100%;
+    }
+
+    /* Training Card Specifics */
+    .training-card {
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .training-left,
+    .training-right {
+        text-align: center !important;
+    }
+
+    /* Clients Card Specifics */
+    .clients-card {
+        text-align: center;
+    }
+
+    /* Get In Touch */
+    .getintouch-card {
+        flex-direction: column !important;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .getintouch-content {
+        text-align: center !important;
+    }
+
+    .footer-cats {
+        position: relative !important;
+        margin-top: 20px;
+        justify-content: center;
+        width: 100%;
+        bottom: auto !important;
+    }
+
+    .social-icon-box {
+        width: 80px !important;
+        height: 80px !important;
     }
 }
