@@ -32,9 +32,9 @@ export const ContactSection = () => {
     };
 
     return (
-        <section id="contact" className="py-32 px-6 relative bg-[#0a0a0a]">
+        <section id="contact" className="py-32 px-6 relative bg-white dark:bg-[#0a0a0a]">
             {/* Top Border Gradient */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-orange-500/20 to-transparent" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-black/10 dark:via-white/10 to-transparent" />
 
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-16">
@@ -52,7 +52,7 @@ export const ContactSection = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight"
+                        className="text-4xl md:text-5xl font-black text-black dark:text-white mb-6 tracking-tight"
                     >
                         Got a <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">project?</span>
                     </motion.h2>
@@ -61,9 +61,9 @@ export const ContactSection = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-white/60 text-lg max-w-xl mx-auto"
+                        className="text-black/60 dark:text-white/60 text-lg max-w-xl mx-auto"
                     >
-                        Want a custom tool? Have a collab idea? Reach out directly and let's build something amazing together.
+                        Want to build a custom application? Have an enterprise requirement? Reach out directly and let's build something amazing together.
                     </motion.p>
                 </div>
 
@@ -74,42 +74,42 @@ export const ContactSection = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                     onSubmit={handleSubmit} 
-                    className="bg-[#111111]/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-10 shadow-2xl mb-10 relative overflow-hidden"
+                    className="bg-gray-50 dark:bg-[#111111]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-3xl p-8 md:p-10 shadow-2xl mb-10 relative overflow-hidden"
                 >
                     <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6 relative z-10">
                         <div>
-                            <label className="text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Name</label>
+                            <label className="text-black/50 dark:text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Name</label>
                             <input
                                 type="text"
                                 required
                                 value={formData.name}
                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                className="w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all"
+                                className="w-full bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/20 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all"
                                 placeholder="John Doe"
                             />
                         </div>
                         <div>
-                            <label className="text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Email</label>
+                            <label className="text-black/50 dark:text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Email</label>
                             <input
                                 type="email"
                                 required
                                 value={formData.email}
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                className="w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all"
+                                className="w-full bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/20 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all"
                                 placeholder="john@example.com"
                             />
                         </div>
                     </div>
                     <div className="mb-8 relative z-10">
-                        <label className="text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Message</label>
+                        <label className="text-black/50 dark:text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Message</label>
                         <textarea
                             required
                             rows={5}
                             value={formData.message}
                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                            className="w-full bg-[#0a0a0a] border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all resize-none"
+                            className="w-full bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/20 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all resize-none"
                             placeholder="Tell us about your project or idea..."
                         />
                     </div>
@@ -135,24 +135,24 @@ export const ContactSection = () => {
                     className="grid grid-cols-2 sm:grid-cols-4 gap-4"
                 >
                     <a href="https://wa.me/919344115330" target="_blank" rel="noopener noreferrer" 
-                       className="group flex flex-col items-center justify-center gap-2 p-4 rounded-2xl bg-[#111111] border border-white/5 hover:border-green-500/50 hover:bg-green-500/5 transition-all">
+                       className="group flex flex-col items-center justify-center gap-2 p-4 rounded-2xl bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/5 hover:border-green-500/50 hover:bg-green-500/5 transition-all">
                         <FaWhatsapp className="w-6 h-6 text-green-500 group-hover:scale-110 transition-transform" />
-                        <span className="text-white/70 text-sm font-medium">WhatsApp</span>
+                        <span className="text-black/70 dark:text-white/70 text-sm font-medium">WhatsApp</span>
                     </a>
                     <a href="https://www.instagram.com/a_generative_slice/" target="_blank" rel="noopener noreferrer"
-                       className="group flex flex-col items-center justify-center gap-2 p-4 rounded-2xl bg-[#111111] border border-white/5 hover:border-pink-500/50 hover:bg-pink-500/5 transition-all">
+                       className="group flex flex-col items-center justify-center gap-2 p-4 rounded-2xl bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/5 hover:border-pink-500/50 hover:bg-pink-500/5 transition-all">
                         <FaInstagram className="w-6 h-6 text-pink-500 group-hover:scale-110 transition-transform" />
-                        <span className="text-white/70 text-sm font-medium">Instagram</span>
+                        <span className="text-black/70 dark:text-white/70 text-sm font-medium">Instagram</span>
                     </a>
                     <a href="https://github.com/A-Generative-Slice" target="_blank" rel="noopener noreferrer"
-                       className="group flex flex-col items-center justify-center gap-2 p-4 rounded-2xl bg-[#111111] border border-white/5 hover:border-white/50 hover:bg-white/5 transition-all">
-                        <FaGithub className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
-                        <span className="text-white/70 text-sm font-medium">GitHub</span>
+                       className="group flex flex-col items-center justify-center gap-2 p-4 rounded-2xl bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/5 hover:border-black/50 dark:hover:border-white/50 hover:bg-black/5 dark:hover:bg-white/5 transition-all">
+                        <FaGithub className="w-6 h-6 text-black dark:text-white group-hover:scale-110 transition-transform" />
+                        <span className="text-black/70 dark:text-white/70 text-sm font-medium">GitHub</span>
                     </a>
                     <a href="https://www.linkedin.com/company/107795425" target="_blank" rel="noopener noreferrer"
-                       className="group flex flex-col items-center justify-center gap-2 p-4 rounded-2xl bg-[#111111] border border-white/5 hover:border-blue-500/50 hover:bg-blue-500/5 transition-all">
+                       className="group flex flex-col items-center justify-center gap-2 p-4 rounded-2xl bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/5 hover:border-blue-500/50 hover:bg-blue-500/5 transition-all">
                         <FaLinkedin className="w-6 h-6 text-blue-500 group-hover:scale-110 transition-transform" />
-                        <span className="text-white/70 text-sm font-medium">LinkedIn</span>
+                        <span className="text-black/70 dark:text-white/70 text-sm font-medium">LinkedIn</span>
                     </a>
                 </motion.div>
             </div>
