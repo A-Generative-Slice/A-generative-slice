@@ -1,16 +1,59 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, Building2, Globe2, Briefcase } from 'lucide-react';
+import Particles, { initParticlesEngine } from '@tsparticles/react';
+import { loadSlim } from '@tsparticles/slim';
 
 export const Hero = () => {
+    const [init, setInit] = useState(false);
+
+    useEffect(() => {
+        initParticlesEngine(async (engine) => {
+            await loadSlim(engine);
+        }).then(() => {
+            setInit(true);
+        });
+    }, []);
+
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-12 px-6">
+            
+            {/* Particles */}
+            {init && <Particles
+                id="tsparticles"
+                className="absolute inset-0 pointer-events-none"
+                options={{
+                    fullScreen: { enable: false },
+                    fpsLimit: 60,
+                    particles: {
+                        color: { value: "#ff6a00" },
+                        links: {
+                            color: "#ff6a00",
+                            distance: 150,
+                            enable: true,
+                            opacity: 0.2,
+                            width: 1,
+                        },
+                        move: {
+                            direction: "none",
+                            enable: true,
+                            outModes: { default: "bounce" },
+                            random: false,
+                            speed: 1,
+                            straight: false,
+                        },
+                        number: { density: { enable: true }, value: 40 },
+                        opacity: { value: 0.3 },
+                        shape: { type: "circle" },
+                        size: { value: { min: 1, max: 3 } },
+                    },
+                    detectRetina: true,
+                }}
+            />}
+
             {/* Ambient Background Glows */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] rounded-full opacity-10 dark:opacity-20 blur-[120px] pointer-events-none transition-opacity duration-300"
                  style={{ background: 'radial-gradient(circle, #ff6a00 0%, transparent 70%)' }} />
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-5 dark:opacity-10 blur-[100px] pointer-events-none transition-opacity duration-300"
-                 style={{ background: '#ff8533' }} />
-            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full opacity-5 dark:opacity-10 blur-[120px] pointer-events-none transition-opacity duration-300"
-                 style={{ background: '#cc5500' }} />
 
             {/* Grid Pattern */}
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05] dark:opacity-20 pointer-events-none mix-blend-overlay transition-opacity duration-300" />
@@ -59,11 +102,11 @@ export const Hero = () => {
                     transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
                     className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
                 >
-                    <a href="#projects" className="btn-primary flex items-center justify-center gap-2 text-base w-full sm:w-auto py-4 px-8 text-lg group">
+                    <a href="#projects" className="btn-primary flex items-center justify-center gap-2 text-base w-full sm:w-auto py-4 px-8 text-lg group relative z-20">
                         View Our Projects
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </a>
-                    <a href="#contact" className="btn-secondary flex items-center justify-center gap-2 text-base w-full sm:w-auto py-4 px-8 text-lg text-black dark:text-white border-black/10 dark:border-white/15 hover:bg-black/5 dark:hover:bg-white/5">
+                    <a href="#contact" className="btn-secondary flex items-center justify-center gap-2 text-base w-full sm:w-auto py-4 px-8 text-lg text-black dark:text-white border-black/10 dark:border-white/15 hover:bg-black/5 dark:hover:bg-white/5 relative z-20">
                         Start a Project
                     </a>
                 </motion.div>

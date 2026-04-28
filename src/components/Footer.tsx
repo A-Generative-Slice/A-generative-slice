@@ -1,4 +1,5 @@
 import { FaInstagram, FaLinkedin, FaGithub, FaWhatsapp } from 'react-icons/fa';
+import logoImg from '../assets/logo.jpg';
 
 export const Footer = () => {
     return (
@@ -7,7 +8,7 @@ export const Footer = () => {
                 {/* Brand */}
                 <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-lg overflow-hidden shadow-lg shadow-black/10 dark:shadow-white/10">
-                        <img src="/logo.jpg" alt="A Generative Slice" className="w-full h-full object-cover" />
+                        <img src={logoImg} alt="A Generative Slice" className="w-full h-full object-cover" />
                     </div>
                     <span className="text-black/60 dark:text-white/60 font-medium text-sm tracking-wide">A Generative Slice</span>
                 </div>

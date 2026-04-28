@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Moon, Sun } from 'lucide-react';
+import logoImg from '../assets/logo.jpg';
 
 interface NavbarProps {
     isDark: boolean;
@@ -33,7 +34,7 @@ export const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
                         whileTap={{ scale: 0.95 }}
                         className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-black/10 dark:shadow-white/10"
                     >
-                        <img src="/logo.jpg" alt="Logo" className="w-full h-full object-cover" />
+                        <img src={logoImg} alt="Logo" className="w-full h-full object-cover" />
                     </motion.div>
                     <span className="text-black dark:text-white font-bold text-xl tracking-tight hidden sm:block">
                         A Generative Slice
@@ -42,7 +43,7 @@ export const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
 
                 {/* Desktop Nav Links */}
                 <div className="hidden md:flex items-center gap-8 bg-black/5 dark:bg-white/5 px-6 py-2 rounded-full border border-black/5 dark:border-white/10 backdrop-blur-md">
-                    {['Projects', 'About', 'Contact'].map((item) => (
+                    {['Projects', 'About', 'Teams', 'Contact'].map((item) => (
                         <a 
                             key={item} 
                             href={`#${item.toLowerCase()}`} 
@@ -94,7 +95,7 @@ export const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
                             exit={{ opacity: 0, y: -20 }}
                             className="absolute top-full left-0 right-0 bg-white dark:bg-[#0a0a0a] border-b border-black/5 dark:border-white/10 p-6 flex flex-col gap-4 shadow-2xl md:hidden"
                         >
-                            {['Projects', 'About', 'Contact'].map((item) => (
+                            {['Projects', 'About', 'Teams', 'Contact'].map((item) => (
                                 <a 
                                     key={item} 
                                     href={`#${item.toLowerCase()}`} 

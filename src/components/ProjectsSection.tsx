@@ -10,35 +10,43 @@ interface Project {
     description: string;
     tags: string[];
     color: string;
+    mapX: string;
+    mapY: string;
 }
 
 const projects: Project[] = [
     {
         id: 'rose-chemicals',
         client: 'Rose Chemicals',
-        location: 'Madurai, TN',
+        location: 'Madurai',
         title: 'Enterprise Chemical Inventory & B2B Portal',
         description: 'A comprehensive B2B portal for Rose Chemicals to manage bulk orders, track inventory across multiple warehouses, and provide real-time shipment updates to distributors.',
         tags: ['React', 'Dashboard', 'B2B', 'Inventory'],
         color: 'from-pink-500 to-rose-600',
+        mapX: '45%',
+        mapY: '65%',
     },
     {
         id: 'nas-internationals',
         client: 'NAS Internationals',
-        location: 'Nungambakkam, Chennai',
+        location: 'Nungambakkam',
         title: 'Global Export Operations Dashboard',
         description: 'A unified operations dashboard for NAS Internationals to streamline their export workflows, track global shipments, and manage international compliance documents seamlessly.',
         tags: ['Next.js', 'Logistics', 'Global Trade'],
         color: 'from-blue-500 to-indigo-600',
+        mapX: '78%',
+        mapY: '18%',
     },
     {
         id: 'litelab',
         client: 'Litelab',
-        location: 'Besant Nagar, Chennai',
+        location: 'Besant Nagar',
         title: 'Creative Agency Portfolio & Client Portal',
         description: 'An immersive, high-performance portfolio and secure client portal for Litelab to showcase their creative campaigns and securely share assets with top-tier clients.',
         tags: ['WebGL', 'Framer Motion', 'Client Portal'],
         color: 'from-orange-400 to-orange-600',
+        mapX: '81%',
+        mapY: '21%',
     }
 ];
 
@@ -46,7 +54,7 @@ export const ProjectsSection = () => {
     const [activeProject, setActiveProject] = useState<Project | null>(null);
 
     return (
-        <section id="projects" className="py-32 px-6 relative z-20">
+        <section id="projects" className="py-32 px-6 relative z-20 bg-gray-50 dark:bg-[#0a0a0a]">
             {/* Top Border */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-black/10 dark:via-white/10 to-transparent" />
 
@@ -70,61 +78,86 @@ export const ProjectsSection = () => {
                     >
                         Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Client Projects</span>
                     </motion.h2>
-                    <motion.p 
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="text-black/60 dark:text-white/60 text-lg"
-                    >
-                        Explore some of our recent collaborations with top businesses across the state.
-                    </motion.p>
                 </div>
 
-                {/* Dashboard Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    {projects.map((project, i) => (
-                        <motion.div
-                            key={project.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
-                            onClick={() => setActiveProject(project)}
-                            className="group cursor-pointer bg-white dark:bg-[#111111]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-3xl p-8 hover:border-orange-500/30 hover:shadow-2xl transition-all duration-300 relative overflow-hidden flex flex-col h-full"
-                        >
-                            {/* Accent Gradient */}
-                            <div className={`absolute top-0 left-0 w-full h-2 bg-gradient-to-r ${project.color}`} />
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    {/* Illustrated Map */}
+                    <div className="lg:col-span-5 relative w-full aspect-square md:aspect-auto md:h-[600px] flex items-center justify-center bg-white dark:bg-[#111111]/80 rounded-3xl border border-black/5 dark:border-white/10 shadow-2xl p-8">
+                        <div className="relative w-full h-full max-w-[400px]">
+                            {/* Abstract Tamil Nadu Map SVG */}
+                            <svg viewBox="0 0 400 500" className="w-full h-full drop-shadow-2xl opacity-80 dark:opacity-60 text-orange-500/10 dark:text-orange-500/20 fill-current stroke-orange-500 stroke-[2px]">
+                                <path d="M 280 50 Q 300 40 320 60 Q 340 80 330 110 Q 320 140 340 160 Q 360 180 350 210 Q 340 240 320 250 Q 300 260 290 290 Q 280 320 260 340 Q 240 360 250 390 Q 260 420 230 450 Q 200 480 170 460 Q 140 440 120 410 Q 100 380 80 350 Q 60 320 70 290 Q 80 260 60 230 Q 40 200 70 170 Q 100 140 130 120 Q 160 100 190 80 Q 220 60 250 50 Z" />
+                            </svg>
                             
-                            <div className="flex items-start justify-between mb-6">
-                                <div>
-                                    <h3 className="text-xl font-bold text-black dark:text-white mb-1 group-hover:text-orange-500 transition-colors">
-                                        {project.client}
-                                    </h3>
-                                    <div className="flex items-center gap-1.5 text-xs font-semibold text-black/50 dark:text-white/50 uppercase tracking-wider">
-                                        <MapPin className="w-3.5 h-3.5" />
+                            {/* Map Pins */}
+                            {projects.map((project) => (
+                                <motion.button
+                                    key={project.id}
+                                    onClick={() => setActiveProject(project)}
+                                    className="absolute transform -translate-x-1/2 -translate-y-1/2 group z-10"
+                                    style={{ left: project.mapX, top: project.mapY }}
+                                    whileHover={{ scale: 1.2 }}
+                                >
+                                    <div className="relative">
+                                        {/* Pulse effect */}
+                                        <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${project.color} animate-ping opacity-50`} />
+                                        {/* Pin Marker */}
+                                        <div className={`w-4 h-4 md:w-5 md:h-5 rounded-full bg-gradient-to-r ${project.color} shadow-[0_0_15px_rgba(255,106,0,0.5)] border-2 border-white dark:border-black`} />
+                                    </div>
+                                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity bg-black dark:bg-white text-white dark:text-black text-xs font-bold py-1 px-3 rounded-md whitespace-nowrap shadow-xl pointer-events-none">
                                         {project.location}
                                     </div>
-                                </div>
-                                <div className="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:bg-orange-500/10 group-hover:text-orange-500 transition-colors">
-                                    <Maximize2 className="w-4 h-4 text-black/40 dark:text-white/40 group-hover:text-orange-500" />
-                                </div>
-                            </div>
+                                </motion.button>
+                            ))}
+                        </div>
+                    </div>
 
-                            <h4 className="text-lg font-semibold text-black/80 dark:text-white/80 mb-3">{project.title}</h4>
-                            <p className="text-black/60 dark:text-white/50 text-sm leading-relaxed mb-6 flex-grow">
-                                {project.description.substring(0, 100)}...
-                            </p>
+                    {/* Dashboard Grid */}
+                    <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 h-full content-start">
+                        {projects.map((project, i) => (
+                            <motion.div
+                                key={project.id}
+                                initial={{ opacity: 0, x: 20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                onClick={() => setActiveProject(project)}
+                                className="group cursor-pointer bg-white dark:bg-[#111111]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-2xl p-6 hover:border-orange-500/30 hover:shadow-2xl transition-all duration-300 relative overflow-hidden flex flex-col"
+                            >
+                                {/* Accent Gradient */}
+                                <div className={`absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r ${project.color}`} />
+                                
+                                <div className="flex items-start justify-between mb-4">
+                                    <div>
+                                        <h3 className="text-lg font-bold text-black dark:text-white mb-1 group-hover:text-orange-500 transition-colors">
+                                            {project.client}
+                                        </h3>
+                                        <div className="flex items-center gap-1.5 text-[10px] font-semibold text-black/50 dark:text-white/50 uppercase tracking-wider">
+                                            <MapPin className="w-3 h-3" />
+                                            {project.location}
+                                        </div>
+                                    </div>
+                                    <div className="w-8 h-8 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:bg-orange-500/10 group-hover:text-orange-500 transition-colors">
+                                        <Maximize2 className="w-3 h-3 text-black/40 dark:text-white/40 group-hover:text-orange-500" />
+                                    </div>
+                                </div>
 
-                            <div className="flex flex-wrap gap-2 mt-auto">
-                                {project.tags.map(tag => (
-                                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-black/5 dark:bg-white/5 text-black/70 dark:text-white/70 border border-black/5 dark:border-white/5">
-                                        {tag}
-                                    </span>
-                                ))}
-                            </div>
-                        </motion.div>
-                    ))}
+                                <h4 className="text-sm font-semibold text-black/80 dark:text-white/80 mb-2">{project.title}</h4>
+                                <p className="text-black/60 dark:text-white/50 text-xs leading-relaxed mb-4 flex-grow">
+                                    {project.description.substring(0, 80)}...
+                                </p>
+
+                                <div className="flex flex-wrap gap-1.5 mt-auto">
+                                    {project.tags.slice(0,2).map(tag => (
+                                        <span key={tag} className="px-2 py-1 rounded-md text-[10px] font-medium bg-black/5 dark:bg-white/5 text-black/70 dark:text-white/70 border border-black/5 dark:border-white/5">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </div>
 
