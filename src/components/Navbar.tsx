@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Moon, Sun } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import logoImg from '../assets/logo.jpg';
 
 interface NavbarProps {
@@ -11,6 +12,7 @@ interface NavbarProps {
 export const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 20);
@@ -18,71 +20,78 @@ export const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
+    const navLinks = [
+        { name: 'Home', path: '/' },
+        { name: 'Projects', path: '/projects' },
+        { name: 'About', path: '/about' },
+        { name: 'Teams', path: '/teams' },
+        { name: 'Contact', path: '/contact' }
+    ];
+
     return (
-        <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-                scrolled 
-                    ? 'bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-black/5 dark:border-white/10 py-4 shadow-xl' 
-                    : 'bg-transparent py-6'
-            }`}
-        >
-            <div className="max-w-7xl mx-auto px-6 md:px-8 flex items-center justify-between">
-                {/* Logo */}
-                <a href="#" className="flex items-center gap-3 group z-50 relative">
+        <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-6 pointer-events-none">
+            <nav
+                className={`pointer-events-auto transition-all duration-500 ease-in-out px-6 py-3 rounded-2xl border backdrop-blur-xl shadow-2xl flex items-center gap-8 ${
+                    scrolled 
+                        ? 'bg-white/70 dark:bg-[#0a0a0a]/70 border-black/5 dark:border-white/10 scale-95' 
+                        : 'bg-white/40 dark:bg-[#0a0a0a]/40 border-black/10 dark:border-white/10 scale-100'
+                }`}
+            >
+                {/* Logo - Centered in logic, but left in flex for mobile. We'll adjust for desktop */}
+                <Link to="/" className="flex items-center gap-3 group relative shrink-0">
                     <motion.div 
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-black/10 dark:shadow-white/10"
+                        className="w-8 h-8 rounded-lg overflow-hidden shadow-lg"
                     >
                         <img src={logoImg} alt="Logo" className="w-full h-full object-cover" />
                     </motion.div>
-                    <span className="text-black dark:text-white font-bold text-xl tracking-tight hidden sm:block">
+                    <span className="text-black dark:text-white font-black text-sm tracking-tighter uppercase hidden sm:block">
                         A Generative Slice
                     </span>
-                </a>
+                </Link>
+
+                {/* Vertical Divider */}
+                <div className="h-6 w-[1px] bg-black/10 dark:bg-white/10 hidden md:block" />
 
                 {/* Desktop Nav Links */}
-                <div className="hidden md:flex items-center gap-8 bg-black/5 dark:bg-white/5 px-6 py-2 rounded-full border border-black/5 dark:border-white/10 backdrop-blur-md">
-                    {['Projects', 'About', 'Teams', 'Contact'].map((item) => (
-                        <a 
-                            key={item} 
-                            href={`#${item.toLowerCase()}`} 
-                            className="text-black/70 dark:text-white/70 hover:text-orange-500 dark:hover:text-white text-sm font-medium transition-colors relative group"
+                <div className="hidden md:flex items-center gap-6">
+                    {navLinks.map((link) => (
+                        <Link 
+                            key={link.name} 
+                            to={link.path} 
+                            className={`text-xs font-bold uppercase tracking-widest transition-all duration-300 relative group ${
+                                location.pathname === link.path 
+                                    ? 'text-orange-500' 
+                                    : 'text-black/50 dark:text-white/40 hover:text-black dark:hover:text-white'
+                            }`}
                         >
-                            {item}
-                            <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-orange-500 transition-all duration-300 group-hover:w-full rounded-full" />
-                        </a>
+                            {link.name}
+                            <span className={`absolute -bottom-1 left-0 h-[2px] bg-orange-500 transition-all duration-300 rounded-full ${
+                                location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'
+                            }`} />
+                        </Link>
                     ))}
                 </div>
 
-                {/* Desktop Actions */}
-                <div className="hidden md:flex items-center gap-4">
+                {/* Vertical Divider */}
+                <div className="h-6 w-[1px] bg-black/10 dark:bg-white/10 hidden md:block" />
+
+                {/* Actions */}
+                <div className="flex items-center gap-2">
                     <button 
                         onClick={toggleTheme} 
-                        className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white"
+                        className="p-2 rounded-xl hover:bg-black/5 dark:hover:bg-white/10 transition-colors text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white"
                     >
-                        {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                        {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
                     </button>
-                    <motion.a 
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        href="#contact" 
-                        className="btn-primary text-sm !py-2.5 !px-6 flex items-center gap-2 group"
-                    >
-                        Work With Us
-                    </motion.a>
-                </div>
-
-                {/* Mobile Menu Toggle & Theme */}
-                <div className="flex items-center gap-4 md:hidden z-50 relative">
-                    <button onClick={toggleTheme} className="text-black/70 dark:text-white/70">
-                        {isDark ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
-                    </button>
+                    
+                    {/* Mobile Menu Toggle */}
                     <button 
-                        className="p-2 text-black/70 dark:text-white/70"
+                        className="p-2 md:hidden text-black/70 dark:text-white/70"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
-                        {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                        {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                     </button>
                 </div>
 
@@ -90,33 +99,29 @@ export const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
                 <AnimatePresence>
                     {mobileMenuOpen && (
                         <motion.div 
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            className="absolute top-full left-0 right-0 bg-white dark:bg-[#0a0a0a] border-b border-black/5 dark:border-white/10 p-6 flex flex-col gap-4 shadow-2xl md:hidden"
+                            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                            className="absolute top-full left-0 right-0 mt-4 bg-white/90 dark:bg-[#0a0a0a]/90 backdrop-blur-2xl border border-black/5 dark:border-white/10 p-6 rounded-3xl flex flex-col gap-4 shadow-2xl md:hidden overflow-hidden"
                         >
-                            {['Projects', 'About', 'Teams', 'Contact'].map((item) => (
-                                <a 
-                                    key={item} 
-                                    href={`#${item.toLowerCase()}`} 
+                            {navLinks.map((link) => (
+                                <Link 
+                                    key={link.name} 
+                                    to={link.path} 
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className="text-black/80 dark:text-white/80 hover:text-orange-500 dark:hover:text-white text-lg font-medium p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                                    className={`text-lg font-black tracking-tight p-4 rounded-2xl transition-all ${
+                                        location.pathname === link.path
+                                            ? 'bg-orange-500 text-white'
+                                            : 'text-black/80 dark:text-white/80 hover:bg-black/5 dark:hover:bg-white/5'
+                                    }`}
                                 >
-                                    {item}
-                                </a>
+                                    {link.name}
+                                </Link>
                             ))}
-                            <div className="h-[1px] bg-black/5 dark:bg-white/10 my-2" />
-                            <a 
-                                href="#contact" 
-                                onClick={() => setMobileMenuOpen(false)}
-                                className="btn-primary text-center py-3 w-full"
-                            >
-                                Work With Us
-                            </a>
                         </motion.div>
                     )}
                 </AnimatePresence>
-            </div>
-        </nav>
+            </nav>
+        </div>
     );
 };

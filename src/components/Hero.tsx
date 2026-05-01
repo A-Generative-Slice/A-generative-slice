@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Sparkles, Building2, Globe2, Briefcase, MousePointer2 } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
 
@@ -113,66 +113,10 @@ export const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-                    className="text-black/70 dark:text-white/70 text-lg sm:text-2xl max-w-3xl mx-auto mb-14 leading-relaxed font-medium"
+                    className="text-black/70 dark:text-white/70 text-lg sm:text-2xl max-w-3xl mx-auto leading-relaxed font-medium"
                 >
-                    We bridge the gap between imagination and reality, building elite digital products that define the future of business in Tamil Nadu.
+                    We bridge the gap between imagination and reality, building elite digital products that define the future of business globally.
                 </motion.p>
-
-                {/* High-Impact CTAs */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full sm:w-auto"
-                >
-                    <a href="#projects" className="relative group px-10 py-5 rounded-2xl bg-black dark:bg-white text-white dark:text-black font-bold text-lg overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_50px_rgba(255,255,255,0.05)]">
-                        <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        <span className="relative flex items-center gap-2">
-                            Explore Portfolio
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </span>
-                    </a>
-                    
-                    <a href="#contact" className="group relative px-10 py-5 rounded-2xl border border-black/10 dark:border-white/10 bg-white/5 dark:bg-black/5 backdrop-blur-md font-bold text-lg overflow-hidden transition-all duration-300 hover:bg-black/5 dark:hover:bg-white/5 active:scale-95">
-                        <span className="relative flex items-center gap-2 text-black dark:text-white">
-                            Get in Touch
-                            <MousePointer2 className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-y-1 group-hover:translate-y-0" />
-                        </span>
-                    </a>
-                </motion.div>
-
-                {/* Premium Metrics / Features */}
-                <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1.5, delay: 0.8 }}
-                    className="mt-28 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16 items-center justify-center w-full max-w-5xl mx-auto opacity-60"
-                >
-                    <div className="flex flex-col items-center gap-2 group cursor-default">
-                        <div className="p-3 rounded-xl bg-orange-500/5 group-hover:bg-orange-500/10 transition-colors">
-                            <Globe2 className="w-6 h-6 text-orange-500" />
-                        </div>
-                        <span className="text-[10px] uppercase tracking-[0.3em] font-black text-black dark:text-white">Global Tech</span>
-                    </div>
-                    <div className="flex flex-col items-center gap-2 group cursor-default">
-                        <div className="p-3 rounded-xl bg-orange-500/5 group-hover:bg-orange-500/10 transition-colors">
-                            <Building2 className="w-6 h-6 text-orange-500" />
-                        </div>
-                        <span className="text-[10px] uppercase tracking-[0.3em] font-black text-black dark:text-white">Enterprise</span>
-                    </div>
-                    <div className="flex flex-col items-center gap-2 group cursor-default">
-                        <div className="p-3 rounded-xl bg-orange-500/5 group-hover:bg-orange-500/10 transition-colors">
-                            <Briefcase className="w-6 h-6 text-orange-500" />
-                        </div>
-                        <span className="text-[10px] uppercase tracking-[0.3em] font-black text-black dark:text-white">Solutions</span>
-                    </div>
-                    <div className="flex flex-col items-center gap-2 group cursor-default">
-                        <div className="p-3 rounded-xl bg-orange-500/5 group-hover:bg-orange-500/10 transition-colors">
-                            <Sparkles className="w-6 h-6 text-orange-500" />
-                        </div>
-                        <span className="text-[10px] uppercase tracking-[0.3em] font-black text-black dark:text-white">Innovation</span>
-                    </div>
-                </motion.div>
             </div>
 
             {/* Scroll Indicator */}
