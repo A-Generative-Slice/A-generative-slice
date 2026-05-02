@@ -10,7 +10,7 @@ export const Footer = () => {
                     <div className="w-8 h-8 rounded-lg overflow-hidden shadow-lg shadow-black/10 dark:shadow-white/10">
                         <img src={logoImg} alt="A Generative Slice" className="w-full h-full object-cover" />
                     </div>
-                    <span className="text-black/60 dark:text-white/60 font-medium text-sm tracking-wide">A Generative Slice</span>
+                    <span className="text-black/60 dark:text-white/60 font-black text-xs uppercase tracking-widest">A GENERATIVE SLICE</span>
                 </div>
 
                 {/* Social Links */}

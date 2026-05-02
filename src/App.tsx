@@ -10,7 +10,7 @@ import { TeamsPage } from './pages/TeamsPage';
 import { ContactPage } from './pages/ContactPage';
 
 const AppContent = () => {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -46,8 +46,9 @@ const AppContent = () => {
 };
 
 function App() {
+  const basename = import.meta.env.MODE === 'production' ? '/A-generative-slice' : '';
   return (
-    <Router>
+    <Router basename={basename}>
       <AppContent />
     </Router>
   );
