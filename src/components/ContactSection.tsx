@@ -54,7 +54,7 @@ export const ContactSection = () => {
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-5xl font-black text-black dark:text-white mb-6 tracking-tight"
                     >
-                        Got a <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">project?</span>
+                        Have a <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">unique idea?</span>
                     </motion.h2>
                     <motion.p 
                         initial={{ opacity: 0, y: 20 }}
@@ -63,7 +63,7 @@ export const ContactSection = () => {
                         transition={{ delay: 0.2 }}
                         className="text-black/60 dark:text-white/60 text-lg max-w-xl mx-auto"
                     >
-                        Want to build a custom application? Have an enterprise requirement? Reach out directly and let's build something amazing together.
+                        Whether it's a complex enterprise platform or a creative digital experience, we're ready to build it with precision.
                     </motion.p>
                 </div>
 
