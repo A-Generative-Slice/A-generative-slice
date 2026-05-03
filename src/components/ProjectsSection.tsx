@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Globe2, MessageSquare, Send, ExternalLink, ArrowRight } from 'lucide-react';
+import { Globe2, MessageSquare, Send, ExternalLink, RefreshCw } from 'lucide-react';
 
 const projects = [
     {
@@ -64,11 +64,11 @@ export const ProjectsSection = () => {
     };
 
     return (
-        <section id="projects" className="py-32 px-6 relative z-20 bg-white dark:bg-[#0a0a0a]">
+        <section id="projects" className="py-32 px-6 relative z-20 bg-white dark:bg-[#0a0a0a] overflow-hidden">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-black/10 dark:via-white/10 to-transparent" />
 
             <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-20 max-w-3xl mx-auto">
+                <div className="text-center mb-24 max-w-3xl mx-auto">
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -88,29 +88,48 @@ export const ProjectsSection = () => {
                         Architectural <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Masterpieces</span>
                     </motion.h2>
                     <p className="text-black/60 dark:text-white/60 text-lg">
-                        Swipe or click to explore our recent enterprise deployments.
+                        Swipe or click to cycle through our featured enterprise deployments.
                     </p>
                 </div>
 
-                {/* Animated Card Swipe Showcase */}
-                <div className="relative w-full max-w-xl mx-auto h-[450px] mb-32 flex justify-center perspective-1000">
+                {/* Animated Fan Card Swipe Showcase */}
+                <div className="relative w-full max-w-5xl mx-auto h-[500px] mb-32 flex justify-center items-center perspective-1000">
                     <AnimatePresence mode="popLayout">
                         {cards.map((card, i) => {
                             const isTop = i === 0;
+                            // Layout based on position in array to create a fan effect
+                            let xOffset = 0;
+                            let yOffset = 0;
+                            let scale = 1;
+                            let rotate = 0;
+                            let zIndex = 3 - i;
+
+                            if (i === 0) {
+                                // Front Center
+                                xOffset = 0; scale = 1; rotate = 0; yOffset = 0;
+                            } else if (i === 1) {
+                                // Back Left
+                                xOffset = -200; scale = 0.85; rotate = -8; yOffset = 20;
+                            } else if (i === 2) {
+                                // Back Right
+                                xOffset = 200; scale = 0.85; rotate = 8; yOffset = 20;
+                            }
+
                             return (
                                 <motion.div
                                     key={card.id}
                                     layout
-                                    initial={{ scale: 0.8, opacity: 0, y: 50 }}
+                                    initial={{ opacity: 0, y: 50, scale: 0.8 }}
                                     animate={{ 
-                                        scale: 1 - i * 0.05, 
-                                        y: i * 25, 
-                                        zIndex: cards.length - i,
-                                        opacity: 1 - i * 0.15,
-                                        rotateZ: isTop ? 0 : (i % 2 === 0 ? 2 : -2)
+                                        x: xOffset,
+                                        y: yOffset,
+                                        scale: scale,
+                                        rotateZ: rotate,
+                                        zIndex: zIndex,
+                                        opacity: 1
                                     }}
-                                    exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
-                                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                    exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
+                                    transition={{ type: "spring", stiffness: 260, damping: 20 }}
                                     drag={isTop ? "x" : false}
                                     dragConstraints={{ left: 0, right: 0 }}
                                     dragElastic={0.8}
@@ -119,7 +138,10 @@ export const ProjectsSection = () => {
                                             handleSwipe();
                                         }
                                     }}
-                                    className={`absolute top-0 w-full bg-gray-50 dark:bg-[#151515] border border-black/5 dark:border-white/10 rounded-[2.5rem] p-10 shadow-2xl ${isTop ? 'cursor-grab active:cursor-grabbing hover:border-orange-500/30' : 'pointer-events-none'}`}
+                                    onClick={() => {
+                                        if (!isTop) handleSwipe();
+                                    }}
+                                    className={`absolute w-full max-w-md bg-gray-50 dark:bg-[#151515] border border-black/5 dark:border-white/10 rounded-[2.5rem] p-10 shadow-2xl ${isTop ? 'cursor-grab active:cursor-grabbing hover:border-orange-500/30' : 'cursor-pointer hover:border-orange-500/10'} backdrop-blur-xl`}
                                     style={{ transformOrigin: 'bottom center' }}
                                 >
                                     <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${card.color} mb-8 flex items-center justify-center shadow-lg`}>
@@ -130,13 +152,16 @@ export const ProjectsSection = () => {
                                     <p className="text-black/60 dark:text-white/60 mb-10 leading-relaxed text-lg">{card.description}</p>
                                     
                                     <div className="flex items-center justify-between mt-auto">
-                                        <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-black dark:bg-white text-white dark:text-black font-bold text-sm hover:scale-105 transition-transform">
+                                        <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-black dark:bg-white text-white dark:text-black font-bold text-sm hover:scale-105 transition-transform pointer-events-auto">
                                             View Project <ExternalLink className="w-4 h-4" />
                                         </button>
                                         
                                         {isTop && (
-                                            <button onClick={handleSwipe} className="flex items-center gap-2 text-orange-500 font-bold text-sm uppercase tracking-widest hover:text-orange-400 transition-colors">
-                                                Next <ArrowRight className="w-4 h-4" />
+                                            <button 
+                                                onClick={(e) => { e.stopPropagation(); handleSwipe(); }} 
+                                                className="flex items-center gap-2 text-orange-500 font-bold text-sm uppercase tracking-widest hover:text-orange-400 transition-colors pointer-events-auto"
+                                            >
+                                                Swap <RefreshCw className="w-4 h-4" />
                                             </button>
                                         )}
                                     </div>

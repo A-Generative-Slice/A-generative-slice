@@ -1,7 +1,56 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, useAnimationFrame, useMotionValue, useTransform } from 'framer-motion';
 import { Layers } from 'lucide-react';
 import { FaReact, FaNodeJs, FaPython, FaDocker, FaAws, FaVuejs } from 'react-icons/fa';
 import { SiNextdotjs, SiTailwindcss, SiPostgresql, SiMongodb, SiTensorflow, SiPytorch, SiVercel, SiFramer, SiOpenai, SiRust, SiGo, SiRedis, SiGraphql, SiKubernetes, SiGooglecloud, SiFigma, SiCloudflare, SiSvelte } from 'react-icons/si';
+
+const TechMarqueeRow = ({ items, reverse = false }: { items: any[], reverse?: boolean }) => {
+    const baseX = useMotionValue(0);
+    const speed = 0.5; // scrolling speed
+    const velocity = reverse ? speed : -speed;
+    const [isDragging, setIsDragging] = useState(false);
+
+    useAnimationFrame((_, delta) => {
+        if (!isDragging) {
+            let moveBy = velocity * (delta / 16); // Normalize by roughly 60fps frame time
+            baseX.set(baseX.get() + moveBy);
+        }
+    });
+
+    // Wrap around infinitely. We duplicate the array 4 times to have a huge seamless block.
+    // The width of 1 original set is exactly 25% of the total rendered flex container.
+    const x = useTransform(baseX, (v) => {
+        const wrapFactor = 25; // 25% represents one full set of items
+        const wrappedValue = ((v % wrapFactor) - wrapFactor) % wrapFactor;
+        return `${wrappedValue}%`;
+    });
+
+    return (
+        <div className="flex overflow-hidden cursor-grab active:cursor-grabbing py-4 w-full">
+            <motion.div 
+                className="flex gap-8 pr-8 w-max"
+                style={{ x }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={1}
+                onDragStart={() => setIsDragging(true)}
+                onDragEnd={() => setIsDragging(false)}
+                onDrag={(_, info) => {
+                    // Update baseX immediately when dragging
+                    baseX.set(baseX.get() + info.delta.x * 0.05);
+                }}
+            >
+                {/* Render 4 complete sets to guarantee seamless wrapping at 25% */}
+                {[...items, ...items, ...items, ...items].map((tech, i) => (
+                    <div key={i} className="flex items-center gap-4 px-8 py-5 bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/10 rounded-2xl shadow-sm shrink-0 pointer-events-none">
+                        <tech.icon className={`w-8 h-8 ${tech.color}`} />
+                        <span className="text-xl font-black text-black/80 dark:text-white/80 tracking-tight">{tech.name}</span>
+                    </div>
+                ))}
+            </motion.div>
+        </div>
+    );
+};
 
 export const TechStack = () => {
     const techRow1 = [
@@ -60,61 +109,10 @@ export const TechStack = () => {
                 </div>
             </div>
 
-            {/* Seamless Infinite Marquees */}
-            <div className="relative w-full flex flex-col gap-8 -rotate-2 scale-105 cursor-grab active:cursor-grabbing overflow-hidden">
-                
-                {/* Row 1 - Marquee */}
-                <motion.div 
-                    drag="x" 
-                    dragConstraints={{ left: -2000, right: 2000 }} 
-                    className="flex overflow-visible cursor-grab active:cursor-grabbing"
-                >
-                    <div className="flex animate-marquee gap-8 pr-8 whitespace-nowrap">
-                        {[...techRow1, ...techRow1, ...techRow1].map((tech, i) => (
-                            <div key={i} className="flex items-center gap-4 px-8 py-5 bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/10 rounded-2xl shadow-sm shrink-0">
-                                <tech.icon className={`w-8 h-8 ${tech.color}`} />
-                                <span className="text-xl font-black text-black/80 dark:text-white/80 tracking-tight">{tech.name}</span>
-                            </div>
-                        ))}
-                    </div>
-                </motion.div>
-
-                {/* Row 2 - Marquee Reverse */}
-                <motion.div 
-                    drag="x" 
-                    dragConstraints={{ left: -2000, right: 2000 }} 
-                    className="flex overflow-visible cursor-grab active:cursor-grabbing"
-                >
-                    <div className="flex animate-marquee-reverse gap-8 pr-8 whitespace-nowrap">
-                        {[...techRow2, ...techRow2, ...techRow2].map((tech, i) => (
-                            <div key={i} className="flex items-center gap-4 px-8 py-5 bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/10 rounded-2xl shadow-sm shrink-0">
-                                <tech.icon className={`w-8 h-8 ${tech.color}`} />
-                                <span className="text-xl font-black text-black/80 dark:text-white/80 tracking-tight">{tech.name}</span>
-                            </div>
-                        ))}
-                    </div>
-                </motion.div>
-
+            <div className="relative w-full flex flex-col gap-6 -rotate-2 scale-105">
+                <TechMarqueeRow items={techRow1} reverse={false} />
+                <TechMarqueeRow items={techRow2} reverse={true} />
             </div>
-
-            <style>{`
-                @keyframes marquee {
-                    from { transform: translateX(0); }
-                    to { transform: translateX(-33.333333%); }
-                }
-                @keyframes marquee-reverse {
-                    from { transform: translateX(-33.333333%); }
-                    to { transform: translateX(0); }
-                }
-                .animate-marquee {
-                    animation: marquee 30s linear infinite;
-                    width: max-content;
-                }
-                .animate-marquee-reverse {
-                    animation: marquee-reverse 30s linear infinite;
-                    width: max-content;
-                }
-            `}</style>
         </section>
     );
 };
