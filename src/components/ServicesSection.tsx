@@ -56,9 +56,9 @@ export const ServicesSection = () => {
     ];
 
     return (
-        <section id="services" className="py-32 px-6 relative bg-gray-50 dark:bg-[#0a0a0a]">
-            {/* Ambient Background Glow */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-orange-500/10 via-transparent to-transparent pointer-events-none" />
+        <section id="services" className="py-32 px-6 relative bg-white dark:bg-[#050505] overflow-hidden">
+            {/* Elegant Ambient Background */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-orange-500/10 via-transparent to-transparent pointer-events-none" />
 
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Header */}
@@ -92,31 +92,48 @@ export const ServicesSection = () => {
                     </motion.p>
                 </div>
 
-                {/* Sleek Minimalist Grid (Replacing Bento) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* Apple-Style 3D Floating Glass Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 perspective-1000">
                     {services.map((service, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: i * 0.05 }}
-                            className="group relative bg-white dark:bg-[#111111] border border-black/5 dark:border-white/10 rounded-[2rem] p-8 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/10 hover:border-orange-500/30 transition-all duration-500 overflow-hidden"
+                            transition={{ delay: i * 0.05, type: "spring", stiffness: 100 }}
+                            className="h-full"
                         >
-                            <div className="relative z-10 flex flex-col h-full">
-                                <div className="w-14 h-14 rounded-2xl bg-orange-500/10 text-orange-500 flex items-center justify-center mb-6 group-hover:bg-orange-500 group-hover:text-white transition-colors duration-500">
-                                    {service.icon}
+                            <motion.div
+                                animate={{ y: [0, -12, 0] }}
+                                transition={{ 
+                                    duration: 4 + (i % 3), 
+                                    repeat: Infinity, 
+                                    ease: "easeInOut",
+                                    delay: i * 0.2 
+                                }}
+                                whileHover={{ 
+                                    scale: 1.05, 
+                                    rotateX: 2, 
+                                    rotateY: -2,
+                                    transition: { duration: 0.3 }
+                                }}
+                                className="group h-full relative bg-gray-50/80 dark:bg-[#111111]/80 backdrop-blur-2xl border border-black/5 dark:border-white/10 rounded-[2.5rem] p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] overflow-hidden cursor-pointer flex flex-col"
+                            >
+                                {/* Apple-style subtle inner glow */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent dark:from-white/5 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                                
+                                <div className="relative z-10 flex flex-col h-full">
+                                    <div className="w-16 h-16 rounded-3xl bg-white dark:bg-[#1a1a1a] border border-black/5 dark:border-white/5 text-orange-500 flex items-center justify-center mb-8 shadow-sm group-hover:scale-110 group-hover:text-orange-400 transition-all duration-500">
+                                        {service.icon}
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-black dark:text-white mb-4 tracking-tight group-hover:text-orange-500 transition-colors duration-300">
+                                        {service.title}
+                                    </h3>
+                                    <p className="text-black/60 dark:text-white/60 leading-relaxed text-lg flex-1">
+                                        {service.description}
+                                    </p>
                                 </div>
-                                <h3 className="text-2xl font-bold text-black dark:text-white mb-3 tracking-tight">
-                                    {service.title}
-                                </h3>
-                                <p className="text-black/60 dark:text-white/60 leading-relaxed flex-1">
-                                    {service.description}
-                                </p>
-                            </div>
-                            
-                            {/* Decorative Glow on hover */}
-                            <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-orange-500/20 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                            </motion.div>
                         </motion.div>
                     ))}
                 </div>

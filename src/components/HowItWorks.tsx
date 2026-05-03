@@ -69,10 +69,6 @@ export const HowItWorks = () => {
 
                             <div className="w-24 h-24 mb-10 rounded-full bg-white dark:bg-[#111111] border border-black/10 dark:border-white/10 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:border-orange-500/50 group-hover:shadow-orange-500/20 transition-all duration-500 relative">
                                 {step.icon}
-                                {/* Small floating number badge */}
-                                <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-black dark:bg-white text-white dark:text-black font-black flex items-center justify-center rounded-full text-sm border-2 border-white dark:border-[#111]">
-                                    {i + 1}
-                                </div>
                             </div>
 
                             <h3 className="text-2xl font-black text-black dark:text-white mb-4 tracking-tight">
