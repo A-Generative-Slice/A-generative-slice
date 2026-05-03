@@ -24,6 +24,7 @@ export const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
         { name: 'Projects', path: '/projects' },
         { name: 'About', path: '/about' },
         { name: 'Teams', path: '/teams' },
+        { name: 'Careers', path: '/careers' },
         { name: 'Contact', path: '/contact' }
     ];
 

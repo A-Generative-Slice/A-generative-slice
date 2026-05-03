@@ -1,4 +1,8 @@
 import { Hero } from '../components/Hero';
+import { ServicesSection } from '../components/ServicesSection';
+import { HowItWorks } from '../components/HowItWorks';
+import { TechStack } from '../components/TechStack';
+import { FAQSection } from '../components/FAQSection';
 import { motion } from 'framer-motion';
 
 export const HomePage = () => {
@@ -9,6 +13,10 @@ export const HomePage = () => {
             exit={{ opacity: 0 }}
         >
             <Hero />
+            <HowItWorks />
+            <TechStack />
+            <ServicesSection />
+            <FAQSection />
         </motion.div>
     );
 };

@@ -8,6 +8,7 @@ import { ProjectsPage } from './pages/ProjectsPage';
 import { AboutPage } from './pages/AboutPage';
 import { TeamsPage } from './pages/TeamsPage';
 import { ContactPage } from './pages/ContactPage';
+import { CareersPage } from './pages/CareersPage';
 
 const AppContent = () => {
   const [isDark, setIsDark] = useState(false);
@@ -37,6 +38,7 @@ const AppContent = () => {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/teams" element={<TeamsPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/careers" element={<CareersPage />} />
           </Routes>
         </AnimatePresence>
       </main>
