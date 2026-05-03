@@ -1,4 +1,6 @@
 import { services } from '../data/tools';
+import { motion } from 'framer-motion';
+import { Sparkles } from 'lucide-react';
 
 export const ServicesSection = () => {
     return (
@@ -10,14 +12,34 @@ export const ServicesSection = () => {
 
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
-                <div className="text-center mb-16">
-                    <span className="text-orange-500 text-sm font-semibold uppercase tracking-widest">Services</span>
-                    <h2 className="section-title text-white mt-3">
-                        We also <span className="gradient-text">build</span> for you
-                    </h2>
-                    <p className="section-subtitle mx-auto mt-4">
-                        Need something custom? From AI chatbots to full-stack apps — we've got you covered.
-                    </p>
+                <div className="text-center mb-20 max-w-3xl mx-auto">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="inline-flex items-center gap-2 text-orange-500 font-bold tracking-widest uppercase text-sm mb-4"
+                    >
+                        <Sparkles className="w-4 h-4" />
+                        Full-Stack SaaS Agency
+                    </motion.div>
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className="text-4xl md:text-5xl font-black text-black dark:text-white mb-6 tracking-tight leading-tight"
+                    >
+                        We build, scale, and <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">maintain</span> for you
+                    </motion.h2>
+                    <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="text-black/80 dark:text-white/80 text-lg md:text-xl font-medium"
+                    >
+                        We are a premier SaaS development company. From consulting and architecture design to global deployment, digital marketing, and automations—we handle the entire lifecycle of your product.
+                    </motion.p>
                 </div>
 
                 {/* Services Grid */}

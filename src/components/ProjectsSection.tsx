@@ -60,9 +60,13 @@ export const ProjectsSection = () => {
                 setStatus('sent');
                 setFormData({ name: '', email: '', message: '' });
                 setTimeout(() => setStatus('idle'), 4000);
+            } else {
+                setStatus('idle');
+                alert('Form submission failed. Please try emailing us directly.');
             }
         } catch {
             setStatus('idle');
+            alert('Form submission failed. Please try emailing us directly.');
         }
     };
 

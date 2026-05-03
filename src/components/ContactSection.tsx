@@ -22,6 +22,8 @@ export const ContactSection = () => {
                 setStatus('sent');
                 setFormData({ name: '', email: '', message: '' });
                 setTimeout(() => setStatus('idle'), 4000);
+            } else {
+                throw new Error('Response not ok');
             }
         } catch {
             const subject = encodeURIComponent(`New Enquiry from ${formData.name}`);

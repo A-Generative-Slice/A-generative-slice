@@ -1,74 +1,82 @@
-const steps = [
-    {
-        number: '01',
-        title: 'Browse',
-        description: 'Explore our curated collection of tools built for indie creators and developers.',
-        icon: (
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-            </svg>
-        ),
-    },
-    {
-        number: '02',
-        title: 'Pay',
-        description: 'Quick, secure checkout. UPI, cards, and wallets accepted. No subscriptions.',
-        icon: (
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
-            </svg>
-        ),
-    },
-    {
-        number: '03',
-        title: 'Download',
-        description: 'Instant access. Download your files and start building right away.',
-        icon: (
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-            </svg>
-        ),
-    },
-];
+import { motion } from 'framer-motion';
+import { LayoutTemplate, Code, Rocket } from 'lucide-react';
 
 export const HowItWorks = () => {
-    return (
-        <section id="how-it-works" className="py-28 px-6 relative">
-            {/* Subtle divider glow */}
-            <div
-                className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px]"
-                style={{ background: 'linear-gradient(90deg, transparent, rgba(255,106,0,0.3), transparent)' }}
-            />
+    const steps = [
+        {
+            num: "01",
+            title: "Architecture",
+            description: "We define the technical blueprint and user experience foundations that ensure long-term scalability.",
+            icon: <LayoutTemplate className="w-8 h-8 text-orange-500" />
+        },
+        {
+            num: "02",
+            title: "Engineering",
+            description: "Our elite engineers build your product using the most advanced frameworks and performance optimizations.",
+            icon: <Code className="w-8 h-8 text-orange-500" />
+        },
+        {
+            num: "03",
+            title: "Deployment",
+            description: "We handle the global rollout and infrastructure scaling to ensure a flawless launch and reliable performance.",
+            icon: <Rocket className="w-8 h-8 text-orange-500" />
+        }
+    ];
 
-            <div className="max-w-5xl mx-auto">
-                {/* Header */}
-                <div className="text-center mb-20">
-                    <span className="text-orange-500 text-sm font-semibold uppercase tracking-widest">How It Works</span>
-                    <h2 className="section-title text-white mt-3">
-                        Three simple <span className="gradient-text">steps</span>
-                    </h2>
+    return (
+        <section id="process" className="py-32 px-6 relative bg-[#fafafa] dark:bg-[#0a0a0a]">
+            {/* Top Border Gradient */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-black/10 dark:via-white/10 to-transparent" />
+
+            <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-24 max-w-3xl mx-auto">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="inline-flex items-center gap-2 text-orange-500 font-bold tracking-widest uppercase text-sm mb-4"
+                    >
+                        Our Process
+                    </motion.div>
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className="text-4xl md:text-6xl font-black text-black dark:text-white tracking-tight"
+                    >
+                        From <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Thought</span> to Product
+                    </motion.h2>
                 </div>
 
-                {/* Steps */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                    {/* Connection Line */}
+                    <div className="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-black/10 dark:via-white/10 to-transparent -translate-y-1/2 z-0" />
+
                     {steps.map((step, i) => (
-                        <div key={i} className="text-center group">
-                            {/* Icon Circle */}
-                            <div className="w-20 h-20 mx-auto rounded-2xl glass-card flex items-center justify-center text-orange-500 mb-6 group-hover:animate-pulse-glow transition-all">
+                        <motion.div
+                            key={step.num}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.2 }}
+                            className="relative z-10 flex flex-col items-center text-center group"
+                        >
+                            <div className="w-24 h-24 mb-8 rounded-[2rem] bg-white dark:bg-[#111111] border border-black/5 dark:border-white/10 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:border-orange-500/30 transition-all duration-500">
                                 {step.icon}
                             </div>
+                            
+                            <div className="absolute top-0 right-0 -mr-4 -mt-4 text-8xl font-black text-black/[0.02] dark:text-white/[0.02] pointer-events-none group-hover:text-orange-500/5 transition-colors duration-500">
+                                {step.num}
+                            </div>
 
-                            {/* Step Number */}
-                            <span className="text-orange-500/30 text-xs font-bold tracking-widest">{step.number}</span>
-
-                            {/* Title */}
-                            <h3 className="text-xl font-bold text-white mt-2 mb-3">{step.title}</h3>
-
-                            {/* Description */}
-                            <p className="text-white/40 text-sm leading-relaxed max-w-xs mx-auto">
+                            <h3 className="text-2xl font-black text-black dark:text-white mb-4 tracking-tight">
+                                {step.title}
+                            </h3>
+                            <p className="text-black/60 dark:text-white/60 leading-relaxed max-w-sm mx-auto">
                                 {step.description}
                             </p>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>
