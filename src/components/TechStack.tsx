@@ -6,7 +6,7 @@ import { SiNextdotjs, SiTailwindcss, SiPostgresql, SiMongodb, SiTensorflow, SiPy
 
 const TechMarqueeRow = ({ items, reverse = false }: { items: any[], reverse?: boolean }) => {
     const baseX = useMotionValue(0);
-    const speed = 0.5; // scrolling speed
+    const speed = 0.02; // Slower, readable scrolling speed
     const velocity = reverse ? speed : -speed;
     const [isDragging, setIsDragging] = useState(false);
 
