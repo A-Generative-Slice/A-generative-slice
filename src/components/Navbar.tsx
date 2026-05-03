@@ -38,7 +38,7 @@ export const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
                     damping: 35,
                     mass: 0.5
                 }}
-                className={`pointer-events-auto px-2 py-2 sm:px-3 sm:py-2 rounded-[2rem] border shadow-2xl flex items-center gap-1 overflow-hidden transition-colors duration-500 ${
+                className={`pointer-events-auto max-w-full px-2 py-2 sm:px-3 sm:py-2 rounded-[2rem] border shadow-2xl flex items-center gap-1 overflow-hidden transition-colors duration-500 ${
                     scrolled 
                         ? 'bg-white/80 dark:bg-[#0a0a0a]/80 border-black/10 dark:border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)]' 
                         : 'bg-white/40 dark:bg-[#0a0a0a]/40 border-black/5 dark:border-white/10 shadow-none'
@@ -57,7 +57,7 @@ export const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
                 </Link>
 
                 {/* Nav Links Container */}
-                <div className="flex items-center">
+                <div className="flex items-center min-w-0">
                     <AnimatePresence mode="popLayout" initial={false}>
                         {isOpen && (
                             <motion.div 
@@ -65,7 +65,7 @@ export const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: 20 }}
-                                className="flex items-center gap-1 sm:gap-2 px-2"
+                                className="flex items-center gap-1 sm:gap-2 px-2 overflow-x-auto whitespace-nowrap scroll-smooth touch-pan-x [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                             >
                                 {navLinks.map((link) => (
                                     <Link 
