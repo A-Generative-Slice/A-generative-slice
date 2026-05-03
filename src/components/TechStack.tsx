@@ -61,31 +61,39 @@ export const TechStack = () => {
             </div>
 
             {/* Seamless Infinite Marquees */}
-            <div className="relative w-full flex flex-col gap-8 -rotate-2 scale-105">
+            <div className="relative w-full flex flex-col gap-8 -rotate-2 scale-105 cursor-grab active:cursor-grabbing overflow-hidden">
                 
                 {/* Row 1 - Marquee */}
-                <div className="flex overflow-hidden group">
+                <motion.div 
+                    drag="x" 
+                    dragConstraints={{ left: -2000, right: 2000 }} 
+                    className="flex overflow-visible group"
+                >
                     <div className="flex animate-marquee gap-8 pr-8 whitespace-nowrap group-hover:[animation-play-state:paused]">
                         {[...techRow1, ...techRow1, ...techRow1].map((tech, i) => (
-                            <div key={i} className="flex items-center gap-4 px-8 py-5 bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/10 rounded-2xl shadow-sm hover:scale-110 hover:border-orange-500/50 hover:shadow-orange-500/20 transition-all duration-300 shrink-0">
+                            <div key={i} className="flex items-center gap-4 px-8 py-5 bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/10 rounded-2xl shadow-sm hover:border-orange-500/50 hover:shadow-orange-500/20 transition-all duration-300 shrink-0">
                                 <tech.icon className={`w-8 h-8 ${tech.color}`} />
                                 <span className="text-xl font-black text-black/80 dark:text-white/80 tracking-tight">{tech.name}</span>
                             </div>
                         ))}
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Row 2 - Marquee Reverse */}
-                <div className="flex overflow-hidden group">
+                <motion.div 
+                    drag="x" 
+                    dragConstraints={{ left: -2000, right: 2000 }} 
+                    className="flex overflow-visible group"
+                >
                     <div className="flex animate-marquee-reverse gap-8 pr-8 whitespace-nowrap group-hover:[animation-play-state:paused]">
                         {[...techRow2, ...techRow2, ...techRow2].map((tech, i) => (
-                            <div key={i} className="flex items-center gap-4 px-8 py-5 bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/10 rounded-2xl shadow-sm hover:scale-110 hover:border-orange-500/50 hover:shadow-orange-500/20 transition-all duration-300 shrink-0">
+                            <div key={i} className="flex items-center gap-4 px-8 py-5 bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/10 rounded-2xl shadow-sm hover:border-orange-500/50 hover:shadow-orange-500/20 transition-all duration-300 shrink-0">
                                 <tech.icon className={`w-8 h-8 ${tech.color}`} />
                                 <span className="text-xl font-black text-black/80 dark:text-white/80 tracking-tight">{tech.name}</span>
                             </div>
                         ))}
                     </div>
-                </div>
+                </motion.div>
 
             </div>
 

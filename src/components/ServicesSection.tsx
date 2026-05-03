@@ -101,16 +101,16 @@ export const ServicesSection = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.05 }}
-                            className="group relative bg-white dark:bg-[#111111] border border-black/5 dark:border-white/10 rounded-[2rem] p-8 hover:bg-black hover:dark:bg-white transition-colors duration-500 overflow-hidden"
+                            className="group relative bg-white dark:bg-[#111111] border border-black/5 dark:border-white/10 rounded-[2rem] p-8 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/10 hover:border-orange-500/30 transition-all duration-500 overflow-hidden"
                         >
                             <div className="relative z-10 flex flex-col h-full">
                                 <div className="w-14 h-14 rounded-2xl bg-orange-500/10 text-orange-500 flex items-center justify-center mb-6 group-hover:bg-orange-500 group-hover:text-white transition-colors duration-500">
                                     {service.icon}
                                 </div>
-                                <h3 className="text-2xl font-bold text-black dark:text-white mb-3 group-hover:text-white group-hover:dark:text-black transition-colors duration-500 tracking-tight">
+                                <h3 className="text-2xl font-bold text-black dark:text-white mb-3 tracking-tight">
                                     {service.title}
                                 </h3>
-                                <p className="text-black/60 dark:text-white/60 group-hover:text-white/80 group-hover:dark:text-black/80 transition-colors duration-500 leading-relaxed flex-1">
+                                <p className="text-black/60 dark:text-white/60 leading-relaxed flex-1">
                                     {service.description}
                                 </p>
                             </div>

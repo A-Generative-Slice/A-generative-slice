@@ -1,51 +1,44 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ExternalLink, Globe2, Send, MessageSquare } from 'lucide-react';
+import { Globe2, MessageSquare, Send, ExternalLink, ArrowRight } from 'lucide-react';
 
-interface Project {
-    id: string;
-    client: string;
-    location: string;
-    title: string;
-    description: string;
-    tags: string[];
-    color: string;
-}
-
-const projects: Project[] = [
+const projects = [
     {
         id: 'rose-chemicals',
         client: 'Rose Chemicals',
-        location: 'Madurai',
-        title: 'Enterprise Chemical Inventory & B2B Portal',
-        description: 'A comprehensive B2B portal for Rose Chemicals to manage bulk orders, track inventory across multiple warehouses, and provide real-time shipment updates to distributors.',
-        tags: ['React', 'Dashboard', 'B2B', 'Inventory'],
+        title: 'Enterprise Chemical Inventory Portal',
+        description: 'A comprehensive B2B portal for bulk orders, real-time tracking, and multi-warehouse management.',
         color: 'from-pink-500 to-rose-600',
     },
     {
         id: 'nas-internationals',
         client: 'NAS Internationals',
-        location: 'Nungambakkam',
         title: 'Global Export Operations Dashboard',
-        description: 'A unified operations dashboard for NAS Internationals to streamline their export workflows, track global shipments, and manage international compliance documents seamlessly.',
-        tags: ['Next.js', 'Logistics', 'Global Trade'],
+        description: 'A unified operations dashboard to streamline global workflows and manage compliance seamlessly.',
         color: 'from-blue-500 to-indigo-600',
     },
     {
         id: 'litelab',
         client: 'Litelab',
-        location: 'Besant Nagar',
-        title: 'Creative Agency Portfolio & Client Portal',
-        description: 'An immersive, high-performance portfolio and secure client portal for Litelab to showcase their creative campaigns and securely share assets with top-tier clients.',
-        tags: ['WebGL', 'Framer Motion', 'Client Portal'],
+        title: 'Creative Agency Client Portal',
+        description: 'An immersive, high-performance portfolio and secure portal to showcase creative campaigns.',
         color: 'from-orange-400 to-orange-600',
     }
 ];
 
 export const ProjectsSection = () => {
-    const [expandedProjectId, setExpandedProjectId] = useState<string | null>(null);
+    const [cards, setCards] = useState(projects);
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
+
+    const handleSwipe = () => {
+        setCards((prev) => {
+            const newCards = [...prev];
+            const topCard = newCards.shift();
+            if (topCard) newCards.push(topCard);
+            return newCards;
+        });
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -72,7 +65,6 @@ export const ProjectsSection = () => {
 
     return (
         <section id="projects" className="py-32 px-6 relative z-20 bg-white dark:bg-[#0a0a0a]">
-            {/* Top Border */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-black/10 dark:via-white/10 to-transparent" />
 
             <div className="max-w-7xl mx-auto">
@@ -93,91 +85,68 @@ export const ProjectsSection = () => {
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-6xl font-black text-black dark:text-white mb-6 tracking-tight"
                     >
-                        Architectural <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Digital Solutions</span>
+                        Architectural <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Masterpieces</span>
                     </motion.h2>
+                    <p className="text-black/60 dark:text-white/60 text-lg">
+                        Swipe or click to explore our recent enterprise deployments.
+                    </p>
                 </div>
 
-                <div className="space-y-6 mb-24">
-                    {projects.map((project, i) => (
-                        <motion.div
-                            key={project.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
-                            className={`group bg-gray-50 dark:bg-[#111111]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-[2.5rem] overflow-hidden transition-all duration-500 ${expandedProjectId === project.id ? 'shadow-2xl ring-1 ring-orange-500/20' : 'hover:border-orange-500/20 shadow-sm'}`}
-                        >
-                            <button 
-                                onClick={() => setExpandedProjectId(expandedProjectId === project.id ? null : project.id)}
-                                className="w-full text-left p-8 sm:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6"
-                            >
-                                <div className="flex-1">
-                                    <div className="flex items-center gap-3 mb-3">
-                                        <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${project.color}`} />
-                                        <span className="text-orange-500 font-bold text-xs uppercase tracking-[0.2em]">{project.client}</span>
+                {/* Animated Card Swipe Showcase */}
+                <div className="relative w-full max-w-xl mx-auto h-[450px] mb-32 flex justify-center perspective-1000">
+                    <AnimatePresence mode="popLayout">
+                        {cards.map((card, i) => {
+                            const isTop = i === 0;
+                            return (
+                                <motion.div
+                                    key={card.id}
+                                    layout
+                                    initial={{ scale: 0.8, opacity: 0, y: 50 }}
+                                    animate={{ 
+                                        scale: 1 - i * 0.05, 
+                                        y: i * 25, 
+                                        zIndex: cards.length - i,
+                                        opacity: 1 - i * 0.15,
+                                        rotateZ: isTop ? 0 : (i % 2 === 0 ? 2 : -2)
+                                    }}
+                                    exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
+                                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                    drag={isTop ? "x" : false}
+                                    dragConstraints={{ left: 0, right: 0 }}
+                                    dragElastic={0.8}
+                                    onDragEnd={(_, info) => {
+                                        if (Math.abs(info.offset.x) > 100) {
+                                            handleSwipe();
+                                        }
+                                    }}
+                                    className={`absolute top-0 w-full bg-gray-50 dark:bg-[#151515] border border-black/5 dark:border-white/10 rounded-[2.5rem] p-10 shadow-2xl ${isTop ? 'cursor-grab active:cursor-grabbing hover:border-orange-500/30' : 'pointer-events-none'}`}
+                                    style={{ transformOrigin: 'bottom center' }}
+                                >
+                                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${card.color} mb-8 flex items-center justify-center shadow-lg`}>
+                                        <Globe2 className="w-8 h-8 text-white" />
                                     </div>
-                                    <h3 className="text-2xl sm:text-3xl font-black text-black dark:text-white group-hover:text-orange-500 transition-colors">
-                                        {project.title}
-                                    </h3>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <div className="hidden sm:flex flex-wrap gap-2">
-                                        {project.tags.slice(0, 2).map(tag => (
-                                            <span key={tag} className="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter bg-black/5 dark:bg-white/5 text-black/40 dark:text-white/40 border border-black/5 dark:border-white/5">
-                                                {tag}
-                                            </span>
-                                        ))}
+                                    <h4 className="text-orange-500 font-bold text-xs uppercase tracking-widest mb-2">{card.client}</h4>
+                                    <h3 className="text-3xl font-black text-black dark:text-white mb-4 tracking-tight leading-tight">{card.title}</h3>
+                                    <p className="text-black/60 dark:text-white/60 mb-10 leading-relaxed text-lg">{card.description}</p>
+                                    
+                                    <div className="flex items-center justify-between mt-auto">
+                                        <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-black dark:bg-white text-white dark:text-black font-bold text-sm hover:scale-105 transition-transform">
+                                            View Project <ExternalLink className="w-4 h-4" />
+                                        </button>
+                                        
+                                        {isTop && (
+                                            <button onClick={handleSwipe} className="flex items-center gap-2 text-orange-500 font-bold text-sm uppercase tracking-widest hover:text-orange-400 transition-colors">
+                                                Next <ArrowRight className="w-4 h-4" />
+                                            </button>
+                                        )}
                                     </div>
-                                    <motion.div 
-                                        animate={{ rotate: expandedProjectId === project.id ? 180 : 0 }}
-                                        className="w-12 h-12 rounded-2xl bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:bg-orange-500/10 group-hover:text-orange-500 transition-all duration-300"
-                                    >
-                                        <ChevronDown className="w-6 h-6" />
-                                    </motion.div>
-                                </div>
-                            </button>
-
-                            <AnimatePresence>
-                                {expandedProjectId === project.id && (
-                                    <motion.div
-                                        initial={{ height: 0, opacity: 0 }}
-                                        animate={{ height: 'auto', opacity: 1 }}
-                                        exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                                    >
-                                        <div className="px-8 sm:px-10 pb-10 pt-2 border-t border-black/5 dark:border-white/5">
-                                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 pt-8">
-                                                <div>
-                                                    <p className="text-black/60 dark:text-white/60 text-lg leading-relaxed mb-8">
-                                                        {project.description}
-                                                    </p>
-                                                    <div className="flex flex-wrap gap-3 mb-8">
-                                                        {project.tags.map(tag => (
-                                                            <span key={tag} className="px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest bg-orange-500/5 text-orange-600 dark:text-orange-400 border border-orange-500/10">
-                                                                {tag}
-                                                            </span>
-                                                        ))}
-                                                    </div>
-                                                    <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-black dark:bg-white text-white dark:text-black font-bold text-sm hover:scale-105 transition-transform shadow-xl">
-                                                        Visit Live Project <ExternalLink className="w-4 h-4" />
-                                                    </button>
-                                                </div>
-                                                <div className="relative aspect-video rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 bg-gray-100 dark:bg-[#151515]">
-                                                    <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-10`} />
-                                                    <div className="absolute inset-0 flex items-center justify-center text-black/20 dark:text-white/20 font-black text-2xl uppercase tracking-widest">
-                                                        Project UI Preview
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </motion.div>
-                    ))}
+                                </motion.div>
+                            )
+                        })}
+                    </AnimatePresence>
                 </div>
 
-                {/* Got a Project Box (Moved from Contact Section) */}
+                {/* Got a Project Box */}
                 <div className="mt-32">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div>
