@@ -29,7 +29,7 @@ export const HowItWorks = () => {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-black/10 dark:via-white/10 to-transparent" />
 
             <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-24 max-w-3xl mx-auto">
+                <div className="text-center mb-32 max-w-3xl mx-auto">
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -49,9 +49,9 @@ export const HowItWorks = () => {
                     </motion.h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 relative">
                     {/* Connection Line */}
-                    <div className="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-black/10 dark:via-white/10 to-transparent -translate-y-1/2 z-0" />
+                    <div className="hidden md:block absolute top-12 left-1/6 right-1/6 w-2/3 mx-auto h-[2px] bg-gradient-to-r from-transparent via-orange-500/20 to-transparent z-0" />
 
                     {steps.map((step, i) => (
                         <motion.div
@@ -62,12 +62,17 @@ export const HowItWorks = () => {
                             transition={{ delay: i * 0.2 }}
                             className="relative z-10 flex flex-col items-center text-center group"
                         >
-                            <div className="w-24 h-24 mb-8 rounded-[2rem] bg-white dark:bg-[#111111] border border-black/5 dark:border-white/10 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:border-orange-500/30 transition-all duration-500">
-                                {step.icon}
-                            </div>
-                            
-                            <div className="absolute top-0 right-0 -mr-4 -mt-4 text-8xl font-black text-black/[0.02] dark:text-white/[0.02] pointer-events-none group-hover:text-orange-500/5 transition-colors duration-500">
+                            {/* Giant Background Number overlapping the icon perfectly */}
+                            <div className="absolute -top-12 left-1/2 -translate-x-1/2 text-[8rem] md:text-[10rem] font-black text-black/5 dark:text-white/5 pointer-events-none group-hover:text-orange-500/10 transition-colors duration-500 z-[-1]">
                                 {step.num}
+                            </div>
+
+                            <div className="w-24 h-24 mb-10 rounded-full bg-white dark:bg-[#111111] border border-black/10 dark:border-white/10 flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:border-orange-500/50 group-hover:shadow-orange-500/20 transition-all duration-500 relative">
+                                {step.icon}
+                                {/* Small floating number badge */}
+                                <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-black dark:bg-white text-white dark:text-black font-black flex items-center justify-center rounded-full text-sm border-2 border-white dark:border-[#111]">
+                                    {i + 1}
+                                </div>
                             </div>
 
                             <h3 className="text-2xl font-black text-black dark:text-white mb-4 tracking-tight">

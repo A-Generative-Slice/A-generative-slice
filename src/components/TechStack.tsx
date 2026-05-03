@@ -1,26 +1,36 @@
 import { motion } from 'framer-motion';
 import { Layers } from 'lucide-react';
-import { FaReact, FaNodeJs, FaPython, FaDocker, FaAws } from 'react-icons/fa';
-import { SiNextdotjs, SiTailwindcss, SiPostgresql, SiMongodb, SiTensorflow, SiPytorch, SiVercel, SiFramer, SiOpenai } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaPython, FaDocker, FaAws, FaVuejs } from 'react-icons/fa';
+import { SiNextdotjs, SiTailwindcss, SiPostgresql, SiMongodb, SiTensorflow, SiPytorch, SiVercel, SiFramer, SiOpenai, SiRust, SiGo, SiRedis, SiGraphql, SiKubernetes, SiGooglecloud, SiFigma, SiCloudflare, SiSvelte } from 'react-icons/si';
 
 export const TechStack = () => {
     const techRow1 = [
         { name: 'React', icon: FaReact, color: 'text-[#61DAFB]' },
         { name: 'Next.js', icon: SiNextdotjs, color: 'text-black dark:text-white' },
+        { name: 'Vue', icon: FaVuejs, color: 'text-[#4FC08D]' },
+        { name: 'Svelte', icon: SiSvelte, color: 'text-[#FF3E00]' },
+        { name: 'Tailwind', icon: SiTailwindcss, color: 'text-[#06B6D4]' },
         { name: 'Node.js', icon: FaNodeJs, color: 'text-[#339933]' },
         { name: 'Python', icon: FaPython, color: 'text-[#3776AB]' },
-        { name: 'Tailwind', icon: SiTailwindcss, color: 'text-[#06B6D4]' },
+        { name: 'Rust', icon: SiRust, color: 'text-black dark:text-white' },
+        { name: 'Go', icon: SiGo, color: 'text-[#00ADD8]' },
         { name: 'PostgreSQL', icon: SiPostgresql, color: 'text-[#4169E1]' },
         { name: 'MongoDB', icon: SiMongodb, color: 'text-[#47A248]' },
+        { name: 'Redis', icon: SiRedis, color: 'text-[#DC382D]' },
+        { name: 'GraphQL', icon: SiGraphql, color: 'text-[#E10098]' },
     ];
 
     const techRow2 = [
         { name: 'Docker', icon: FaDocker, color: 'text-[#2496ED]' },
+        { name: 'Kubernetes', icon: SiKubernetes, color: 'text-[#326CE5]' },
         { name: 'AWS', icon: FaAws, color: 'text-[#FF9900]' },
+        { name: 'GCP', icon: SiGooglecloud, color: 'text-[#4285F4]' },
+        { name: 'Figma', icon: SiFigma, color: 'text-[#F24E1E]' },
         { name: 'TensorFlow', icon: SiTensorflow, color: 'text-[#FF6F00]' },
         { name: 'PyTorch', icon: SiPytorch, color: 'text-[#EE4C2C]' },
         { name: 'OpenAI', icon: SiOpenai, color: 'text-black dark:text-white' },
         { name: 'Vercel', icon: SiVercel, color: 'text-black dark:text-white' },
+        { name: 'Cloudflare', icon: SiCloudflare, color: 'text-[#F38020]' },
         { name: 'Framer', icon: SiFramer, color: 'text-[#0055FF]' },
     ];
 
@@ -50,62 +60,51 @@ export const TechStack = () => {
                 </div>
             </div>
 
+            {/* Seamless Infinite Marquees */}
             <div className="relative w-full flex flex-col gap-8 -rotate-2 scale-105">
+                
                 {/* Row 1 - Marquee */}
-                <div className="flex w-[200%] animate-marquee">
-                    <div className="flex w-1/2 justify-around items-center gap-8 px-4">
-                        {[...techRow1, ...techRow1].map((tech, i) => (
-                            <div key={i} className="flex items-center gap-3 px-8 py-4 bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/10 rounded-2xl shadow-sm hover:scale-110 hover:border-orange-500/30 transition-all duration-300">
+                <div className="flex overflow-hidden group">
+                    <div className="flex animate-marquee gap-8 pr-8 whitespace-nowrap group-hover:[animation-play-state:paused]">
+                        {[...techRow1, ...techRow1, ...techRow1].map((tech, i) => (
+                            <div key={i} className="flex items-center gap-4 px-8 py-5 bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/10 rounded-2xl shadow-sm hover:scale-110 hover:border-orange-500/50 hover:shadow-orange-500/20 transition-all duration-300 shrink-0">
                                 <tech.icon className={`w-8 h-8 ${tech.color}`} />
-                                <span className="text-xl font-bold text-black/80 dark:text-white/80">{tech.name}</span>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="flex w-1/2 justify-around items-center gap-8 px-4">
-                        {[...techRow1, ...techRow1].map((tech, i) => (
-                            <div key={i} className="flex items-center gap-3 px-8 py-4 bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/10 rounded-2xl shadow-sm hover:scale-110 hover:border-orange-500/30 transition-all duration-300">
-                                <tech.icon className={`w-8 h-8 ${tech.color}`} />
-                                <span className="text-xl font-bold text-black/80 dark:text-white/80">{tech.name}</span>
+                                <span className="text-xl font-black text-black/80 dark:text-white/80 tracking-tight">{tech.name}</span>
                             </div>
                         ))}
                     </div>
                 </div>
 
                 {/* Row 2 - Marquee Reverse */}
-                <div className="flex w-[200%] animate-marquee-reverse">
-                    <div className="flex w-1/2 justify-around items-center gap-8 px-4">
-                        {[...techRow2, ...techRow2].map((tech, i) => (
-                            <div key={i} className="flex items-center gap-3 px-8 py-4 bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/10 rounded-2xl shadow-sm hover:scale-110 hover:border-orange-500/30 transition-all duration-300">
+                <div className="flex overflow-hidden group">
+                    <div className="flex animate-marquee-reverse gap-8 pr-8 whitespace-nowrap group-hover:[animation-play-state:paused]">
+                        {[...techRow2, ...techRow2, ...techRow2].map((tech, i) => (
+                            <div key={i} className="flex items-center gap-4 px-8 py-5 bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/10 rounded-2xl shadow-sm hover:scale-110 hover:border-orange-500/50 hover:shadow-orange-500/20 transition-all duration-300 shrink-0">
                                 <tech.icon className={`w-8 h-8 ${tech.color}`} />
-                                <span className="text-xl font-bold text-black/80 dark:text-white/80">{tech.name}</span>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="flex w-1/2 justify-around items-center gap-8 px-4">
-                        {[...techRow2, ...techRow2].map((tech, i) => (
-                            <div key={i} className="flex items-center gap-3 px-8 py-4 bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/10 rounded-2xl shadow-sm hover:scale-110 hover:border-orange-500/30 transition-all duration-300">
-                                <tech.icon className={`w-8 h-8 ${tech.color}`} />
-                                <span className="text-xl font-bold text-black/80 dark:text-white/80">{tech.name}</span>
+                                <span className="text-xl font-black text-black/80 dark:text-white/80 tracking-tight">{tech.name}</span>
                             </div>
                         ))}
                     </div>
                 </div>
+
             </div>
 
             <style>{`
                 @keyframes marquee {
-                    0% { transform: translateX(0%); }
-                    100% { transform: translateX(-50%); }
+                    from { transform: translateX(0); }
+                    to { transform: translateX(-33.333333%); }
                 }
                 @keyframes marquee-reverse {
-                    0% { transform: translateX(-50%); }
-                    100% { transform: translateX(0%); }
+                    from { transform: translateX(-33.333333%); }
+                    to { transform: translateX(0); }
                 }
                 .animate-marquee {
                     animation: marquee 30s linear infinite;
+                    width: max-content;
                 }
                 .animate-marquee-reverse {
-                    animation: marquee-reverse 35s linear infinite;
+                    animation: marquee-reverse 30s linear infinite;
+                    width: max-content;
                 }
             `}</style>
         </section>
