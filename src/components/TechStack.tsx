@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Code2, Layers, Cpu, Database, Palette, Globe } from 'lucide-react';
+import { Code2, Cpu, Database, Palette } from 'lucide-react';
 
 export const TechStack = () => {
     const techCategories = [
