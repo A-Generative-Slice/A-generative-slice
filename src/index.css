@@ -36,6 +36,8 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @apply bg-[#fafafa] dark:bg-[#0a0a0a] text-[#111] dark:text-white;
+  overflow-x: hidden;
 }
 
 /* === Glass Cards === */

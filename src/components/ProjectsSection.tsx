@@ -1,44 +1,41 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Globe2, MessageSquare, Send, ExternalLink, RefreshCw } from 'lucide-react';
+import { Globe2, MessageSquare, Send, ExternalLink, ChevronDown } from 'lucide-react';
 
 const projects = [
     {
         id: 'rose-chemicals',
         client: 'Rose Chemicals',
         title: 'Enterprise Chemical Inventory Portal',
-        description: 'A comprehensive B2B portal for bulk orders, real-time tracking, and multi-warehouse management.',
         color: 'from-pink-500 to-rose-600',
-    },
-    {
-        id: 'nas-internationals',
-        client: 'NAS Internationals',
-        title: 'Global Export Operations Dashboard',
-        description: 'A unified operations dashboard to streamline global workflows and manage compliance seamlessly.',
-        color: 'from-blue-500 to-indigo-600',
+        missing: 'Lacked digital supply chain tracking, relying on fragmented legacy systems causing extreme fulfillment delays.',
+        solution: 'Architected an automated inventory solution with real-time tracking, seamless multi-warehouse sync, and digital B2B ordering.',
+        approach: 'Transformed their business model from manual oversight to a highly responsive, data-driven supply chain operation.'
     },
     {
         id: 'litelab',
-        client: 'Litelab',
-        title: 'Creative Agency Client Portal',
-        description: 'An immersive, high-performance portfolio and secure portal to showcase creative campaigns.',
+        client: 'Litelabs',
+        title: 'Creative Agency & Learning UI Overhaul',
         color: 'from-orange-400 to-orange-600',
+        missing: 'Suffered from an inconsistent brand identity and an outdated learning platform UI that severely hampered student engagement.',
+        solution: 'Delivered a complete monochromatic UI overhaul, restructuring their course delivery layout with premium high-contrast architectural aesthetics.',
+        approach: 'Shifted their positioning from a standard agency to an immersive digital education pioneer with scalable user flows.'
+    },
+    {
+        id: 'nas-design',
+        client: 'NAS Design and Construction',
+        title: 'Interactive Architectural Portfolio',
+        color: 'from-blue-500 to-indigo-600',
+        missing: 'Lacked a unified, premium project portfolio to showcase high-end real estate developments to international investors.',
+        solution: 'Built an interactive, physics-based, high-performance web presence featuring 3D project fan showcases and smooth GSAP-like animations.',
+        approach: 'Elevated their market perception by aligning their digital presence with the exact luxury standards of their physical constructions.'
     }
 ];
 
 export const ProjectsSection = () => {
-    const [cards, setCards] = useState(projects);
+    const [openId, setOpenId] = useState<string | null>(projects[0].id);
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
-
-    const handleSwipe = () => {
-        setCards((prev) => {
-            const newCards = [...prev];
-            const topCard = newCards.shift();
-            if (topCard) newCards.push(topCard);
-            return newCards;
-        });
-    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -64,11 +61,11 @@ export const ProjectsSection = () => {
     };
 
     return (
-        <section id="projects" className="py-32 px-6 relative z-20 bg-white dark:bg-[#0a0a0a] overflow-hidden">
+        <section id="projects" className="py-32 px-6 relative z-20 bg-[#fafafa] dark:bg-[#0a0a0a] overflow-hidden">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-black/10 dark:via-white/10 to-transparent" />
 
-            <div className="max-w-7xl mx-auto">
-                <div className="text-center mb-24 max-w-3xl mx-auto">
+            <div className="max-w-4xl mx-auto">
+                <div className="text-center mb-20">
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -83,97 +80,89 @@ export const ProjectsSection = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-6xl font-black text-black dark:text-white mb-6 tracking-tight"
+                        className="text-4xl md:text-5xl font-black text-black dark:text-white mb-6 tracking-tight"
                     >
-                        Architectural <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Masterpieces</span>
+                        Architectural <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Case Studies</span>
                     </motion.h2>
                     <p className="text-black/60 dark:text-white/60 text-lg">
-                        Swipe or click to cycle through our featured enterprise deployments.
+                        Detailed breakdowns of how we transformed enterprise operations and digital branding.
                     </p>
                 </div>
 
-                {/* Animated Fan Card Swipe Showcase */}
-                <div className="relative w-full max-w-5xl mx-auto h-[500px] mb-32 flex justify-center items-center perspective-1000">
-                    <AnimatePresence mode="popLayout">
-                        {cards.map((card, i) => {
-                            const isTop = i === 0;
-                            // Layout based on position in array to create a fan effect
-                            let xOffset = 0;
-                            let yOffset = 0;
-                            let scale = 1;
-                            let rotate = 0;
-                            let zIndex = 3 - i;
-
-                            if (i === 0) {
-                                // Front Center
-                                xOffset = 0; scale = 1; rotate = 0; yOffset = 0;
-                            } else if (i === 1) {
-                                // Back Left
-                                xOffset = -200; scale = 0.85; rotate = -8; yOffset = 20;
-                            } else if (i === 2) {
-                                // Back Right
-                                xOffset = 200; scale = 0.85; rotate = 8; yOffset = 20;
-                            }
-
-                            return (
-                                <motion.div
-                                    key={card.id}
-                                    layout
-                                    initial={{ opacity: 0, y: 50, scale: 0.8 }}
-                                    animate={{ 
-                                        x: xOffset,
-                                        y: yOffset,
-                                        scale: scale,
-                                        rotateZ: rotate,
-                                        zIndex: zIndex,
-                                        opacity: 1
-                                    }}
-                                    exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
-                                    transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                                    drag={isTop ? "x" : false}
-                                    dragConstraints={{ left: 0, right: 0 }}
-                                    dragElastic={0.8}
-                                    onDragEnd={(_, info) => {
-                                        if (Math.abs(info.offset.x) > 100) {
-                                            handleSwipe();
-                                        }
-                                    }}
-                                    onClick={() => {
-                                        if (!isTop) handleSwipe();
-                                    }}
-                                    className={`absolute w-full max-w-md bg-gray-50 dark:bg-[#151515] border border-black/5 dark:border-white/10 rounded-[2.5rem] p-10 shadow-2xl ${isTop ? 'cursor-grab active:cursor-grabbing hover:border-orange-500/30' : 'cursor-pointer hover:border-orange-500/10'} backdrop-blur-xl`}
-                                    style={{ transformOrigin: 'bottom center' }}
+                {/* Clean Dropdown / Accordion Layout */}
+                <div className="space-y-4 mb-32">
+                    {projects.map((project) => {
+                        const isOpen = openId === project.id;
+                        return (
+                            <motion.div 
+                                key={project.id}
+                                className={`rounded-3xl border transition-all duration-500 overflow-hidden ${
+                                    isOpen 
+                                        ? 'bg-white dark:bg-[#111] border-orange-500/30 shadow-2xl shadow-orange-500/5' 
+                                        : 'bg-white/50 dark:bg-[#111]/50 border-black/5 dark:border-white/5 hover:border-orange-500/20 hover:bg-white dark:hover:bg-[#111]'
+                                }`}
+                            >
+                                <button
+                                    onClick={() => setOpenId(isOpen ? null : project.id)}
+                                    className="w-full text-left p-6 md:p-8 flex items-center justify-between focus:outline-none"
                                 >
-                                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${card.color} mb-8 flex items-center justify-center shadow-lg`}>
-                                        <Globe2 className="w-8 h-8 text-white" />
+                                    <div className="flex items-center gap-6">
+                                        <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${project.color} flex items-center justify-center shrink-0 shadow-lg`}>
+                                            <Globe2 className="w-6 h-6 text-white" />
+                                        </div>
+                                        <div>
+                                            <h4 className="text-orange-500 font-bold text-xs uppercase tracking-widest mb-1">{project.client}</h4>
+                                            <h3 className="text-2xl font-black text-black dark:text-white">{project.title}</h3>
+                                        </div>
                                     </div>
-                                    <h4 className="text-orange-500 font-bold text-xs uppercase tracking-widest mb-2">{card.client}</h4>
-                                    <h3 className="text-3xl font-black text-black dark:text-white mb-4 tracking-tight leading-tight">{card.title}</h3>
-                                    <p className="text-black/60 dark:text-white/60 mb-10 leading-relaxed text-lg">{card.description}</p>
-                                    
-                                    <div className="flex items-center justify-between mt-auto">
-                                        <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-black dark:bg-white text-white dark:text-black font-bold text-sm hover:scale-105 transition-transform pointer-events-auto">
-                                            View Project <ExternalLink className="w-4 h-4" />
-                                        </button>
-                                        
-                                        {isTop && (
-                                            <button 
-                                                onClick={(e) => { e.stopPropagation(); handleSwipe(); }} 
-                                                className="flex items-center gap-2 text-orange-500 font-bold text-sm uppercase tracking-widest hover:text-orange-400 transition-colors pointer-events-auto"
-                                            >
-                                                Swap <RefreshCw className="w-4 h-4" />
-                                            </button>
-                                        )}
-                                    </div>
-                                </motion.div>
-                            )
-                        })}
-                    </AnimatePresence>
+                                    <motion.div 
+                                        animate={{ rotate: isOpen ? 180 : 0 }}
+                                        className="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center shrink-0"
+                                    >
+                                        <ChevronDown className="w-5 h-5 text-black dark:text-white" />
+                                    </motion.div>
+                                </button>
+                                
+                                <AnimatePresence>
+                                    {isOpen && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: 'auto', opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            className="overflow-hidden"
+                                        >
+                                            <div className="p-6 md:p-8 pt-0 border-t border-black/5 dark:border-white/5 mt-2">
+                                                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
+                                                    <div>
+                                                        <h5 className="text-black dark:text-white font-bold mb-2">The Problem</h5>
+                                                        <p className="text-black/60 dark:text-white/60 text-sm leading-relaxed">{project.missing}</p>
+                                                    </div>
+                                                    <div>
+                                                        <h5 className="text-black dark:text-white font-bold mb-2">Our Solution</h5>
+                                                        <p className="text-black/60 dark:text-white/60 text-sm leading-relaxed">{project.solution}</p>
+                                                    </div>
+                                                    <div>
+                                                        <h5 className="text-black dark:text-white font-bold mb-2">Business Impact</h5>
+                                                        <p className="text-black/60 dark:text-white/60 text-sm leading-relaxed">{project.approach}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="mt-8 pt-6 flex border-t border-black/5 dark:border-white/5">
+                                                    <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-orange-500 text-white font-bold text-sm hover:bg-orange-600 transition-colors">
+                                                        Visit Live Project <ExternalLink className="w-4 h-4" />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </motion.div>
+                        );
+                    })}
                 </div>
 
                 {/* Got a Project Box */}
-                <div className="mt-32">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div className="mt-32 max-w-5xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                         <div>
                             <motion.div 
                                 initial={{ opacity: 0, x: -20 }}
@@ -202,7 +191,7 @@ export const ProjectsSection = () => {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             onSubmit={handleSubmit}
-                            className="bg-gray-50 dark:bg-[#111111]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-[2.5rem] p-8 md:p-10 shadow-2xl relative overflow-hidden"
+                            className="bg-white dark:bg-[#111111]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-[2.5rem] p-8 md:p-10 shadow-2xl relative overflow-hidden"
                         >
                             <div className="space-y-4 relative z-10">
                                 <input
@@ -210,7 +199,7 @@ export const ProjectsSection = () => {
                                     required
                                     value={formData.name}
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                    className="w-full bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-6 py-4 text-black dark:text-white placeholder-black/20 dark:placeholder-white/20 focus:outline-none focus:border-orange-500/50 transition-all"
+                                    className="w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-6 py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:border-orange-500/50 transition-all"
                                     placeholder="Your Name"
                                 />
                                 <input
@@ -218,7 +207,7 @@ export const ProjectsSection = () => {
                                     required
                                     value={formData.email}
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                    className="w-full bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-6 py-4 text-black dark:text-white placeholder-black/20 dark:placeholder-white/20 focus:outline-none focus:border-orange-500/50 transition-all"
+                                    className="w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-6 py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:border-orange-500/50 transition-all"
                                     placeholder="Your Email"
                                 />
                                 <textarea
@@ -226,7 +215,7 @@ export const ProjectsSection = () => {
                                     rows={4}
                                     value={formData.message}
                                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                    className="w-full bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-6 py-4 text-black dark:text-white placeholder-black/20 dark:placeholder-white/20 focus:outline-none focus:border-orange-500/50 transition-all resize-none"
+                                    className="w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-6 py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:border-orange-500/50 transition-all resize-none"
                                     placeholder="Briefly describe your project..."
                                 />
                                 <button
