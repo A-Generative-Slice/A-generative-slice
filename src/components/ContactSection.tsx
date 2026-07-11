@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, MessageSquare, MapPin, Clock } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { submitForm } from '../utils/formSubmit';
+import { formConfig } from '../data/config';
 
 export const ContactSection = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -11,24 +13,19 @@ export const ContactSection = () => {
         e.preventDefault();
         setStatus('sending');
 
-        try {
-            const res = await fetch('https://formspree.io/f/xdkogvnp', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
-            });
+        const result = await submitForm(formData, {
+            subject: `New Enquiry from ${formData.name}`,
+            formType: 'Contact Enquiry'
+        });
 
-            if (res.ok) {
-                setStatus('sent');
-                setFormData({ name: '', email: '', message: '' });
-                setTimeout(() => setStatus('idle'), 4000);
-            } else {
-                throw new Error('Response not ok');
-            }
-        } catch {
+        if (result.success) {
+            setStatus('sent');
+            setFormData({ name: '', email: '', message: '' });
+            setTimeout(() => setStatus('idle'), 4000);
+        } else {
             const subject = encodeURIComponent(`New Enquiry from ${formData.name}`);
             const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`);
-            window.open(`mailto:agenerativeslice@gmail.com?subject=${subject}&body=${body}`, '_blank');
+            window.open(`mailto:${formConfig.businessEmail}?subject=${subject}&body=${body}`, '_blank');
             setStatus('idle');
         }
     };

@@ -1,6 +1,8 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Briefcase, Send, Upload, FileText, CheckCircle, AlertTriangle } from 'lucide-react';
+import { submitForm } from '../utils/formSubmit';
+import { formConfig } from '../data/config';
 
 export const CareersSection = () => {
     const fileInputRef = useRef<HTMLInputElement>(null);
@@ -91,7 +93,7 @@ export const CareersSection = () => {
             `Interested Sectors: ${formData.interestedSectors.join(', ')}\n\n` +
             `Please make sure to attach your resume PDF file to this email before sending.`
         );
-        return `mailto:agenerativeslice@gmail.com?subject=${subject}&body=${body}`;
+        return `mailto:${formConfig.businessEmail}?subject=${subject}&body=${body}`;
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -115,32 +117,21 @@ export const CareersSection = () => {
         submitData.append('resume', formData.resumeFile);
         submitData.append('subject', `Job Application: ${formData.post} - ${formData.name}`);
 
-        try {
-            const res = await fetch('https://formspree.io/f/xdkogvnp', {
-                method: 'POST',
-                body: submitData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
+        const result = await submitForm(submitData);
 
-            if (res.ok) {
-                setStatus('sent');
-                setFormData({
-                    name: '',
-                    email: '',
-                    contact: '',
-                    courseNiche: '',
-                    post: '',
-                    linkedIn: '',
-                    interestedSectors: [],
-                    resumeFile: null
-                });
-            } else {
-                // If endpoint returns error (e.g. Free Tier restriction on files)
-                setStatus('fallback');
-            }
-        } catch {
+        if (result.success) {
+            setStatus('sent');
+            setFormData({
+                name: '',
+                email: '',
+                contact: '',
+                courseNiche: '',
+                post: '',
+                linkedIn: '',
+                interestedSectors: [],
+                resumeFile: null
+            });
+        } else {
             setStatus('fallback');
         }
     };
@@ -212,9 +203,9 @@ export const CareersSection = () => {
                             <p className="text-black/60 dark:text-white/60 mb-6 max-w-md mx-auto">
                                 Your application form details have been successfully prepared. To deliver your resume PDF directly to our Gmail, please click the button below to send the prefilled email. 
                             </p>
-                            <div className="bg-white dark:bg-black/40 border border-orange-500/10 rounded-2xl p-4 text-left text-sm text-black/70 dark:text-white/70 mb-8 max-w-lg mx-auto space-y-2">
+                             <div className="bg-white dark:bg-black/40 border border-orange-500/10 rounded-2xl p-4 text-left text-sm text-black/70 dark:text-white/70 mb-8 max-w-lg mx-auto space-y-2">
                                 <p><strong>Subject:</strong> Job Application for {formData.post}</p>
-                                <p><strong>To:</strong> agenerativeslice@gmail.com</p>
+                                <p><strong>To:</strong> {formConfig.businessEmail}</p>
                                 <p className="text-orange-500 font-bold">⚠️ IMPORTANT: Remember to attach your resume PDF file in the email client before sending!</p>
                             </div>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

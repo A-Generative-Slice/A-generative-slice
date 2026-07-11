@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Globe2, MessageSquare, Send, ExternalLink, ChevronDown, FlaskConical, Cpu, UtensilsCrossed } from 'lucide-react';
 import nasLogo from '../assets/nas-design-logo.jpg';
+import { submitForm } from '../utils/formSubmit';
+import { formConfig } from '../data/config';
 
 const projects = [
     {
@@ -58,23 +60,22 @@ export const ProjectsSection = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus('sending');
-        try {
-            const res = await fetch('https://formspree.io/f/xdkogvnp', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
-            });
-            if (res.ok) {
-                setStatus('sent');
-                setFormData({ name: '', email: '', message: '' });
-                setTimeout(() => setStatus('idle'), 4000);
-            } else {
-                setStatus('idle');
-                alert('Form submission failed. Please try emailing us directly.');
-            }
-        } catch {
+
+        const result = await submitForm(formData, {
+            subject: `Project Inquiry from ${formData.name}`,
+            formType: 'Project Inquiry'
+        });
+
+        if (result.success) {
+            setStatus('sent');
+            setFormData({ name: '', email: '', message: '' });
+            setTimeout(() => setStatus('idle'), 4000);
+        } else {
+            // Fallback to mailto link
+            const subjectStr = encodeURIComponent(`Project Inquiry from ${formData.name}`);
+            const bodyStr = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
+            window.open(`mailto:${formConfig.businessEmail}?subject=${subjectStr}&body=${bodyStr}`, '_blank');
             setStatus('idle');
-            alert('Form submission failed. Please try emailing us directly.');
         }
     };
 

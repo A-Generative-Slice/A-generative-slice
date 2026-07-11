@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Code, Share2, Mail, Bot, Cpu, Sparkles, Calendar, Phone, MailOpen, Send } from 'lucide-react';
+import { submitForm } from '../utils/formSubmit';
+import { formConfig } from '../data/config';
 
 export const ServicesListSection = () => {
     const [consultFormData, setConsultFormData] = useState({
@@ -16,33 +18,22 @@ export const ServicesListSection = () => {
         e.preventDefault();
         setStatus('sending');
 
-        const submissionData = {
-            ...consultFormData,
+        const result = await submitForm(consultFormData, {
             subject: `Free Strategy Consultation Request - ${consultFormData.name}`,
             formType: 'Free Strategy Consultation Request'
-        };
+        });
 
-        try {
-            const res = await fetch('https://formspree.io/f/xdkogvnp', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(submissionData),
+        if (result.success) {
+            setStatus('sent');
+            setConsultFormData({
+                name: '',
+                email: '',
+                contact: '',
+                projectIdea: '',
+                contactPref: 'email'
             });
-
-            if (res.ok) {
-                setStatus('sent');
-                setConsultFormData({
-                    name: '',
-                    email: '',
-                    contact: '',
-                    projectIdea: '',
-                    contactPref: 'email'
-                });
-                setTimeout(() => setStatus('idle'), 4000);
-            } else {
-                throw new Error('Response not ok');
-            }
-        } catch {
+            setTimeout(() => setStatus('idle'), 4000);
+        } else {
             // Fallback to mailto link
             const subjectStr = encodeURIComponent(`Free Consultation Request - ${consultFormData.name}`);
             const bodyStr = encodeURIComponent(
@@ -52,7 +43,7 @@ export const ServicesListSection = () => {
                 `Preferred Contact Mode: ${consultFormData.contactPref}\n\n` +
                 `Project Idea / Goal:\n${consultFormData.projectIdea}`
             );
-            window.open(`mailto:agenerativeslice@gmail.com?subject=${subjectStr}&body=${bodyStr}`, '_blank');
+            window.open(`mailto:${formConfig.businessEmail}?subject=${subjectStr}&body=${bodyStr}`, '_blank');
             setStatus('idle');
         }
     };
