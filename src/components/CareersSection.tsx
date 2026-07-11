@@ -9,8 +9,8 @@ export const CareersSection = () => {
         email: '',
         contact: '',
         courseNiche: '',
-        post: 'Stealth Intern',
-        customPost: '',
+        post: '',
+        linkedIn: '',
         interestedSectors: [] as string[],
         resumeFile: null as File | null
     });
@@ -28,15 +28,7 @@ export const CareersSection = () => {
         "UI/UX Figma Design"
     ];
 
-    const roles = [
-        "Stealth Intern",
-        "Prompt Engineer",
-        "Figma Designer",
-        "Vibe Coder",
-        "Project Presentator",
-        "Customised Solutions Developer",
-        "Other"
-    ];
+
 
     const handleSectorChange = (sector: string) => {
         setFormData(prev => {
@@ -88,14 +80,14 @@ export const CareersSection = () => {
     };
 
     const getMailtoUrl = () => {
-        const finalPost = formData.post === 'Other' ? formData.customPost : formData.post;
-        const subject = encodeURIComponent(`Job Application: ${finalPost} - ${formData.name}`);
+        const subject = encodeURIComponent(`Job Application: ${formData.post} - ${formData.name}`);
         const body = encodeURIComponent(
             `Name: ${formData.name}\n` +
             `Email: ${formData.email}\n` +
             `Contact: ${formData.contact}\n` +
             `Course / Niche: ${formData.courseNiche}\n` +
-            `Post Applied For: ${finalPost}\n` +
+            `Post Applied For: ${formData.post}\n` +
+            `LinkedIn Profile: ${formData.linkedIn}\n` +
             `Interested Sectors: ${formData.interestedSectors.join(', ')}\n\n` +
             `Please make sure to attach your resume PDF file to this email before sending.`
         );
@@ -112,16 +104,16 @@ export const CareersSection = () => {
         setStatus('sending');
         setErrorMessage('');
 
-        const finalPost = formData.post === 'Other' ? formData.customPost : formData.post;
         const submitData = new FormData();
         submitData.append('name', formData.name);
         submitData.append('email', formData.email);
         submitData.append('contact', formData.contact);
         submitData.append('courseNiche', formData.courseNiche);
-        submitData.append('post', finalPost);
+        submitData.append('post', formData.post);
+        submitData.append('linkedIn', formData.linkedIn);
         submitData.append('interestedSectors', formData.interestedSectors.join(', '));
         submitData.append('resume', formData.resumeFile);
-        submitData.append('subject', `Job Application: ${finalPost} - ${formData.name}`);
+        submitData.append('subject', `Job Application: ${formData.post} - ${formData.name}`);
 
         try {
             const res = await fetch('https://formspree.io/f/xdkogvnp', {
@@ -139,8 +131,8 @@ export const CareersSection = () => {
                     email: '',
                     contact: '',
                     courseNiche: '',
-                    post: 'Stealth Intern',
-                    customPost: '',
+                    post: '',
+                    linkedIn: '',
                     interestedSectors: [],
                     resumeFile: null
                 });
@@ -221,7 +213,7 @@ export const CareersSection = () => {
                                 Your application form details have been successfully prepared. To deliver your resume PDF directly to our Gmail, please click the button below to send the prefilled email. 
                             </p>
                             <div className="bg-white dark:bg-black/40 border border-orange-500/10 rounded-2xl p-4 text-left text-sm text-black/70 dark:text-white/70 mb-8 max-w-lg mx-auto space-y-2">
-                                <p><strong>Subject:</strong> Job Application for {formData.post === 'Other' ? formData.customPost : formData.post}</p>
+                                <p><strong>Subject:</strong> Job Application for {formData.post}</p>
                                 <p><strong>To:</strong> agenerativeslice@gmail.com</p>
                                 <p className="text-orange-500 font-bold">⚠️ IMPORTANT: Remember to attach your resume PDF file in the email client before sending!</p>
                             </div>
@@ -236,8 +228,8 @@ export const CareersSection = () => {
                                                 email: '',
                                                 contact: '',
                                                 courseNiche: '',
-                                                post: 'Stealth Intern',
-                                                customPost: '',
+                                                post: '',
+                                                linkedIn: '',
                                                 interestedSectors: [],
                                                 resumeFile: null
                                             });
@@ -315,32 +307,29 @@ export const CareersSection = () => {
                                 </div>
                             </div>
 
-                            {/* Job Post / Role Selection */}
-                            <div className="mb-6">
-                                <label className="text-black/50 dark:text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Post / Role You Wish to Apply For</label>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <select
+                            {/* Job Post & LinkedIn URL */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label className="text-black/50 dark:text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block font-semibold">Post / Role You Wish to Apply For</label>
+                                    <input
+                                        type="text"
+                                        required
                                         value={formData.post}
                                         onChange={(e) => setFormData({ ...formData, post: e.target.value })}
-                                        className="w-full bg-[#fafafa] dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all text-base"
-                                    >
-                                        {roles.map((role) => (
-                                            <option key={role} value={role} className="bg-white dark:bg-[#111]">{role}</option>
-                                        ))}
-                                    </select>
-                                    
-                                    {formData.post === 'Other' && (
-                                        <motion.input
-                                            initial={{ opacity: 0, x: -10 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            type="text"
-                                            required
-                                            value={formData.customPost}
-                                            onChange={(e) => setFormData({ ...formData, customPost: e.target.value })}
-                                            className="w-full bg-[#fafafa] dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/20 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all text-base"
-                                            placeholder="Specify custom role name"
-                                        />
-                                    )}
+                                        className="w-full bg-[#fafafa] dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/20 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all text-base"
+                                        placeholder="e.g. Frontend Developer, Stealth Intern, Prompt Engineer"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="text-black/50 dark:text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block font-semibold">LinkedIn Profile URL</label>
+                                    <input
+                                        type="url"
+                                        required
+                                        value={formData.linkedIn}
+                                        onChange={(e) => setFormData({ ...formData, linkedIn: e.target.value })}
+                                        className="w-full bg-[#fafafa] dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/20 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all text-base"
+                                        placeholder="https://linkedin.com/in/username"
+                                    />
                                 </div>
                             </div>
 
