@@ -23,7 +23,7 @@ export const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
     const navLinks = [
         { name: 'Projects', path: '/projects' },
         { name: 'About', path: '/about' },
-        { name: 'Teams', path: '/teams' },
+        { name: 'Services', path: '/services' },
         { name: 'Careers', path: '/careers' },
         { name: 'Contact', path: '/contact' }
     ];

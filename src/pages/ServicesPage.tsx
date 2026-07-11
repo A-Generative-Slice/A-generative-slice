@@ -1,14 +1,14 @@
-import { TeamsSection } from '../components/TeamsSection';
+import { ServicesListSection } from '../components/ServicesListSection';
 import { motion } from 'framer-motion';
 
-export const TeamsPage = () => {
+export const ServicesPage = () => {
     return (
         <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            <TeamsSection />
+            <ServicesListSection />
         </motion.div>
     );
 };
