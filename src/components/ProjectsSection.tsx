@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Globe2, MessageSquare, Send, ExternalLink, ChevronDown } from 'lucide-react';
+import { Globe2, MessageSquare, Send, ExternalLink, ChevronDown, FlaskConical, Cpu, UtensilsCrossed } from 'lucide-react';
+import nasLogo from '../assets/nas-design-logo.jpg';
 
 const projects = [
     {
@@ -8,27 +9,44 @@ const projects = [
         client: 'Rose Chemicals',
         title: 'Enterprise Chemical Inventory Portal',
         color: 'from-pink-500 to-rose-600',
+        icon: <FlaskConical className="w-6 h-6 text-white" />,
         missing: 'Lacked digital supply chain tracking, relying on fragmented legacy systems causing extreme fulfillment delays.',
         solution: 'Architected an automated inventory solution with real-time tracking, seamless multi-warehouse sync, and digital B2B ordering.',
-        approach: 'Transformed their business model from manual oversight to a highly responsive, data-driven supply chain operation.'
+        approach: 'Transformed their business model from manual oversight to a highly responsive, data-driven supply chain operation.',
+        link: '#'
     },
     {
         id: 'litelab',
         client: 'Litelabs',
-        title: 'Creative Agency & Learning UI Overhaul',
+        title: 'In-House AI Auditor & Strategy Hub',
         color: 'from-orange-400 to-orange-600',
-        missing: 'Suffered from an inconsistent brand identity and an outdated learning platform UI that severely hampered student engagement.',
-        solution: 'Delivered a complete monochromatic UI overhaul, restructuring their course delivery layout with premium high-contrast architectural aesthetics.',
-        approach: 'Shifted their positioning from a standard agency to an immersive digital education pioneer with scalable user flows.'
+        icon: <Cpu className="w-6 h-6 text-white" />,
+        missing: 'Lacked a structured verification layer to validate AI-generated assets, resulting in inconsistent output quality and strategic misalignment.',
+        solution: 'Engineered an in-house AI auditor platform to inspect, audit, and optimize digital production quality, aligning teams with data-driven strategic perspectives.',
+        approach: 'Equipped internal strategists and QA leads with a powerful validation suite to drive company growth and high-quality automation.',
+        link: '#'
     },
     {
         id: 'nas-design',
         client: 'NAS Design and Construction',
         title: 'Interactive Architectural Portfolio',
         color: 'from-blue-500 to-indigo-600',
+        logoImg: nasLogo,
         missing: 'Lacked a unified, premium project portfolio to showcase high-end real estate developments to international investors.',
         solution: 'Built an interactive, physics-based, high-performance web presence featuring 3D project fan showcases and smooth GSAP-like animations.',
-        approach: 'Elevated their market perception by aligning their digital presence with the exact luxury standards of their physical constructions.'
+        approach: 'Elevated their market perception by aligning their digital presence with the exact luxury standards of their physical constructions.',
+        link: 'https://nasdesignconstruction.com/'
+    },
+    {
+        id: 'sree-ambal',
+        client: 'Sree Ambal Catering Services',
+        title: 'Bespoke PWA Inventory Portal',
+        color: 'from-yellow-400 to-amber-600',
+        icon: <UtensilsCrossed className="w-6 h-6 text-white" />,
+        missing: 'Struggled with manual inventory tracking and slow catalog updates, leading to stock discrepancies and administrative overhead during busy catering seasons.',
+        solution: 'Designed and built a customized, mobile-first inventory tracker PWA with optimized database schemas for instant catalog updates and advanced offline support.',
+        approach: 'Streamlined their daily tracking progress, making inventory management simple, lightning-fast, and accessible even in low-connectivity event locations.',
+        link: '#'
     }
 ];
 
@@ -107,8 +125,12 @@ export const ProjectsSection = () => {
                                     className="w-full text-left p-6 md:p-8 flex items-center justify-between focus:outline-none"
                                 >
                                     <div className="flex items-center gap-6">
-                                        <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${project.color} flex items-center justify-center shrink-0 shadow-lg`}>
-                                            <Globe2 className="w-6 h-6 text-white" />
+                                        <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${project.color} flex items-center justify-center shrink-0 shadow-lg overflow-hidden`}>
+                                            {project.logoImg ? (
+                                                <img src={project.logoImg} alt={project.client} className="w-full h-full object-cover" />
+                                            ) : (
+                                                project.icon
+                                            )}
                                         </div>
                                         <div>
                                             <h4 className="text-orange-500 font-bold text-xs uppercase tracking-widest mb-1">{project.client}</h4>
@@ -146,11 +168,18 @@ export const ProjectsSection = () => {
                                                         <p className="text-black/60 dark:text-white/60 text-sm leading-relaxed">{project.approach}</p>
                                                     </div>
                                                 </div>
-                                                <div className="mt-8 pt-6 flex border-t border-black/5 dark:border-white/5">
-                                                    <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-orange-500 text-white font-bold text-sm hover:bg-orange-600 transition-colors">
-                                                        Visit Live Project <ExternalLink className="w-4 h-4" />
-                                                    </button>
-                                                </div>
+                                                {project.link && project.link !== '#' && (
+                                                    <div className="mt-8 pt-6 flex border-t border-black/5 dark:border-white/5">
+                                                        <a 
+                                                            href={project.link}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-orange-500 text-white font-bold text-sm hover:bg-orange-600 transition-colors"
+                                                        >
+                                                            Visit Live Project <ExternalLink className="w-4 h-4" />
+                                                        </a>
+                                                    </div>
+                                                )}
                                             </div>
                                         </motion.div>
                                     )}
