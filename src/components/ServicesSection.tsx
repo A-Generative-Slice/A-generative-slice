@@ -162,14 +162,14 @@ export const ServicesSection = () => {
 
                 {/* 3-Card Spotlight Carousel */}
                 <div 
-                    className="relative w-full h-[480px] md:h-[520px] flex items-center justify-center max-w-7xl mx-auto px-4 md:px-12"
+                    className="relative w-full h-[480px] md:h-[520px] flex items-center justify-center max-w-[1200px] mx-auto px-4 md:px-12"
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                 >
                     {/* High Z-Index Translucent Glass Navigation Overlays */}
                     <button
                         onClick={handlePrev}
-                        className="absolute left-2 md:left-8 z-50 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/80 dark:bg-black/80 backdrop-blur-xl border border-orange-500/30 shadow-2xl flex items-center justify-center text-orange-500 hover:bg-orange-500 hover:text-white hover:border-orange-500 hover:scale-110 active:scale-95 transition-all duration-300"
+                        className="absolute left-2 md:left-6 lg:left-8 z-50 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/80 dark:bg-black/80 backdrop-blur-xl border border-orange-500/30 shadow-2xl flex items-center justify-center text-orange-500 hover:bg-orange-500 hover:text-white hover:border-orange-500 hover:scale-110 active:scale-95 transition-all duration-300"
                         aria-label="Previous service"
                     >
                         <ArrowLeft className="w-6 h-6" />
@@ -177,7 +177,7 @@ export const ServicesSection = () => {
 
                     <button
                         onClick={handleNext}
-                        className="absolute right-2 md:right-8 z-50 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/80 dark:bg-black/80 backdrop-blur-xl border border-orange-500/30 shadow-2xl flex items-center justify-center text-orange-500 hover:bg-orange-500 hover:text-white hover:border-orange-500 hover:scale-110 active:scale-95 transition-all duration-300"
+                        className="absolute right-2 md:right-6 lg:right-8 z-50 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/80 dark:bg-black/80 backdrop-blur-xl border border-orange-500/30 shadow-2xl flex items-center justify-center text-orange-500 hover:bg-orange-500 hover:text-white hover:border-orange-500 hover:scale-110 active:scale-95 transition-all duration-300"
                         aria-label="Next service"
                     >
                         <ArrowRight className="w-6 h-6" />
@@ -206,7 +206,7 @@ export const ServicesSection = () => {
                                     key={service.title}
                                     initial={false}
                                     animate={{
-                                        x: isCenter ? 0 : isLeft ? '-85%' : '85%',
+                                        x: isCenter ? 0 : isLeft ? '-105%' : '105%',
                                         scale: isCenter ? 1.05 : 0.85,
                                         opacity: isCenter ? 1 : 0.6,
                                         filter: isCenter ? 'blur(0px)' : 'blur(2px)',
@@ -219,7 +219,7 @@ export const ServicesSection = () => {
                                         mass: 0.8
                                     }}
                                     onClick={() => setActiveIndex(i)}
-                                    className={`absolute uiverse-card w-[280px] sm:w-[310px] md:w-[330px] h-[410px] md:h-[430px] bg-white dark:bg-[#0d0d0f] rounded-[28px] overflow-hidden border transition-all duration-500 flex flex-col justify-between p-6 group cursor-pointer ${
+                                    className={`absolute uiverse-card w-[280px] lg:w-[330px] h-[410px] md:h-[430px] bg-white dark:bg-[#0d0d0f] rounded-[28px] overflow-hidden border transition-all duration-500 flex flex-col justify-between p-6 group cursor-pointer ${
                                         isCenter 
                                             ? 'border-orange-500/50 shadow-[0_20px_50px_-10px_rgba(249,115,22,0.3)] dark:shadow-[0_20px_50px_-10px_rgba(249,115,22,0.15)] ring-2 ring-orange-500/20 pointer-events-auto' 
                                             : 'border-black/10 dark:border-white/10 shadow-md hover:opacity-80 hidden md:flex pointer-events-auto'
