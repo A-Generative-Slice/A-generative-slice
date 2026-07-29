@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import { Bot, Cloud, Workflow, Lightbulb, Users, Code, LineChart, ShoppingCart, GraduationCap, MessageSquare, ArrowRight, Sparkles } from 'lucide-react';
 
 export const ServicesSection = () => {
@@ -95,7 +96,7 @@ export const ServicesSection = () => {
         }
     ];
 
-    const containerVariants = {
+    const containerVariants: Variants = {
         hidden: { opacity: 0 },
         show: {
             opacity: 1,
@@ -103,7 +104,7 @@ export const ServicesSection = () => {
         }
     };
 
-    const cardVariants = {
+    const cardVariants: Variants = {
         hidden: { opacity: 0, y: 30 },
         show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 15 } }
     };
@@ -151,7 +152,7 @@ export const ServicesSection = () => {
                     viewport={{ once: true, margin: "-100px" }}
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
                 >
-                    {services.map((service, i) => {
+                    {services.map((service) => {
                         const isLarge = service.span.includes("row-span-2");
                         
                         return (
