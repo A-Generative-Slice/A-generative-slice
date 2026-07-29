@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Code, Share2, Mail, Bot, Cpu, Sparkles, Calendar, Phone, MailOpen, Send } from 'lucide-react';
+import { Code, Bot, Workflow, Cloud, ShoppingCart, GraduationCap, LineChart, Lightbulb, Users, Sparkles, Calendar, Phone, MailOpen, Send } from 'lucide-react';
 import { submitForm } from '../utils/formSubmit';
 import { formConfig } from '../data/config';
 
@@ -50,40 +50,58 @@ export const ServicesListSection = () => {
 
     const services = [
         {
-            title: "Customised Solutions",
-            description: "End-to-end bespoke software architected specifically for your business challenges, goals, and workflow requirements.",
-            icon: <Cpu className="w-8 h-8" />,
+            title: "Custom SaaS & Web Development",
+            description: "End-to-end bespoke software, MVPs, and stunning portfolios architected specifically for your business challenges.",
+            icon: <Code className="w-8 h-8" />,
             accent: "from-blue-500/20 to-indigo-500/20"
         },
         {
-            title: "Portfolio Making",
-            description: "Stunning, interactive personal websites and developer portfolios designed to showcase your talent and convert visitors.",
-            icon: <Code className="w-8 h-8" />,
+            title: "Autonomous AI & Chatbots",
+            description: "Advanced autonomous LLM-powered agents built to automate research, client support, or internal decision-making processes.",
+            icon: <Bot className="w-8 h-8" />,
+            accent: "from-purple-500/20 to-pink-500/20"
+        },
+        {
+            title: "Intelligent Automation",
+            description: "Automated, scalable sequences for cold emails, social media publishing, and HR funnels to skyrocket efficiency.",
+            icon: <Workflow className="w-8 h-8" />,
             accent: "from-orange-500/20 to-red-500/20"
         },
         {
-            title: "Mail Pitching Automation",
-            description: "Automated, scalable cold email sequence engines configured with smart personalization to skyrocket your conversion rates.",
-            icon: <Mail className="w-8 h-8" />,
-            accent: "from-pink-500/20 to-purple-500/20"
+            title: "Cloud & DevOps Management",
+            description: "Scalable infrastructure, serverless architectures, and CI/CD pipelines designed for maximum reliability and uptime.",
+            icon: <Cloud className="w-8 h-8" />,
+            accent: "from-sky-500/20 to-blue-500/20"
         },
         {
-            title: "Social Media Post Automation",
-            description: "Autonomous content scheduling, asset generation, and multi-platform publishing workflows tailored to grow your social presence.",
-            icon: <Share2 className="w-8 h-8" />,
+            title: "E-Commerce Solutions",
+            description: "High-conversion storefronts, custom marketplaces, and seamless payment integrations optimized for revenue.",
+            icon: <ShoppingCart className="w-8 h-8" />,
             accent: "from-green-500/20 to-emerald-500/20"
         },
         {
-            title: "Customised AI Agents",
-            description: "Advanced autonomous LLM-powered agents built to automate research, client support, or internal decision-making processes.",
-            icon: <Bot className="w-8 h-8" />,
-            accent: "from-purple-500/20 to-blue-500/20"
+            title: "Learning Platforms (EdTech)",
+            description: "Custom LMS architecture, student portals, and engaging course management systems tailored to your curriculum.",
+            icon: <GraduationCap className="w-8 h-8" />,
+            accent: "from-yellow-500/20 to-amber-500/20"
         },
         {
-            title: "Any Customised Development",
-            description: "Got a unique system integration or complex software requirement? We turn complex technical specifications into reliable code.",
-            icon: <Sparkles className="w-8 h-8" />,
-            accent: "from-yellow-500/20 to-orange-500/20"
+            title: "Digital Marketing & SEO",
+            description: "Data-driven growth strategies, technical SEO optimization, and targeted ad campaigns to dominate your market.",
+            icon: <LineChart className="w-8 h-8" />,
+            accent: "from-rose-500/20 to-red-500/20"
+        },
+        {
+            title: "Strategic Consultation",
+            description: "Expert IT guidance, robust product architecture, and thorough tech feasibility analysis for your next big idea.",
+            icon: <Lightbulb className="w-8 h-8" />,
+            accent: "from-amber-500/20 to-orange-500/20"
+        },
+        {
+            title: "Student Mentorship",
+            description: "Empowering the next generation of engineers through 1-on-1 personalized guidance, code reviews, and career roadmap planning.",
+            icon: <Users className="w-8 h-8" />,
+            accent: "from-teal-500/20 to-emerald-500/20"
         }
     ];
 

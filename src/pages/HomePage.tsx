@@ -1,5 +1,4 @@
 import { Hero } from '../components/Hero';
-import { ServicesSection } from '../components/ServicesSection';
 import { HowItWorks } from '../components/HowItWorks';
 import { TechStack } from '../components/TechStack';
 import { FAQSection } from '../components/FAQSection';
@@ -15,7 +14,6 @@ export const HomePage = () => {
             <Hero />
             <HowItWorks />
             <TechStack />
-            <ServicesSection />
             <FAQSection />
         </motion.div>
     );
