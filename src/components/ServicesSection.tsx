@@ -219,7 +219,7 @@ export const ServicesSection = () => {
                                         mass: 0.8
                                     }}
                                     onClick={() => setActiveIndex(i)}
-                                    className={`absolute uiverse-card w-[280px] lg:w-[330px] h-[410px] md:h-[430px] bg-white dark:bg-[#0d0d0f] rounded-[28px] overflow-hidden border transition-all duration-500 flex flex-col justify-between p-6 group cursor-pointer ${
+                                    className={`absolute uiverse-card w-[280px] xl:w-[330px] h-[410px] md:h-[430px] bg-white dark:bg-[#0d0d0f] rounded-[28px] overflow-hidden border transition-all duration-500 flex flex-col justify-between p-6 group cursor-pointer ${
                                         isCenter 
                                             ? 'border-orange-500/50 shadow-[0_20px_50px_-10px_rgba(249,115,22,0.3)] dark:shadow-[0_20px_50px_-10px_rgba(249,115,22,0.15)] ring-2 ring-orange-500/20 pointer-events-auto' 
                                             : 'border-black/10 dark:border-white/10 shadow-md hover:opacity-80 hidden md:flex pointer-events-auto'
