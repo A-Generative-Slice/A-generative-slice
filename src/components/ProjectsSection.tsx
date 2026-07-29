@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Globe2, MessageSquare, Send, ExternalLink, ChevronDown, FlaskConical, Cpu, UtensilsCrossed } from 'lucide-react';
 import nasLogo from '../assets/nas-design-logo.jpg';
+import roseLogo from '../assets/rose-chemicals-logo.png';
+import litelabLogo from '../assets/litelab-logo.ico';
+import sreeAmbalLogo from '../assets/sree-ambal-logo.png';
 import { submitForm } from '../utils/formSubmit';
 import { formConfig } from '../data/config';
 
@@ -11,23 +14,27 @@ const projects = [
         client: 'Rose Chemicals',
         title: 'Enterprise Chemical Inventory Portal',
         color: 'from-pink-500 to-rose-600',
+        logoImg: roseLogo,
         icon: <FlaskConical className="w-6 h-6 text-white" />,
         missing: 'Lacked digital supply chain tracking, relying on fragmented legacy systems causing extreme fulfillment delays.',
         solution: 'Architected an automated inventory solution with real-time tracking, seamless multi-warehouse sync, and digital B2B ordering.',
         approach: 'Transformed their business model from manual oversight to a highly responsive, data-driven supply chain operation.',
-        link: '#'
+        link: 'https://rosechemicals.in/'
     },
+
     {
         id: 'litelab',
         client: 'Litelabs',
         title: 'In-House AI Auditor & Strategy Hub',
         color: 'from-orange-400 to-orange-600',
+        logoImg: litelabLogo,
         icon: <Cpu className="w-6 h-6 text-white" />,
         missing: 'Lacked a structured verification layer to validate AI-generated assets, resulting in inconsistent output quality and strategic misalignment.',
         solution: 'Engineered an in-house AI auditor platform to inspect, audit, and optimize digital production quality, aligning teams with data-driven strategic perspectives.',
         approach: 'Equipped internal strategists and QA leads with a powerful validation suite to drive company growth and high-quality automation.',
-        link: '#'
+        link: 'https://www.litelab.in/'
     },
+
     {
         id: 'nas-design',
         client: 'NAS Design and Construction',
@@ -44,13 +51,15 @@ const projects = [
         client: 'Sree Ambal Catering Services',
         title: 'Bespoke PWA Inventory Portal',
         color: 'from-yellow-400 to-amber-600',
+        logoImg: sreeAmbalLogo,
         icon: <UtensilsCrossed className="w-6 h-6 text-white" />,
         missing: 'Struggled with manual inventory tracking and slow catalog updates, leading to stock discrepancies and administrative overhead during busy catering seasons.',
         solution: 'Designed and built a customized, mobile-first inventory tracker PWA with optimized database schemas for instant catalog updates and advanced offline support.',
         approach: 'Streamlined their daily tracking progress, making inventory management simple, lightning-fast, and accessible even in low-connectivity event locations.',
-        link: '#'
+        link: 'https://www.sreeambalcateringservice.com/'
     }
 ];
+
 
 export const ProjectsSection = () => {
     const [openId, setOpenId] = useState<string | null>(projects[0].id);
@@ -128,7 +137,9 @@ export const ProjectsSection = () => {
                                     <div className="flex items-center gap-6">
                                         <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${project.color} flex items-center justify-center shrink-0 shadow-lg overflow-hidden`}>
                                             {project.logoImg ? (
-                                                <img src={project.logoImg} alt={project.client} className="w-full h-full object-cover" />
+                                                <div className="w-full h-full bg-white flex items-center justify-center p-1.5">
+                                                    <img src={project.logoImg} alt={project.client} className="w-full h-full object-contain" />
+                                                </div>
                                             ) : (
                                                 project.icon
                                             )}
