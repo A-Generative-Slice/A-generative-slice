@@ -36,7 +36,7 @@ export const About = () => {
                         viewport={{ once: true }}
                         className="space-y-8"
                     >
-                        <div className="bg-white dark:bg-[#111] p-8 rounded-3xl border border-black/5 dark:border-white/5 shadow-xl">
+                        <div className="bg-white dark:bg-[#111] p-8 rounded-3xl border border-black/5 dark:border-white/5 shadow-xl h-full">
                             <div className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center mb-6">
                                 <ShieldCheck className="w-6 h-6 text-orange-500" />
                             </div>
@@ -54,7 +54,7 @@ export const About = () => {
                         viewport={{ once: true }}
                         className="space-y-8"
                     >
-                        <div className="bg-white dark:bg-[#111] p-8 rounded-3xl border border-black/5 dark:border-white/5 shadow-xl">
+                        <div className="bg-white dark:bg-[#111] p-8 rounded-3xl border border-black/5 dark:border-white/5 shadow-xl h-full">
                             <div className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center mb-6">
                                 <GraduationCap className="w-6 h-6 text-orange-500" />
                             </div>
@@ -76,11 +76,11 @@ export const About = () => {
                 >
                     <div className="grid grid-cols-1 lg:grid-cols-2">
                         {/* Images */}
-                        <div className="h-[400px] lg:h-auto relative group">
+                        <div className="h-[400px] lg:h-auto relative">
                             <img 
                                 src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" 
                                 alt="Our Headquarters" 
-                                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                className="absolute inset-0 w-full h-full object-cover"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                             <div className="absolute bottom-8 left-8 right-8">

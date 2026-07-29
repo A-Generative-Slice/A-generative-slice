@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Globe2, MessageSquare, Send, ExternalLink, ChevronDown, FlaskConical, Cpu, UtensilsCrossed } from 'lucide-react';
+import { Globe2, MessageSquare, Send, ExternalLink, ChevronDown, FlaskConical, Cpu, UtensilsCrossed, Instagram, ListChecks } from 'lucide-react';
 import nasLogo from '../assets/nas-design-logo.jpg';
 import roseLogo from '../assets/rose-chemicals-logo.png';
-import litelabLogo from '../assets/litelab-logo.ico';
 import sreeAmbalLogo from '../assets/sree-ambal-logo.png';
 import { submitForm } from '../utils/formSubmit';
 import { formConfig } from '../data/config';
@@ -27,8 +26,7 @@ const projects = [
         client: 'Litelabs',
         title: 'In-House AI Auditor & Strategy Hub',
         color: 'from-orange-400 to-orange-600',
-        logoImg: litelabLogo,
-        icon: <Cpu className="w-6 h-6 text-white" />,
+        icon: <Instagram className="w-6 h-6 text-white" />,
         missing: 'Lacked a structured verification layer to validate AI-generated assets, resulting in inconsistent output quality and strategic misalignment.',
         solution: 'Engineered an in-house AI auditor platform to inspect, audit, and optimize digital production quality, aligning teams with data-driven strategic perspectives.',
         approach: 'Equipped internal strategists and QA leads with a powerful validation suite to drive company growth and high-quality automation.',
@@ -101,7 +99,7 @@ export const ProjectsSection = () => {
                         className="inline-flex items-center gap-2 text-orange-500 font-bold tracking-widest uppercase text-sm mb-4"
                     >
                         <Globe2 className="w-4 h-4" />
-                        Our Portfolio
+                        Client Projects
                     </motion.div>
                     <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
@@ -199,6 +197,34 @@ export const ProjectsSection = () => {
                             </motion.div>
                         );
                     })}
+                </div>
+
+                {/* Products List Placeholder */}
+                <div className="text-center mb-12 mt-20">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="inline-flex items-center gap-2 text-orange-500 font-bold tracking-widest uppercase text-sm mb-4"
+                    >
+                        <ListChecks className="w-4 h-4" />
+                        Our Products
+                    </motion.div>
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className="text-4xl md:text-5xl font-black text-black dark:text-white mb-6 tracking-tight"
+                    >
+                        Explore Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Products</span>
+                    </motion.h2>
+                </div>
+                
+                <div className="space-y-4 mb-32">
+                    <div className="rounded-3xl border border-dashed border-black/20 dark:border-white/20 p-12 text-center flex flex-col items-center justify-center bg-white/30 dark:bg-[#111]/30">
+                        <p className="text-black/50 dark:text-white/50 font-medium">Products list coming soon...</p>
+                    </div>
                 </div>
 
                 {/* Got a Project Box */}

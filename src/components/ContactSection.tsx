@@ -65,16 +65,16 @@ export const ContactSection = () => {
                     </motion.p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-16">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch mb-16">
                     {/* Location & Map */}
                     <motion.div 
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="flex flex-col space-y-6"
+                        className="flex flex-col space-y-6 h-full"
                     >
-                        <div className="bg-gray-50 dark:bg-[#111111]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-3xl p-8 shadow-2xl">
+                        <div className="bg-gray-50 dark:bg-[#111111]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-3xl p-8 shadow-2xl h-full flex flex-col">
                             <h3 className="text-2xl font-black text-black dark:text-white mb-6">Visit Our Office</h3>
                             
                             <div className="flex items-start gap-4 mb-6">
@@ -122,7 +122,7 @@ export const ContactSection = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.3 }}
                         onSubmit={handleSubmit} 
-                        className="bg-gray-50 dark:bg-[#111111]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden"
+                        className="bg-gray-50 dark:bg-[#111111]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden h-full flex flex-col"
                     >
                         <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
 
