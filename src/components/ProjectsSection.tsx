@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Globe2, MessageSquare, Send, ExternalLink, ChevronDown, FlaskConical, Cpu, UtensilsCrossed, Instagram, ListChecks } from 'lucide-react';
+import { Globe2, MessageSquare, Send, ExternalLink, ChevronDown, FlaskConical, UtensilsCrossed, ListChecks } from 'lucide-react';
+import { FaInstagram } from 'react-icons/fa';
 import nasLogo from '../assets/nas-design-logo.jpg';
 import roseLogo from '../assets/rose-chemicals-logo.png';
 import sreeAmbalLogo from '../assets/sree-ambal-logo.png';
@@ -26,7 +27,7 @@ const projects = [
         client: 'Litelabs',
         title: 'In-House AI Auditor & Strategy Hub',
         color: 'from-orange-400 to-orange-600',
-        icon: <Instagram className="w-6 h-6 text-white" />,
+        icon: <FaInstagram className="w-6 h-6 text-white" />,
         missing: 'Lacked a structured verification layer to validate AI-generated assets, resulting in inconsistent output quality and strategic misalignment.',
         solution: 'Engineered an in-house AI auditor platform to inspect, audit, and optimize digital production quality, aligning teams with data-driven strategic perspectives.',
         approach: 'Equipped internal strategists and QA leads with a powerful validation suite to drive company growth and high-quality automation.',
