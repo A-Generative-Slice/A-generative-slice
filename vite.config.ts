@@ -8,7 +8,7 @@ export default defineConfig(({ command }) => ({
     react(),
     tailwindcss(),
   ],
-  base: command === 'serve' ? '/' : '/A-generative-slice/',
+  base: '/',
   server: {
     host: true,
     allowedHosts: true

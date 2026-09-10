@@ -48,9 +48,8 @@ const AppContent = () => {
 };
 
 function App() {
-  const basename = import.meta.env.MODE === 'production' ? '/A-generative-slice' : '';
   return (
-    <Router basename={basename}>
+    <Router>
       <AppContent />
     </Router>
   );
