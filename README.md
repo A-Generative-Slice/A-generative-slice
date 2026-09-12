@@ -1,4 +1,4 @@
-# A Generative Slice 🍕
+# A Generative Slice 🚀
 
 <div align="center">
 
@@ -17,52 +17,61 @@
 
 ---
 
-## 🚀 About A Generative Slice
+## 📖 About A Generative Slice
 
-We built **A Generative Slice** because traditional agency models are broken. Many corporate agencies overcharge for basic software and leave clients stranded with high maintenance debt. 
+**A Generative Slice** is an engineering-driven digital product studio. We specialize in generative AI systems, high-performance web applications, enterprise workflow automation, and bespoke digital ecosystems.
 
-We stand for **radical transparency and direct engineering execution**:
-- **100% Free Initial Consultancy:** We sit down with you, audit your technical bottlenecks, and map out the exact solution required.
-- **Total Trust & Accountability:** Full contract transparency with verified BOI & FF agreements.
-- **Student Mentorship & AI Awareness:** Actively training the next generation of engineers in modern, deployable AI and full-stack workflows.
-
-📍 **Headquarters:** No: 144, Valluvar Kottam High Rd, Nungambakkam, Chennai, Tamil Nadu 600034.
+### Core Philosophy
+- **Direct Engineering Execution**: Zero agency fluff. High-throughput architecture and production-grade delivery.
+- **Modern Standards**: React 19, TypeScript strict mode, Vite bundling, and Tailwind CSS v4.
+- **Bespoke Craftsmanship**: Unique interactive animations, fluid motion design, and precision ergonomics.
 
 ---
 
-## 🏆 Featured Client Projects
+## 🛠️ Technology Stack
 
-| Client | Project | Description | Link |
-| :--- | :--- | :--- | :--- |
-| **Rose Chemicals** | Enterprise Inventory Portal | Real-time multi-warehouse supply chain tracking and automated B2B digital ordering. | [rosechemicals.in](https://rosechemicals.in/) |
-| **Litelabs** | In-House AI Auditor & Strategy Hub | Internal QA suite and validation layer to audit, inspect, and optimize AI-generated assets. | [litelab.in](https://www.litelab.in/) |
-| **NAS Design & Construction** | 3D Architectural Portfolio | Interactive, physics-driven web presence showcasing luxury real estate developments. | [nasdesignconstruction.com](https://nasdesignconstruction.com/) |
-| **Sree Ambal Catering Services** | Mobile-First PWA Inventory | Ultra-fast offline-ready progressive web app for instant event stock and catalog tracking. | [sreeambalcateringservice.com](https://www.sreeambalcateringservice.com/) |
-
----
-
-## ⚡ Core Capabilities & Services
-
-- **Bespoke SaaS & Web Applications:** High-performance, scalable platforms engineered with React, Next.js, and modern serverless architectures.
-- **Autonomous AI & Intelligent Agents:** Custom LLM agent pipelines, intelligent workflow routing, and automated business operations.
-- **Interactive 3D & Physics Web:** Physics-based micro-interactions, Spline, Three.js, and Framer Motion animations.
-- **Progressive Web Apps (PWAs):** Offline-first mobile experiences with zero app store friction.
-- **Enterprise Automation:** Omnichannel bots (WhatsApp, Instagram, Telegram) and automated lead pipelines.
+| Layer | Technology |
+|---|---|
+| **Framework** | [React 19](https://react.dev/) |
+| **Language** | [TypeScript 5.9](https://www.typescriptlang.org/) |
+| **Build Tool** | [Vite 7](https://vite.dev/) |
+| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) with PostCSS & Autoprefixer |
+| **Animations** | [Framer Motion](https://www.framer.com/motion/) & [tsParticles](https://particles.js.org/) |
+| **Icons** | [Lucide React](https://lucide.dev/) & [React Icons](https://react-icons.github.io/react-icons/) |
+| **Routing** | [React Router DOM v7](https://reactrouter.com/) |
+| **Deployment** | GitHub Actions & GitHub Pages |
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## 📂 Project Structure
 
-- **Frontend Core:** React 19, TypeScript 5.9, Vite 7
-- **Styling & Design System:** Tailwind CSS 4, Glassmorphism UI, Dark / Light mode toggle
-- **Animation & Physics:** Framer Motion 12, `@tsparticles/react`
-- **Form & Enquiries Engine:** Multi-provider submission system supporting Web3Forms, Formspree, and EmailJS
-- **Hosting & Infrastructure:** Custom apex domain ([agenerativeslice.com](https://agenerativeslice.com)) with SSL via GitHub Pages & automated GitHub Actions CI/CD pipeline
+```
+A-generative-slice/
+├── .github/              # GitHub Actions deployment workflows
+├── assets/               # Static design assets and brand imagery
+├── public/               # Static public files, favicons, robots.txt
+├── src/
+│   ├── components/       # Reusable UI components (Navbar, Hero, Footer, Cards)
+│   ├── pages/            # Route views (Home, Work, Services, Contact)
+│   ├── styles/           # Global styles and Tailwind configuration
+│   ├── App.tsx           # Main application routing and shell
+│   └── main.tsx          # Application entry point
+├── eslint.config.js      # ESLint configuration
+├── index.html            # HTML entry point
+├── package.json          # Package manifest & scripts
+├── tsconfig.json         # TypeScript configuration
+└── vite.config.ts        # Vite build & plugin configuration
+```
 
 ---
 
-## 💻 Local Development
+## 🚀 Getting Started
 
+### Prerequisites
+- **Node.js**: v18.0.0 or later
+- **npm**: v9.0.0 or later
+
+### Installation
 ```bash
 # 1. Clone the repository
 git clone https://github.com/A-Generative-Slice/A-generative-slice.git
@@ -73,27 +82,36 @@ npm install
 
 # 3. Start development server
 npm run dev
+```
 
-# 4. Build for production (includes SPA 404 routing fallback)
-npm run build
+Visit `http://localhost:5173` to explore the live development instance.
 
-# 5. Preview production build locally
-npm run preview
+---
+
+## 📜 Available Scripts
+
+| Command | Action |
+|---|---|
+| `npm run dev` | Starts the local Vite development server with HMR |
+| `npm run build` | Type-checks via `tsc -b` and builds optimized production bundles into `dist/` |
+| `npm run preview` | Locally previews the production build |
+| `npm run lint` | Runs ESLint across TypeScript and TSX files |
+| `npm run deploy` | Builds the project and deploys to GitHub Pages via `gh-pages` |
+
+---
+
+## 🚢 CI/CD Deployment
+
+This project uses **GitHub Actions** (`.github/workflows/deploy.yml`) to automatically compile and deploy the site upon push to the `main` branch. 
+
+Manual deployment can also be triggered using:
+```bash
+npm run deploy
 ```
 
 ---
 
-## 📬 Connect With Us
+## 📄 License & Attribution
 
-- 🌐 **Website:** [agenerativeslice.com](https://agenerativeslice.com)
-- 💬 **WhatsApp:** [+91 93441 15330](https://wa.me/919344115330)
-- 📸 **Instagram:** [@a_generative_slice](https://www.instagram.com/a_generative_slice/)
-- 💼 **LinkedIn:** [A Generative Slice](https://www.linkedin.com/company/107795425)
-- 🐙 **GitHub:** [A-Generative-Slice](https://github.com/A-Generative-Slice)
-- ✉️ **Email:** [agenerativeslice@gmail.com](mailto:agenerativeslice@gmail.com)
-
----
-
-<div align="center">
-  <sub>© 2026 A Generative Slice. All rights reserved.</sub>
-</div>
+Copyright © 2026 **A Generative Slice**. All rights reserved.  
+Maintained by the engineering team at [A Generative Slice](https://agenerativeslice.com).
