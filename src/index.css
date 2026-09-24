@@ -2,14 +2,16 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #ff6a00;
-  --color-primary-light: #ff8533;
-  --color-primary-dark: #cc5500;
-  --color-accent: #fff0e0;
-  --color-surface: #ffffff;
-  --color-surface-dark: #0a0a0a;
-  --color-text: #1a1a1a;
-  --color-text-muted: #666666;
+  --color-primary: #FF5C00;
+  --color-primary-light: #FF8C1A;
+  --color-primary-dark: #CC4A00;
+  --color-slate-dark: #0F172A;
+  --color-accent: #FFF4ED;
+  --color-surface: #FFFFFF;
+  --color-surface-soft: #F8FAFC;
+  --color-surface-dark: #0A0A0A;
+  --color-text: #0F172A;
+  --color-text-muted: #64748B;
   --color-glass: rgba(255, 255, 255, 0.08);
   --color-glass-border: rgba(255, 255, 255, 0.12);
 }
@@ -28,15 +30,19 @@
     width: 100%;
     min-height: 100vh;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply bg-[#fafafa] dark:bg-[#0a0a0a] text-[#111] dark:text-white;
+  @apply bg-[#fafafa] dark:bg-[#0a0a0a] text-[#0f172a] dark:text-white;
   overflow-x: hidden;
 }
 

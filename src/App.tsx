@@ -5,6 +5,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
 import { ProjectsPage } from './pages/ProjectsPage';
+import { ProductsPage } from './pages/ProductsPage';
 import { AboutPage } from './pages/AboutPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { ContactPage } from './pages/ContactPage';
@@ -35,6 +36,7 @@ const AppContent = () => {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<HomePage />} />
             <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/products" element={<ProductsPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/contact" element={<ContactPage />} />
