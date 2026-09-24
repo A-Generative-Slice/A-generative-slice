@@ -1,4 +1,5 @@
 import { formConfig } from '../data/config';
+import { uploadAttachmentToSupabase, insertProjectInquiry, insertCareerApplication } from './supabaseClient';
 
 interface SubmitOptions {
     subject?: string;
@@ -12,6 +13,80 @@ export const submitForm = async (
     const provider = formConfig.provider;
 
     try {
+        if (provider === 'supabase') {
+            let fields: Record<string, any> = {};
+            let fileAttachment: File | null = null;
+
+            if (data instanceof FormData) {
+                data.forEach((val, key) => {
+                    if (val instanceof File && val.size > 0) {
+                        fileAttachment = val;
+                    } else if (typeof val === 'string') {
+                        fields[key] = val;
+                    }
+                });
+            } else {
+                fields = { ...data };
+            }
+
+            let attachmentUrl: string | undefined = undefined;
+            if (fileAttachment) {
+                const uploadRes = await uploadAttachmentToSupabase(fileAttachment);
+                if (uploadRes.success) {
+                    attachmentUrl = uploadRes.url;
+                }
+            }
+
+            if (options?.formType === 'Career Application') {
+                return await insertCareerApplication({
+                    name: fields.name || fields.fullName || 'Candidate',
+                    email: fields.email || '',
+                    phone: fields.phone || fields.contact,
+                    role: fields.role || fields.position,
+                    portfolioUrl: fields.portfolioUrl || fields.portfolio,
+                    resumeUrl: attachmentUrl || fields.resumeUrl,
+                    notes: fields.message || fields.notes || fields.coverNote
+                });
+            }
+
+            // Default to Project Inquiry
+            return await insertProjectInquiry({
+                name: fields.name || fields.fullName || 'Prospective Client',
+                email: fields.email || '',
+                phone: fields.phone || fields.contact,
+                company: fields.company,
+                category: fields.category || options?.formType || 'Web Development & AI',
+                budget: fields.budget,
+                message: fields.message || fields.projectIdea || '',
+                attachmentUrl
+            });
+        }
+
+        if (provider === 'zoho_crm') {
+            const zohoUrl = import.meta.env.VITE_ZOHO_CRM_WEBFORM_URL || 'https://crm.zoho.in/crm/WebToLeadForm';
+            let formDataToSend = new FormData();
+
+            if (data instanceof FormData) {
+                formDataToSend = data;
+            } else {
+                Object.entries(data).forEach(([k, v]) => formDataToSend.append(k, String(v)));
+            }
+
+            if (import.meta.env.VITE_ZOHO_CRM_XNQSJSIGN) {
+                formDataToSend.append('xnQsjsdp', import.meta.env.VITE_ZOHO_CRM_XNQSJSIGN);
+            }
+            if (import.meta.env.VITE_ZOHO_CRM_XMIND) {
+                formDataToSend.append('xmIwtLD', import.meta.env.VITE_ZOHO_CRM_XMIND);
+            }
+
+            await fetch(zohoUrl, {
+                method: 'POST',
+                body: formDataToSend,
+                mode: 'no-cors' // Web-to-lead forms are cross-origin opaque
+            });
+            return { success: true };
+        }
+
         if (provider === 'formspree') {
             const url = `https://formspree.io/f/${formConfig.formspreeId}`;
             let body: BodyInit;

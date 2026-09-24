@@ -20,13 +20,9 @@ export const Hero = () => {
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20 px-6">
             
-            {/* Brand Background Layer */}
-            <div className="absolute inset-0 z-0 overflow-hidden">
-                <img 
-                    src="/home/smdhussain/.gemini/antigravity/brain/fc04ed52-ae7f-464a-904d-42479754dc08/generative_slice_bg_1777650176593.png" 
-                    alt="Brand Background" 
-                    className="w-full h-full object-cover opacity-20 dark:opacity-30 mix-blend-multiply dark:mix-blend-overlay scale-110 animate-pulse-slow"
-                />
+            {/* Brand Ambient Glow Backdrop */}
+            <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                <div className="w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-500/10 via-transparent to-transparent opacity-50" />
             </div>
 
             {/* Particles Layer */}
