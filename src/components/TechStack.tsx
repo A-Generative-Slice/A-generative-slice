@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { motion, useAnimationFrame, useMotionValue, useTransform } from 'framer-motion';
 import { Layers } from 'lucide-react';
 import { FaReact, FaNodeJs, FaPython, FaDocker, FaAws, FaVuejs } from 'react-icons/fa';
-import { SiNextdotjs, SiTailwindcss, SiPostgresql, SiMongodb, SiTensorflow, SiPytorch, SiVercel, SiFramer, SiOpenai, SiRust, SiGo, SiRedis, SiGraphql, SiKubernetes, SiGooglecloud, SiFigma, SiCloudflare, SiSvelte } from 'react-icons/si';
+import { SiNextdotjs, SiTailwindcss, SiPostgresql, SiMongodb, SiTensorflow, SiPytorch, SiVercel, SiFramer, SiRust, SiGo, SiRedis, SiGraphql, SiKubernetes, SiGooglecloud, SiFigma, SiCloudflare, SiSvelte } from 'react-icons/si';
+import { TbBrandOpenai } from 'react-icons/tb';
 
 const TechMarqueeRow = ({ items, reverse = false }: { items: any[], reverse?: boolean }) => {
     const baseX = useMotionValue(0);
@@ -77,7 +78,7 @@ export const TechStack = () => {
         { name: 'Figma', icon: SiFigma, color: 'text-[#F24E1E]' },
         { name: 'TensorFlow', icon: SiTensorflow, color: 'text-[#FF6F00]' },
         { name: 'PyTorch', icon: SiPytorch, color: 'text-[#EE4C2C]' },
-        { name: 'OpenAI', icon: SiOpenai, color: 'text-black dark:text-white' },
+        { name: 'OpenAI', icon: TbBrandOpenai, color: 'text-black dark:text-white' },
         { name: 'Vercel', icon: SiVercel, color: 'text-black dark:text-white' },
         { name: 'Cloudflare', icon: SiCloudflare, color: 'text-[#F38020]' },
         { name: 'Framer', icon: SiFramer, color: 'text-[#0055FF]' },
@@ -96,16 +97,19 @@ export const TechStack = () => {
                         className="inline-flex items-center gap-2 text-orange-500 font-bold tracking-widest uppercase text-sm mb-4"
                     >
                         <Layers className="w-4 h-4" />
-                        Our Arsenal
+                        What Powers Our Tools
                     </motion.div>
                     <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-6xl font-black text-black dark:text-white tracking-tight"
+                        className="text-4xl md:text-6xl font-black text-black dark:text-white tracking-tight mb-4"
                     >
-                        Tech Stack <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Slice</span>
+                        Modern Tech, <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Simple Results</span>
                     </motion.h2>
+                    <p className="text-black/60 dark:text-white/60 text-lg max-w-2xl mx-auto">
+                        Fast, dependable tools we use under the hood so your website and automations run smoothly around the clock.
+                    </p>
                 </div>
             </div>
 

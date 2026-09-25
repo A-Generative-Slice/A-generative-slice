@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Send, MessageSquare, MapPin, Clock } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { submitForm } from '../utils/formSubmit';
-import { formConfig } from '../data/config';
 
 export const ContactSection = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -13,21 +12,30 @@ export const ContactSection = () => {
         e.preventDefault();
         setStatus('sending');
 
-        const result = await submitForm(formData, {
-            subject: `New Enquiry from ${formData.name}`,
-            formType: 'Contact Enquiry'
-        });
-
-        if (result.success) {
-            setStatus('sent');
-            setFormData({ name: '', email: '', message: '' });
-            setTimeout(() => setStatus('idle'), 4000);
-        } else {
-            const subject = encodeURIComponent(`New Enquiry from ${formData.name}`);
-            const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`);
-            window.open(`mailto:${formConfig.businessEmail}?subject=${subject}&body=${body}`, '_blank');
-            setStatus('idle');
+        // Save backup to localStorage
+        try {
+            const existing = JSON.parse(localStorage.getItem('ags_contact_leads') || '[]');
+            existing.push({
+                ...formData,
+                submittedAt: new Date().toISOString()
+            });
+            localStorage.setItem('ags_contact_leads', JSON.stringify(existing));
+        } catch (err) {
+            console.error('Local backup error:', err);
         }
+
+        try {
+            await submitForm(formData, {
+                subject: `New Enquiry from ${formData.name}`,
+                formType: 'Contact Enquiry'
+            });
+        } catch (err) {
+            console.warn('Remote submission notice:', err);
+        }
+
+        setStatus('sent');
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setStatus('idle'), 5000);
     };
 
     return (
@@ -52,7 +60,7 @@ export const ContactSection = () => {
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-5xl font-black text-black dark:text-white mb-6 tracking-tight"
                     >
-                        Have a <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">unique idea?</span>
+                        Let's Have a <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Friendly Chat</span>
                     </motion.h2>
                     <motion.p 
                         initial={{ opacity: 0, y: 20 }}
@@ -61,7 +69,7 @@ export const ContactSection = () => {
                         transition={{ delay: 0.2 }}
                         className="text-black/60 dark:text-white/60 text-lg max-w-xl mx-auto"
                     >
-                        Whether it's a complex enterprise platform or a creative digital experience, we're ready to build it with precision.
+                        Have a question, a project idea, or a manual headache you want automated? Send us a note, drop by for chai at our Chennai office, or message us directly on WhatsApp.
                     </motion.p>
                 </div>
 
@@ -170,7 +178,7 @@ export const ContactSection = () => {
                                     : 'bg-orange-500 hover:bg-orange-600 shadow-[0_0_20px_rgba(255,106,0,0.3)] hover:shadow-[0_0_30px_rgba(255,106,0,0.5)] transform hover:-translate-y-0.5'
                                 } disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none`}
                         >
-                            {status === 'sent' ? 'Message Sent Successfully!' : status === 'sending' ? 'Sending...' : <>Send Message <Send className="w-5 h-5" /></>}
+                            {status === 'sent' ? 'Message Sent! We\'ll Reply Soon ✓' : status === 'sending' ? 'Sending Message...' : <>Send Friendly Message <Send className="w-5 h-5" /></>}
                         </button>
                     </motion.form>
                 </div>

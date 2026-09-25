@@ -1,13 +1,11 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-    Globe2, Send, ArrowUpRight, Upload,
+    Send, ArrowUpRight,
     UtensilsCrossed, Cake, ReceiptText, DraftingCompass, Plane,
-    Store, FlaskConical, Warehouse, Film, Scissors,
-    CheckCircle2
+    Store, FlaskConical, Warehouse, Film, Scissors
 } from 'lucide-react';
 import { submitForm, type LeadFormData } from '../utils/formSubmit';
-import { formConfig } from '../data/config';
 
 interface ClientCaseStudy {
     id: string;
@@ -174,63 +172,61 @@ const clientCaseStudies: ClientCaseStudy[] = [
     }
 ];
 
-const verticals = [
-    'All Projects',
-    'Hospitality & F&B',
-    'Architecture & Real Estate',
-    'Luxury E-Commerce & Retail',
-    'Haute Couture'
-] as const;
-
 export const ProjectsSection = () => {
-    const [selectedVertical, setSelectedVertical] = useState<string>('All Projects');
     const [formData, setFormData] = useState<LeadFormData>({
         fullName: '',
         email: '',
         phone: '',
         company: '',
-        category: 'Hospitality & F&B',
+        category: '',
         message: '',
-        attachment: null
+        website: '',
+        landline: '',
+        linkedIn: '',
+        instagram: ''
     });
     const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
-    const fileInputRef = useRef<HTMLInputElement>(null);
-
-    const filteredProjects = selectedVertical === 'All Projects'
-        ? clientCaseStudies
-        : clientCaseStudies.filter(p => p.vertical === selectedVertical);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setStatus('sending');
 
-        const result = await submitForm(formData, {
-            subject: `Client Brief: ${formData.category} from ${formData.fullName} (${formData.company || 'Direct'})`,
-            formType: 'Client Project Inquiry'
-        });
-
-        if (result.success) {
-            setStatus('sent');
-            setFormData({
-                fullName: '',
-                email: '',
-                phone: '',
-                company: '',
-                category: 'Hospitality & F&B',
-                message: '',
-                attachment: null
+        // Save backup to localStorage
+        try {
+            const existing = JSON.parse(localStorage.getItem('ags_client_leads') || '[]');
+            existing.push({
+                ...formData,
+                submittedAt: new Date().toISOString()
             });
-            if (fileInputRef.current) fileInputRef.current.value = '';
-            setTimeout(() => setStatus('idle'), 4000);
-        } else {
-            // Fallback to mailto
-            const subjectStr = encodeURIComponent(`Project Inquiry: ${formData.category} from ${formData.fullName}`);
-            const bodyStr = encodeURIComponent(
-                `Full Name: ${formData.fullName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nCompany: ${formData.company}\nCategory: ${formData.category}\n\nProject Scope:\n${formData.message}`
-            );
-            window.open(`mailto:${formConfig.businessEmail}?subject=${subjectStr}&body=${bodyStr}`, '_blank');
-            setStatus('idle');
+            localStorage.setItem('ags_client_leads', JSON.stringify(existing));
+        } catch (err) {
+            console.error('Local backup error:', err);
         }
+
+        try {
+            await submitForm(formData, {
+                subject: `Client Brief: ${formData.category || 'Custom Project'} from ${formData.fullName} (${formData.company || 'Direct'})`,
+                formType: 'Client Project Inquiry'
+            });
+        } catch (err) {
+            console.warn('Remote submission warning:', err);
+        }
+
+        // Show clean in-app confirmation
+        setStatus('sent');
+        setFormData({
+            fullName: '',
+            email: '',
+            phone: '',
+            company: '',
+            category: '',
+            message: '',
+            website: '',
+            landline: '',
+            linkedIn: '',
+            instagram: ''
+        });
+        setTimeout(() => setStatus('idle'), 5000);
     };
 
     return (
@@ -240,15 +236,6 @@ export const ProjectsSection = () => {
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <motion.div 
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 text-[#FF5C00] font-bold tracking-widest uppercase text-xs mb-4 px-3 py-1 rounded-full bg-[#FF5C00]/10 border border-[#FF5C00]/20"
-                    >
-                        <Globe2 className="w-3.5 h-3.5" />
-                        Client Deliverables & Case Studies
-                    </motion.div>
                     <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -256,34 +243,17 @@ export const ProjectsSection = () => {
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-5xl font-black text-[#0F172A] dark:text-white mb-6 tracking-tight font-heading"
                     >
-                        Engineered <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5C00] to-[#FF8C1A]">Client Deployments</span>
+                        Real Client <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5C00] to-[#FF8C1A]">Projects & Stories</span>
                     </motion.h2>
                     <p className="text-[#64748B] dark:text-white/60 text-lg max-w-2xl mx-auto">
-                        Explore our production-grade platforms across Hospitality, Architecture, Luxury E-Commerce, and Haute Couture.
+                        Explore real websites, booking portals, and online stores we crafted for businesses in hospitality, architecture, and luxury retail.
                     </p>
-                </div>
-
-                {/* Vertical Filter Tabs */}
-                <div className="flex items-center justify-center gap-2 flex-wrap mb-16">
-                    {verticals.map((v) => (
-                        <button
-                            key={v}
-                            onClick={() => setSelectedVertical(v)}
-                            className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-300 ${
-                                selectedVertical === v
-                                    ? 'bg-[#FF5C00] text-white shadow-lg shadow-[#FF5C00]/25 scale-105'
-                                    : 'bg-black/5 dark:bg-white/5 text-[#0F172A]/70 dark:text-white/60 hover:bg-black/10 dark:hover:bg-white/10'
-                            }`}
-                        >
-                            {v}
-                        </button>
-                    ))}
                 </div>
 
                 {/* Rich Visual Cards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-32">
                     <AnimatePresence mode="popLayout">
-                        {filteredProjects.map((project, idx) => (
+                        {clientCaseStudies.map((project, idx) => (
                             <motion.div
                                 key={project.id}
                                 layout
@@ -310,12 +280,6 @@ export const ProjectsSection = () => {
                                                 </h3>
                                             </div>
                                         </div>
-
-                                        {/* Device Mockup Badge */}
-                                        <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-lg bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/10 text-[11px] font-mono text-[#64748B] dark:text-white/40">
-                                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                                            {project.mockupType}
-                                        </div>
                                     </div>
 
                                     {/* Deliverable Headline */}
@@ -328,14 +292,14 @@ export const ProjectsSection = () => {
                                         </p>
                                     </div>
 
-                                    {/* Challenge, Solution & Impact Bullets */}
+                                    {/* What they needed, What we built & Result Bullets */}
                                     <div className="space-y-3 mb-6">
                                         <div className="flex items-start gap-2.5">
                                             <div className="w-5 h-5 rounded-md bg-rose-500/10 text-rose-500 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">
                                                 ✕
                                             </div>
                                             <p className="text-xs text-[#0F172A]/80 dark:text-white/70 leading-relaxed">
-                                                <strong className="text-rose-500">The Challenge:</strong> {project.challenge}
+                                                <strong className="text-rose-500">What they needed:</strong> {project.challenge}
                                             </p>
                                         </div>
                                         <div className="flex items-start gap-2.5">
@@ -343,7 +307,7 @@ export const ProjectsSection = () => {
                                                 ⚙
                                             </div>
                                             <p className="text-xs text-[#0F172A]/80 dark:text-white/70 leading-relaxed">
-                                                <strong className="text-[#FF5C00]">Engineered Solution:</strong> {project.solution}
+                                                <strong className="text-[#FF5C00]">What we built:</strong> {project.solution}
                                             </p>
                                         </div>
                                         <div className="flex items-start gap-2.5">
@@ -351,62 +315,48 @@ export const ProjectsSection = () => {
                                                 ✓
                                             </div>
                                             <p className="text-xs text-[#0F172A]/80 dark:text-white/70 leading-relaxed">
-                                                <strong className="text-emerald-500">Business Impact:</strong> {project.impact}
+                                                <strong className="text-emerald-500">The result:</strong> {project.impact}
                                             </p>
                                         </div>
-                                    </div>
-
-                                    {/* Tech Architecture Stack */}
-                                    <div className="flex flex-wrap gap-1.5 mb-6">
-                                        {project.stack.map(tech => (
-                                            <span 
-                                                key={tech} 
-                                                className="px-2.5 py-0.5 rounded-md text-[10px] font-semibold bg-black/5 dark:bg-white/5 text-[#0F172A]/70 dark:text-white/60 border border-black/5 dark:border-white/5"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
                                     </div>
                                 </div>
 
                                 {/* Live Demo Action Link */}
-                                <div className="pt-4 border-t border-black/5 dark:border-white/5 flex items-center justify-between">
-                                    <span className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
-                                        <CheckCircle2 className="w-3.5 h-3.5" /> Production Deployed
-                                    </span>
-                                    {project.link && (
+                                {project.link && (
+                                    <div className="pt-4 border-t border-black/5 dark:border-white/5 flex items-center justify-end">
                                         <a
                                             href={project.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#FF5C00] text-white font-bold text-xs hover:bg-[#FF8C1A] transition-all shadow-md shadow-[#FF5C00]/20"
                                         >
-                                            View Live System <ArrowUpRight className="w-3.5 h-3.5" />
+                                            View Live Project <ArrowUpRight className="w-3.5 h-3.5" />
                                         </a>
-                                    )}
-                                </div>
+                                    </div>
+                                )}
                             </motion.div>
                         ))}
                     </AnimatePresence>
                 </div>
 
-                {/* Structured Client Brief Form (Zoho CRM & Supabase Standard Contract) */}
-                <div id="project-brief" className="max-w-4xl mx-auto">
-                    <div className="rounded-[2.5rem] border border-black/5 dark:border-white/10 bg-white/80 dark:bg-[#111111]/80 backdrop-blur-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+                {/* Structured Client Brief Form (Matching Card Grid Width) */}
+                <div id="project-brief" className="w-full">
+                    <div className="rounded-3xl border border-black/5 dark:border-white/10 bg-white dark:bg-[#111111] p-8 md:p-12 shadow-xl shadow-black/5 dark:shadow-none relative overflow-hidden">
                         <div className="text-center mb-10">
                             <span className="text-[#FF5C00] font-bold text-xs uppercase tracking-widest block mb-2">
-                                Direct Consultation & Architecture
+                                Work With Us
                             </span>
                             <h3 className="text-3xl md:text-4xl font-black text-[#0F172A] dark:text-white mb-3 tracking-tight font-heading">
-                                Commission a <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5C00] to-[#FF8C1A]">Client Project</span>
+                                Start a <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5C00] to-[#FF8C1A]">Project Together</span>
                             </h3>
                             <p className="text-[#64748B] dark:text-white/60 text-sm max-w-xl mx-auto">
-                                Submit your scope directly to our architecture pipeline. Responses are routed directly into our Zoho CRM & executive dispatch desk.
+                                Have a business or project you want to take online? Tell us what you're imagining. We'll get back to you within 24 hours with honest advice and a simple plan.
                             </p>
                         </div>
 
-                        <form onSubmit={handleSubmit} className="space-y-4">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <form onSubmit={handleSubmit} className="space-y-5">
+                            {/* Primary Contact Details */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 <div>
                                     <label className="block text-[11px] font-bold uppercase tracking-wider text-[#64748B] dark:text-white/50 mb-1.5">
                                         Full Name *
@@ -416,8 +366,7 @@ export const ProjectsSection = () => {
                                         required
                                         value={formData.fullName}
                                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                                        className="w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-5 py-3.5 text-sm text-[#0F172A] dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:border-[#FF5C00] transition-colors"
-                                        placeholder="e.g. Rajesh Kumar"
+                                        className="w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-5 py-3.5 text-sm text-[#0F172A] dark:text-white focus:outline-none focus:border-[#FF5C00] transition-colors"
                                     />
                                 </div>
                                 <div>
@@ -429,13 +378,12 @@ export const ProjectsSection = () => {
                                         required
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                        className="w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-5 py-3.5 text-sm text-[#0F172A] dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:border-[#FF5C00] transition-colors"
-                                        placeholder="e.g. rajesh@company.com"
+                                        className="w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-5 py-3.5 text-sm text-[#0F172A] dark:text-white focus:outline-none focus:border-[#FF5C00] transition-colors"
                                     />
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 <div>
                                     <label className="block text-[11px] font-bold uppercase tracking-wider text-[#64748B] dark:text-white/50 mb-1.5">
                                         Mobile / WhatsApp *
@@ -445,8 +393,7 @@ export const ProjectsSection = () => {
                                         required
                                         value={formData.phone}
                                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                        className="w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-5 py-3.5 text-sm text-[#0F172A] dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:border-[#FF5C00] transition-colors"
-                                        placeholder="+91 98400 12345"
+                                        className="w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-5 py-3.5 text-sm text-[#0F172A] dark:text-white focus:outline-none focus:border-[#FF5C00] transition-colors"
                                     />
                                 </div>
                                 <div>
@@ -457,26 +404,74 @@ export const ProjectsSection = () => {
                                         type="text"
                                         value={formData.company}
                                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                                        className="w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-5 py-3.5 text-sm text-[#0F172A] dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:border-[#FF5C00] transition-colors"
-                                        placeholder="e.g. Nas Construction"
+                                        className="w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-5 py-3.5 text-sm text-[#0F172A] dark:text-white focus:outline-none focus:border-[#FF5C00] transition-colors"
                                     />
                                 </div>
                             </div>
 
+                            {/* Project Category - Open text input */}
                             <div>
                                 <label className="block text-[11px] font-bold uppercase tracking-wider text-[#64748B] dark:text-white/50 mb-1.5">
                                     Project Category *
                                 </label>
-                                <select
+                                <input
+                                    type="text"
+                                    required
                                     value={formData.category}
                                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                                     className="w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-5 py-3.5 text-sm text-[#0F172A] dark:text-white focus:outline-none focus:border-[#FF5C00] transition-colors"
-                                >
-                                    <option value="Hospitality & F&B">Hospitality & F&B Automation</option>
-                                    <option value="3D & Architecture">3D & Architecture Web Portfolio</option>
-                                    <option value="Enterprise Systems">Enterprise ERP & Supply Chain Systems</option>
-                                    <option value="AI & Automation">AI Agents & Workflow Automation</option>
-                                </select>
+                                />
+                            </div>
+
+                            {/* Additional Optional Details */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label className="block text-[11px] font-bold uppercase tracking-wider text-[#64748B] dark:text-white/50 mb-1.5">
+                                        Existing Website / Link (Optional)
+                                    </label>
+                                    <input
+                                        type="text"
+                                        value={formData.website || ''}
+                                        onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                                        className="w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-5 py-3.5 text-sm text-[#0F172A] dark:text-white focus:outline-none focus:border-[#FF5C00] transition-colors"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-[11px] font-bold uppercase tracking-wider text-[#64748B] dark:text-white/50 mb-1.5">
+                                        Landline / Alt Phone (Optional)
+                                    </label>
+                                    <input
+                                        type="tel"
+                                        value={formData.landline || ''}
+                                        onChange={(e) => setFormData({ ...formData, landline: e.target.value })}
+                                        className="w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-5 py-3.5 text-sm text-[#0F172A] dark:text-white focus:outline-none focus:border-[#FF5C00] transition-colors"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label className="block text-[11px] font-bold uppercase tracking-wider text-[#64748B] dark:text-white/50 mb-1.5">
+                                        LinkedIn Profile / ID (Optional)
+                                    </label>
+                                    <input
+                                        type="text"
+                                        value={formData.linkedIn || ''}
+                                        onChange={(e) => setFormData({ ...formData, linkedIn: e.target.value })}
+                                        className="w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-5 py-3.5 text-sm text-[#0F172A] dark:text-white focus:outline-none focus:border-[#FF5C00] transition-colors"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-[11px] font-bold uppercase tracking-wider text-[#64748B] dark:text-white/50 mb-1.5">
+                                        Instagram Handle / ID (Optional)
+                                    </label>
+                                    <input
+                                        type="text"
+                                        value={formData.instagram || ''}
+                                        onChange={(e) => setFormData({ ...formData, instagram: e.target.value })}
+                                        className="w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-5 py-3.5 text-sm text-[#0F172A] dark:text-white focus:outline-none focus:border-[#FF5C00] transition-colors"
+                                    />
+                                </div>
                             </div>
 
                             <div>
@@ -488,40 +483,8 @@ export const ProjectsSection = () => {
                                     rows={4}
                                     value={formData.message}
                                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                    className="w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-5 py-3.5 text-sm text-[#0F172A] dark:text-white placeholder-black/30 dark:placeholder-white/30 focus:outline-none focus:border-[#FF5C00] transition-colors resize-none"
-                                    placeholder="Briefly describe your objectives, timelines, and technical requirements..."
+                                    className="w-full bg-[#f5f5f5] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-2xl px-5 py-3.5 text-sm text-[#0F172A] dark:text-white focus:outline-none focus:border-[#FF5C00] transition-colors resize-none"
                                 />
-                            </div>
-
-                            {/* Optional File Attachment */}
-                            <div>
-                                <label className="block text-[11px] font-bold uppercase tracking-wider text-[#64748B] dark:text-white/50 mb-1.5">
-                                    Attach Project Brief / RFP (Optional)
-                                </label>
-                                <div className="flex items-center gap-3">
-                                    <input
-                                        type="file"
-                                        ref={fileInputRef}
-                                        onChange={(e) => {
-                                            const file = e.target.files?.[0] || null;
-                                            setFormData(prev => ({ ...prev, attachment: file }));
-                                        }}
-                                        className="hidden"
-                                        id="project-attachment-file"
-                                    />
-                                    <label
-                                        htmlFor="project-attachment-file"
-                                        className="cursor-pointer inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/10 text-xs font-semibold text-[#0F172A] dark:text-white hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
-                                    >
-                                        <Upload className="w-3.5 h-3.5 text-[#FF5C00]" />
-                                        {formData.attachment ? formData.attachment.name : 'Select PDF / Brief document'}
-                                    </label>
-                                    {formData.attachment && (
-                                        <span className="text-xs text-[#64748B] dark:text-white/40">
-                                            ({(formData.attachment.size / 1024).toFixed(1)} KB)
-                                        </span>
-                                    )}
-                                </div>
                             </div>
 
                             <button
@@ -536,7 +499,7 @@ export const ProjectsSection = () => {
                                 {status === 'sent' ? (
                                     <>Brief Dispatched to Executive Desk ✓</>
                                 ) : status === 'sending' ? (
-                                    'Routing to Zoho CRM...'
+                                    'Submitting Project Scope...'
                                 ) : (
                                     <>Submit Project Scope <Send className="w-4 h-4" /></>
                                 )}

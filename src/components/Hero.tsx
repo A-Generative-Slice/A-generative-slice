@@ -20,13 +20,8 @@ export const Hero = () => {
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20 px-6">
             
-            {/* Brand Ambient Glow & Vector Backdrop */}
+            {/* Brand Ambient Glow Backdrop */}
             <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                <img 
-                    src="/brand-bg.svg" 
-                    alt="A Generative Slice Ambient Canvas" 
-                    className="w-full h-full object-cover opacity-60 dark:opacity-80 scale-105"
-                />
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-500/10 via-transparent to-transparent opacity-50" />
             </div>
 
@@ -112,14 +107,14 @@ export const Hero = () => {
                     </motion.h1>
                 </div>
 
-                {/* Sophisticated Subtitle */}
+                {/* Friendly Easy-Mode Subtitle */}
                 <motion.p 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
                     className="text-black/70 dark:text-white/70 text-lg sm:text-2xl max-w-3xl mx-auto leading-relaxed font-medium"
                 >
-                    We bridge the gap between imagination and reality, building elite digital products that define the future of business globally.
+                    We build friendly digital tools, smooth websites, and clever AI automations that help businesses grow — without the tech headaches or confusing jargon.
                 </motion.p>
             </div>
 

@@ -54,12 +54,14 @@ A GENERATIVE SLICE PLATFORM
 │   ├── Luxury E-Commerce & Retail: Velvet Trunk, Rose Chemicals, Project Mald
 │   └── Haute Couture: H. Pooja Wardrobes, Najeema Afrin Atelier
 │
-└── B. PRODX: PROPRIETARY IN-HOUSE ENGINES (/products)
-    ├── 1. AGS Spatial 3D Studio (Real-time Three.js / Spline 3D canvas)
-    ├── 2. AGS Omnichannel Outreach Engine (Automated B2B prospecting agent)
-    ├── 3. Executive AI Drafter (Zoho Mail eWidget Extension)
-    ├── 4. LiteLab AI Chief of Staff (Inbox intelligence protocol)
-    └── 5. LiteRight Academy (Interactive EdTech LMS)
+└── B. PROPRIETARY SLICE SUITE (/products)
+    ├── 1. Slice3D (Interactive 3D Product Showcase)
+    ├── 2. SliceLeads (Local Business Lead Finder)
+    ├── 3. SliceMail (Smart Outreach & Client Pitching - 400+ emails/day)
+    ├── 4. SliceInbox (Team Mailbox Chief of Staff)
+    ├── 5. SlicePPT (Instant Presentation & Deck Generator)
+    ├── 6. SliceDAM (Business Document & Asset Hub)
+    └── 7. SliceClass (Private Academy & Video Studio)
 ```
 
 ---
@@ -83,35 +85,40 @@ A GENERATIVE SLICE PLATFORM
 
 ---
 
-### Tier B: ProdX — Proprietary In-House Engines (`/products`)
+### Tier B: Proprietary Slice Suite (`/products`)
 
-| # | Engine Name | Category & Status | Core Capabilities & Architecture | Repository / License |
+| # | Product Name | Category | Friendly Purpose | Repository |
 | :---: | :--- | :--- | :--- | :--- |
-| 1 | **AGS Spatial 3D Studio** | Real-time 3D Engine • Live Alpha | Headless Blender 3D spatial computing engine; procedural MCP bridge; automated GLTF/GLB web asset generation; Three.js / Spline viewport. | [`spatial-3d-studio`](file:///sdcard/A-Generative-Slice/spatial-3d-studio) • Enterprise API |
-| 2 | **AGS Omnichannel Outreach Engine** | Autonomous Agent • Production Ready | 4-tier pipeline: Playwright Google Maps lead extraction, RFC 5321 SMTP mailbox auditing, headless WhatsApp dispatch, Instagram Direct DM queue. | [`lead-generation`](file:///sdcard/A-Generative-Slice/lead-generation) • Growth Retainers |
-| 3 | **Executive AI Drafter** | Productivity Extension • Live v1.2 | Zoho Mail eWidget right-sidebar extension; BYOK Google Gemini API architecture; auto-drafts contextual replies and extracts action items. | [`zohoMailEditor`](file:///sdcard/A-Generative-Slice/zohoMailEditor) • Annual SaaS / BYOK |
-| 4 | **LiteLab AI Chief of Staff** | Protocol & Ops Hub • Live v2.0 | FastMCP workspace triaging 4 corporate Zoho Mail channels; automated categorization, draft generation, and team routing. | [`litelabmailbox`](file:///sdcard/A-Generative-Slice/litelabmailbox) • Enterprise Internal Ops |
-| 5 | **LiteRight Academy** | EdTech LMS • Enterprise Deployed | Monochromatic security-first LMS, OTP phone authentication, 16:9 studio video streaming, course progress tracking. | [`literight`](file:///sdcard/A-Generative-Slice/literight) • Corporate Licensing |
+| 1 | **Slice3D** | Interactive 3D Product Showcase | Silky smooth 3D product visualizer in web browsers without apps or lag. | [`Slice3D`](https://github.com/A-Generative-Slice/Slice3D) |
+| 2 | **SliceLeads** | Local Business Lead Finder | Finds verified local business leads and drafts polite, personalized conversation starters. | [`SliceLeads`](https://github.com/A-Generative-Slice/SliceLeads) |
+| 3 | **SliceMail** | Smart Outreach & Client Pitching | Custom automated pitches, client updates, and 400+ customized emails/day outreach capacity. | [`SliceMail`](https://github.com/A-Generative-Slice/SliceMail) |
+| 4 | **SliceInbox** | Team Mailbox Chief of Staff | Self-hosted inbox intelligence that triages incoming client mail and sorts out noise. | [`SliceInbox`](https://github.com/A-Generative-Slice/SliceInbox) |
+| 5 | **SlicePPT** | Instant Presentation & Deck Generator | Auto-generates clean 16:9 executive presentation decks from spreadsheets and brief notes. | [`SlicePPT`](https://github.com/A-Generative-Slice/SlicePPT) |
+| 6 | **SliceDAM** | Business Document & Asset Hub | Centralized document and digital asset vault for client contracts, invoices, NDAs, and files. | [`SliceDAM`](https://github.com/A-Generative-Slice/SliceDAM) |
+| 7 | **SliceClass** | Private Academy & Video Studio | Monochromatic online learning studio with phone OTP login and buffer-free video streaming. | [`SliceClass`](https://github.com/A-Generative-Slice/SliceClass) |
 
 ---
 
-## 5. Form & Data Contract (Zoho CRM + Supabase Integration)
+## 5. Form & Data Contract
 
-All client brief and product inquiry forms are bound to `src/utils/formSubmit.ts`. The schema strictly adheres to the enterprise Web-to-Lead standard:
+All client brief and product inquiry forms are bound to `src/utils/formSubmit.ts`. The schema captures complete prospect information with zero intrusive external redirects:
 
 ```typescript
 export interface LeadFormData {
   fullName: string;      // First & Last Name
   email: string;         // Business or Personal Email
   phone: string;         // Mobile / WhatsApp with Country Code
-  company: string;       // Client Business / Brand Name
-  category: string;      // Dropdown selection (Hospitality & F&B | 3D & Architecture | Enterprise Systems | AI & Automation)
+  company?: string;      // Client Business / Brand Name
+  category: string;      // Freeform Target Tool or Requirement
   message: string;       // Project Scope / Inquiry Details
-  attachment?: File | null; // Optional File (Briefs, Spec Sheets, RFPs)
+  website?: string;      // Optional Existing Website / Link
+  landline?: string;     // Optional Landline / Alt Phone
+  linkedIn?: string;     // Optional LinkedIn Profile / ID
+  instagram?: string;    // Optional Instagram Handle / ID
 }
 ```
 
-The submission pipeline automatically detects Supabase/Zoho CRM environment endpoints:
+The submission pipeline automatically backs up leads in `localStorage` (`ags_client_leads` and `ags_prodx_leads`) and dispatches to configured endpoints:
 - When configured: Sends multipart `FormData` payload to the lead ingestion webhook.
 - Development / Offline Fallback: Gracefully caches submissions in `localStorage` (`ags_leads_backup`), emits structured console logs, and displays immediate success notifications to users.
 

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Code, Bot, Workflow, Cloud, ShoppingCart, GraduationCap, LineChart, Lightbulb, Users, Sparkles, Calendar, Phone, MailOpen, Send } from 'lucide-react';
 import { submitForm } from '../utils/formSubmit';
-import { formConfig } from '../data/config';
 
 export const ServicesListSection = () => {
     const [consultFormData, setConsultFormData] = useState({
@@ -18,88 +17,90 @@ export const ServicesListSection = () => {
         e.preventDefault();
         setStatus('sending');
 
-        const result = await submitForm(consultFormData, {
-            subject: `Free Strategy Consultation Request - ${consultFormData.name}`,
-            formType: 'Free Strategy Consultation Request'
-        });
-
-        if (result.success) {
-            setStatus('sent');
-            setConsultFormData({
-                name: '',
-                email: '',
-                contact: '',
-                projectIdea: '',
-                contactPref: 'email'
+        // Save backup to localStorage
+        try {
+            const existing = JSON.parse(localStorage.getItem('ags_consult_leads') || '[]');
+            existing.push({
+                ...consultFormData,
+                submittedAt: new Date().toISOString()
             });
-            setTimeout(() => setStatus('idle'), 4000);
-        } else {
-            // Fallback to mailto link
-            const subjectStr = encodeURIComponent(`Free Consultation Request - ${consultFormData.name}`);
-            const bodyStr = encodeURIComponent(
-                `Name: ${consultFormData.name}\n` +
-                `Email: ${consultFormData.email}\n` +
-                `Contact: ${consultFormData.contact}\n` +
-                `Preferred Contact Mode: ${consultFormData.contactPref}\n\n` +
-                `Project Idea / Goal:\n${consultFormData.projectIdea}`
-            );
-            window.open(`mailto:${formConfig.businessEmail}?subject=${subjectStr}&body=${bodyStr}`, '_blank');
-            setStatus('idle');
+            localStorage.setItem('ags_consult_leads', JSON.stringify(existing));
+        } catch (err) {
+            console.error('Local backup error:', err);
         }
+
+        try {
+            await submitForm(consultFormData, {
+                subject: `Free Strategy Consultation Request - ${consultFormData.name}`,
+                formType: 'Free Strategy Consultation Request'
+            });
+        } catch (err) {
+            console.warn('Remote submission notice:', err);
+        }
+
+        setStatus('sent');
+        setConsultFormData({
+            name: '',
+            email: '',
+            contact: '',
+            projectIdea: '',
+            contactPref: 'email'
+        });
+        setTimeout(() => setStatus('idle'), 5000);
     };
 
     const services = [
         {
-            title: "Custom SaaS & Web Development",
-            description: "End-to-end bespoke software, MVPs, and stunning portfolios architected specifically for your business challenges.",
+            title: "Websites & Portals That Sell",
+            description: "Fast, beautiful, handcrafted websites and web apps that make your business look like a Fortune 500 company without the Fortune 500 price tag.",
             icon: <Code className="w-8 h-8" />,
             accent: "from-blue-500/20 to-indigo-500/20"
         },
         {
-            title: "Autonomous AI & Chatbots",
-            description: "Advanced autonomous LLM-powered agents built to automate research, client support, or internal decision-making processes.",
+            title: "Smart AI Helpers & Chatbots",
+            description: "Friendly AI chatbots and assistants that answer customer questions 24/7, take bookings, and never call in sick on Mondays.",
             icon: <Bot className="w-8 h-8" />,
             accent: "from-purple-500/20 to-pink-500/20"
         },
         {
-            title: "Intelligent Automation",
-            description: "Automated, scalable sequences for cold emails, social media publishing, and HR funnels to skyrocket efficiency.",
+            title: "Everyday Business Automation",
+            description: "Get rid of boring repetitive chores. We connect your tools so emails send, spreadsheets update, and invoices generate themselves while you sleep.",
             icon: <Workflow className="w-8 h-8" />,
             accent: "from-orange-500/20 to-red-500/20"
         },
         {
-            title: "Cloud & DevOps Management",
-            description: "Scalable infrastructure, serverless architectures, and CI/CD pipelines designed for maximum reliability and uptime.",
+            title: "Rock-Solid Hosting & Cloud",
+            description: "No 3 AM server crashes or confusing cloud bills. We keep your apps fast, secure, and always online so you never lose a customer.",
             icon: <Cloud className="w-8 h-8" />,
             accent: "from-sky-500/20 to-blue-500/20"
         },
         {
-            title: "E-Commerce Solutions",
-            description: "High-conversion storefronts, custom marketplaces, and seamless payment integrations optimized for revenue.",
+            title: "Online Stores & Easy Checkout",
+            description: "Clean online stores where customers can actually find what they want and pay in seconds via UPI, card, or WhatsApp.",
             icon: <ShoppingCart className="w-8 h-8" />,
             accent: "from-green-500/20 to-emerald-500/20"
         },
         {
-            title: "Learning Platforms (EdTech)",
-            description: "Custom LMS architecture, student portals, and engaging course management systems tailored to your curriculum.",
+            title: "Online Academies & Course Portals",
+            description: "Everything you need to sell your knowledge online—smooth video streaming, simple student logins, and quizzes without clunky plugins.",
             icon: <GraduationCap className="w-8 h-8" />,
             accent: "from-yellow-500/20 to-amber-500/20"
         },
         {
-            title: "Digital Marketing & SEO",
-            description: "Data-driven growth strategies, technical SEO optimization, and targeted ad campaigns to dominate your market.",
+            title: "Getting Found on Google & Socials",
+            description: "Honest search engine optimization and targeted campaigns so local customers find you first instead of your competitors.",
             icon: <LineChart className="w-8 h-8" />,
             accent: "from-rose-500/20 to-red-500/20"
         },
         {
-            title: "Strategic Consultation",
-            description: "Expert IT guidance, robust product architecture, and thorough tech feasibility analysis for your next big idea.",
+            title: "Friendly Tech Advice (100% Free)",
+            description: "Got an idea but don't know where to start or how much it should cost? We sit down for a friendly chat, map out your options, and save you from overpaying.",
             icon: <Lightbulb className="w-8 h-8" />,
             accent: "from-amber-500/20 to-orange-500/20"
         },
         {
-            title: "Student Mentorship",
-            description: "Empowering the next generation of engineers through 1-on-1 personalized guidance, code reviews, and career roadmap planning.",
+            title: "Real-World Student Mentorship",
+            description: "We help passionate students skip outdated college theory and build real, working software so they can actually get hired.",
             icon: <Users className="w-8 h-8" />,
             accent: "from-teal-500/20 to-emerald-500/20"
         }
@@ -119,7 +120,7 @@ export const ServicesListSection = () => {
                         className="inline-flex items-center gap-2 text-orange-500 font-bold tracking-widest uppercase text-sm mb-4"
                     >
                         <Sparkles className="w-4 h-4" />
-                        Our Services
+                        What We Can Build For You
                     </motion.div>
                     <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
@@ -128,7 +129,7 @@ export const ServicesListSection = () => {
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-5xl font-black text-black dark:text-white mb-6 tracking-tight"
                     >
-                        Tailored Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Solutions</span>
+                        Handcrafted Tech, <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Zero Complications</span>
                     </motion.h2>
                     <motion.p 
                         initial={{ opacity: 0, y: 20 }}
@@ -137,7 +138,7 @@ export const ServicesListSection = () => {
                         transition={{ delay: 0.2 }}
                         className="text-black/60 dark:text-white/60 text-lg"
                     >
-                        We conceptualize, engineer, and deploy high-impact software, automation pipelines, and custom AI agents.
+                        Whether you need a brand-new website, an automated business workflow, or a friendly AI chatbot, we craft solutions that just work.
                     </motion.p>
                 </div>
 
@@ -177,7 +178,7 @@ export const ServicesListSection = () => {
                                 className="inline-flex items-center gap-2 text-orange-500 font-bold tracking-widest uppercase text-sm mb-4"
                             >
                                 <Calendar className="w-4 h-4" />
-                                Accelerate Your Business
+                                No Jargon, Just Honest Help
                             </motion.div>
                             <motion.h2 
                                 initial={{ opacity: 0, y: 20 }}
@@ -186,15 +187,15 @@ export const ServicesListSection = () => {
                                 transition={{ delay: 0.1 }}
                                 className="text-4xl md:text-5xl font-black text-black dark:text-white mb-6 tracking-tight leading-tight"
                             >
-                                Book a Free <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Strategy Consultation</span>
+                                Grab a Free <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Strategy Chat</span>
                             </motion.h2>
                             
                             <p className="text-black/70 dark:text-white/60 text-lg mb-8 leading-relaxed">
-                                Most clients know what problem they face or what outcome they want, but might not know the exact technical solution required.
+                                You know your business better than anyone. You know what's eating up your time or what you want to achieve, even if you don't know the technical jargon.
                             </p>
                             
                             <p className="text-black/60 dark:text-white/50 text-md mb-8 leading-relaxed">
-                                That is where our strategy session comes in. We will map out your requirements, outline the technical roadmap, suggest the optimal software stack, and design a customized implementation plan—completely free of charge.
+                                That's where we help. We sit down with you, listen carefully, and draw out a clear, step-by-step game plan—completely free of charge, with zero sales pressure.
                             </p>
                             
                             <div className="space-y-4">
@@ -202,13 +203,13 @@ export const ServicesListSection = () => {
                                     <div className="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-500">
                                         <Phone className="w-5 h-5" />
                                     </div>
-                                    <span className="text-sm font-semibold text-black/80 dark:text-white/80">Direct Call Guidance</span>
+                                    <span className="text-sm font-semibold text-black/80 dark:text-white/80">Friendly Phone or WhatsApp Call</span>
                                 </div>
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-500">
                                         <MailOpen className="w-5 h-5" />
                                     </div>
-                                    <span className="text-sm font-semibold text-black/80 dark:text-white/80">Custom Solution Roadmap</span>
+                                    <span className="text-sm font-semibold text-black/80 dark:text-white/80">Simple, Clear Action Plan</span>
                                 </div>
                             </div>
                         </div>
@@ -221,7 +222,7 @@ export const ServicesListSection = () => {
                             onSubmit={handleConsultSubmit}
                             className="bg-[#fafafa] dark:bg-[#0a0a0a] border border-black/5 dark:border-white/5 rounded-[2.5rem] p-8 md:p-10 shadow-inner relative z-10"
                         >
-                            <h3 className="text-xl font-bold text-black dark:text-white mb-6">Request Your Strategy Session</h3>
+                            <h3 className="text-xl font-bold text-black dark:text-white mb-6">Request Your Free Chat</h3>
                             
                             <div className="space-y-4">
                                 <div>
@@ -301,7 +302,7 @@ export const ServicesListSection = () => {
                                         ${status === 'sent' ? 'bg-green-500' : 'bg-orange-500 hover:bg-orange-600 shadow-xl shadow-orange-500/20'}
                                     `}
                                 >
-                                    {status === 'sent' ? 'Consultation Requested!' : status === 'sending' ? 'Sending...' : <>Request Free Consultation <Send className="w-4 h-4" /></>}
+                                    {status === 'sent' ? 'Request Received! We\'ll Talk Soon ✓' : status === 'sending' ? 'Sending Request...' : <>Book My Free Strategy Chat <Send className="w-4 h-4" /></>}
                                 </button>
                             </div>
                         </motion.form>

@@ -19,12 +19,13 @@
 
 ## 📖 About A Generative Slice
 
-**A Generative Slice** is an engineering-driven digital product studio. We specialize in generative AI systems, high-performance web applications, enterprise workflow automation, and bespoke digital ecosystems.
+**A Generative Slice** is a friendly, hands-on digital product studio based in Chennai. We craft fast websites, helpful AI chatbots, and everyday business automations for growing companies.
 
 ### Core Philosophy
-- **Direct Engineering Execution**: Zero agency fluff. High-throughput architecture and production-grade delivery.
-- **Modern Standards**: React 19, TypeScript strict mode, Vite bundling, and Tailwind CSS v4.
-- **Bespoke Craftsmanship**: Unique interactive animations, fluid motion design, and precision ergonomics.
+- **Zero Tech Jargon, Just Honest Help**: We speak plain English, not acronyms. You tell us what your business needs, and we make it happen.
+- **100% Free Initial Consultations**: We sit down with you like friends to figure out the right solution before you spend a single rupee.
+- **Modern, Reliable Craftsmanship**: Handcrafted with React 19, TypeScript, Vite, and Tailwind CSS so your software is lightning fast and never breaks.
+- **Real Student Mentorship**: We give back by training students with real-world project skills, bridging the gap between college theory and actual tech careers.
 
 ---
 

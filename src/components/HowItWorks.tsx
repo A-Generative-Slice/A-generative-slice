@@ -5,20 +5,20 @@ export const HowItWorks = () => {
     const steps = [
         {
             num: "01",
-            title: "Architecture",
-            description: "We define the technical blueprint and user experience foundations that ensure long-term scalability.",
+            title: "The Chat & Blueprint",
+            description: "You tell us what's giving you a headache or what you want to sell. We map out a crystal-clear, simple plan — zero tech fluff.",
             icon: <LayoutTemplate className="w-8 h-8 text-orange-500" />
         },
         {
             num: "02",
-            title: "Engineering",
-            description: "Our elite engineers build your product using the most advanced frameworks and performance optimizations.",
+            title: "Handcrafted Build",
+            description: "We roll up our sleeves and build your site, tool, or automation. You get regular peek-ins so you see your ideas come alive.",
             icon: <Code className="w-8 h-8 text-orange-500" />
         },
         {
             num: "03",
-            title: "Deployment",
-            description: "We handle the global rollout and infrastructure scaling to ensure a flawless launch and reliable performance.",
+            title: "Ready, Set, Launch!",
+            description: "We hook up your domain, train your team in 15 minutes, and hand you the keys. No confusing maintenance traps.",
             icon: <Rocket className="w-8 h-8 text-orange-500" />
         }
     ];
@@ -36,7 +36,7 @@ export const HowItWorks = () => {
                         viewport={{ once: true }}
                         className="inline-flex items-center gap-2 text-orange-500 font-bold tracking-widest uppercase text-sm mb-4"
                     >
-                        Our Process
+                        How We Work
                     </motion.div>
                     <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
@@ -45,7 +45,7 @@ export const HowItWorks = () => {
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-6xl font-black text-black dark:text-white tracking-tight"
                     >
-                        From <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Thought</span> to Product
+                        From <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Napkin Idea</span> to Live Product
                     </motion.h2>
                 </div>
 

@@ -40,10 +40,10 @@ export const About = () => {
                             <div className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center mb-6">
                                 <ShieldCheck className="w-6 h-6 text-orange-500" />
                             </div>
-                            <h3 className="text-2xl font-black text-black dark:text-white mb-4">Fighting Corporate Exploitation</h3>
+                            <h3 className="text-2xl font-black text-black dark:text-white mb-4">No Agency Tricks, Just Honest Work</h3>
                             <p className="text-black/60 dark:text-white/60 leading-relaxed">
-                                We witnessed corporate agencies scamming businesses by charging exorbitant fees for basic development that simply isn't needed. At A Generative Slice, we decided to change that. 
-                                We offer <strong>100% Free Initial Consultancy</strong>. We sit down with you, identify your exact issues, build the precise project you need, and maintain it transparently. We ensure total trust by professionally signing all necessary BOI papers, FF papers, and legal agreements.
+                                We've seen too many businesses get overcharged with crazy bills for simple software that shouldn't cost a fortune. At A Generative Slice, we decided to do things differently. 
+                                We offer <strong>100% Free Initial Consultancy</strong>. We sit down with you like friends, figure out what actually needs fixing, build exactly what your business needs, and maintain it transparently. We ensure complete peace of mind by signing standard non-disclosure agreements (NDAs), clear contracts, and milestone agreements before touching a line of code.
                             </p>
                         </div>
                     </motion.div>

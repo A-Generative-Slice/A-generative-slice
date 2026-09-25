@@ -12,6 +12,10 @@ export interface LeadFormData {
     formType?: string;
     submittedAt?: string;
     sourceUrl?: string;
+    website?: string;
+    landline?: string;
+    linkedIn?: string;
+    instagram?: string;
 }
 
 export interface SubmitOptions {
@@ -99,6 +103,14 @@ export const submitForm = async (
                 });
             }
 
+            const fullMessageNotes = [
+                fields.message || fields.projectIdea || '',
+                fields.website ? `Website: ${fields.website}` : '',
+                fields.landline ? `Landline: ${fields.landline}` : '',
+                fields.linkedIn ? `LinkedIn: ${fields.linkedIn}` : '',
+                fields.instagram ? `Instagram: ${fields.instagram}` : '',
+            ].filter(Boolean).join('\n');
+
             // Default to Project Inquiry
             return await insertProjectInquiry({
                 name: fields.name || fields.fullName || 'Prospective Client',
@@ -107,7 +119,7 @@ export const submitForm = async (
                 company: fields.company,
                 category: fields.category || options?.formType || 'Web Development & AI',
                 budget: fields.budget,
-                message: fields.message || fields.projectIdea || '',
+                message: fullMessageNotes,
                 attachmentUrl
             });
         }

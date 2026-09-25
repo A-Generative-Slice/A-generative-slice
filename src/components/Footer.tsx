@@ -4,17 +4,17 @@ import logoImg from '../assets/logo.jpg';
 export const Footer = () => {
     return (
         <footer className="py-12 px-6 border-t border-black/10 dark:border-white/10 bg-[#fafafa] dark:bg-[#050505]">
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-6">
                 {/* Brand */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center justify-center md:justify-start gap-3">
                     <div className="w-8 h-8 rounded-lg overflow-hidden shadow-lg shadow-black/10 dark:shadow-white/10">
                         <img src={logoImg} alt="A Generative Slice" className="w-full h-full object-cover" />
                     </div>
                     <span className="text-black/60 dark:text-white/60 font-black text-xs uppercase tracking-widest">A GENERATIVE SLICE</span>
                 </div>
 
-                {/* Social Links */}
-                <div className="flex items-center gap-6">
+                {/* Social Links - Perfectly Centered */}
+                <div className="flex items-center justify-center gap-6">
                     <a href="https://www.instagram.com/a_generative_slice/" target="_blank" rel="noopener noreferrer"
                         className="text-black/40 dark:text-white/40 hover:text-pink-500 transition-colors" title="Instagram">
                         <FaInstagram className="w-5 h-5" />
@@ -34,7 +34,7 @@ export const Footer = () => {
                 </div>
 
                 {/* Copyright */}
-                <p className="text-black/40 dark:text-white/30 text-sm font-medium">
+                <p className="text-black/40 dark:text-white/30 text-sm font-medium text-center md:text-right">
                     © {new Date().getFullYear()} A Generative Slice. All rights reserved.
                 </p>
             </div>

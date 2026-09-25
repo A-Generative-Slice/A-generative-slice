@@ -7,20 +7,24 @@ export const FAQSection = () => {
 
     const faqs = [
         {
-            question: "What industries do you specialize in?",
-            answer: "We have extensive experience building scalable solutions for e-commerce, healthcare, logistics, and enterprise SaaS. However, our modular architecture allows us to adapt to any industry requirement."
+            question: "What kinds of businesses do you work with?",
+            answer: "From local cloud kitchens, bridal couture ateliers, and architecture firms to fast-growing businesses who want their daily work automated. If you have customers to delight and hours of manual work to save, we're your crew."
         },
         {
-            question: "How do you handle project timelines?",
-            answer: "We follow agile methodologies. After an initial discovery phase, we break the project into 2-week sprints, ensuring continuous delivery and allowing for flexibility as your needs evolve."
+            question: "Will I need to understand coding or tech to run this?",
+            answer: "Zero. If you can use WhatsApp or send an email, you can comfortably run whatever we build for you. We keep dashboards and tools delightfully simple so you never have to wrestle with tech."
         },
         {
-            question: "Do you provide post-launch support?",
-            answer: "Absolutely. We offer comprehensive maintenance and support packages, including server monitoring, security updates, and feature enhancements to ensure your product scales seamlessly."
+            question: "How fast can we launch?",
+            answer: "Most projects go from initial chat to live launch in 1 to 3 weeks. We move quickly so you can start seeing real results instead of waiting through months of committee meetings."
         },
         {
-            question: "What is your technology stack?",
-            answer: "We primarily build with React, Next.js, Node.js, and Python for AI integrations. We also utilize modern cloud infrastructure like AWS and serverless architectures for maximum scalability."
+            question: "What happens after launch? Will you disappear?",
+            answer: "Never. We stay right by your side. If you ever need a tweak, want to add a feature, or have a question, we're just a quick phone call or message away."
+        },
+        {
+            question: "How does pricing work? Any hidden surprises?",
+            answer: "100% upfront and honest. We give you a straightforward, fixed quote before touching a single line of code. No hidden fees, no hourly padding, and no surprise bills."
         }
     ];
 

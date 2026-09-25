@@ -117,7 +117,10 @@ export const CareersSection = () => {
         submitData.append('resume', formData.resumeFile);
         submitData.append('subject', `Job Application: ${formData.post} - ${formData.name}`);
 
-        const result = await submitForm(submitData);
+        const result = await submitForm(submitData, {
+            subject: `Job Application: ${formData.post} - ${formData.name}`,
+            formType: 'Career Application'
+        });
 
         if (result.success) {
             setStatus('sent');
