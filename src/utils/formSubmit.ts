@@ -1,4 +1,5 @@
 import { formConfig } from '../data/config';
+import { uploadAttachmentToSupabase, insertProjectInquiry, insertCareerApplication } from './supabaseClient';
 
 export interface LeadFormData {
     fullName: string;
@@ -58,7 +59,86 @@ export const submitForm = async (
             }
         }
 
-        // 1. Formspree Provider
+        // 1. Supabase Provider
+        if (provider === 'supabase') {
+            let fields: Record<string, any> = {};
+            let fileAttachment: File | null = null;
+
+            if (data instanceof FormData) {
+                data.forEach((val, key) => {
+                    if (val instanceof File && val.size > 0) {
+                        fileAttachment = val;
+                    } else if (typeof val === 'string') {
+                        fields[key] = val;
+                    }
+                });
+            } else {
+                fields = { ...data };
+                if (data.attachment instanceof File) {
+                    fileAttachment = data.attachment;
+                }
+            }
+
+            let attachmentUrl: string | undefined = undefined;
+            if (fileAttachment) {
+                const uploadRes = await uploadAttachmentToSupabase(fileAttachment);
+                if (uploadRes.success) {
+                    attachmentUrl = uploadRes.url;
+                }
+            }
+
+            if (options?.formType === 'Career Application') {
+                return await insertCareerApplication({
+                    name: fields.name || fields.fullName || 'Candidate',
+                    email: fields.email || '',
+                    phone: fields.phone || fields.contact,
+                    role: fields.role || fields.position,
+                    portfolioUrl: fields.portfolioUrl || fields.portfolio,
+                    resumeUrl: attachmentUrl || fields.resumeUrl,
+                    notes: fields.message || fields.notes || fields.coverNote
+                });
+            }
+
+            // Default to Project Inquiry
+            return await insertProjectInquiry({
+                name: fields.name || fields.fullName || 'Prospective Client',
+                email: fields.email || '',
+                phone: fields.phone || fields.contact,
+                company: fields.company,
+                category: fields.category || options?.formType || 'Web Development & AI',
+                budget: fields.budget,
+                message: fields.message || fields.projectIdea || '',
+                attachmentUrl
+            });
+        }
+
+        // 2. Zoho CRM Provider
+        if (provider === 'zoho_crm') {
+            const zohoUrl = import.meta.env.VITE_ZOHO_CRM_WEBFORM_URL || 'https://crm.zoho.in/crm/WebToLeadForm';
+            let formDataToSend = new FormData();
+
+            if (payload instanceof FormData) {
+                formDataToSend = payload;
+            } else {
+                Object.entries(payload).forEach(([k, v]) => formDataToSend.append(k, String(v)));
+            }
+
+            if (import.meta.env.VITE_ZOHO_CRM_XNQSJSIGN) {
+                formDataToSend.append('xnQsjsdp', import.meta.env.VITE_ZOHO_CRM_XNQSJSIGN);
+            }
+            if (import.meta.env.VITE_ZOHO_CRM_XMIND) {
+                formDataToSend.append('xmIwtLD', import.meta.env.VITE_ZOHO_CRM_XMIND);
+            }
+
+            await fetch(zohoUrl, {
+                method: 'POST',
+                body: formDataToSend,
+                mode: 'no-cors' // Web-to-lead forms are cross-origin opaque
+            });
+            return { success: true };
+        }
+
+        // 3. Formspree Provider
         if (provider === 'formspree') {
             const url = `https://formspree.io/f/${formConfig.formspreeId}`;
             let body: BodyInit;

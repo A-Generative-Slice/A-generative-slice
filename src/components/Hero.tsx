@@ -20,13 +20,14 @@ export const Hero = () => {
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20 px-6">
             
-            {/* Brand Background Layer */}
+            {/* Brand Ambient Glow & Vector Backdrop */}
             <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
                 <img 
                     src="/brand-bg.svg" 
                     alt="A Generative Slice Ambient Canvas" 
                     className="w-full h-full object-cover opacity-60 dark:opacity-80 scale-105"
                 />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-500/10 via-transparent to-transparent opacity-50" />
             </div>
 
             {/* Particles Layer */}
