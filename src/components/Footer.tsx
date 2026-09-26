@@ -5,7 +5,7 @@ export const Footer = () => {
     return (
         <footer className="py-12 px-6 border-t border-black/10 dark:border-white/10 bg-[#fafafa] dark:bg-[#050505]">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-6">
-                {/* Brand & Direct Contact */}
+                {/* Brand Identity */}
                 <div className="flex flex-col items-center md:items-start gap-1">
                     <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-lg overflow-hidden shadow-lg shadow-black/10 dark:shadow-white/10">
@@ -13,11 +13,7 @@ export const Footer = () => {
                         </div>
                         <span className="text-black/70 dark:text-white/70 font-black text-xs uppercase tracking-widest">A GENERATIVE SLICE</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-black/50 dark:text-white/50 mt-1">
-                        <a href="mailto:smdhussain@agenerativeslice.com" className="hover:text-orange-500 transition-colors">smdhussain@agenerativeslice.com</a>
-                        <span>•</span>
-                        <a href="tel:+917812891494" className="hover:text-orange-500 transition-colors">+91 78128 91494</a>
-                    </div>
+                    <span className="text-[11px] text-black/40 dark:text-white/40 tracking-wider">Enterprise Systems & AI Architecture</span>
                 </div>
 
                 {/* Social Links - Perfectly Centered */}

@@ -5,20 +5,23 @@ export const HowItWorks = () => {
     const steps = [
         {
             num: "01",
-            title: "The Chat & Blueprint",
-            description: "You tell us what's giving you a headache or what you want to sell. We map out a crystal-clear, simple plan — zero tech fluff.",
+            title: "Ready",
+            subtitle: "Architecture & Discovery Blueprint",
+            description: "We analyze your bottlenecks, dissect the vision, and map out a high-velocity execution roadmap — zero tech fluff, pure strategic clarity.",
             icon: <LayoutTemplate className="w-8 h-8 text-orange-500" />
         },
         {
             num: "02",
-            title: "Handcrafted Build",
-            description: "We roll up our sleeves and build your site, tool, or automation. You get regular peek-ins so you see your ideas come alive.",
+            title: "Set",
+            subtitle: "Precision Engineering & Rapid Build",
+            description: "We craft your bespoke systems, autonomous AI agents, and 3D experiences with transparent milestones and real-time sprint reviews.",
             icon: <Code className="w-8 h-8 text-orange-500" />
         },
         {
             num: "03",
-            title: "Ready, Set, Launch!",
-            description: "We hook up your domain, train your team in 15 minutes, and hand you the keys. No confusing maintenance traps.",
+            title: "Launch",
+            subtitle: "Production Deployment & Scaled Handover",
+            description: "We configure production domains, connect your CRM/data pipelines, train your team in 15 minutes, and hand you full operational command.",
             icon: <Rocket className="w-8 h-8 text-orange-500" />
         }
     ];
@@ -45,7 +48,7 @@ export const HowItWorks = () => {
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-6xl font-black text-black dark:text-white tracking-tight"
                     >
-                        From <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Napkin Idea</span> to Live Product
+                        From <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Vision</span> to Scalable Reality
                     </motion.h2>
                 </div>
 
@@ -71,10 +74,13 @@ export const HowItWorks = () => {
                                 {step.icon}
                             </div>
 
-                            <h3 className="text-2xl font-black text-black dark:text-white mb-4 tracking-tight">
+                            <h3 className="text-3xl font-black text-black dark:text-white mb-1 tracking-tight">
                                 {step.title}
                             </h3>
-                            <p className="text-black/60 dark:text-white/60 leading-relaxed max-w-sm mx-auto">
+                            <span className="text-xs uppercase font-bold tracking-widest text-orange-500 mb-3 block">
+                                {step.subtitle}
+                            </span>
+                            <p className="text-black/60 dark:text-white/60 text-sm leading-relaxed max-w-sm mx-auto">
                                 {step.description}
                             </p>
                         </motion.div>

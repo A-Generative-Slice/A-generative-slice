@@ -1,13 +1,18 @@
 import { useState } from 'react';
 import { motion, useAnimationFrame, useMotionValue, useTransform } from 'framer-motion';
 import { Layers } from 'lucide-react';
-import { FaReact, FaNodeJs, FaPython, FaDocker, FaAws, FaVuejs } from 'react-icons/fa';
-import { SiNextdotjs, SiTailwindcss, SiPostgresql, SiMongodb, SiTensorflow, SiPytorch, SiVercel, SiFramer, SiRust, SiGo, SiRedis, SiGraphql, SiKubernetes, SiGooglecloud, SiFigma, SiCloudflare, SiSvelte } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaPython, FaDocker, FaAws } from 'react-icons/fa';
+import { 
+    SiNextdotjs, SiTailwindcss, SiPostgresql, SiVercel, SiFramer, SiRust, SiGo, 
+    SiRedis, SiFigma, SiCloudflare, SiTypescript, SiVite, SiSupabase, 
+    SiThreedotjs, SiBlender, SiFirebase, SiGooglegemini, SiGreensock, 
+    SiRazorpay, SiFastapi, SiOllama, SiZoho 
+} from 'react-icons/si';
 import { TbBrandOpenai } from 'react-icons/tb';
 
 const TechMarqueeRow = ({ items, reverse = false }: { items: any[], reverse?: boolean }) => {
     const baseX = useMotionValue(0);
-    const speed = 0.02; // Slower, readable scrolling speed
+    const speed = 0.008; // Slower, silky smooth readable scrolling speed
     const velocity = reverse ? speed : -speed;
     const [isDragging, setIsDragging] = useState(false);
 
@@ -27,9 +32,9 @@ const TechMarqueeRow = ({ items, reverse = false }: { items: any[], reverse?: bo
     });
 
     return (
-        <div className="flex overflow-hidden cursor-grab active:cursor-grabbing py-4 w-full">
+        <div className="flex overflow-hidden cursor-grab active:cursor-grabbing py-3 w-full">
             <motion.div 
-                className="flex gap-8 pr-8 w-max"
+                className="flex gap-6 pr-6 w-max transform-gpu will-change-transform"
                 style={{ x }}
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
@@ -37,15 +42,14 @@ const TechMarqueeRow = ({ items, reverse = false }: { items: any[], reverse?: bo
                 onDragStart={() => setIsDragging(true)}
                 onDragEnd={() => setIsDragging(false)}
                 onDrag={(_, info) => {
-                    // Update baseX immediately when dragging
-                    baseX.set(baseX.get() + info.delta.x * 0.05);
+                    baseX.set(baseX.get() + info.delta.x * 0.03);
                 }}
             >
                 {/* Render 4 complete sets to guarantee seamless wrapping at 25% */}
                 {[...items, ...items, ...items, ...items].map((tech, i) => (
-                    <div key={i} className="flex items-center gap-4 px-8 py-5 bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/10 rounded-2xl shadow-sm shrink-0 pointer-events-none">
-                        <tech.icon className={`w-8 h-8 ${tech.color}`} />
-                        <span className="text-xl font-black text-black/80 dark:text-white/80 tracking-tight">{tech.name}</span>
+                    <div key={i} className="flex items-center gap-3.5 px-6 py-4 bg-gray-50/90 dark:bg-[#111111]/90 backdrop-blur-sm border border-black/5 dark:border-white/10 rounded-2xl shadow-sm shrink-0 pointer-events-none hover:border-orange-500/30 transition-colors">
+                        <tech.icon className={`w-7 h-7 ${tech.color}`} />
+                        <span className="text-lg font-black text-black/85 dark:text-white/85 tracking-tight">{tech.name}</span>
                     </div>
                 ))}
             </motion.div>
@@ -57,31 +61,35 @@ export const TechStack = () => {
     const techRow1 = [
         { name: 'React', icon: FaReact, color: 'text-[#61DAFB]' },
         { name: 'Next.js', icon: SiNextdotjs, color: 'text-black dark:text-white' },
-        { name: 'Vue', icon: FaVuejs, color: 'text-[#4FC08D]' },
-        { name: 'Svelte', icon: SiSvelte, color: 'text-[#FF3E00]' },
-        { name: 'Tailwind', icon: SiTailwindcss, color: 'text-[#06B6D4]' },
-        { name: 'Node.js', icon: FaNodeJs, color: 'text-[#339933]' },
+        { name: 'TypeScript', icon: SiTypescript, color: 'text-[#3178C6]' },
+        { name: 'Three.js', icon: SiThreedotjs, color: 'text-black dark:text-white' },
+        { name: 'Blender 3D', icon: SiBlender, color: 'text-[#E87D0D]' },
+        { name: 'Tailwind CSS', icon: SiTailwindcss, color: 'text-[#06B6D4]' },
+        { name: 'Vite', icon: SiVite, color: 'text-[#646CFF]' },
         { name: 'Python', icon: FaPython, color: 'text-[#3776AB]' },
-        { name: 'Rust', icon: SiRust, color: 'text-black dark:text-white' },
+        { name: 'Node.js', icon: FaNodeJs, color: 'text-[#339933]' },
+        { name: 'Rust', icon: SiRust, color: 'text-[#DEA584]' },
+        { name: 'GSAP', icon: SiGreensock, color: 'text-[#88CE02]' },
+        { name: 'Framer Motion', icon: SiFramer, color: 'text-[#0055FF]' },
+        { name: 'Figma', icon: SiFigma, color: 'text-[#F24E1E]' },
         { name: 'Go', icon: SiGo, color: 'text-[#00ADD8]' },
-        { name: 'PostgreSQL', icon: SiPostgresql, color: 'text-[#4169E1]' },
-        { name: 'MongoDB', icon: SiMongodb, color: 'text-[#47A248]' },
-        { name: 'Redis', icon: SiRedis, color: 'text-[#DC382D]' },
-        { name: 'GraphQL', icon: SiGraphql, color: 'text-[#E10098]' },
     ];
 
     const techRow2 = [
-        { name: 'Docker', icon: FaDocker, color: 'text-[#2496ED]' },
-        { name: 'Kubernetes', icon: SiKubernetes, color: 'text-[#326CE5]' },
-        { name: 'AWS', icon: FaAws, color: 'text-[#FF9900]' },
-        { name: 'GCP', icon: SiGooglecloud, color: 'text-[#4285F4]' },
-        { name: 'Figma', icon: SiFigma, color: 'text-[#F24E1E]' },
-        { name: 'TensorFlow', icon: SiTensorflow, color: 'text-[#FF6F00]' },
-        { name: 'PyTorch', icon: SiPytorch, color: 'text-[#EE4C2C]' },
+        { name: 'Supabase', icon: SiSupabase, color: 'text-[#3ECF8E]' },
+        { name: 'Gemini AI', icon: SiGooglegemini, color: 'text-[#8E75FF]' },
         { name: 'OpenAI', icon: TbBrandOpenai, color: 'text-black dark:text-white' },
+        { name: 'Ollama', icon: SiOllama, color: 'text-black dark:text-white' },
+        { name: 'Zoho CRM & Mail', icon: SiZoho, color: 'text-[#E42528]' },
+        { name: 'Firebase', icon: SiFirebase, color: 'text-[#FFCA28]' },
+        { name: 'PostgreSQL', icon: SiPostgresql, color: 'text-[#4169E1]' },
+        { name: 'Redis', icon: SiRedis, color: 'text-[#DC382D]' },
+        { name: 'Docker', icon: FaDocker, color: 'text-[#2496ED]' },
+        { name: 'Razorpay', icon: SiRazorpay, color: 'text-[#0C2340] dark:text-[#528FF0]' },
+        { name: 'FastAPI', icon: SiFastapi, color: 'text-[#009688]' },
+        { name: 'AWS', icon: FaAws, color: 'text-[#FF9900]' },
         { name: 'Vercel', icon: SiVercel, color: 'text-black dark:text-white' },
         { name: 'Cloudflare', icon: SiCloudflare, color: 'text-[#F38020]' },
-        { name: 'Framer', icon: SiFramer, color: 'text-[#0055FF]' },
     ];
 
     return (
@@ -113,7 +121,7 @@ export const TechStack = () => {
                 </div>
             </div>
 
-            <div className="relative w-full flex flex-col gap-6 -rotate-2 scale-105">
+            <div className="relative w-full flex flex-col gap-6 -rotate-1 scale-102">
                 <TechMarqueeRow items={techRow1} reverse={false} />
                 <TechMarqueeRow items={techRow2} reverse={true} />
             </div>
