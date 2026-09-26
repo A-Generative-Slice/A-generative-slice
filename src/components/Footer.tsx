@@ -13,7 +13,6 @@ export const Footer = () => {
                         </div>
                         <span className="text-black/70 dark:text-white/70 font-black text-xs uppercase tracking-widest">A GENERATIVE SLICE</span>
                     </div>
-                    <span className="text-[11px] text-black/40 dark:text-white/40 tracking-wider">Enterprise Systems & AI Architecture</span>
                 </div>
 
                 {/* Social Links - Perfectly Centered */}

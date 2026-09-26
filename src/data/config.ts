@@ -1,9 +1,8 @@
 export const companyContacts = {
     emails: {
         zoho: 'smdhussain@agenerativeslice.com',
-        primary: 'agenerativeslice@gmail.com',
-        founder: 's.m.d.hussainjoe@gmail.com',
-        media: 'axgraphicxslice@gmail.com'
+        primary: 'smdhussain@agenerativeslice.com',
+        founder: 's.m.d.hussainjoe@gmail.com'
     },
     phones: {
         primary: '+91 78128 91494'
@@ -30,9 +29,9 @@ export const formConfig = {
     provider: 'supabase' as 'supabase' | 'zoho_crm' | 'formspree' | 'web3forms' | 'emailjs',
 
     // Primary business contact emails
-    businessEmail: companyContacts.emails.primary,
+    businessEmail: companyContacts.emails.zoho,
     founderEmail: companyContacts.emails.founder,
-    mediaEmail: companyContacts.emails.media,
+    mediaEmail: companyContacts.emails.zoho,
 
     // 1. Formspree Form ID
     formspreeId: import.meta.env.VITE_FORMSPREE_ID || 'xdkogvnp',

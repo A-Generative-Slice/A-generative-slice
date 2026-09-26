@@ -39,7 +39,7 @@ export const ContactSection = () => {
     };
 
     return (
-        <section id="contact" className="py-32 px-6 relative bg-white dark:bg-[#0a0a0a]">
+        <section id="contact" className="pt-28 pb-20 sm:pt-36 sm:pb-28 px-4 sm:px-6 relative bg-white dark:bg-[#0a0a0a]">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-black/10 dark:via-white/10 to-transparent" />
 
             <div className="max-w-6xl mx-auto">
@@ -73,8 +73,8 @@ export const ContactSection = () => {
                     </motion.p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch mb-16">
-                    {/* Location & Map */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch mb-12 sm:mb-16">
+                    {/* Direct Contact Details & Map */}
                     <motion.div 
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -82,78 +82,76 @@ export const ContactSection = () => {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="flex flex-col space-y-6 h-full"
                     >
-                        <div className="bg-gray-50 dark:bg-[#111111]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-3xl p-8 shadow-2xl h-full flex flex-col justify-between">
+                        <div className="bg-gray-50 dark:bg-[#111111]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl h-full flex flex-col justify-between">
                             <div>
                                 <h3 className="text-2xl font-black text-black dark:text-white mb-6">Direct Communication</h3>
                                 
-                                {/* Direct Email IDs */}
-                                <div className="flex items-start gap-4 mb-6">
-                                    <Mail className="w-6 h-6 text-orange-500 shrink-0 mt-1" />
-                                    <div>
-                                        <h4 className="text-black dark:text-white font-bold">Email Us Directly</h4>
-                                        <div className="space-y-1.5 mt-1 text-sm">
-                                            <div>
-                                                <a href="mailto:smdhussain@agenerativeslice.com" className="text-orange-500 font-semibold hover:underline">
-                                                    smdhussain@agenerativeslice.com
-                                                </a>
-                                                <span className="text-black/40 dark:text-white/40 text-xs ml-2">(Official Zoho Business Mail)</span>
-                                            </div>
-                                            <div>
-                                                <a href="mailto:agenerativeslice@gmail.com" className="text-black/70 dark:text-white/70 hover:text-orange-500 font-medium">
-                                                    agenerativeslice@gmail.com
-                                                </a>
-                                                <span className="text-black/40 dark:text-white/40 text-xs ml-2">(Primary & Inquiries)</span>
-                                            </div>
-                                            <div>
-                                                <a href="mailto:axgraphicxslice@gmail.com" className="text-black/70 dark:text-white/70 hover:text-orange-500 font-medium">
-                                                    axgraphicxslice@gmail.com
-                                                </a>
-                                                <span className="text-black/40 dark:text-white/40 text-xs ml-2">(Design & Media)</span>
-                                            </div>
+                                <div className="space-y-4 mb-6">
+                                    {/* Zoho Business Email */}
+                                    <div className="flex items-start gap-3.5 sm:gap-4 p-3 sm:p-3.5 rounded-2xl bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/5 transition-colors">
+                                        <div className="w-10 h-10 rounded-xl bg-orange-500/10 dark:bg-orange-500/20 flex items-center justify-center shrink-0 text-orange-500 mt-0.5">
+                                            <Mail className="w-5 h-5" />
+                                        </div>
+                                        <div className="min-w-0 flex-1">
+                                            <h4 className="text-xs font-bold uppercase tracking-wider text-black/50 dark:text-white/50">Email Us Directly</h4>
+                                            <a 
+                                                href="mailto:smdhussain@agenerativeslice.com" 
+                                                className="text-sm sm:text-base font-bold text-orange-500 hover:text-orange-600 dark:hover:text-orange-400 break-all transition-colors block mt-1"
+                                            >
+                                                smdhussain@agenerativeslice.com
+                                            </a>
                                         </div>
                                     </div>
-                                </div>
 
-                                {/* Direct Phone & WhatsApp */}
-                                <div className="flex items-start gap-4 mb-6">
-                                    <Phone className="w-6 h-6 text-orange-500 shrink-0 mt-1" />
-                                    <div>
-                                        <h4 className="text-black dark:text-white font-bold">Phone & WhatsApp</h4>
-                                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-sm">
-                                            <a href="https://wa.me/917812891494" target="_blank" rel="noopener noreferrer" className="text-green-600 dark:text-green-400 font-semibold hover:underline">
+                                    {/* Direct Phone & WhatsApp */}
+                                    <div className="flex items-start gap-3.5 sm:gap-4 p-3 sm:p-3.5 rounded-2xl bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/5 transition-colors">
+                                        <div className="w-10 h-10 rounded-xl bg-green-500/10 dark:bg-green-500/20 flex items-center justify-center shrink-0 text-green-500 mt-0.5">
+                                            <Phone className="w-5 h-5" />
+                                        </div>
+                                        <div className="min-w-0 flex-1">
+                                            <h4 className="text-xs font-bold uppercase tracking-wider text-black/50 dark:text-white/50">Phone & WhatsApp</h4>
+                                            <a 
+                                                href="https://wa.me/917812891494" 
+                                                target="_blank" 
+                                                rel="noopener noreferrer" 
+                                                className="text-sm sm:text-base font-bold text-green-600 dark:text-green-400 hover:underline block mt-1"
+                                            >
                                                 +91 78128 91494
                                             </a>
-                                            <span className="text-black/40 dark:text-white/40 text-xs">(Direct Call & WhatsApp)</span>
                                         </div>
                                     </div>
-                                </div>
 
-                                {/* Address */}
-                                <div className="flex items-start gap-4 mb-6">
-                                    <MapPin className="w-6 h-6 text-orange-500 shrink-0 mt-1" />
-                                    <div>
-                                        <h4 className="text-black dark:text-white font-bold">Chennai Office</h4>
-                                        <p className="text-black/60 dark:text-white/60 text-sm leading-relaxed mt-1">
-                                            No: 144, Valluvar Kottam High Rd,<br />
-                                            Nungambakkam, Chennai,<br />
-                                            Tamil Nadu 600034
-                                        </p>
+                                    {/* Chennai Office */}
+                                    <div className="flex items-start gap-3.5 sm:gap-4 p-3 sm:p-3.5 rounded-2xl bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/5 transition-colors">
+                                        <div className="w-10 h-10 rounded-xl bg-orange-500/10 dark:bg-orange-500/20 flex items-center justify-center shrink-0 text-orange-500 mt-0.5">
+                                            <MapPin className="w-5 h-5" />
+                                        </div>
+                                        <div className="min-w-0 flex-1">
+                                            <h4 className="text-xs font-bold uppercase tracking-wider text-black/50 dark:text-white/50">Chennai Office</h4>
+                                            <p className="text-xs sm:text-sm font-medium text-black/80 dark:text-white/80 leading-relaxed mt-1">
+                                                No: 144, Valluvar Kottam High Rd,<br />
+                                                Nungambakkam, Chennai,<br />
+                                                Tamil Nadu 600034
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
 
-                                {/* Working Hours */}
-                                <div className="flex items-start gap-4 mb-6">
-                                    <Clock className="w-6 h-6 text-orange-500 shrink-0 mt-1" />
-                                    <div>
-                                        <h4 className="text-black dark:text-white font-bold">Working Hours</h4>
-                                        <p className="text-black/60 dark:text-white/60 text-sm leading-relaxed mt-1">
-                                            Monday to Friday, 9:00 AM to 7:00 PM IST
-                                        </p>
+                                    {/* Working Hours */}
+                                    <div className="flex items-start gap-3.5 sm:gap-4 p-3 sm:p-3.5 rounded-2xl bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/5 transition-colors">
+                                        <div className="w-10 h-10 rounded-xl bg-orange-500/10 dark:bg-orange-500/20 flex items-center justify-center shrink-0 text-orange-500 mt-0.5">
+                                            <Clock className="w-5 h-5" />
+                                        </div>
+                                        <div className="min-w-0 flex-1">
+                                            <h4 className="text-xs font-bold uppercase tracking-wider text-black/50 dark:text-white/50">Working Hours</h4>
+                                            <p className="text-xs sm:text-sm font-medium text-black/80 dark:text-white/80 leading-relaxed mt-1">
+                                                Monday to Friday, 9:00 AM to 7:00 PM IST
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="w-full h-[250px] rounded-2xl overflow-hidden border border-black/5 dark:border-white/10 shadow-inner">
+                            <div className="w-full h-[200px] sm:h-[220px] rounded-2xl overflow-hidden border border-black/5 dark:border-white/10 shadow-inner mt-2">
                                 <iframe 
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.6343516082496!2d80.24350107570494!3d13.058914612958431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526640c4a45a6d%3A0x6b4f707f18b14a60!2sValluvar%20Kottam%20High%20Rd%2C%20Nungambakkam%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1714809240321!5m2!1sen!2sin" 
                                     width="100%" 
@@ -175,50 +173,52 @@ export const ContactSection = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.3 }}
                         onSubmit={handleSubmit} 
-                        className="bg-gray-50 dark:bg-[#111111]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden h-full flex flex-col"
+                        className="bg-gray-50 dark:bg-[#111111]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl relative overflow-hidden h-full flex flex-col justify-between"
                     >
                         <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl pointer-events-none" />
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6 relative z-10">
-                            <div>
-                                <label htmlFor="contact-name" className="text-black/50 dark:text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Name</label>
-                                <input
-                                    id="contact-name"
-                                    name="name"
-                                    type="text"
+                        <div className="relative z-10">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
+                                <div>
+                                    <label htmlFor="contact-name" className="text-black/50 dark:text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Name</label>
+                                    <input
+                                        id="contact-name"
+                                        name="name"
+                                        type="text"
+                                        required
+                                        value={formData.name}
+                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                        className="w-full bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-xl px-4 sm:px-5 py-3.5 sm:py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/20 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all text-sm sm:text-base"
+                                        placeholder="John Doe"
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="contact-email" className="text-black/50 dark:text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Email</label>
+                                    <input
+                                        id="contact-email"
+                                        name="email"
+                                        type="email"
+                                        required
+                                        value={formData.email}
+                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                        className="w-full bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-xl px-4 sm:px-5 py-3.5 sm:py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/20 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all text-sm sm:text-base"
+                                        placeholder="john@example.com"
+                                    />
+                                </div>
+                            </div>
+                            <div className="mb-6">
+                                <label htmlFor="contact-message" className="text-black/50 dark:text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Message</label>
+                                <textarea
+                                    id="contact-message"
+                                    name="message"
                                     required
-                                    value={formData.name}
-                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                    className="w-full bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/20 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all"
-                                    placeholder="John Doe"
+                                    rows={5}
+                                    value={formData.message}
+                                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                    className="w-full bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-xl px-4 sm:px-5 py-3.5 sm:py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/20 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all resize-none text-sm sm:text-base"
+                                    placeholder="Tell us about your project or idea..."
                                 />
                             </div>
-                            <div>
-                                <label htmlFor="contact-email" className="text-black/50 dark:text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Email</label>
-                                <input
-                                    id="contact-email"
-                                    name="email"
-                                    type="email"
-                                    required
-                                    value={formData.email}
-                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                    className="w-full bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/20 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all"
-                                    placeholder="john@example.com"
-                                />
-                            </div>
-                        </div>
-                        <div className="mb-8 relative z-10">
-                            <label htmlFor="contact-message" className="text-black/50 dark:text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Message</label>
-                            <textarea
-                                id="contact-message"
-                                name="message"
-                                required
-                                rows={5}
-                                value={formData.message}
-                                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                className="w-full bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-xl px-5 py-4 text-black dark:text-white placeholder-black/30 dark:placeholder-white/20 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all resize-none"
-                                placeholder="Tell us about your project or idea..."
-                            />
                         </div>
                         <button
                             type="submit"
