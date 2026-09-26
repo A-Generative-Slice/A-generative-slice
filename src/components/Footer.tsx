@@ -14,9 +14,9 @@ export const Footer = () => {
                         <span className="text-black/70 dark:text-white/70 font-black text-xs uppercase tracking-widest">A GENERATIVE SLICE</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs text-black/50 dark:text-white/50 mt-1">
-                        <a href="mailto:agenerativeslice@gmail.com" className="hover:text-orange-500 transition-colors">agenerativeslice@gmail.com</a>
+                        <a href="mailto:smdhussain@agenerativeslice.com" className="hover:text-orange-500 transition-colors">smdhussain@agenerativeslice.com</a>
                         <span>•</span>
-                        <a href="tel:+919344115330" className="hover:text-orange-500 transition-colors">+91 93441 15330</a>
+                        <a href="tel:+917812891494" className="hover:text-orange-500 transition-colors">+91 78128 91494</a>
                     </div>
                 </div>
 
@@ -34,7 +34,7 @@ export const Footer = () => {
                         className="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors" title="GitHub">
                         <FaGithub className="w-5 h-5" />
                     </a>
-                    <a href="https://wa.me/919344115330" target="_blank" rel="noopener noreferrer"
+                    <a href="https://wa.me/917812891494" target="_blank" rel="noopener noreferrer"
                         className="text-black/40 dark:text-white/40 hover:text-green-500 transition-colors" title="WhatsApp">
                         <FaWhatsapp className="w-5 h-5" />
                     </a>

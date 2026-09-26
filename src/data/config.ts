@@ -1,14 +1,14 @@
 export const companyContacts = {
     emails: {
+        zoho: 'smdhussain@agenerativeslice.com',
         primary: 'agenerativeslice@gmail.com',
         founder: 's.m.d.hussainjoe@gmail.com',
         media: 'axgraphicxslice@gmail.com'
     },
     phones: {
-        primary: '+91 93441 15330',
-        support: '+91 78128 91494'
+        primary: '+91 78128 91494'
     },
-    whatsappUrl: 'https://wa.me/919344115330',
+    whatsappUrl: 'https://wa.me/917812891494',
     address: {
         line1: 'No: 144, Valluvar Kottam High Rd',
         area: 'Nungambakkam, Chennai',

@@ -93,16 +93,16 @@ export const ContactSection = () => {
                                         <h4 className="text-black dark:text-white font-bold">Email Us Directly</h4>
                                         <div className="space-y-1.5 mt-1 text-sm">
                                             <div>
-                                                <a href="mailto:agenerativeslice@gmail.com" className="text-orange-500 font-semibold hover:underline">
+                                                <a href="mailto:smdhussain@agenerativeslice.com" className="text-orange-500 font-semibold hover:underline">
+                                                    smdhussain@agenerativeslice.com
+                                                </a>
+                                                <span className="text-black/40 dark:text-white/40 text-xs ml-2">(Official Zoho Business Mail)</span>
+                                            </div>
+                                            <div>
+                                                <a href="mailto:agenerativeslice@gmail.com" className="text-black/70 dark:text-white/70 hover:text-orange-500 font-medium">
                                                     agenerativeslice@gmail.com
                                                 </a>
                                                 <span className="text-black/40 dark:text-white/40 text-xs ml-2">(Primary & Inquiries)</span>
-                                            </div>
-                                            <div>
-                                                <a href="mailto:s.m.d.hussainjoe@gmail.com" className="text-black/70 dark:text-white/70 hover:text-orange-500 font-medium">
-                                                    s.m.d.hussainjoe@gmail.com
-                                                </a>
-                                                <span className="text-black/40 dark:text-white/40 text-xs ml-2">(Founder Direct)</span>
                                             </div>
                                             <div>
                                                 <a href="mailto:axgraphicxslice@gmail.com" className="text-black/70 dark:text-white/70 hover:text-orange-500 font-medium">
@@ -120,13 +120,10 @@ export const ContactSection = () => {
                                     <div>
                                         <h4 className="text-black dark:text-white font-bold">Phone & WhatsApp</h4>
                                         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-sm">
-                                            <a href="https://wa.me/919344115330" target="_blank" rel="noopener noreferrer" className="text-green-600 dark:text-green-400 font-semibold hover:underline">
-                                                +91 93441 15330
-                                            </a>
-                                            <span className="text-black/30 dark:text-white/30">•</span>
-                                            <a href="tel:+917812891494" className="text-black/70 dark:text-white/70 hover:text-orange-500 font-medium">
+                                            <a href="https://wa.me/917812891494" target="_blank" rel="noopener noreferrer" className="text-green-600 dark:text-green-400 font-semibold hover:underline">
                                                 +91 78128 91494
                                             </a>
+                                            <span className="text-black/40 dark:text-white/40 text-xs">(Direct Call & WhatsApp)</span>
                                         </div>
                                     </div>
                                 </div>
@@ -245,7 +242,7 @@ export const ContactSection = () => {
                     transition={{ duration: 0.5, delay: 0.4 }}
                     className="grid grid-cols-2 sm:grid-cols-4 gap-4"
                 >
-                    <a href="https://wa.me/919344115330" target="_blank" rel="noopener noreferrer" 
+                    <a href="https://wa.me/917812891494" target="_blank" rel="noopener noreferrer" 
                        className="group flex flex-col items-center justify-center gap-2 p-4 rounded-2xl bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/5 hover:border-green-500/50 hover:bg-green-500/5 transition-all">
                         <FaWhatsapp className="w-6 h-6 text-green-500 group-hover:scale-110 transition-transform" />
                         <span className="text-black/70 dark:text-white/70 text-sm font-medium">WhatsApp</span>
