@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { motion, useAnimationFrame, useMotionValue, useTransform } from 'framer-motion';
 import { Layers } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { FaReact, FaNodeJs, FaPython, FaDocker, FaAws } from 'react-icons/fa';
 import { 
     SiNextdotjs, SiTailwindcss, SiPostgresql, SiVercel, SiFramer, SiRust, SiGo, 
@@ -11,48 +10,20 @@ import {
 import { TbBrandOpenai } from 'react-icons/tb';
 
 const TechMarqueeRow = ({ items, reverse = false }: { items: any[], reverse?: boolean }) => {
-    const baseX = useMotionValue(0);
-    const speed = 0.008; // Slower, silky smooth readable scrolling speed
-    const velocity = reverse ? speed : -speed;
-    const [isDragging, setIsDragging] = useState(false);
-
-    useAnimationFrame((_, delta) => {
-        if (!isDragging) {
-            let moveBy = velocity * (delta / 16); // Normalize by roughly 60fps frame time
-            baseX.set(baseX.get() + moveBy);
-        }
-    });
-
-    // Wrap around infinitely. We duplicate the array 4 times to have a huge seamless block.
-    // The width of 1 original set is exactly 25% of the total rendered flex container.
-    const x = useTransform(baseX, (v) => {
-        const wrapFactor = 25; // 25% represents one full set of items
-        const wrappedValue = ((v % wrapFactor) - wrapFactor) % wrapFactor;
-        return `${wrappedValue}%`;
-    });
-
     return (
-        <div className="flex overflow-hidden cursor-grab active:cursor-grabbing py-3 w-full">
-            <motion.div 
-                className="flex gap-6 pr-6 w-max transform-gpu will-change-transform"
-                style={{ x }}
-                drag="x"
-                dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={1}
-                onDragStart={() => setIsDragging(true)}
-                onDragEnd={() => setIsDragging(false)}
-                onDrag={(_, info) => {
-                    baseX.set(baseX.get() + info.delta.x * 0.03);
-                }}
-            >
-                {/* Render 4 complete sets to guarantee seamless wrapping at 25% */}
-                {[...items, ...items, ...items, ...items].map((tech, i) => (
-                    <div key={i} className="flex items-center gap-3.5 px-6 py-4 bg-gray-50/90 dark:bg-[#111111]/90 backdrop-blur-sm border border-black/5 dark:border-white/10 rounded-2xl shadow-sm shrink-0 pointer-events-none hover:border-orange-500/30 transition-colors">
-                        <tech.icon className={`w-7 h-7 ${tech.color}`} />
-                        <span className="text-lg font-black text-black/85 dark:text-white/85 tracking-tight">{tech.name}</span>
+        <div className="overflow-hidden w-full select-none [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+            <div className={`flex gap-5 py-2.5 ${reverse ? 'animate-marquee-reverse' : 'animate-marquee'}`}>
+                {/* 2 duplicates guarantee 100% continuous translation without layout shifts */}
+                {[...items, ...items].map((tech, i) => (
+                    <div 
+                        key={i} 
+                        className="flex items-center gap-3.5 px-6 py-4 bg-slate-100/90 dark:bg-[#121212] border border-black/5 dark:border-white/10 rounded-2xl shrink-0 hover:border-orange-500/40 transition-colors"
+                    >
+                        <tech.icon className={`w-7 h-7 ${tech.color} shrink-0`} />
+                        <span className="text-base sm:text-lg font-bold text-slate-800 dark:text-slate-100 tracking-tight whitespace-nowrap">{tech.name}</span>
                     </div>
                 ))}
-            </motion.div>
+            </div>
         </div>
     );
 };
@@ -121,7 +92,7 @@ export const TechStack = () => {
                 </div>
             </div>
 
-            <div className="relative w-full flex flex-col gap-6 -rotate-1 scale-102">
+            <div className="relative w-full flex flex-col gap-5">
                 <TechMarqueeRow items={techRow1} reverse={false} />
                 <TechMarqueeRow items={techRow2} reverse={true} />
             </div>
