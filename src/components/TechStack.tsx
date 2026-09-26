@@ -201,7 +201,7 @@ export const TechStack = () => {
     ];
 
     return (
-        <section className="py-32 md:py-44 overflow-hidden bg-white dark:bg-[#050505] relative border-y border-black/5 dark:border-white/5">
+        <section className="py-28 md:py-36 overflow-hidden bg-white dark:bg-[#050505] relative border-y border-black/5 dark:border-white/5">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-orange-500/5 via-transparent to-transparent pointer-events-none" />
             
             <div className="max-w-7xl mx-auto px-6 mb-16 relative z-10">
@@ -229,8 +229,8 @@ export const TechStack = () => {
                 </div>
             </div>
 
-            {/* 15-degree slanted interactive track spanning full viewport */}
-            <div className="relative w-[150%] -left-[25%] flex flex-col gap-6 -rotate-[15deg] my-16 py-6">
+            {/* 5-degree slanted interactive track */}
+            <div className="relative w-[115%] -left-[7.5%] flex flex-col gap-5 -rotate-[5deg] my-8 py-4">
                 <TechMarqueeRow items={techRow1} reverse={false} speed={1.0} />
                 <TechMarqueeRow items={techRow2} reverse={true} speed={1.0} />
             </div>
