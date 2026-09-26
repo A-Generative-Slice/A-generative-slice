@@ -14,13 +14,12 @@ interface TechItem {
     name: string;
     icon: React.ComponentType<{ className?: string }>;
     color: string;
-    usedIn?: string;
 }
 
 const TechMarqueeRow = ({ 
     items, 
     reverse = false, 
-    speed = 0.5 
+    speed = 1.0 
 }: { 
     items: TechItem[], 
     reverse?: boolean, 
@@ -99,7 +98,7 @@ const TechMarqueeRow = ({
             if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
             resumeTimeoutRef.current = window.setTimeout(() => {
                 setIsPaused(false);
-            }, 1200);
+            }, 1000);
         }
     };
 
@@ -128,13 +127,13 @@ const TechMarqueeRow = ({
         if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
         resumeTimeoutRef.current = window.setTimeout(() => {
             setIsPaused(false);
-        }, 1500);
+        }, 1200);
     };
 
     return (
         <div 
             ref={containerRef}
-            className="overflow-x-auto overflow-y-hidden cursor-grab active:cursor-grabbing select-none no-scrollbar w-full py-2 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
+            className="overflow-x-auto overflow-y-hidden cursor-grab active:cursor-grabbing select-none no-scrollbar w-full py-2.5 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
             onMouseDown={onMouseDown}
             onMouseMove={onMouseMove}
             onMouseUp={onMouseUp}
@@ -155,15 +154,10 @@ const TechMarqueeRow = ({
                     <div 
                         key={i} 
                         draggable={false}
-                        className="flex items-center gap-3.5 px-5 py-3.5 bg-slate-100/90 dark:bg-[#121212] border border-black/5 dark:border-white/10 rounded-2xl shrink-0 hover:border-orange-500/60 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer shadow-[0_2px_8px_rgba(0,0,0,0.03)] group"
+                        className="flex items-center gap-3.5 px-6 py-4 bg-slate-100/95 dark:bg-[#121212] border border-black/5 dark:border-white/10 rounded-2xl shrink-0 hover:border-orange-500/70 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer shadow-[0_2px_10px_rgba(0,0,0,0.03)] group"
                     >
                         <tech.icon className={`w-7 h-7 ${tech.color} shrink-0 group-hover:scale-110 transition-transform`} />
-                        <div className="flex flex-col">
-                            <span className="text-base font-bold text-slate-800 dark:text-slate-100 tracking-tight whitespace-nowrap">{tech.name}</span>
-                            {tech.usedIn && (
-                                <span className="text-[10px] text-orange-500 font-semibold whitespace-nowrap">{tech.usedIn}</span>
-                            )}
-                        </div>
+                        <span className="text-base sm:text-lg font-bold text-slate-800 dark:text-slate-100 tracking-tight whitespace-nowrap">{tech.name}</span>
                     </div>
                 ))}
             </div>
@@ -173,41 +167,41 @@ const TechMarqueeRow = ({
 
 export const TechStack = () => {
     const techRow1: TechItem[] = [
-        { name: 'React', icon: FaReact, color: 'text-[#61DAFB]', usedIn: 'Core Web & Apps' },
-        { name: 'Next.js', icon: SiNextdotjs, color: 'text-black dark:text-white', usedIn: 'Rose Chemicals B2B' },
-        { name: 'TypeScript', icon: SiTypescript, color: 'text-[#3178C6]', usedIn: 'Universal Standard' },
-        { name: 'Three.js', icon: SiThreedotjs, color: 'text-black dark:text-white', usedIn: 'NASD-C & Spatial 3D' },
-        { name: 'Blender 3D', icon: SiBlender, color: 'text-[#E87D0D]', usedIn: 'Procedural Models' },
-        { name: 'Tailwind CSS', icon: SiTailwindcss, color: 'text-[#06B6D4]', usedIn: 'Modern Design System' },
-        { name: 'Vite', icon: SiVite, color: 'text-[#646CFF]', usedIn: 'Ultra-Fast Bundling' },
-        { name: 'Python', icon: FaPython, color: 'text-[#3776AB]', usedIn: 'Automation & AI Scrapers' },
-        { name: 'Node.js', icon: FaNodeJs, color: 'text-[#339933]', usedIn: 'Backend Runtimes' },
-        { name: 'Rust', icon: SiRust, color: 'text-[#DEA584]', usedIn: 'LAMCAP Offline Engine' },
-        { name: 'GSAP', icon: SiGreensock, color: 'text-[#88CE02]', usedIn: 'NAS Luxury Animations' },
-        { name: 'Framer Motion', icon: SiFramer, color: 'text-[#0055FF]', usedIn: 'Interactive UI Physics' },
-        { name: 'Figma', icon: SiFigma, color: 'text-[#F24E1E]', usedIn: 'Atelier Lookbooks' },
-        { name: 'Go', icon: SiGo, color: 'text-[#00ADD8]', usedIn: 'High-Concurrency Services' },
+        { name: 'React', icon: FaReact, color: 'text-[#61DAFB]' },
+        { name: 'Next.js', icon: SiNextdotjs, color: 'text-black dark:text-white' },
+        { name: 'TypeScript', icon: SiTypescript, color: 'text-[#3178C6]' },
+        { name: 'Three.js', icon: SiThreedotjs, color: 'text-black dark:text-white' },
+        { name: 'Blender 3D', icon: SiBlender, color: 'text-[#E87D0D]' },
+        { name: 'Tailwind CSS', icon: SiTailwindcss, color: 'text-[#06B6D4]' },
+        { name: 'Vite', icon: SiVite, color: 'text-[#646CFF]' },
+        { name: 'Python', icon: FaPython, color: 'text-[#3776AB]' },
+        { name: 'Node.js', icon: FaNodeJs, color: 'text-[#339933]' },
+        { name: 'Rust', icon: SiRust, color: 'text-[#DEA584]' },
+        { name: 'GSAP', icon: SiGreensock, color: 'text-[#88CE02]' },
+        { name: 'Framer Motion', icon: SiFramer, color: 'text-[#0055FF]' },
+        { name: 'Figma', icon: SiFigma, color: 'text-[#F24E1E]' },
+        { name: 'Go', icon: SiGo, color: 'text-[#00ADD8]' },
     ];
 
     const techRow2: TechItem[] = [
-        { name: 'Supabase', icon: SiSupabase, color: 'text-[#3ECF8E]', usedIn: 'Web-to-Lead & Database' },
-        { name: 'Gemini AI', icon: SiGooglegemini, color: 'text-[#8E75FF]', usedIn: 'Project Mald & Zoho AI' },
-        { name: 'OpenAI', icon: TbBrandOpenai, color: 'text-black dark:text-white', usedIn: 'Prospecting Agents' },
-        { name: 'Ollama', icon: SiOllama, color: 'text-black dark:text-white', usedIn: 'KaiPulla Offline AI' },
-        { name: 'Zoho CRM & Mail', icon: SiZoho, color: 'text-[#E42528]', usedIn: 'CRM Sync & eWidget' },
-        { name: 'Firebase', icon: SiFirebase, color: 'text-[#FFCA28]', usedIn: 'Sree Ambal Offline PWA' },
-        { name: 'PostgreSQL', icon: SiPostgresql, color: 'text-[#4169E1]', usedIn: 'ERP Stock Ledger' },
-        { name: 'Redis', icon: SiRedis, color: 'text-[#DC382D]', usedIn: 'Cache & Queue Layer' },
-        { name: 'Docker', icon: FaDocker, color: 'text-[#2496ED]', usedIn: 'Containerized Services' },
-        { name: 'Razorpay', icon: SiRazorpay, color: 'text-[#0C2340] dark:text-[#528FF0]', usedIn: 'B2B & Expo Payments' },
-        { name: 'FastAPI', icon: SiFastapi, color: 'text-[#009688]', usedIn: 'FastMCP Microservices' },
-        { name: 'AWS', icon: FaAws, color: 'text-[#FF9900]', usedIn: 'Cloud Infrastructure' },
-        { name: 'Vercel', icon: SiVercel, color: 'text-black dark:text-white', usedIn: 'Edge CDN & Hosting' },
-        { name: 'Cloudflare', icon: SiCloudflare, color: 'text-[#F38020]', usedIn: 'Global DNS & Security' },
+        { name: 'Supabase', icon: SiSupabase, color: 'text-[#3ECF8E]' },
+        { name: 'Gemini AI', icon: SiGooglegemini, color: 'text-[#8E75FF]' },
+        { name: 'OpenAI', icon: TbBrandOpenai, color: 'text-black dark:text-white' },
+        { name: 'Ollama', icon: SiOllama, color: 'text-black dark:text-white' },
+        { name: 'Zoho CRM & Mail', icon: SiZoho, color: 'text-[#E42528]' },
+        { name: 'Firebase', icon: SiFirebase, color: 'text-[#FFCA28]' },
+        { name: 'PostgreSQL', icon: SiPostgresql, color: 'text-[#4169E1]' },
+        { name: 'Redis', icon: SiRedis, color: 'text-[#DC382D]' },
+        { name: 'Docker', icon: FaDocker, color: 'text-[#2496ED]' },
+        { name: 'Razorpay', icon: SiRazorpay, color: 'text-[#0C2340] dark:text-[#528FF0]' },
+        { name: 'FastAPI', icon: SiFastapi, color: 'text-[#009688]' },
+        { name: 'AWS', icon: FaAws, color: 'text-[#FF9900]' },
+        { name: 'Vercel', icon: SiVercel, color: 'text-black dark:text-white' },
+        { name: 'Cloudflare', icon: SiCloudflare, color: 'text-[#F38020]' },
     ];
 
     return (
-        <section className="py-28 md:py-32 overflow-hidden bg-white dark:bg-[#050505] relative border-y border-black/5 dark:border-white/5">
+        <section className="py-32 md:py-44 overflow-hidden bg-white dark:bg-[#050505] relative border-y border-black/5 dark:border-white/5">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-orange-500/5 via-transparent to-transparent pointer-events-none" />
             
             <div className="max-w-7xl mx-auto px-6 mb-16 relative z-10">
@@ -235,9 +229,10 @@ export const TechStack = () => {
                 </div>
             </div>
 
-            <div className="relative w-full flex flex-col gap-4">
-                <TechMarqueeRow items={techRow1} reverse={false} speed={0.4} />
-                <TechMarqueeRow items={techRow2} reverse={true} speed={0.4} />
+            {/* 15-degree slanted interactive track spanning full viewport */}
+            <div className="relative w-[150%] -left-[25%] flex flex-col gap-6 -rotate-[15deg] my-16 py-6">
+                <TechMarqueeRow items={techRow1} reverse={false} speed={1.0} />
+                <TechMarqueeRow items={techRow2} reverse={true} speed={1.0} />
             </div>
         </section>
     );

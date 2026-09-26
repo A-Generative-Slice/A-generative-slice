@@ -136,6 +136,12 @@ The submission pipeline automatically backs up leads in `localStorage` (`ags_cli
 
 ## 7. Change Log & Verification Milestones
 
+- **2026-09-26 (Update 11 - 15-Degree Slanted Ribbon, Pure Tool Names & Brisk Speed)**:
+  - **15-Degree Dynamic Slant**: Slanted the dual marquee tracks by `-15deg` (`w-[150%] -left-[25%] -rotate-[15deg]`) with expanded section padding (`py-32 md:py-44`) for a sweeping diagonal ribbon aesthetic.
+  - **Tool-Only Card Typography**: Removed all project sub names (`usedIn`), focusing purely on the tool icon and bold tool name.
+  - **Brisk Speed**: Boosted auto-scroll velocity to `1.0` (more than 2x faster) for an energetic, fluid glide while preserving touch/mouse drag interactivity.
+  - **Recompiled & Live**: Vite 7 bundle recompiled and serving live on `http://localhost:3000`.
+
 - **2026-09-26 (Update 10 - Interactive & Draggable Hardware-Smooth Tech Ribbon)**:
   - **Full Touch & Mouse Drag Interactivity**: Engineered direct swipe/pan support for both mobile touch and desktop mouse grabbing with momentum physics and wrap-around infinite looping.
   - **Zero Layout Thrashing**: Implemented sub-pixel float reference accumulation in `requestAnimationFrame` writing directly to `scrollLeft` without forced reflow or JS hook overhead.
