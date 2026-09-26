@@ -4,9 +4,9 @@
 > **Location**: `/sdcard/A-Generative-Slice/A-generative-slice/PORTFOLIO_CONTEXT.md`  
 > **Target Domain**: `agenerativeslice.com` / `A-Generative-Slice`  
 > **Founder / Lead**: Mohammed Hussain (`smdhussain06` • `s.m.d.hussainjoe@gmail.com`)  
-> **Last Synchronized**: September 24, 2026  
+> **Last Synchronized**: September 26, 2026  
 > **Live Local Preview**: **`http://localhost:3000`**  
-> **Live Wi-Fi LAN Preview**: **`http://192.168.125.199:3000`**  
+> **Live Wi-Fi LAN Preview**: **`http://10.149.6.104:3000`**  
 
 ---
 
@@ -15,11 +15,11 @@
 The preview server is bound to `0.0.0.0:3000` with SPA routing and cache-invalidation headers. It is accessible across your entire Wi-Fi / Local Area Network.
 
 ### Across Wi-Fi (Any Device on the same Network - Laptop, PC, Tablet, Phone):
-- 🌐 **Home / Main Site**: **`http://192.168.125.199:3000`**
-- 🚀 **Dedicated ProdX / In-House Products**: **`http://192.168.125.199:3000/products`**
-- 🏛️ **Client Case Studies & Projects**: **`http://192.168.125.199:3000/projects`**
-- 💼 **Services**: **`http://192.168.125.199:3000/services`**
-- ℹ️ **About Us**: **`http://192.168.125.199:3000/about`**
+- 🌐 **Home / Main Site**: **`http://10.149.6.104:3000`**
+- 🚀 **Dedicated ProdX / In-House Products**: **`http://10.149.6.104:3000/products`**
+- 🏛️ **Client Case Studies & Projects**: **`http://10.149.6.104:3000/projects`**
+- 💼 **Services**: **`http://10.149.6.104:3000/services`**
+- ℹ️ **About Us**: **`http://10.149.6.104:3000/about`**
 
 ### On Host Device (Localhost):
 - 📱 **Local**: **`http://localhost:3000`**
@@ -135,6 +135,15 @@ The submission pipeline automatically backs up leads in `localStorage` (`ags_cli
 ---
 
 ## 7. Change Log & Verification Milestones
+
+- **2026-09-26 (Update 8 - Full Org Remote Synchronization & Backend Resilience)**:
+  - **Organization-Wide Sync**: Audited all 20 repositories under `/sdcard/A-Generative-Slice/`. Fetched and fast-forward pulled all remote commits from GitHub.
+  - **A-generative-slice**: Pulled 3 commits (`ce55439`, `03ecfae`, `e228db1`):
+    - Showcased official contact number `+91 78128 91494` and official Zoho business email.
+    - Completed Slice suite (SliceLeads, SlicePPT, SliceDAM), easy-mode copy, centered footer social icons, and eliminated mailto popups.
+    - Removed tool source links, added direct contact emails, and reinforced Supabase resilience.
+  - **documentation-and-management**: Pulled 1 commit (`33c6ccd`) adding branded System Requirement Note (SRN) & SOW proposal template with generation workflow.
+  - **Fresh Build & Deployment**: Vite 7.3 production build recompiled and actively serving on `http://localhost:3000` and Wi-Fi LAN `http://10.149.6.104:3000`.
 
 - **2026-09-24 (Update 7 - Brand & Structural Directives Completed)**:
   - **Fixed `Hero.tsx`**: Replaced absolute disk path with relative `/brand-bg.svg`.
