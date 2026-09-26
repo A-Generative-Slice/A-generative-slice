@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, MessageSquare, MapPin, Clock } from 'lucide-react';
+import { Send, MessageSquare, MapPin, Clock, Mail, Phone } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { submitForm } from '../utils/formSubmit';
 
@@ -82,29 +82,77 @@ export const ContactSection = () => {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="flex flex-col space-y-6 h-full"
                     >
-                        <div className="bg-gray-50 dark:bg-[#111111]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-3xl p-8 shadow-2xl h-full flex flex-col">
-                            <h3 className="text-2xl font-black text-black dark:text-white mb-6">Visit Our Office</h3>
-                            
-                            <div className="flex items-start gap-4 mb-6">
-                                <MapPin className="w-6 h-6 text-orange-500 shrink-0 mt-1" />
-                                <div>
-                                    <h4 className="text-black dark:text-white font-bold">Address</h4>
-                                    <p className="text-black/60 dark:text-white/60 text-sm leading-relaxed mt-1">
-                                        No: 144, Valluvar Kottam High Rd,<br />
-                                        Nungambakkam, Chennai,<br />
-                                        Tamil Nadu 600034
-                                    </p>
+                        <div className="bg-gray-50 dark:bg-[#111111]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-3xl p-8 shadow-2xl h-full flex flex-col justify-between">
+                            <div>
+                                <h3 className="text-2xl font-black text-black dark:text-white mb-6">Direct Communication</h3>
+                                
+                                {/* Direct Email IDs */}
+                                <div className="flex items-start gap-4 mb-6">
+                                    <Mail className="w-6 h-6 text-orange-500 shrink-0 mt-1" />
+                                    <div>
+                                        <h4 className="text-black dark:text-white font-bold">Email Us Directly</h4>
+                                        <div className="space-y-1.5 mt-1 text-sm">
+                                            <div>
+                                                <a href="mailto:agenerativeslice@gmail.com" className="text-orange-500 font-semibold hover:underline">
+                                                    agenerativeslice@gmail.com
+                                                </a>
+                                                <span className="text-black/40 dark:text-white/40 text-xs ml-2">(Primary & Inquiries)</span>
+                                            </div>
+                                            <div>
+                                                <a href="mailto:s.m.d.hussainjoe@gmail.com" className="text-black/70 dark:text-white/70 hover:text-orange-500 font-medium">
+                                                    s.m.d.hussainjoe@gmail.com
+                                                </a>
+                                                <span className="text-black/40 dark:text-white/40 text-xs ml-2">(Founder Direct)</span>
+                                            </div>
+                                            <div>
+                                                <a href="mailto:axgraphicxslice@gmail.com" className="text-black/70 dark:text-white/70 hover:text-orange-500 font-medium">
+                                                    axgraphicxslice@gmail.com
+                                                </a>
+                                                <span className="text-black/40 dark:text-white/40 text-xs ml-2">(Design & Media)</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="flex items-start gap-4 mb-8">
-                                <Clock className="w-6 h-6 text-orange-500 shrink-0 mt-1" />
-                                <div>
-                                    <h4 className="text-black dark:text-white font-bold">Working Hours</h4>
-                                    <p className="text-black/60 dark:text-white/60 text-sm leading-relaxed mt-1">
-                                        Come visit us on working days<br />
-                                        Monday to Friday, 9:00 AM to 7:00 PM
-                                    </p>
+                                {/* Direct Phone & WhatsApp */}
+                                <div className="flex items-start gap-4 mb-6">
+                                    <Phone className="w-6 h-6 text-orange-500 shrink-0 mt-1" />
+                                    <div>
+                                        <h4 className="text-black dark:text-white font-bold">Phone & WhatsApp</h4>
+                                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-sm">
+                                            <a href="https://wa.me/919344115330" target="_blank" rel="noopener noreferrer" className="text-green-600 dark:text-green-400 font-semibold hover:underline">
+                                                +91 93441 15330
+                                            </a>
+                                            <span className="text-black/30 dark:text-white/30">•</span>
+                                            <a href="tel:+917812891494" className="text-black/70 dark:text-white/70 hover:text-orange-500 font-medium">
+                                                +91 78128 91494
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Address */}
+                                <div className="flex items-start gap-4 mb-6">
+                                    <MapPin className="w-6 h-6 text-orange-500 shrink-0 mt-1" />
+                                    <div>
+                                        <h4 className="text-black dark:text-white font-bold">Chennai Office</h4>
+                                        <p className="text-black/60 dark:text-white/60 text-sm leading-relaxed mt-1">
+                                            No: 144, Valluvar Kottam High Rd,<br />
+                                            Nungambakkam, Chennai,<br />
+                                            Tamil Nadu 600034
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Working Hours */}
+                                <div className="flex items-start gap-4 mb-6">
+                                    <Clock className="w-6 h-6 text-orange-500 shrink-0 mt-1" />
+                                    <div>
+                                        <h4 className="text-black dark:text-white font-bold">Working Hours</h4>
+                                        <p className="text-black/60 dark:text-white/60 text-sm leading-relaxed mt-1">
+                                            Monday to Friday, 9:00 AM to 7:00 PM IST
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
 
@@ -136,8 +184,10 @@ export const ContactSection = () => {
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6 relative z-10">
                             <div>
-                                <label className="text-black/50 dark:text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Name</label>
+                                <label htmlFor="contact-name" className="text-black/50 dark:text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Name</label>
                                 <input
+                                    id="contact-name"
+                                    name="name"
                                     type="text"
                                     required
                                     value={formData.name}
@@ -147,8 +197,10 @@ export const ContactSection = () => {
                                 />
                             </div>
                             <div>
-                                <label className="text-black/50 dark:text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Email</label>
+                                <label htmlFor="contact-email" className="text-black/50 dark:text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Email</label>
                                 <input
+                                    id="contact-email"
+                                    name="email"
                                     type="email"
                                     required
                                     value={formData.email}
@@ -159,8 +211,10 @@ export const ContactSection = () => {
                             </div>
                         </div>
                         <div className="mb-8 relative z-10">
-                            <label className="text-black/50 dark:text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Message</label>
+                            <label htmlFor="contact-message" className="text-black/50 dark:text-white/50 text-xs font-bold uppercase tracking-wider mb-2 block">Message</label>
                             <textarea
+                                id="contact-message"
+                                name="message"
                                 required
                                 rows={5}
                                 value={formData.message}

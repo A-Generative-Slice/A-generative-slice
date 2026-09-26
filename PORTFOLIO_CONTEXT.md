@@ -87,15 +87,16 @@ A GENERATIVE SLICE PLATFORM
 
 ### Tier B: Proprietary Slice Suite (`/products`)
 
-| # | Product Name | Category | Friendly Purpose | Repository |
+| # | Product Name | Category | Friendly Purpose | Showcase Status |
 | :---: | :--- | :--- | :--- | :--- |
-| 1 | **Slice3D** | Interactive 3D Product Showcase | Silky smooth 3D product visualizer in web browsers without apps or lag. | [`Slice3D`](https://github.com/A-Generative-Slice/Slice3D) |
-| 2 | **SliceLeads** | Local Business Lead Finder | Finds verified local business leads and drafts polite, personalized conversation starters. | [`SliceLeads`](https://github.com/A-Generative-Slice/SliceLeads) |
-| 3 | **SliceMail** | Smart Outreach & Client Pitching | Custom automated pitches, client updates, and 400+ customized emails/day outreach capacity. | [`SliceMail`](https://github.com/A-Generative-Slice/SliceMail) |
-| 4 | **SliceInbox** | Team Mailbox Chief of Staff | Self-hosted inbox intelligence that triages incoming client mail and sorts out noise. | [`SliceInbox`](https://github.com/A-Generative-Slice/SliceInbox) |
-| 5 | **SlicePPT** | Instant Presentation & Deck Generator | Auto-generates clean 16:9 executive presentation decks from spreadsheets and brief notes. | [`SlicePPT`](https://github.com/A-Generative-Slice/SlicePPT) |
-| 6 | **SliceDAM** | Business Document & Asset Hub | Centralized document and digital asset vault for client contracts, invoices, NDAs, and files. | [`SliceDAM`](https://github.com/A-Generative-Slice/SliceDAM) |
-| 7 | **SliceClass** | Private Academy & Video Studio | Monochromatic online learning studio with phone OTP login and buffer-free video streaming. | [`SliceClass`](https://github.com/A-Generative-Slice/SliceClass) |
+| 1 | **Slice3D** | Interactive 3D Product Showcase | Silky smooth 3D product visualizer in web browsers without apps or lag. | App Showcase Coming Soon |
+| 2 | **SliceLeads** | Local Business Lead Finder | Finds verified local business leads and drafts polite, personalized conversation starters. | App Showcase Coming Soon |
+| 3 | **SliceMail** | Smart Outreach & Client Pitching | Custom automated pitches, client updates, and 400+ customized emails/day outreach capacity. | App Showcase Coming Soon |
+| 4 | **SliceInbox** | Team Mailbox Chief of Staff | Self-hosted inbox intelligence that triages incoming client mail and sorts out noise. | App Showcase Coming Soon |
+| 5 | **SlicePPT** | Instant Presentation & Deck Generator | Auto-generates clean 16:9 executive presentation decks from spreadsheets and brief notes. | App Showcase Coming Soon |
+| 6 | **SliceDAM** | Business Document & Asset Hub | Centralized document and digital asset vault for client contracts, invoices, NDAs, and files. | App Showcase Coming Soon |
+| 7 | **SliceClass** | Private Academy & Video Studio | Monochromatic online learning studio with phone OTP login and buffer-free video streaming. | App Showcase Coming Soon |
+
 
 ---
 

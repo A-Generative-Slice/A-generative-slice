@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
     ArrowUpRight, Send, CheckCircle2,
-    Boxes, Zap, Bot, Cpu, GraduationCap, Code2,
+    Boxes, Zap, Bot, Cpu, GraduationCap, Sparkles,
     Presentation, FolderKanban
 } from 'lucide-react';
 import { submitForm, type LeadFormData } from '../utils/formSubmit';
@@ -15,7 +15,6 @@ interface SliceProduct {
     description: string;
     icon: React.ReactNode;
     benefits: string[];
-    repoUrl: string;
 }
 
 const sliceProducts: SliceProduct[] = [
@@ -31,8 +30,7 @@ const sliceProducts: SliceProduct[] = [
             'Works instantly on phones, tablets, and old laptops',
             'Customers inspect colors, textures, and details before buying',
             'Loads crazy fast without slowing down your site'
-        ],
-        repoUrl: 'https://github.com/A-Generative-Slice/Slice3D'
+        ]
     },
     {
         id: 'slice-leads',
@@ -46,8 +44,7 @@ const sliceProducts: SliceProduct[] = [
             'Triple-checks email addresses so your messages don\'t bounce',
             'Drafts polite, personalized intros that people actually reply to',
             'Saves hours of mindless copy-pasting from Google Maps'
-        ],
-        repoUrl: 'https://github.com/A-Generative-Slice/SliceLeads'
+        ]
     },
     {
         id: 'slice-mail',
@@ -61,8 +58,7 @@ const sliceProducts: SliceProduct[] = [
             'Keeps existing customers informed with regular personalized updates',
             'Outreach engine capable of 400+ customized emails per day',
             'Lives right in your mail sidebar so you review before dispatch'
-        ],
-        repoUrl: 'https://github.com/A-Generative-Slice/SliceMail'
+        ]
     },
     {
         id: 'slice-inbox',
@@ -76,8 +72,7 @@ const sliceProducts: SliceProduct[] = [
             'Catches urgent client requests and flags them before you log in',
             'Drafts quick response suggestions ready for your team\'s thumbs up',
             'Runs quietly on your own servers so you stay in total control'
-        ],
-        repoUrl: 'https://github.com/A-Generative-Slice/SliceInbox'
+        ]
     },
     {
         id: 'slice-ppt',
@@ -91,8 +86,7 @@ const sliceProducts: SliceProduct[] = [
             'Generates clean 16:9 executive presentation PDFs on demand',
             'Auto-inserts photorealistic visual mockups matching your specs',
             'Saves hours of late-night formatting and alignment frustration'
-        ],
-        repoUrl: 'https://github.com/A-Generative-Slice/SlicePPT'
+        ]
     },
     {
         id: 'slice-dam',
@@ -106,8 +100,7 @@ const sliceProducts: SliceProduct[] = [
             'Auto-stamps and generates branded client invoices and agreements',
             'Fast search so your team never asks "where is that file?" again',
             'Self-hosted on your own secure drives with zero monthly lock-in'
-        ],
-        repoUrl: 'https://github.com/A-Generative-Slice/SliceDAM'
+        ]
     },
     {
         id: 'slice-class',
@@ -121,8 +114,7 @@ const sliceProducts: SliceProduct[] = [
             'Simple phone OTP login — no forgotten passwords or lost accounts',
             'Buttery smooth, buffer-free video streaming on any connection',
             'Step-by-step progress tracking so students actually finish'
-        ],
-        repoUrl: 'https://github.com/A-Generative-Slice/SliceClass'
+        ]
     }
 ];
 
@@ -258,8 +250,8 @@ export const ProductsSection = () => {
                                 </div>
                             </div>
 
-                            {/* Footer: Inquire Button & Source Link */}
-                            <div className="pt-4 border-t border-black/5 dark:border-white/5 flex items-center justify-between gap-3">
+                            {/* Footer: Inquire Button & App Showcase Status */}
+                            <div className="pt-4 border-t border-black/5 dark:border-white/5 flex items-center justify-between gap-3 flex-wrap">
                                 <button
                                     type="button"
                                     onClick={() => handleInquireProduct(product.name)}
@@ -267,14 +259,9 @@ export const ProductsSection = () => {
                                 >
                                     Inquire About This Tool <ArrowUpRight className="w-3.5 h-3.5" />
                                 </button>
-                                <a
-                                    href={product.repoUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-black/5 dark:bg-white/5 text-[#64748B] dark:text-white/60 hover:text-[#0F172A] dark:hover:text-white font-semibold text-xs transition-all border border-black/5 dark:border-white/10"
-                                >
-                                    <Code2 className="w-3.5 h-3.5" /> Source
-                                </a>
+                                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-orange-500/5 text-orange-600 dark:text-orange-400 font-semibold text-[11px] border border-orange-500/10">
+                                    <Sparkles className="w-3 h-3 text-[#FF5C00]" /> App Showcase Coming Soon
+                                </span>
                             </div>
                         </motion.div>
                     ))}

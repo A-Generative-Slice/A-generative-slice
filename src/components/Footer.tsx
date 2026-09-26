@@ -5,12 +5,19 @@ export const Footer = () => {
     return (
         <footer className="py-12 px-6 border-t border-black/10 dark:border-white/10 bg-[#fafafa] dark:bg-[#050505]">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-6">
-                {/* Brand */}
-                <div className="flex items-center justify-center md:justify-start gap-3">
-                    <div className="w-8 h-8 rounded-lg overflow-hidden shadow-lg shadow-black/10 dark:shadow-white/10">
-                        <img src={logoImg} alt="A Generative Slice" className="w-full h-full object-cover" />
+                {/* Brand & Direct Contact */}
+                <div className="flex flex-col items-center md:items-start gap-1">
+                    <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-lg overflow-hidden shadow-lg shadow-black/10 dark:shadow-white/10">
+                            <img src={logoImg} alt="A Generative Slice" className="w-full h-full object-cover" />
+                        </div>
+                        <span className="text-black/70 dark:text-white/70 font-black text-xs uppercase tracking-widest">A GENERATIVE SLICE</span>
                     </div>
-                    <span className="text-black/60 dark:text-white/60 font-black text-xs uppercase tracking-widest">A GENERATIVE SLICE</span>
+                    <div className="flex items-center gap-2 text-xs text-black/50 dark:text-white/50 mt-1">
+                        <a href="mailto:agenerativeslice@gmail.com" className="hover:text-orange-500 transition-colors">agenerativeslice@gmail.com</a>
+                        <span>•</span>
+                        <a href="tel:+919344115330" className="hover:text-orange-500 transition-colors">+91 93441 15330</a>
+                    </div>
                 </div>
 
                 {/* Social Links - Perfectly Centered */}

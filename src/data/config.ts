@@ -1,3 +1,22 @@
+export const companyContacts = {
+    emails: {
+        primary: 'agenerativeslice@gmail.com',
+        founder: 's.m.d.hussainjoe@gmail.com',
+        media: 'axgraphicxslice@gmail.com'
+    },
+    phones: {
+        primary: '+91 93441 15330',
+        support: '+91 78128 91494'
+    },
+    whatsappUrl: 'https://wa.me/919344115330',
+    address: {
+        line1: 'No: 144, Valluvar Kottam High Rd',
+        area: 'Nungambakkam, Chennai',
+        stateZip: 'Tamil Nadu 600034',
+        hours: 'Monday to Friday, 9:00 AM to 7:00 PM'
+    }
+};
+
 export const formConfig = {
     /**
      * The form submission provider to use.
@@ -8,24 +27,23 @@ export const formConfig = {
      * - 'web3forms': Receive submissions on your business mail via web3forms.com
      * - 'emailjs'  : Connect to your custom SMTP server securely via EmailJS.com
      */
-    provider: (import.meta.env.VITE_SUPABASE_URL ? 'supabase' : 'formspree') as 'supabase' | 'zoho_crm' | 'formspree' | 'web3forms' | 'emailjs',
+    provider: 'supabase' as 'supabase' | 'zoho_crm' | 'formspree' | 'web3forms' | 'emailjs',
+
+    // Primary business contact emails
+    businessEmail: companyContacts.emails.primary,
+    founderEmail: companyContacts.emails.founder,
+    mediaEmail: companyContacts.emails.media,
 
     // 1. Formspree Form ID
     formspreeId: import.meta.env.VITE_FORMSPREE_ID || 'xdkogvnp',
 
     // 2. Web3Forms Access Key
-    // Change this to your Web3Forms Access Key from web3forms.com
-    web3formsAccessKey: 'YOUR_WEB3FORMS_ACCESS_KEY',
+    web3formsAccessKey: import.meta.env.VITE_WEB3FORMS_KEY || '',
 
     // 3. EmailJS Credentials (For Custom SMTP)
-    // Register at emailjs.com, connect your custom SMTP under "Email Services",
-    // create a template under "Email Templates", and fill these details:
     emailjs: {
-        serviceId: 'YOUR_EMAILJS_SERVICE_ID',
-        templateId: 'YOUR_EMAILJS_TEMPLATE_ID',
-        publicKey: 'YOUR_EMAILJS_PUBLIC_KEY'
-    },
-
-    // Destination email for client-side mailto fallback
-    businessEmail: 'agenerativeslice@gmail.com'
+        serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || '',
+        templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '',
+        publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || ''
+    }
 };

@@ -30,6 +30,22 @@ export const submitForm = async (
     const provider = formConfig.provider;
 
     try {
+        // Master local backup for all form submissions
+        try {
+            if (typeof window !== 'undefined' && window.localStorage) {
+                const existing = JSON.parse(localStorage.getItem('ags_master_leads') || '[]');
+                existing.push({
+                    data: data instanceof FormData ? 'multipart_form_data' : data,
+                    formType: options?.formType || 'Lead Inquiry',
+                    subject: options?.subject || 'Client Brief',
+                    submittedAt: new Date().toISOString()
+                });
+                localStorage.setItem('ags_master_leads', JSON.stringify(existing));
+            }
+        } catch (e) {
+            console.warn('Master local backup notice:', e);
+        }
+
         // Normalize payload into standard CRM/Supabase structure
         let payload: FormData | Record<string, any>;
         const metadata = {
