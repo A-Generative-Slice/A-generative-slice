@@ -136,6 +136,13 @@ The submission pipeline automatically backs up leads in `localStorage` (`ags_cli
 
 ## 7. Change Log & Verification Milestones
 
+- **2026-09-26 (Update 10 - Interactive & Draggable Hardware-Smooth Tech Ribbon)**:
+  - **Full Touch & Mouse Drag Interactivity**: Engineered direct swipe/pan support for both mobile touch and desktop mouse grabbing with momentum physics and wrap-around infinite looping.
+  - **Zero Layout Thrashing**: Implemented sub-pixel float reference accumulation in `requestAnimationFrame` writing directly to `scrollLeft` without forced reflow or JS hook overhead.
+  - **Project Context Cards**: Added live project attribution tags (`usedIn`) beneath each technology (e.g. *Three.js: NASD-C & Spatial 3D*, *Gemini AI: Project Mald & Zoho AI*, etc.).
+  - **Instant Pause & Resume**: Auto-scroll pauses immediately on user drag, touch, or hover, and smoothly resumes after 1.2–1.5 seconds of inactivity.
+  - **Recompiled & Live**: Vite 7 bundle recompiled and serving live on `http://localhost:3000`.
+
 - **2026-09-26 (Update 9 - Landing Page Polish: Process Pipeline, Tech Ribbon & Clean Footer)**:
   - **Replaced Napkin Phrase**: Upgraded headline in `HowItWorks.tsx` from "From Napkin Idea" to high-agency "From Vision to Scalable Reality".
   - **Ready, Set, Launch Workflow**: Restructured the 3-step process cards:

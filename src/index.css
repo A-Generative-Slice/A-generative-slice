@@ -236,6 +236,16 @@ body {
   animation-play-state: paused;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* === Scrollbar === */
 ::-webkit-scrollbar {
   width: 6px;
