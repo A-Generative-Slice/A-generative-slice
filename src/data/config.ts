@@ -26,7 +26,7 @@ export const formConfig = {
      * - 'web3forms': Receive submissions on your business mail via web3forms.com
      * - 'emailjs'  : Connect to your custom SMTP server securely via EmailJS.com
      */
-    provider: 'supabase' as 'supabase' | 'zoho_crm' | 'formspree' | 'web3forms' | 'emailjs',
+    provider: 'web3forms' as 'supabase' | 'zoho_crm' | 'formspree' | 'web3forms' | 'emailjs',
 
     // Primary business contact emails
     businessEmail: companyContacts.emails.zoho,
@@ -37,7 +37,7 @@ export const formConfig = {
     formspreeId: import.meta.env.VITE_FORMSPREE_ID || 'xdkogvnp',
 
     // 2. Web3Forms Access Key
-    web3formsAccessKey: import.meta.env.VITE_WEB3FORMS_KEY || '',
+    web3formsAccessKey: import.meta.env.VITE_WEB3FORMS_KEY || '562ef4ca-1ebd-4356-9173-fce4e646cc42',
 
     // 3. EmailJS Credentials (For Custom SMTP)
     emailjs: {

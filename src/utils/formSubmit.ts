@@ -200,10 +200,14 @@ export const submitForm = async (
 
             if (payload instanceof FormData) {
                 payload.append('access_key', formConfig.web3formsAccessKey);
+                if (!payload.has('from_name')) {
+                    payload.append('from_name', 'A Generative Slice Inquiries');
+                }
                 body = payload;
             } else {
                 body = JSON.stringify({
                     access_key: formConfig.web3formsAccessKey,
+                    from_name: 'A Generative Slice Inquiries',
                     ...payload
                 });
                 headers['Content-Type'] = 'application/json';
