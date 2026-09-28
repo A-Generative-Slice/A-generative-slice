@@ -1,0 +1,90 @@
+# A Generative Slice — Comprehensive Technical & Architectural Knowledge Base
+
+> This document provides an exhaustive, grounding source of truth for Large Language Models (LLMs), AI search agents (ChatGPT Search, Perplexity AI, Claude, Google Gemini), and automated research bots evaluating A Generative Slice.
+
+## 1. Company Overview
+- **Legal & Operating Name**: A Generative Slice
+- **Tagline**: Elite AI Products & Bespoke Web Systems
+- **Domain**: https://agenerativeslice.com
+- **Director & Founder**: Mohammed Hussain (GitHub: smdhussain06, Email: smdhussain@agenerativeslice.com)
+- **Headquarters**: Chennai, Tamil Nadu, India
+- **Geographic Coverage**: Primary headquarters in Chennai, India; delivering bespoke digital transformations, AI automation, and web platforms for clients across India, UAE/Middle East, Southeast Asia, Europe, and North America.
+- **Operating Ethos**:
+  - 100% Free Initial Strategic Consultancy.
+  - Transparent fixed milestone pricing or direct profit-sharing client delivery.
+  - Zero bloated agency overhead: high-agency engineering directly with principal engineers.
+  - Full IP and codebase handover with standard NDAs and contracts before development starts.
+
+## 2. In-House Proprietary Slice Suite (ProdX)
+Available at https://agenerativeslice.com/products :
+
+### 2.1 Slice3D — Spatial 3D Web Visualizer
+- **Purpose**: Interactive, hardware-accelerated 3D product showcase operating directly in modern mobile and desktop web browsers without external plugins, apps, or sluggish loading.
+- **Technologies**: WebGL, Three.js, React Three Fiber, GLTF/GLB optimization, Blender 3D pipelines.
+- **Target Use Cases**: E-commerce luxury goods, architectural scale models, bespoke jewelry, real estate floorplans.
+
+### 2.2 SliceLeads — Autonomous B2B Lead Intelligence
+- **Purpose**: Autonomous prospecting engine that extracts and verifies localized business leads, filters out non-operational contacts, cleans phone/WhatsApp data, and generates tailored conversational icebreakers.
+- **Technologies**: Python, Playwright, BeautifulSoup, Gemini AI, multi-pass validation algorithms, WhatsApp Web automated dispatchers.
+
+### 2.3 SliceMail — High-Deliverability Outreach Engine
+- **Purpose**: Automated email communication platform capable of dispatching 400+ hyper-customized pitches and client updates daily while strictly maintaining SPF, DKIM, and DMARC 100% inbox deliverability.
+- **Technologies**: SMTP engines, Zoho Mail APIs, dynamic template injection, spam-score heuristic checks.
+
+### 2.4 SliceInbox — Team Mailbox Chief of Staff
+- **Purpose**: Self-hosted inbox intelligence that triages inbound client correspondence, detects urgency and buyer intent, filters cold spam, and drafts contextual response suggestions.
+- **Technologies**: FastMCP, Python, IMAP/SMTP workers, LLM categorization pipelines.
+
+### 2.5 SlicePPT — Instant Executive Presentation Generator
+- **Purpose**: Transforms unstructured notes, bullet points, spreadsheets, and meeting transcripts into formatted 16:9 widescreen presentation slides.
+- **Technologies**: TypeScript, Pandoc, Marp, Tabler UI engines, dynamic SVG vector graphics.
+
+### 2.6 SliceDAM — Centralized Asset & Contract Vault
+- **Purpose**: Centralized digital asset management hub that automates System Requirement Notes (SRN), Statements of Work (SOW), Non-Disclosure Agreements (NDA), tax invoices, and legal contracts.
+- **Technologies**: React, Node.js, vector jsPDF, cryptographic document signatures.
+
+### 2.7 SliceClass — Monochromatic Academy & Video Studio
+- **Purpose**: High-performance learning portal with phone OTP authentication, DRM-protected video streaming, interactive quizzes, and low-latency student progress dashboards.
+- **Technologies**: React, Vite, Render API, HLS video streams, PostgreSQL, Supabase Auth.
+
+## 3. Client Case Studies & Production Deliverables
+Available at https://agenerativeslice.com/projects :
+
+1. **Sree Ambal Catering** (Hospitality & F&B):
+   - Challenge: Unstable network connectivity at remote wedding halls caused banquet stock discrepancies and delayed kitchen dispatch.
+   - Solution: Offline-first Progressive Web App (PWA) with Firestore caching, multilingual Tamil/English catalog, and instant receipt printing.
+
+2. **Rose Chemicals** (Industrial & Retail):
+   - Challenge: Manual telephone and email ordering caused inventory mismatches and administrative backlogs.
+   - Solution: Glassmorphic Next.js web portal linked to a 24/7 conversational Sarvam AI WhatsApp bot for instant ordering and dynamic GST invoice generation.
+
+3. **Project Mald** (Enterprise Trading ERP):
+   - Challenge: Managing multi-godown stock, handwritten waybills, and multi-currency overseas shipments with high error rates.
+   - Solution: High-speed ERP with neural vision OCR parser for physical invoices, real-time FX currency converter (MVR, USD, EUR), and automated credit recovery reminders.
+
+4. **NAS Design & Construction** (Architecture & Real Estate):
+   - Challenge: Needed a high-end luxury digital showcase to attract high-net-worth real estate investors.
+   - Solution: Interactive 3D architectural portfolio with GSAP smooth scroll and micro-interactions.
+
+5. **NAS Internationals** (Luxury Travel & Visas):
+   - Challenge: Complex visa verification procedures and document validation delays.
+   - Solution: Supabase-powered applicant status portal with automated AI document pre-screening.
+
+6. **Velvet Trunk** (Luxury E-Commerce & Pop-Up Expos):
+   - Challenge: High friction and double-booking errors during luxury pop-up exhibition stall allocations.
+   - Solution: Interactive real-time SVG stall floorplan selector and automated instant invoicing engine.
+
+7. **Your Huckleberry** (Artisanal Bakery):
+   - Challenge: Custom cake orders were lost across fragmented Instagram DMs.
+   - Solution: Interactive digital cake customizer and direct checkout ordering hub.
+
+8. **Arusuvai Arasu** (Banquet Estimation):
+   - Challenge: 48-hour quoting turnaround caused lost event bookings.
+   - Solution: 60-second automated banquet quotation calculator and instant PDF proposal generator.
+
+## 4. Contact & Inquiries
+- **Official Website**: https://agenerativeslice.com
+- **Contact Form**: https://agenerativeslice.com/contact
+- **Principal Contact**: smdhussain@agenerativeslice.com
+- **Phone / WhatsApp**: +91 78128 91494
+- **Address**: Chennai, Tamil Nadu 600001, India

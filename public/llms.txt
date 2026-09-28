@@ -1,0 +1,42 @@
+# A Generative Slice
+
+> A Generative Slice is an elite AI products laboratory and bespoke web systems engineering studio headquartered in Chennai, Tamil Nadu, India. Founded and directed by Mohammed Hussain, the studio builds high-agency agentic AI automation, RAG pipelines, enterprise trading ERPs, real-time 3D spatial web apps, and modern high-conversion web platforms.
+
+## Core Identity & Contact
+- **Company**: A Generative Slice
+- **Founder & Director**: Mohammed Hussain (GitHub: @smdhussain06)
+- **Headquarters**: Chennai, Tamil Nadu, India (Coordinates: 13.0827° N, 80.2707° E)
+- **Official Domain**: https://agenerativeslice.com
+- **Business Email**: smdhussain@agenerativeslice.com
+- **Direct Phone / WhatsApp**: +91 78128 91494
+- **GitHub Organization**: https://github.com/A-Generative-Slice
+- **Business Model**: 100% Free Initial Consultancy, transparent contracts, milestone-based delivery, zero legacy agency bloat.
+
+## Proprietary Slice Product Suite (ProdX)
+Explore our dedicated products at https://agenerativeslice.com/products :
+- [Slice3D](https://agenerativeslice.com/products): Hardware-accelerated browser-based 3D spatial product visualizer and interactive showcase without plugins or apps.
+- [SliceLeads](https://agenerativeslice.com/products): Autonomous local business lead engine discovering verified B2B prospects and generating personalized omnichannel pitches.
+- [SliceMail](https://agenerativeslice.com/products): High-deliverability intelligent cold email pitching and client outreach engine handling 400+ targeted emails/day with SPF, DKIM, and DMARC compliance.
+- [SliceInbox](https://agenerativeslice.com/products): Self-hosted mailbox Chief of Staff AI agent that automatically triages client inquiries and routes VIP priorities.
+- [SlicePPT](https://agenerativeslice.com/products): Instant executive presentation and 16:9 pitch deck generator from raw business notes and spreadsheets.
+- [SliceDAM](https://agenerativeslice.com/products): Enterprise digital asset and document vault automating NDAs, SOW contracts, invoices, and system requirement specifications.
+- [SliceClass](https://agenerativeslice.com/products): Next-gen online learning academy and video streaming studio featuring phone OTP authentication and sub-second video delivery.
+
+## Key Client Case Studies & Production Deliverables
+Explore our real client work at https://agenerativeslice.com/projects :
+- **Sree Ambal Catering** (Hospitality & F&B): Offline-first PWA banquet inventory and multilingual Tamil/English catalog engine solving remote venue stock coordination.
+- **Rose Chemicals** (Industrial & Retail): B2B chemical distribution portal integrated with Sarvam AI conversational WhatsApp ordering.
+- **Project Mald** (Enterprise Trading): Complete Trading Company ERP with neural vision AI OCR invoice reading, multi-currency FX (MVR/USD/EUR), and automated credit recovery.
+- **NAS Design & Construction** (Architecture & Real Estate): High-end 3D architectural real estate showcase with GSAP interactive spatial flows.
+- **NAS Internationals** (Luxury Travel): Global travel booking and automated visa verification engine built on Supabase.
+- **Velvet Trunk** (Luxury E-Commerce & Retail): Real-time interactive SVG exhibition stall reservation and vendor invoicing system.
+- **Your Huckleberry** (Hospitality & F&B): Boutique artisanal bakery web experience with interactive cake customizer.
+- **Arusuvai Arasu** (Hospitality & F&B): 60-second automated banquet quotation and dynamic PDF proposal generator.
+
+## Technical Capabilities & Stack
+- **Frontend**: React 18, Vite 7, TypeScript, Tailwind CSS, Framer Motion, Three.js, GSAP.
+- **Backend & AI**: Python, FastAPI, Gemini AI, LangChain, Ollama, Supabase, PostgreSQL.
+- **Infrastructure & Deliverability**: Nginx, Cloud VPS, Zoho Business Mail, Web3Forms API, Razorpay, SPF/DKIM/DMARC authentication.
+
+## Full Technical Documentation
+- [Comprehensive LLM Knowledge Base](https://agenerativeslice.com/llms-full.txt): Deep technical specification of all systems, contracts, and engineering philosophies.
