@@ -136,6 +136,10 @@ The submission pipeline automatically backs up leads in `localStorage` (`ags_cli
 
 ## 7. Change Log & Verification Milestones
 
+- **2026-09-28 (Update 16 - Organization Membership Update & Offboarding)**:
+  - **Member Offboarding**: Successfully removed `@Afra-1132` (Afra Thasneem S R) from `A-Generative-Slice` GitHub organization. Organization active members count adjusted to 14 (+ 4 pending invited engineers).
+  - **Roster Alignment**: Mapped and verified member identities across the organization (Asifa: `@aasi0016`, Irshath: `@Irsath14`, Rahimunisa: `@rahimunisa8148`, Sahil: `@rehnuma7`, Zeeshan: `@Zeeshu04`).
+
 - **2026-09-28 (Update 15 - Organization Admin Role Consolidation & Engineering Team Onboarding)**:
   - **Admin Security Consolidation**: Demoted `@Rushwin` and `@Fahim1504` to standard member roles; consolidated sole Organization Administrator / Owner privileges strictly under `@smdhussain06`.
   - **Engineering Team Invitations Dispatched**: Officially issued GitHub organization membership invitations to all uninvited hired engineers: `@Mohamed-Jameel-13` (ID: 80304315), `@mirzamudassir1` (ID: 80304317), `@Irfan21-AI` (ID: 80304318), and `@Rasool15-AI` (ID: 80304319).
