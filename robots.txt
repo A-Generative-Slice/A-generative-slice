@@ -1,0 +1,41 @@
+# robots.txt for https://agenerativeslice.com
+# Managed by A Generative Slice
+
+User-agent: *
+Allow: /
+Disallow: /assets/*.map$
+
+# Explicitly enable and welcome AI Search Engines & LLM Web Crawlers (GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# Canonical XML Sitemap & LLM Knowledge Specification
+Sitemap: https://agenerativeslice.com/sitemap.xml
+LLMs-Txt: https://agenerativeslice.com/llms.txt
