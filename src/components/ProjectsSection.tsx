@@ -35,7 +35,7 @@ const clientCaseStudies: ClientCaseStudy[] = [
         solution: 'Built an offline-first Progressive Web App (PWA) with client-side IndexedDB local caching, Firestore background synchronization, and mandatory photo bill auditing.',
         impact: 'Zero fulfillment discrepancies across 200+ master catalog ingredients with 100% offline uptime at remote convention centres.',
         stack: ['PWA', 'Firestore', 'IndexedDB', 'Service Workers', 'Tailwind CSS'],
-        link: 'https://www.sreeambalcateringservice.com/',
+        link: 'https://a-generative-slice.github.io/sree-ambal-inventory/',
         mockupType: 'mobile-pwa'
     },
     {
@@ -49,7 +49,7 @@ const clientCaseStudies: ClientCaseStudy[] = [
         solution: 'Engineered a bespoke ordering hub featuring an interactive multi-tier cake configurator, automated delivery slot scheduling, and direct WhatsApp payload checkout.',
         impact: 'Streamlined order fulfillment turnaround and converted social visitors into confirmed, paid custom cake orders on autopilot.',
         stack: ['React 19', 'Framer Motion', 'WhatsApp API', 'Tailwind CSS'],
-        link: 'https://github.com/A-Generative-Slice/huckleberry.inn',
+        link: 'https://a-generative-slice.github.io/huckleberry.inn/',
         mockupType: 'mobile-pwa'
     },
     {
@@ -63,7 +63,7 @@ const clientCaseStudies: ClientCaseStudy[] = [
         solution: 'Designed an instantaneous algorithmic pricing calculator that computes headcount costs, hall logistics, and tiered menus into an official branded PDF in 60 seconds.',
         impact: 'Cut proposal turnaround from 48 hours to under 1 minute, accelerating banquet deal closures during peak Tamil wedding booking windows.',
         stack: ['React', 'TypeScript', 'jsPDF', 'Local-First Architecture'],
-        link: 'https://github.com/A-Generative-Slice/arusuvaiarasu',
+        link: 'https://a-generative-slice.github.io/arusuvaiarasu/',
         mockupType: 'desktop-portal'
     },
 
@@ -93,7 +93,7 @@ const clientCaseStudies: ClientCaseStudy[] = [
         solution: 'Built a 100% digital portal with Google GenAI pre-flight document auditing, real-time application milestone tracking, and Supabase client data vaults.',
         impact: 'Reduced embassy visa document resubmission rates by 60% and gave applicants transparent, self-serve status updates 24/7.',
         stack: ['Google GenAI', 'Supabase', 'Next.js', 'Tailwind CSS'],
-        link: 'https://github.com/A-Generative-Slice/NasInternationals',
+        link: 'https://nasinternationals.com/',
         mockupType: 'desktop-portal'
     },
 
@@ -109,7 +109,7 @@ const clientCaseStudies: ClientCaseStudy[] = [
         solution: 'Developed an interactive spatial floorplan booking engine mapping F-Series and S-Series booths with real-time slot reservation and automated jsPDF invoicing.',
         impact: '100% digital booth reservation and zero layout disputes, selling out premium exhibition inventory weeks before event opening.',
         stack: ['Interactive SVG Floorplan', 'React', 'jsPDF', 'Tailwind CSS'],
-        link: 'https://github.com/A-Generative-Slice/VelvetTrunk',
+        link: 'https://a-generative-slice.github.io/VelvetTrunk/',
         mockupType: 'desktop-portal'
     },
     {
@@ -137,7 +137,6 @@ const clientCaseStudies: ClientCaseStudy[] = [
         solution: 'Built a multi-warehouse trading ERP featuring automated stock ledger synchronization, Tesseract OCR for physical document scanning, and Gemini invoice parsing.',
         impact: 'Cut bill processing time by 90% and provided management with instant, single-pane inventory visibility across all regional warehouses.',
         stack: ['Python', 'FastAPI', 'Tesseract OCR', 'Google Gemini AI', 'PostgreSQL', 'React'],
-        link: 'https://github.com/A-Generative-Slice/ProjectMald',
         mockupType: 'desktop-portal'
     },
 
@@ -153,7 +152,7 @@ const clientCaseStudies: ClientCaseStudy[] = [
         solution: 'Built a cinematic dark-mode portfolio featuring filmography project breakdowns, character lookbook galleries, and direct consultation booking.',
         impact: 'Streamlined costume portfolio pitching to top South Indian feature film producers and luxury bridal styling inquiries.',
         stack: ['React', 'Framer Motion', 'Tailwind CSS', 'Cinematic Dark System'],
-        link: 'https://github.com/A-Generative-Slice/portfolio-pooja',
+        link: 'https://a-generative-slice.github.io/portfolio-pooja/',
         mockupType: 'editorial-lookbook'
     },
     {
@@ -167,7 +166,7 @@ const clientCaseStudies: ClientCaseStudy[] = [
         solution: 'Crafted an editorial lookbook with high-resolution texture zoom, runway archive showcases, and direct bespoke bridal consultation booking.',
         impact: 'Established an elite international digital presence, securing bespoke couture orders from overseas bridal clientele.',
         stack: ['React', 'Framer Motion', 'Tailwind CSS', 'Editorial Layouts'],
-        link: 'https://github.com/A-Generative-Slice/portfolio-najeema-afrin',
+        link: 'https://a-generative-slice.github.io/portfolio-najeema-afrin/',
         mockupType: 'editorial-lookbook'
     }
 ];

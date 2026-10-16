@@ -259,9 +259,15 @@ export const ProductsSection = () => {
                                 >
                                     Inquire About This Tool <ArrowUpRight className="w-3.5 h-3.5" />
                                 </button>
-                                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-orange-500/5 text-orange-600 dark:text-orange-400 font-semibold text-[11px] border border-orange-500/10">
-                                    <Sparkles className="w-3 h-3 text-[#FF5C00]" /> App Showcase Coming Soon
-                                </span>
+                                <a
+                                    href={`https://agenerativeslice.info/#${product.id}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#FF5C00]/10 hover:bg-[#FF5C00] text-[#FF5C00] hover:text-white font-bold text-[11px] border border-[#FF5C00]/20 transition-all shadow-sm"
+                                    title={`Explore ${product.name} Showcase on agenerativeslice.info`}
+                                >
+                                    <Sparkles className="w-3 h-3" /> Showcase on .info <ArrowUpRight className="w-3 h-3" />
+                                </a>
                             </div>
                         </motion.div>
                     ))}
