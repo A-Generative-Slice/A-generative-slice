@@ -56,4 +56,4 @@ A-generative-slice/
 - **Client Automation Hubs**:
   - `litelabmailbox`: Autonomous Zoho Mail MCP agent for LiteLab Design Consultants LLP.
   - `lead-generation`: Multi-channel outreach and client lead scrapers.
-  - `business-dashboard`: Internal metrics and revenue performance trackers.
+  - `a-generative-slice-business-dashboard`: Internal metrics and revenue performance trackers.
