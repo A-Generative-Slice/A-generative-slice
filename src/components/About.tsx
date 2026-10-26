@@ -75,19 +75,20 @@ export const About = () => {
                     className="bg-white dark:bg-[#111] rounded-[3rem] border border-black/5 dark:border-white/5 overflow-hidden shadow-2xl"
                 >
                     <div className="grid grid-cols-1 lg:grid-cols-2">
-                        {/* Images */}
-                        <div className="h-[400px] lg:h-auto relative">
-                            <img 
-                                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" 
-                                alt="Our Headquarters" 
-                                className="absolute inset-0 w-full h-full object-cover"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                            <div className="absolute bottom-8 left-8 right-8">
-                                <div className="inline-flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-3">
-                                    <Building className="w-4 h-4" /> HQ
+                        {/* Studio Visual & Insignia */}
+                        <div className="h-[400px] lg:h-auto relative bg-gradient-to-br from-[#1c1c1c] via-[#121212] to-[#0a0a0a] flex items-center justify-center p-8 overflow-hidden min-h-[360px]">
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,92,0,0.18),transparent_70%)] pointer-events-none" />
+                            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+                            
+                            <div className="relative z-10 flex flex-col items-center text-center p-6">
+                                <div className="w-24 h-24 rounded-3xl overflow-hidden border-2 border-orange-500/40 shadow-2xl mb-6 shadow-orange-500/20 bg-black/40 backdrop-blur-md">
+                                    <img src="/logo.jpg" alt="A Generative Slice Insignia" className="w-full h-full object-cover" />
                                 </div>
-                                <h3 className="text-white text-3xl font-black">A Generative Slice Labs</h3>
+                                <div className="inline-flex items-center gap-2 bg-orange-500 text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+                                    <Building className="w-3.5 h-3.5" /> Chennai Engineering Hub
+                                </div>
+                                <h3 className="text-white text-3xl font-black tracking-tight mb-2">A Generative Slice Labs</h3>
+                                <p className="text-white/60 text-sm max-w-xs font-mono">13.0827° N, 80.2707° E • Chennai, India</p>
                             </div>
                         </div>
 

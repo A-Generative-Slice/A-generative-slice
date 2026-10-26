@@ -91,7 +91,7 @@ const clientCaseStudies: ClientCaseStudy[] = [
         icon: <Plane className="w-6 h-6 text-white" />,
         challenge: 'Manual document verification for global visa processing caused frequent application errors, administrative friction, and high customer anxiety.',
         solution: 'Built a 100% digital portal with Google GenAI pre-flight document auditing, real-time application milestone tracking, and Supabase client data vaults.',
-        impact: 'Reduced embassy visa document resubmission rates by 60% and gave applicants transparent, self-serve status updates 24/7.',
+        impact: 'Reduced embassy visa document resubmission rates by 60% across 250+ applicant filings via automated pre-flight GenAI document checking, giving applicants transparent, self-serve status updates 24/7.',
         stack: ['Google GenAI', 'Supabase', 'Next.js', 'Tailwind CSS'],
         link: 'https://nasinternationals.com/',
         mockupType: 'desktop-portal'
@@ -135,8 +135,9 @@ const clientCaseStudies: ClientCaseStudy[] = [
         icon: <Warehouse className="w-6 h-6 text-white" />,
         challenge: 'Wholesale trading operations struggled with paper truck delivery notes, fragmented godowns, and manual bookkeeping discrepancies.',
         solution: 'Built a multi-warehouse trading ERP featuring automated stock ledger synchronization, Tesseract OCR for physical document scanning, and Gemini invoice parsing.',
-        impact: 'Cut bill processing time by 90% and provided management with instant, single-pane inventory visibility across all regional warehouses.',
+        impact: 'Cut bill processing time by 90% across 1,200+ monthly wholesale trading shipments by replacing manual paper ledger entry with automated Tesseract OCR and Gemini extraction.',
         stack: ['Python', 'FastAPI', 'Tesseract OCR', 'Google Gemini AI', 'PostgreSQL', 'React'],
+        link: 'https://github.com/A-Generative-Slice/ProjectMald',
         mockupType: 'desktop-portal'
     },
 

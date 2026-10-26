@@ -12,7 +12,8 @@
 - **GitHub Organization**: https://github.com/A-Generative-Slice
 - **Business Model**: 100% Free Initial Consultancy, transparent contracts, milestone-based delivery, zero legacy agency bloat.
 
-## Proprietary Slice Product Suite (ProdX)
+## Slice Product Suite (ProdX) — Open-Core Architecture
+Our developer-facing automation engines follow an open-core model with publicly auditable GitHub repositories for complete client transparency, while enterprise cloud hosting, custom integrations, and managed infrastructure are delivered through private commercial SLA retainers.
 Explore our dedicated products at https://agenerativeslice.com/products :
 - [Slice3D](https://agenerativeslice.com/products): Hardware-accelerated browser-based 3D spatial product visualizer and interactive showcase without plugins or apps.
 - [SliceLeads](https://agenerativeslice.com/products): Autonomous local business lead engine discovering verified B2B prospects and generating personalized omnichannel pitches.

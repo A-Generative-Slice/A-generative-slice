@@ -18,7 +18,7 @@ const ROUTE_SEO: Record<string, { title: string; description: string }> = {
   },
   '/products': {
     title: 'ProdX & Slice Suite — A Generative Slice',
-    description: 'Explore the proprietary Slice Suite: Slice3D, SliceLeads, SliceMail, SliceInbox, SlicePPT, SliceDAM, and SliceClass.'
+    description: 'Explore the Slice Suite: open-core autonomous AI products and enterprise tools including Slice3D, SliceLeads, SliceMail, SliceInbox, SlicePPT, SliceDAM, and SliceClass.'
   },
   '/projects': {
     title: 'Client Deliverables & Case Studies — A Generative Slice',

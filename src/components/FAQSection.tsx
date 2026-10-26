@@ -61,6 +61,10 @@ export const FAQSection = () => {
                             transition={{ delay: i * 0.1 }}
                             className="bg-gray-50 dark:bg-[#111111] border border-black/5 dark:border-white/10 rounded-2xl overflow-hidden"
                         >
+                            <div className="sr-only">
+                                <h3>{faq.question}</h3>
+                                <p>{faq.answer}</p>
+                            </div>
                             <button 
                                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                                 className="w-full flex items-center justify-between p-6 text-left"
