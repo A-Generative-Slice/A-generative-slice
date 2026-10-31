@@ -36,6 +36,10 @@ Allow: /
 User-agent: meta-externalagent
 Allow: /
 
+User-agent: DeepSeekBot
+Allow: /
+
 # Canonical XML Sitemap & LLM Knowledge Specification
 Sitemap: https://agenerativeslice.com/sitemap.xml
 LLMs-Txt: https://agenerativeslice.com/llms.txt
+LLMs-Full-Txt: https://agenerativeslice.com/llms-full.txt
