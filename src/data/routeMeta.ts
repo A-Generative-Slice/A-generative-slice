@@ -46,5 +46,9 @@ export const ROUTE_META: Record<string, { title: string; description: string }> 
   '/insights/rose-chemicals': {
     title: 'Case Study: WhatsApp Ordering for Rose Chemicals | A Generative Slice',
     description: 'How Rose Chemicals replaced phone-order transcription with a B2B distribution portal and Sarvam AI conversational WhatsApp ordering in the local language.'
+  },
+  '/ai-for-humans': {
+    title: 'AI Is Not Your Competition — Free Student AI Workshops | A Generative Slice',
+    description: 'Why AI is a tool for human advancement, not a replacement — plus free hands-on AI workshops in Chennai for freshers and college students, taught by our founder.'
   }
 };

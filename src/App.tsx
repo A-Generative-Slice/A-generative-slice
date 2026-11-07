@@ -20,6 +20,7 @@ const ChennaiHubPage = lazy(() => import('./pages/ChennaiHubPage').then((m) => (
 const CityPage = lazy(() => import('./pages/CityPage').then((m) => ({ default: m.CityPage })));
 const InsightsPage = lazy(() => import('./pages/InsightsPage').then((m) => ({ default: m.InsightsPage })));
 const InsightPage = lazy(() => import('./pages/InsightPage').then((m) => ({ default: m.InsightPage })));
+const AiForHumansPage = lazy(() => import('./pages/AiForHumansPage').then((m) => ({ default: m.AiForHumansPage })));
 
 const ROUTE_SEO: Record<string, { title: string; description: string }> = {
   '/': {
@@ -148,6 +149,7 @@ const AppContent = () => {
               <Route path="/chennai/:slug" element={<CityPage />} />
               <Route path="/insights" element={<InsightsPage />} />
               <Route path="/insights/:slug" element={<InsightPage />} />
+              <Route path="/ai-for-humans" element={<AiForHumansPage />} />
             </Routes>
           </AnimatePresence>
         </Suspense>

@@ -56,5 +56,9 @@ Dedicated Chennai landing pages with scope, process, honest pricing guidance and
 - [Sree Ambal Catering Case Study](https://agenerativeslice.com/insights/sree-ambal-catering/): Offline-first banquet inventory PWA.
 - [Rose Chemicals Case Study](https://agenerativeslice.com/insights/rose-chemicals/): Conversational WhatsApp ordering for B2B distribution.
 
+## AI & Humans — Manifesto & Free Student Workshops
+- [AI Is Not Your Competition](https://agenerativeslice.com/ai-for-humans/): The founder's manifesto on AI as a tool for human advancement, not replacement — "AI will not take your job. A person who knows how to use AI will take the job of a person who doesn't." Includes the interactive Reframe Machine and the founder's exact learning/building loops.
+- **Free workshops for freshers & college students** (Chennai in-person + live online, Tamil/English): AI from absolute zero, the learning loop (explain → quiz → teach back), the problem-solving loop (draft → test → verify), the psychology of confidence, and one shipped portfolio project. ₹0 forever, no sales pitch, no experience needed. Register via WhatsApp +91 78128 91494; colleges can host on campus via the contact page.
+
 ## Full Technical Documentation
 - [Comprehensive LLM Knowledge Base](https://agenerativeslice.com/llms-full.txt): Deep technical specification of all systems, contracts, and engineering philosophies.

@@ -8,6 +8,7 @@ export const Footer = () => {
             heading: 'Studio',
             links: [
                 { label: 'About', to: '/about/' },
+                { label: 'AI & Humans', to: '/ai-for-humans/' },
                 { label: 'Services', to: '/services/' },
                 { label: 'Careers', to: '/careers/' },
                 { label: 'Contact', to: '/contact/' }

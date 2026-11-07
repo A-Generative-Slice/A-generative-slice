@@ -123,6 +123,12 @@ export const ROUTES = [
     priority: '0.7', changefreq: 'monthly', sitemap: true
   },
   {
+    path: '/ai-for-humans',
+    title: 'AI Is Not Your Competition — Free Student AI Workshops | A Generative Slice',
+    description: 'Why AI is a tool for human advancement, not a replacement — plus free hands-on AI workshops in Chennai for freshers and college students, taught by our founder.',
+    priority: '0.8', changefreq: 'weekly', sitemap: true
+  },
+  {
     path: '/privacy',
     title: 'Privacy Policy — A Generative Slice',
     description: 'How A Generative Slice collects, uses, and protects your data across contact forms, the Slice Suite, and authorized OAuth integrations with Meta, LinkedIn, X, Reddit, and Google.',

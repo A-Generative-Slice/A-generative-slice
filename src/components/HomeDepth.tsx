@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
     Bot, Code2, Globe, Database, MessageCircle, MessagesSquare,
-    ArrowRight, ArrowUpRight, MapPin, BookOpen, Check
+    ArrowRight, ArrowUpRight, MapPin, BookOpen, Check, Sparkles, GraduationCap
 } from 'lucide-react';
 
 const SERVICES = [
@@ -246,6 +246,47 @@ export const HomeDepth = () => {
                         <p className="mt-6 text-sm text-black/55 dark:text-white/55 leading-relaxed">
                             Under the hood, every system runs on a modern, maintainable stack: React and TypeScript in the browser, Python and FastAPI behind it, Gemini, LangChain or Ollama for the AI layer, Supabase and PostgreSQL for data, and Nginx on cloud infrastructure you control. We choose boring, proven tools over fashionable ones, because your business needs software that still runs in five years and that any competent engineer can maintain. That is the whole philosophy: proven tools, honest scope, lasting support.
                         </p>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* AI & Humans manifesto teaser */}
+            <section className="pb-24 px-6">
+                <div className="max-w-6xl mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0, y: 24 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-40px' }}
+                        transition={{ duration: 0.5 }}
+                        className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-orange-500 via-orange-600 to-amber-600 p-8 md:p-12 shadow-2xl shadow-orange-500/25"
+                    >
+                        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:36px_36px] pointer-events-none" />
+                        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <p className="inline-flex items-center gap-2 text-white/80 font-bold tracking-widest uppercase text-xs mb-4">
+                                    <Sparkles className="w-3.5 h-3.5" /> AI & Humans · A letter from our founder
+                                </p>
+                                <h2 className="text-2xl md:text-4xl font-black text-white tracking-tight leading-tight mb-4">
+                                    AI is not your competition. It’s your power tool.
+                                </h2>
+                                <p className="text-white/85 font-semibold leading-relaxed">
+                                    “AI will not take your job. A person who knows how to use AI will take the job of a person who doesn’t.”
+                                </p>
+                            </div>
+                            <div>
+                                <p className="text-white/80 leading-relaxed mb-6">
+                                    The honest version of the AI story — why tools delete tasks, not people — plus free hands-on workshops where freshers and college students learn the founder’s exact loop: AI from zero, learning, problem-solving and the psychology of confidence. Marks fade. Leverage compounds.
+                                </p>
+                                <div className="flex flex-col sm:flex-row gap-3">
+                                    <Link to="/ai-for-humans/" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-orange-600 text-sm font-bold shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
+                                        Read the manifesto <ArrowRight className="w-4 h-4" />
+                                    </Link>
+                                    <Link to="/ai-for-humans/" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-white/40 text-white text-sm font-bold hover:bg-white/10 transition-all duration-300">
+                                        <GraduationCap className="w-4 h-4" /> Free student workshops
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
                     </motion.div>
                 </div>
             </section>

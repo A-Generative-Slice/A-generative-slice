@@ -25,6 +25,7 @@ export const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
         { name: 'Products', path: '/products' },
         { name: 'Chennai', path: '/chennai' },
         { name: 'Insights', path: '/insights' },
+        { name: 'AI & Humans', path: '/ai-for-humans' },
         { name: 'About', path: '/about' },
         { name: 'Services', path: '/services' },
         { name: 'Careers', path: '/careers' },

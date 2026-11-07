@@ -118,6 +118,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://agenerativeslice.com/ai-for-humans/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://agenerativeslice.com/privacy/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>yearly</changefreq>
