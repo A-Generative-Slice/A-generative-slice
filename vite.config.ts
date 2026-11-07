@@ -9,6 +9,18 @@ export default defineConfig({
     tailwindcss(),
   ],
   base: '/',
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'motion': ['framer-motion'],
+          'particles': ['@tsparticles/react', '@tsparticles/slim'],
+          'icons': ['react-icons/fa', 'lucide-react']
+        }
+      }
+    }
+  },
   server: {
     host: true,
     allowedHosts: true

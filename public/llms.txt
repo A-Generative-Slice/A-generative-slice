@@ -39,5 +39,22 @@ Explore our real client work at https://agenerativeslice.com/projects :
 - **Backend & AI**: Python, FastAPI, Gemini AI, LangChain, Ollama, Supabase, PostgreSQL.
 - **Infrastructure & Deliverability**: Nginx, Cloud VPS, Zoho Business Mail, Web3Forms API, Razorpay, SPF/DKIM/DMARC authentication.
 
+## Chennai Local Services
+Dedicated Chennai landing pages with scope, process, honest pricing guidance and FAQs:
+- [Chennai Hub](https://agenerativeslice.com/chennai/): All six services, studio address, service areas and production proof.
+- [AI Automation Agency in Chennai](https://agenerativeslice.com/chennai/ai-automation/): Agentic workflows, document OCR, quotations and follow-up systems.
+- [Custom Software Development Company in Chennai](https://agenerativeslice.com/chennai/custom-software/): Portals, dashboards, PWAs and internal tools.
+- [Web Development Company in Chennai](https://agenerativeslice.com/chennai/web-development/): Fast websites, 3D showcases and e-commerce.
+- [ERP & CRM Development Company in Chennai](https://agenerativeslice.com/chennai/erp-crm/): Trading ERPs with OCR invoicing, FX and credit recovery.
+- [WhatsApp Business API Integration in Chennai](https://agenerativeslice.com/chennai/whatsapp-automation/): Tamil/English conversational ordering and support.
+- [AI Chatbot Development Company in Chennai](https://agenerativeslice.com/chennai/ai-chatbots/): RAG-grounded assistants for web, WhatsApp and internal tools.
+
+## Insights — Guides & Case Studies
+- [Insights Index](https://agenerativeslice.com/insights/): Honest guides and production case studies for business owners.
+- [Custom Software Cost in Chennai (2026 Guide)](https://agenerativeslice.com/insights/custom-software-cost-chennai/): Market ranges, cost drivers and how to read a fixed quote.
+- [AI Automation for Chennai Real Estate](https://agenerativeslice.com/insights/ai-automation-real-estate-chennai/): Lead follow-up, Tamil qualification and site-visit booking playbook.
+- [Sree Ambal Catering Case Study](https://agenerativeslice.com/insights/sree-ambal-catering/): Offline-first banquet inventory PWA.
+- [Rose Chemicals Case Study](https://agenerativeslice.com/insights/rose-chemicals/): Conversational WhatsApp ordering for B2B distribution.
+
 ## Full Technical Documentation
 - [Comprehensive LLM Knowledge Base](https://agenerativeslice.com/llms-full.txt): Deep technical specification of all systems, contracts, and engineering philosophies.

@@ -236,15 +236,15 @@ export const ProjectsSection = () => {
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <motion.h2 
+                    <motion.h1 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-5xl font-black text-[#0F172A] dark:text-white mb-6 tracking-tight font-heading"
                     >
-                        Real Client <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5C00] to-[#FF8C1A]">Projects & Stories</span>
-                    </motion.h2>
+                        Real Client <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5C00] to-[#FF8C1A]">Projects & Case Studies</span> — Built in Chennai
+                    </motion.h1>
                     <p className="text-[#64748B] dark:text-white/60 text-lg max-w-2xl mx-auto">
                         Explore real websites, booking portals, and online stores we crafted for businesses in hospitality, architecture, and luxury retail.
                     </p>

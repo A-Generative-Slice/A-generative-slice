@@ -17,15 +17,15 @@ export const About = () => {
                         <Target className="w-4 h-4" />
                         Our Story & Mission
                     </motion.div>
-                    <motion.h2 
+                    <motion.h1 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-5xl font-black text-black dark:text-white mb-6 tracking-tight"
                     >
-                        We built <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">A Generative Slice</span> because the industry is broken.
-                    </motion.h2>
+                        We built <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">A Generative Slice</span>, Chennai's AI & web studio, because the industry is broken.
+                    </motion.h1>
                 </div>
 
                 {/* Story Section */}

@@ -88,3 +88,21 @@ Available at https://agenerativeslice.com/projects :
 - **Principal Contact**: smdhussain@agenerativeslice.com
 - **Phone / WhatsApp**: +91 78128 91494
 - **Address**: No: 144, Valluvar Kottam High Rd, Nungambakkam, Chennai, Tamil Nadu 600034, India
+- **Studio Hours**: Monday to Friday, 9:00 AM to 7:00 PM (IST)
+
+## 5. Chennai Local Service Pages
+Dedicated local landing pages, each with full scope, engagement process, honest Chennai market pricing guidance, FAQs and production proof:
+- **Chennai Hub**: https://agenerativeslice.com/chennai/ — overview of all six services, studio address, service areas and proof.
+- **AI Automation Agency in Chennai**: https://agenerativeslice.com/chennai/ai-automation/ — agentic workflows, vision-OCR document pipelines, quotation generation, payment follow-up, lead routing and mailbox triage.
+- **Custom Software Development Company in Chennai**: https://agenerativeslice.com/chennai/custom-software/ — portals, dashboards, PWAs and internal tools engineered end-to-end with milestone delivery.
+- **Web Development Company in Chennai**: https://agenerativeslice.com/chennai/web-development/ — conversion-focused websites, 3D showcases and e-commerce on React, Vite and TypeScript.
+- **ERP & CRM Development Company in Chennai**: https://agenerativeslice.com/chennai/erp-crm/ — trading ERPs with OCR invoicing, multi-currency FX, inventory and automated credit recovery.
+- **WhatsApp Business API Integration in Chennai**: https://agenerativeslice.com/chennai/whatsapp-automation/ — official-API conversational ordering, lead follow-up and support in Tamil and English.
+- **AI Chatbot Development Company in Chennai**: https://agenerativeslice.com/chennai/ai-chatbots/ — RAG-grounded assistants for websites, WhatsApp and internal tools using Gemini, LangChain and Ollama.
+
+## 6. Insights Library (Guides & Case Studies)
+Published at https://agenerativeslice.com/insights/ :
+- **How Much Does Custom Software Cost in Chennai? (2026 Honest Guide)**: https://agenerativeslice.com/insights/custom-software-cost-chennai/ — typical Chennai market ranges (websites ₹15k–₹60k; business web apps ₹60k–₹2.5L; ERPs ₹1.5L–₹6L+; AI automation ₹25k–₹1.5L), the five cost drivers, fixed-quote vs hourly billing, and hidden fees to ask about. Market guidance, not a studio price list.
+- **AI Automation for Chennai Real Estate: Leads & Site Visits**: https://agenerativeslice.com/insights/ai-automation-real-estate-chennai/ — playbook for stopping portal lead leakage with instant WhatsApp follow-up, Tamil AI qualification and automated site-visit booking.
+- **Case Study — Sree Ambal Catering**: https://agenerativeslice.com/insights/sree-ambal-catering/ — offline-first PWA banquet inventory and Tamil/English catalog for remote venues.
+- **Case Study — Rose Chemicals**: https://agenerativeslice.com/insights/rose-chemicals/ — B2B distribution portal with Sarvam AI conversational WhatsApp ordering in the local language.

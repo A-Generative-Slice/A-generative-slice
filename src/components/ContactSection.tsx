@@ -53,15 +53,15 @@ export const ContactSection = () => {
                         <MessageSquare className="w-4 h-4" />
                         Get in Touch
                     </motion.div>
-                    <motion.h2 
+                    <motion.h1 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-5xl font-black text-black dark:text-white mb-6 tracking-tight"
                     >
-                        Let's Have a <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Friendly Chat</span>
-                    </motion.h2>
+                        Let's Have a <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Friendly Chat</span> with Our Chennai Studio
+                    </motion.h1>
                     <motion.p 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

@@ -122,15 +122,15 @@ export const ServicesListSection = () => {
                         <Sparkles className="w-4 h-4" />
                         What We Can Build For You
                     </motion.div>
-                    <motion.h2 
+                    <motion.h1 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
                         className="text-4xl md:text-5xl font-black text-black dark:text-white mb-6 tracking-tight"
                     >
-                        Handcrafted Tech, <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Zero Complications</span>
-                    </motion.h2>
+                        AI Automation & Custom Software Services in Chennai, <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Zero Complications</span>
+                    </motion.h1>
                     <motion.p 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

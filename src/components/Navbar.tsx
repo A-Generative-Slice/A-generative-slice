@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import logoImg from '../assets/logo.jpg';
@@ -23,6 +23,8 @@ export const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
     const navLinks = [
         { name: 'Projects', path: '/projects' },
         { name: 'Products', path: '/products' },
+        { name: 'Chennai', path: '/chennai' },
+        { name: 'Insights', path: '/insights' },
         { name: 'About', path: '/about' },
         { name: 'Services', path: '/services' },
         { name: 'Careers', path: '/careers' },
@@ -57,34 +59,35 @@ export const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
                     </motion.div>
                 </Link>
 
-                {/* Nav Links Container */}
+                {/* Nav Links Container — links stay in the DOM for crawlers even when the island is closed */}
                 <div className="flex items-center min-w-0">
-                    <AnimatePresence mode="popLayout" initial={false}>
-                        {isOpen && (
-                            <motion.div 
-                                layout
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: 20 }}
-                                className="flex items-center gap-1 sm:gap-2 px-2 overflow-x-auto whitespace-nowrap scroll-smooth touch-pan-x [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-                            >
-                                {navLinks.map((link) => (
-                                    <Link 
-                                        key={link.name} 
-                                        to={link.path} 
-                                        onClick={() => setIsOpen(false)}
-                                        className={`px-4 py-2 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 relative whitespace-nowrap ${
-                                            location.pathname === link.path 
-                                                ? 'text-orange-500 bg-orange-500/10' 
-                                                : 'text-black/60 dark:text-white/50 hover:text-orange-500 hover:bg-orange-500/5'
-                                        }`}
-                                    >
-                                        {link.name}
-                                    </Link>
-                                ))}
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                    <motion.div
+                        layout
+                        initial={false}
+                        animate={{ width: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
+                        transition={{ type: 'spring', stiffness: 500, damping: 35, mass: 0.5 }}
+                        className="overflow-hidden"
+                        aria-hidden={!isOpen}
+                    >
+                        <div className="flex items-center gap-1 sm:gap-2 px-2 overflow-x-auto whitespace-nowrap scroll-smooth touch-pan-x [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                            {navLinks.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    to={`${link.path}/`}
+                                    tabIndex={isOpen ? 0 : -1}
+                                    onClick={() => setIsOpen(false)}
+                                    className={`px-4 py-2 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 relative whitespace-nowrap ${
+                                        location.pathname.replace(/\/+$/, '') === link.path ||
+                                        (link.path !== '/' && location.pathname.replace(/\/+$/, '').startsWith(`${link.path}/`))
+                                            ? 'text-orange-500 bg-orange-500/10'
+                                            : 'text-black/60 dark:text-white/50 hover:text-orange-500 hover:bg-orange-500/5'
+                                    }`}
+                                >
+                                    {link.name}
+                                </Link>
+                            ))}
+                        </div>
+                    </motion.div>
 
                     {/* Divider */}
                     <motion.div layout className="h-6 w-[1px] bg-black/10 dark:bg-white/10 mx-1" />

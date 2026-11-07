@@ -86,24 +86,34 @@ export const Hero = () => {
             </div>
 
             {/* Refined Grid & Noise */}
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] dark:opacity-[0.08] pointer-events-none mix-blend-overlay" />
+            <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.03] dark:opacity-[0.08] pointer-events-none mix-blend-overlay" />
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
             <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center text-center">
                 
                 {/* Main Headline with Masking Effect */}
                 <div className="overflow-visible mb-8">
-                    <motion.h1 
+                    <motion.div
                         initial={{ opacity: 0, y: 100 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                         className="text-6xl sm:text-8xl lg:text-9xl font-black tracking-tight leading-[0.85] text-black dark:text-white"
+                        aria-hidden="true"
                     >
                         A <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600">
                             GENERATIVE
                         </span> <br />
                         SLICE.
+                    </motion.div>
+                    <motion.h1
+                        initial={{ opacity: 0, y: 24 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                        className="mt-8 text-xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-black/80 dark:text-white/80"
+                    >
+                        AI Automation & Bespoke Web Systems Studio in{' '}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Chennai</span>
                     </motion.h1>
                 </div>
 
