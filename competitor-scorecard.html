@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chennai SEO Scoreboard — A Generative Slice vs the Field</title>
+<meta name="description" content="Live 2026-11-08 comparison: A Generative Slice scored 81/100 against five Chennai software & AI competitors on the same five SEO disciplines. Raw-HTTP evidence, head-to-head radar, discipline matrix.">
+<style>
+  :root{
+    --bg:#0b0e13; --surface:#12161d; --surface2:#171c25; --overlay:#1d2430;
+    --line:#232b37; --line2:#2e3948;
+    --text:#e8edf4; --muted:#9aa7b8; --dim:#66788c;
+    --us:#ff6b1a; --cyan:#22d3ee; --lime:#a3e635; --magenta:#e879f9; --amber:#fbbf24; --blue:#60a5fa;
+    --red:#f87171; --ok:#a3e635; --warn:#fbbf24; --bad:#f87171; --info:#22d3ee;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    --disp:"Avenir Next","Segoe UI Variable Display","Segoe UI",system-ui,-apple-system,sans-serif;
+    --nav-h:64px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--disp);font-size:15px;line-height:1.6;overflow-x:hidden}
+  ::selection{background:rgba(255,107,26,.35)}
+  /* own-language scrollbar */
+  html{scrollbar-width:thin;scrollbar-color:#3a4553 #0b0e13}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-track{background:#0b0e13}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#3a4553,#2a3441);border-radius:8px;border:2px solid #0b0e13}
+  ::-webkit-scrollbar-thumb:hover{background:var(--us)}
+  .tablewrap{scrollbar-width:thin;scrollbar-color:#3a4553 #12161d}
+
+  /* layered background: grain + aurora + grid */
+  .bg{position:fixed;inset:0;z-index:-2;background:
+    radial-gradient(900px 480px at 85% -60px, rgba(255,107,26,.14), transparent 60%),
+    radial-gradient(800px 500px at -10% 30%, rgba(34,211,238,.07), transparent 60%),
+    radial-gradient(700px 600px at 60% 110%, rgba(232,121,249,.06), transparent 60%),
+    var(--bg)}
+  .bg:after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.05;mix-blend-mode:overlay}
+  .drift{position:fixed;z-index:-1;width:520px;height:520px;border-radius:50%;filter:blur(140px);opacity:.10;pointer-events:none;animation:drift 26s ease-in-out infinite alternate}
+  .drift.a{background:var(--us);top:-160px;right:-120px}
+  .drift.b{background:var(--cyan);bottom:-200px;left:-160px;animation-delay:-13s}
+  @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(-90px,70px) scale(1.15)}}
+  @media (prefers-reduced-motion: reduce){.drift{animation:none}}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  header{position:fixed;top:0;left:0;right:0;z-index:50;height:var(--nav-h);backdrop-filter:blur(14px);background:rgba(11,14,19,.82);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:18px;height:var(--nav-h)}
+  .brand{display:flex;align-items:center;gap:10px;min-width:0}
+  .brand .t{font-weight:900;letter-spacing:.08em;font-size:13px}
+  .brand .t small{display:block;font-family:var(--mono);font-weight:400;font-size:10px;color:var(--dim);letter-spacing:.14em}
+  .navlinks{display:flex;gap:4px;margin-left:auto}
+  .navlinks a{color:var(--muted);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border-radius:999px;transition:.2s}
+  .navlinks a:hover{color:var(--text);background:var(--overlay)}
+  .navlinks a.active{color:var(--us);background:rgba(255,107,26,.12)}
+  .pill{font-family:var(--mono);font-size:11px;font-weight:800;color:#0b0e13;background:linear-gradient(120deg,var(--us),var(--amber));padding:7px 12px;border-radius:999px;white-space:nowrap}
+  @media(max-width:860px){.navlinks{display:none}}
+
+  section,.hero{scroll-margin-top:calc(var(--nav-h) + 18px)}
+  .hero{display:grid;grid-template-columns:1.25fr .75fr;gap:36px;align-items:center;padding:calc(var(--nav-h) + 54px) 0 34px}
+  @media(max-width:900px){.hero{grid-template-columns:1fr}}
+  .kicker{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--us);display:flex;align-items:center;gap:10px;margin-bottom:18px}
+  .kicker:before{content:"";width:26px;height:2px;background:var(--us)}
+  h1{font-size:clamp(30px,4.6vw,52px);font-weight:900;line-height:1.08;letter-spacing:-.02em;margin-bottom:18px}
+  .grad{background:linear-gradient(100deg,var(--us) 10%,var(--amber) 45%,var(--magenta) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{color:var(--muted);font-size:15px;max-width:56ch}
+  .lede b{color:var(--text)}
+  .metachips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .chip{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);background:var(--surface);padding:6px 12px;border-radius:999px}
+  .chip b{color:var(--text);font-weight:700}
+  .gaugecard{background:linear-gradient(160deg,var(--surface),var(--surface2));border:1px solid var(--line);border-radius:22px;padding:26px;text-align:center;position:relative;overflow:hidden}
+  .gaugecard:before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--us),var(--amber),var(--magenta))}
+  .gauge{position:relative;width:190px;margin:0 auto}
+  .gauge .val{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .gauge .num{font-family:var(--mono);font-size:46px;font-weight:800;color:var(--us)}
+  .gauge .of{font-size:11px;color:var(--dim);letter-spacing:.12em}
+  .verdict{margin-top:14px;font-size:12px;color:var(--muted)}
+  .verdict b{color:var(--amber)}
+
+  section{padding:34px 0}
+  .sechead{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+  .sechead .idx{font-family:var(--mono);font-size:12px;color:var(--dim)}
+  .sechead h2{font-size:clamp(20px,2.6vw,28px);font-weight:900;letter-spacing:-.01em}
+  .secsub{color:var(--muted);font-size:13px;max-width:88ch;margin-bottom:20px}
+  .secsub b{color:var(--text)}
+
+  .controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-bottom:18px}
+  .controls label{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase}
+  select,button.btn{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--text);background:var(--overlay);border:1px solid var(--line2);border-radius:10px;padding:8px 12px;cursor:pointer;transition:.2s}
+  select:hover,button.btn:hover{border-color:var(--us)}
+  select:focus,button.btn:focus{outline:2px solid rgba(255,107,26,.5);outline-offset:2px}
+  button.btn.primary{background:linear-gradient(120deg,var(--us),#ff8b47);color:#0b0e13;border:none}
+  .spacer{margin-left:auto}
+
+  /* ranking bars */
+  .rank{display:flex;flex-direction:column;gap:10px}
+  .rrow{display:grid;grid-template-columns:34px 210px 1fr 74px;gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px;transition:border-color .25s, transform .25s}
+  .rrow:hover{border-color:var(--line2);transform:translateX(4px)}
+  .rrow.us{border-color:rgba(255,107,26,.55);background:linear-gradient(120deg,rgba(255,107,26,.10),var(--surface) 55%);box-shadow:0 0 0 1px rgba(255,107,26,.25), 0 8px 30px -18px rgba(255,107,26,.5)}
+  .rrow .pos{font-family:var(--mono);font-size:14px;font-weight:800;color:var(--dim)}
+  .rrow.us .pos{color:var(--us)}
+  .rrow .nm{font-weight:800;font-size:14px;min-width:0}
+  .rrow .nm small{display:block;font-family:var(--mono);font-weight:400;font-size:10px;color:var(--dim);letter-spacing:.06em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .rrow .track{height:12px;background:var(--overlay);border-radius:999px;overflow:hidden;position:relative}
+  .rrow .track i{display:block;height:100%;border-radius:999px;width:0;transition:width .9s cubic-bezier(.2,.7,.2,1)}
+  .rrow .sc{font-family:var(--mono);font-size:18px;font-weight:800;text-align:right}
+  .rrow .sc small{display:block;font-size:10px;font-weight:400;color:var(--dim)}
+  @media(max-width:700px){.rrow{grid-template-columns:26px 1fr 60px}.rrow .track{grid-column:1/-1;order:5}}
+
+  /* head to head */
+  .h2h{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
+  @media(max-width:900px){.h2h{grid-template-columns:1fr}}
+  .radarcard{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px;position:relative}
+  .radarcard svg{width:100%;height:auto;display:block}
+  .legend{display:flex;gap:16px;justify-content:center;padding:6px 0 4px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+  .deltas{display:flex;flex-direction:column;gap:10px}
+  .drow{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+  .drow .lab{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);width:96px}
+  .drow .vals{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:auto}
+  .drow .d{font-family:var(--mono);font-size:13px;font-weight:800;min-width:52px;text-align:right}
+  .d.up{color:var(--ok)} .d.down{color:var(--bad)} .d.tie{color:var(--dim)}
+  .h2hverdict{margin-top:14px;font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--us);border-radius:12px;padding:12px 16px}
+  .h2hverdict b{color:var(--text)}
+
+  /* matrix */
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+  table{border-collapse:collapse;width:100%;min-width:760px}
+  th,td{padding:12px 14px;text-align:left;font-size:13px;border-bottom:1px solid var(--line)}
+  thead th{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);background:var(--surface2)}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr{transition:background .2s}
+  tbody tr:hover{background:var(--surface2)}
+  tr.us td{background:rgba(255,107,26,.07)}
+  td .co{display:flex;align-items:center;gap:10px;font-weight:800}
+  td .co i{width:10px;height:10px;border-radius:3px;flex:none}
+  td.num{font-family:var(--mono);font-weight:700}
+  .heat{display:inline-block;min-width:44px;text-align:center;border-radius:8px;padding:4px 8px;font-family:var(--mono);font-weight:800;font-size:12px}
+  .heat.hi{background:rgba(163,230,53,.16);color:var(--lime)}
+  .heat.mid{background:rgba(34,211,238,.14);color:var(--cyan)}
+  .heat.low{background:rgba(251,191,36,.14);color:var(--amber)}
+  .heat.bad{background:rgba(248,113,113,.14);color:var(--red)}
+  .heat.total{background:linear-gradient(120deg,rgba(255,107,26,.2),rgba(251,191,36,.2));color:var(--amber)}
+
+  /* evidence cards */
+  .evgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:900px){.evgrid{grid-template-columns:1fr}}
+  details.ev{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:border-color .2s}
+  details.ev[open]{border-color:var(--line2)}
+  details.ev summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:14px 18px}
+  details.ev summary::-webkit-details-marker{display:none}
+  details.ev summary .dotc{width:12px;height:12px;border-radius:4px;flex:none}
+  details.ev summary .nm{font-weight:800;font-size:14px}
+  details.ev summary .ov{margin-left:auto;font-family:var(--mono);font-weight:800;font-size:14px}
+  details.ev summary .car{color:var(--dim);transition:transform .25s;font-size:11px}
+  details.ev[open] summary .car{transform:rotate(90deg)}
+  .evbody{padding:0 18px 18px;border-top:1px solid var(--line)}
+  .sig{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;padding:14px 0}
+  @media(max-width:520px){.sig{grid-template-columns:1fr}}
+  .sig div{display:flex;justify-content:space-between;gap:10px;font-size:12px;border-bottom:1px dashed var(--line);padding:5px 0}
+  .sig dt{color:var(--dim)} .sig dd{font-family:var(--mono);font-weight:700;text-align:right;color:var(--text)}
+  .sig dd.good{color:var(--ok)} .sig dd.warn{color:var(--warn)} .sig dd.bad{color:var(--bad)}
+  .evnote{font-size:12px;color:var(--muted);margin:6px 0 10px}
+  .srcs{display:flex;flex-wrap:wrap;gap:6px}
+  .srcs a{font-family:var(--mono);font-size:10px;color:var(--info);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 10px;transition:.2s}
+  .srcs a:hover{border-color:var(--info)}
+
+  /* read cards */
+  .reads{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:900px){.reads{grid-template-columns:1fr}}
+  .read{background:linear-gradient(160deg,var(--surface),var(--surface2));border:1px solid var(--line);border-radius:18px;padding:20px;position:relative;overflow:hidden}
+  .read:before{content:"";position:absolute;top:0;left:0;right:0;height:2px}
+  .read.win:before{background:linear-gradient(90deg,var(--lime),var(--cyan))}
+  .read.lose:before{background:linear-gradient(90deg,var(--red),var(--amber))}
+  .read.move:before{background:linear-gradient(90deg,var(--us),var(--magenta))}
+  .read h4{font-size:15px;font-weight:900;margin-bottom:8px}
+  .read p{font-size:12.5px;color:var(--muted)}
+  .read p b{color:var(--text)}
+  .read ul{list-style:none;margin-top:10px}
+  .read li{font-size:12px;color:var(--muted);padding:6px 0 6px 18px;position:relative;border-bottom:1px dashed var(--line)}
+  .read li:last-child{border-bottom:none}
+  .read li:before{content:"▸";position:absolute;left:2px;color:var(--us)}
+
+  footer{border-top:1px solid var(--line);margin-top:40px;padding:26px 0 42px;color:var(--dim);font-size:12px}
+  footer .mono{font-family:var(--mono);font-size:11px}
+  footer a{color:var(--info);text-decoration:none}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--us);color:#0b0e13;font-family:var(--mono);font-size:12px;font-weight:800;padding:10px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:.3s;z-index:99}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .copymodal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(5,7,10,.72);backdrop-filter:blur(6px)}
+  .copymodal.show{display:flex}
+  .copypanel{width:min(680px,100%);max-height:82vh;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px}
+  .copyhead{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .copyhead .ct{font-family:var(--mono);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--us)}
+  .copyhead .btn{margin-left:auto}
+  .copypanel textarea{flex:1;min-height:260px;resize:vertical;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:14px;font-family:var(--mono);font-size:12px;line-height:1.6;outline:none}
+  .copyhint{margin-top:10px;font-size:12px;color:var(--amber)}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="drift a"></div><div class="drift b"></div>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">
+      <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect width="26" height="26" rx="7" fill="#ff6b1a"/><path d="M7 18 L13 7 L15 12 L19 8" stroke="#0b0e13" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="t">CHENNAI SEO SCOREBOARD<small>A GENERATIVE SLICE vs THE FIELD</small></div>
+    </div>
+    <nav class="navlinks">
+      <a href="#ranking" class="active">Ranking</a>
+      <a href="#head2head">Head-to-head</a>
+      <a href="#matrix">Matrix</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#read">The read</a>
+    </nav>
+    <span class="pill" id="pill">US 81 · FIELD BEST 74</span>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero" id="overview">
+    <div>
+      <div class="kicker">Live market comparison · 2026-11-08 · same-method measurement</div>
+      <h1>Our site now scores<br><span class="grad">above every sampled rival.</span></h1>
+      <p class="lede">Six companies, one rubric: the same five disciplines used in our 48 → 81 re-score, measured live on raw HTTP (what crawlers actually receive). <b>A Generative Slice leads at 81</b>; the best rival scores 74. The pattern is clear — we win the site itself, they win the reputation. <b>Authority is the only discipline where we trail the field's best.</b></p>
+      <div class="metachips">
+        <span class="chip">Companies <b>6 · Chennai software & AI</b></span>
+        <span class="chip">Disciplines <b>5 · identical rubric</b></span>
+        <span class="chip">Field average <b id="fieldAvg">62</b></span>
+        <span class="chip">Measured <b>2026-11-08</b></span>
+      </div>
+    </div>
+    <div class="gaugecard">
+      <div class="gauge">
+        <svg width="190" height="190" viewBox="0 0 190 190" aria-hidden="true">
+          <circle cx="95" cy="95" r="82" fill="none" stroke="#1a2029" stroke-width="14"/>
+          <circle id="gaugeArc" cx="95" cy="95" r="82" fill="none" stroke="url(#gg)" stroke-width="14" stroke-linecap="round" stroke-dasharray="515.2" stroke-dashoffset="515.2"/>
+          <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff6b1a"/><stop offset=".6" stop-color="#fbbf24"/><stop offset="1" stop-color="#a3e635"/></linearGradient></defs>
+        </svg>
+        <div class="val"><span class="num" id="gaugeNum">0</span><span class="of">/ 100 · OUR SCORE</span></div>
+      </div>
+      <p class="verdict">Verdict: <b>site-side lead is real.</b> Next points come from GBP, citations and reviews — the manual list.</p>
+    </div>
+  </div>
+
+  <section id="ranking">
+    <div class="sechead"><span class="idx">01</span><h2>Ranking — who scores what</h2></div>
+    <p class="secsub">Overall = mean of the five discipline scores, same analyst rubric as the 2026-11-07 audit and the 2026-11-08 re-score. Switch the metric to see who leads each discipline. <b>Scores measure the site, not Google positions.</b></p>
+    <div class="controls">
+      <label for="metric">Metric</label>
+      <select id="metric">
+        <option value="overall">Overall</option>
+        <option value="tech">Technical</option>
+        <option value="onpage">On-Page</option>
+        <option value="content">Content</option>
+        <option value="geo">GEO / AI</option>
+        <option value="authority">Authority</option>
+      </select>
+      <button class="btn primary spacer" id="copySummary">Copy comparison as Markdown</button>
+    </div>
+    <div class="rank" id="rank"></div>
+  </section>
+
+  <section id="head2head">
+    <div class="sechead"><span class="idx">02</span><h2>Head-to-head — us vs any rival</h2></div>
+    <p class="secsub">Pick a competitor: the radar overlays our five-discipline profile on theirs, and the delta strip shows exactly where we lead or trail.</p>
+    <div class="controls">
+      <label for="opponent">Opponent</label>
+      <select id="opponent"></select>
+    </div>
+    <div class="h2h">
+      <div class="radarcard">
+        <div id="radar"></div>
+        <div class="legend" id="legend"></div>
+      </div>
+      <div>
+        <div class="deltas" id="deltas"></div>
+        <div class="h2hverdict" id="h2hverdict"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="matrix">
+    <div class="sechead"><span class="idx">03</span><h2>Discipline matrix</h2></div>
+    <p class="secsub">Every score, one grid. Green ≥ 85 · cyan 70–84 · amber 50–69 · red &lt; 50. Our row is tinted.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Company</th><th>Technical</th><th>On-Page</th><th>Content</th><th>GEO / AI</th><th>Authority</th><th>Overall</th></tr></thead>
+        <tbody id="mbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="evidence">
+    <div class="sechead"><span class="idx">04</span><h2>Evidence — what was measured</h2></div>
+    <p class="secsub">Raw-HTTP parse of each homepage on 2026-11-08 (visible text, H1/H2, unique internal links, schema, canonical, OG, robots, llms.txt, sitemap), plus city-page depth probes and public directory profiles. Expand a company for its full signal sheet. <b>llms.txt "soft-200" HTML pages count as absent.</b></p>
+    <div class="evgrid" id="evgrid"></div>
+  </section>
+
+  <section id="read">
+    <div class="sechead"><span class="idx">05</span><h2>The read — win, lose, move</h2></div>
+    <p class="secsub">What the comparison actually says about the next 90 days.</p>
+    <div class="reads">
+      <div class="read win reveal">
+        <h4>Where we win</h4>
+        <p><b>The site itself.</b> We lead Technical (90), On-Page (92) and GEO/AI (96) against the whole field.</p>
+        <ul>
+          <li>Only company with prerendered bodies on every route <i>and</i> AI-welcoming robots <i>and</i> a synced llms-full.txt.</li>
+          <li>3 of 5 rivals now publish llms.txt (Kanhasoft, Smarther, Tech4LYF) — the GEO gap is narrowing; our schema depth + answer-ready copy keeps the lead.</li>
+          <li>Exact-match Chennai H1s on 6 service pages; Sieora and Smarther run one city page each, Kanhasoft none.</li>
+        </ul>
+      </div>
+      <div class="read lose reveal">
+        <h4>Where they win</h4>
+        <p><b>Reputation and raw depth.</b> Kanhasoft's Authority 70 vs our 40 is the biggest single gap on the board.</p>
+        <ul>
+          <li>Kanhasoft: 22 verified Clutch reviews at 5.0, llm-info.html, 6.2k-word home, 180-URL sitemap.</li>
+          <li>Sieora: 5.4k-word / 83-H2 Chennai AI page — the depth benchmark for our city pages.</li>
+          <li>Smarther: Clutch + GoodFirms + DesignRush profiles and a 4.2k-word home.</li>
+        </ul>
+      </div>
+      <div class="read move reveal">
+        <h4>The move</h4>
+        <p><b>Convert the site lead into a market lead</b> with the manual authority kit — the dev side is already done.</p>
+        <ul>
+          <li>Verify Google Business Profile; same NAP on Justdial / Sulekha / IndiaMART / TradeIndia.</li>
+          <li>Clutch + GoodFirms profiles; ask the 8 production clients for verified reviews (template in the plan).</li>
+          <li>Keep one insight post / month; grow city pages toward Sieora-class depth where the SERP demands it.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="mono">METHOD · Raw HTTP + HTML parse of all six homes (2026-11-08), city-page probes for Sieora & Smarther, robots/llms/sitemap authenticity checks, public Clutch/GoodFirms/DesignRush/TradeIndia profiles via web search. Scores are analyst judgments on the identical five-discipline rubric used for our 48 → 81 re-score; overall = mean. Word counts are raw visible text and differ from rendered-markdown counts. No Google rankings or traffic data claimed.</p>
+    <p style="margin-top:8px">A Generative Slice · Chennai SEO scoreboard · 2026-11-08 · companion to <a href="seo-audit-report.html">seo-audit-report.html</a> and <a href="chennai-top-plan.html">chennai-top-plan.html</a></p>
+  </div>
+</footer>
+
+<div class="copymodal" id="copyModal" role="dialog" aria-modal="true" aria-label="Comparison markdown">
+  <div class="copypanel">
+    <div class="copyhead"><span class="ct">Comparison · Markdown</span><button class="btn" id="copyClose">Close</button></div>
+    <textarea id="copyTa" readonly spellcheck="false"></textarea>
+    <p class="copyhint">Automatic copy was blocked by this browser. The text is selected — press Ctrl+C (⌘C on Mac) to copy it.</p>
+  </div>
+</div>
+<div class="toast" id="toast">Copied</div>
+
+<script>
+const DISC=[["tech","Technical"],["onpage","On-Page"],["content","Content"],["geo","GEO / AI"],["authority","Authority"]];
+const C=[
+ {id:"ags",us:true,name:"A Generative Slice",url:"agenerativeslice.com",hue:"#ff6b1a",
+  s:{tech:90,onpage:92,content:85,geo:96,authority:40},
+  sig:[["Home words","1,525",""],["Home H1","service + city","good"],["H2 sections","7",""],["Internal links (home)","22",""],["Blog / insights links","5","good"],["llms.txt + llms-full","real, synced","good"],["robots AI welcome","yes","good"],["Sitemap","22 URLs · 11-08","good"],["OG 1200×630","yes","good"],["Clutch / GoodFirms","none yet","bad"],["Chennai pages","6 · 2.6–3.2k words","good"],["Prerendered bodies","23/23 routes","good"]],
+  note:"The only site combining prerendered bodies, exact-match city H1s, AI-welcoming robots and a synced llms-full.txt. Authority is the lone lagging discipline.",
+  src:[["live site","https://agenerativeslice.com/"],["re-score audit","seo-audit-report.html"]]},
+ {id:"kanhasoft",name:"Kanhasoft",url:"kanhasoft.com",hue:"#22d3ee",
+  s:{tech:78,onpage:65,content:75,geo:80,authority:70},
+  sig:[["Home words","6,185","good"],["Home H1","service, no city","warn"],["H2 sections","17","good"],["Internal links (home)","6","bad"],["Blog links from home","0","bad"],["llms.txt","real + llm-info.html","good"],["robots AI welcome","yes (GPTBot, Google-Extended)","good"],["Sitemap","180 URLs · 10-23",""],["OG image","yes","good"],["Clutch","22 reviews · 5.0","good"],["Chennai pages","0 in sitemap","bad"],["Prerendered bodies","SSR, yes","good"]],
+  note:"The authority benchmark: 22 verified Clutch reviews, an llm-info.html page for AI assistants, and the deepest home in the field. Weak home internal linking and no Chennai city page.",
+  src:[["Clutch profile","https://clutch.co/profile/kanhasoft"],["llm-info","https://kanhasoft.com/llm-info.html"]]},
+ {id:"smarther",name:"Smarther",url:"smarther.co",hue:"#a3e635",
+  s:{tech:72,onpage:80,content:78,geo:60,authority:60},
+  sig:[["Home words","4,176","good"],["Home H1","service + city","good"],["H2 sections","6",""],["Internal links (home)","75","good"],["Blog links","6","good"],["llms.txt","real","good"],["robots AI welcome","no","warn"],["Sitemap","4 URLs · 11-04","warn"],["OG image","yes","good"],["Clutch / GoodFirms","5 reviews + listed","good"],["Chennai page","3,053 words · exact H1","good"],["Prerendered bodies","SSR, yes","good"]],
+  note:"The efficient operator: exact-match city H1/URL, 3k-word city page, real llms.txt and three directory profiles. Tiny sitemap and no AI-bot rules in robots.",
+  src:[["Clutch","https://clutch.co/profile/smarther"],["GoodFirms","https://www.goodfirms.co/company/smarther"],["DesignRush","https://www.designrush.com/agency/profile/smarther"]]},
+ {id:"sieora",name:"Sieora",url:"sieora.in",hue:"#e879f9",
+  s:{tech:70,onpage:68,content:80,geo:45,authority:45},
+  sig:[["Home words","2,790",""],["Home H1","brand-only","bad"],["H2 sections","13",""],["Internal links (home)","49","good"],["Blog links","1","warn"],["llms.txt","soft-200 HTML = absent","bad"],["robots AI welcome","no","warn"],["Sitemap","6 URLs · 10-06","warn"],["OG image","yes","good"],["Clutch / GoodFirms","not found","warn"],["Chennai AI page","5,400 words · 83 H2","good"],["Prerendered bodies","SSR, yes","good"]],
+  note:"Holds the AI-Chennai SERP with one monster city page (5.4k words, 83 H2s, exact-match H1) — but the home H1 is brand-only and the GEO/authority layer is thin.",
+  src:[["city page","https://sieora.in/ai-development-company-in-chennai.html"]]},
+ {id:"tech4lyf",name:"Tech4LYF",url:"tech4lyf.com",hue:"#fbbf24",
+  s:{tech:60,onpage:72,content:60,geo:55,authority:38},
+  sig:[["Home words","2,054",""],["Home H1","service + city","good"],["H2 sections","5",""],["Internal links (home)","158","good"],["Blog links","3",""],["llms.txt","real","good"],["robots AI welcome","no","warn"],["Sitemap","100 URLs · 03-16 stale","bad"],["OG image","no","bad"],["Clutch / GoodFirms","not found","warn"],["Chennai URLs","2",""],["Prerendered bodies","SSR, yes","good"]],
+  note:"Keyword-rich H1 and heavy internal linking, real llms.txt — but a stale March sitemap, no OG image and no directory reviews leave the middle of the board.",
+  src:[["live site","https://tech4lyf.com/"]]},
+ {id:"evincetech",name:"EvinceTech",url:"evincetech.com",hue:"#60a5fa",
+  s:{tech:65,onpage:50,content:45,geo:35,authority:40},
+  sig:[["Home words","1,622","warn"],["Home H1","service, no city","warn"],["H2 sections","8",""],["Internal links (home)","0","bad"],["Blog links","0","bad"],["llms.txt","404","bad"],["robots AI welcome","no","warn"],["Sitemap","88 URLs · 11-04","good"],["OG image","yes","good"],["Clutch / GoodFirms","TradeIndia + LinkedIn only","warn"],["Chennai URLs","1",""],["Prerendered bodies","SSR, yes","good"]],
+  note:"Lean and keyword-targeted but almost no internal links from home, no blog, no llms.txt — the weakest classic-SEO execution in the sample.",
+  src:[["TradeIndia","https://www.tradeindia.com/evince-technologies-pvt-ltd-22649344/"],["LinkedIn","https://in.linkedin.com/company/evince-technologies"]]}
+];
+const overall=c=>Math.round(DISC.reduce((a,[k])=>a+c.s[k],0)/DISC.length);
+const US=C[0];
+const $=s=>document.querySelector(s);
+const el=(t,c,h)=>{const n=document.createElement(t);if(c)n.className=c;if(h!=null)n.innerHTML=h;return n;};
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const heat=n=>n>=85?"hi":n>=70?"mid":n>=50?"low":"bad";
+
+/* field average + pill */
+const fieldAvg=Math.round(C.slice(1).reduce((a,c)=>a+overall(c),0)/(C.length-1));
+$("#fieldAvg").textContent=fieldAvg;
+$("#pill").textContent=`US ${overall(US)} · FIELD BEST ${Math.max(...C.slice(1).map(overall))}`;
+
+/* ranking */
+function renderRank(){
+  const m=$("#metric").value;
+  const val=c=>m==="overall"?overall(c):c.s[m];
+  const list=[...C].sort((a,b)=>val(b)-val(a));
+  const box=$("#rank");box.innerHTML="";
+  list.forEach((c,i)=>{
+    const v=val(c);
+    const row=el("div","rrow"+(c.us?" us":""));
+    const delta=c.us?"":(v-val(US)>0?`+${v-val(US)} vs us`:`${v-val(US)} vs us`);
+    row.innerHTML=`<span class="pos">${String(i+1).padStart(2,"0")}</span>
+      <span class="nm">${esc(c.name)}${c.us?" ★":""}<small>${esc(c.url)}</small></span>
+      <span class="track"><i style="background:linear-gradient(90deg,${c.hue}88,${c.hue})" data-w="${v}"></i></span>
+      <span class="sc" style="color:${c.hue}">${v}<small>${c.us?"that's us":delta}</small></span>`;
+    box.appendChild(row);
+  });
+  requestAnimationFrame(()=>requestAnimationFrame(()=>box.querySelectorAll(".track i").forEach(i=>i.style.width=i.dataset.w+"%")));
+}
+$("#metric").addEventListener("change",renderRank);
+renderRank();
+
+/* head-to-head radar */
+const oppSel=$("#opponent");
+C.slice(1).forEach(c=>{const o=el("option");o.value=c.id;o.textContent=`${c.name} (${overall(c)})`;oppSel.appendChild(o);});
+function radarSVG(opp){
+  const W=520,H=440,cx=W/2,cy=H/2+8,R=158;
+  const pt=(i,v)=>{const a=-Math.PI/2+i*2*Math.PI/5;return [cx+Math.cos(a)*R*v/100,cy+Math.sin(a)*R*v/100];};
+  let g="";
+  [20,40,60,80,100].forEach(r=>{g+=`<polygon points="${DISC.map((_,i)=>pt(i,r).map(n=>n.toFixed(1)).join(",")).join(" ")}" fill="none" stroke="${r===100?"#2e3948":"#1d2430"}" stroke-width="1"/>`;});
+  DISC.forEach(([k,lab],i)=>{
+    const [x,y]=pt(i,100);const [lx,ly]=pt(i,124);
+    g+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#1d2430"/>`;
+    const anchor=Math.abs(lx-cx)<12?"middle":(lx>cx?"start":"end");
+    g+=`<text x="${lx}" y="${ly}" text-anchor="${anchor}" dominant-baseline="middle" fill="#9aa7b8" font-size="12" font-weight="700" font-family="ui-monospace,Menlo,monospace">${lab}</text>`;
+    g+=`<text x="${lx}" y="${ly+16}" text-anchor="${anchor}" dominant-baseline="middle" fill="#66788c" font-size="10" font-family="ui-monospace,Menlo,monospace">${US.s[k]} / ${opp.s[k]}</text>`;
+  });
+  const poly=c=>DISC.map(([k],i)=>pt(i,c.s[k]).map(n=>n.toFixed(1)).join(",")).join(" ");
+  g+=`<polygon points="${poly(opp)}" fill="${opp.hue}22" stroke="${opp.hue}" stroke-width="2"/>`;
+  g+=`<polygon points="${poly(US)}" fill="#ff6b1a26" stroke="#ff6b1a" stroke-width="2.5"/>`;
+  DISC.forEach(([k],i)=>{
+    const [ux,uy]=pt(i,US.s[k]);const [ox,oy]=pt(i,opp.s[k]);
+    g+=`<circle cx="${ox}" cy="${oy}" r="3.5" fill="${opp.hue}"/><circle cx="${ux}" cy="${uy}" r="4" fill="#ff6b1a"/>`;
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Radar comparison of A Generative Slice versus ${esc(opp.name)}">${g}</svg>`;
+}
+function renderH2H(){
+  const opp=C.find(c=>c.id===oppSel.value)||C[1];
+  $("#radar").innerHTML=radarSVG(opp);
+  $("#legend").innerHTML=`<span><i style="background:#ff6b1a"></i>A Generative Slice · ${overall(US)}</span><span><i style="background:${opp.hue}"></i>${esc(opp.name)} · ${overall(opp)}</span>`;
+  const dbox=$("#deltas");dbox.innerHTML="";
+  let wins=0;
+  DISC.forEach(([k,lab])=>{
+    const d=US.s[k]-opp.s[k];if(d>0)wins++;
+    const row=el("div","drow");
+    row.innerHTML=`<span class="lab">${lab}</span><span class="d ${d>0?"up":d<0?"down":"tie"}">${d>0?"+":""}${d}</span><span class="vals">${US.s[k]} vs ${opp.s[k]}</span>`;
+    dbox.appendChild(row);
+  });
+  const gap=overall(US)-overall(opp);
+  $("#h2hverdict").innerHTML=`We lead <b>${wins} of 5</b> disciplines and the overall by <b>${gap>0?"+":""}${gap}</b> points. ${wins>=4?"The profile is broader; their edge is concentrated in one or two columns.":"Their profile is competitive — the deltas above show exactly where to push."} Biggest trail: <b>${DISC.reduce((a,[k,lab])=>(US.s[k]-opp.s[k])<(US.s[a[0]]-opp.s[a[0]])?[k,lab]:a,DISC[0])[1]}</b>.`;
+}
+oppSel.addEventListener("change",renderH2H);
+renderH2H();
+
+/* matrix */
+const mbody=$("#mbody");
+[...C].sort((a,b)=>overall(b)-overall(a)).forEach(c=>{
+  const tr=el("tr",c.us?"us":"");
+  tr.innerHTML=`<td><span class="co"><i style="background:${c.hue}"></i>${esc(c.name)}${c.us?" ★":""}</span></td>`+
+    DISC.map(([k])=>`<td class="num"><span class="heat ${heat(c.s[k])}">${c.s[k]}</span></td>`).join("")+
+    `<td class="num"><span class="heat total">${overall(c)}</span></td>`;
+  mbody.appendChild(tr);
+});
+
+/* evidence cards */
+const evgrid=$("#evgrid");
+C.forEach(c=>{
+  const d=el("details","ev reveal");
+  d.innerHTML=`<summary><span class="dotc" style="background:${c.hue}"></span><span class="nm">${esc(c.name)}${c.us?" ★":""}</span><span class="ov" style="color:${c.hue}">${overall(c)}</span><span class="car">▶</span></summary>
+  <div class="evbody"><dl class="sig">${c.sig.map(([l,v,cls])=>`<div><dt>${esc(l)}</dt><dd class="${cls||""}">${esc(v)}</dd></div>`).join("")}</dl>
+  <p class="evnote">${esc(c.note)}</p>
+  <div class="srcs">${c.src.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)} ↗</a>`).join("")}</div></div>`;
+  evgrid.appendChild(d);
+});
+
+/* copy summary */
+function showToast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800);}
+$("#copySummary").addEventListener("click",async()=>{
+  const md="# Chennai SEO Scoreboard — 2026-11-08\n\nOverall (mean of 5 disciplines): "+[...C].sort((a,b)=>overall(b)-overall(a)).map(c=>`${c.name} ${overall(c)}`).join(" · ")+"\n\n"+C.map(c=>"## "+c.name+(c.us?" (us)":"")+"\n"+DISC.map(([k,lab])=>`- ${lab}: ${c.s[k]}`).join("\n")+"\n- "+c.note).join("\n\n")+"\n\nMethod: raw-HTTP measurement, identical rubric; scores are analyst judgments, not Google rankings.";
+  let ok=false;
+  try{await navigator.clipboard.writeText(md);ok=true;}catch(e){
+    const ta=document.createElement("textarea");ta.value=md;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.focus();ta.select();
+    try{ok=document.execCommand("copy");}catch(_){ok=false;}
+    document.body.removeChild(ta);
+  }
+  if(ok)showToast("Comparison copied as Markdown");
+  else{$("#copyTa").value=md;$("#copyModal").classList.add("show");requestAnimationFrame(()=>{$("#copyTa").focus();$("#copyTa").select();});showToast("Copy blocked — text selected, press Ctrl+C");}
+});
+$("#copyClose").addEventListener("click",()=>$("#copyModal").classList.remove("show"));
+$("#copyModal").addEventListener("click",e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove("show");});
+window.addEventListener("keydown",e=>{if(e.key==="Escape")$("#copyModal").classList.remove("show");});
+
+/* gauge + reveal */
+const target=overall(US);
+function animate(){
+  const arc=$("#gaugeArc");const Cc=515.2;arc.style.transition="stroke-dashoffset 1.4s cubic-bezier(.2,.7,.2,1)";arc.style.strokeDashoffset=Cc*(1-target/100);
+  let n=0;const iv=setInterval(()=>{n++;$("#gaugeNum").textContent=n;if(n>=target)clearInterval(iv);},22);
+}
+if("IntersectionObserver" in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(n=>io.observe(n));
+}else{document.querySelectorAll(".reveal").forEach(n=>n.classList.add("in"));}
+window.addEventListener("load",animate);
+
+/* scrollspy */
+const secs=["ranking","head2head","matrix","evidence","read"];
+window.addEventListener("scroll",()=>{
+  let cur=secs[0];
+  secs.forEach(id=>{const n=document.getElementById(id);if(n&&n.getBoundingClientRect().top<140)cur=id;});
+  document.querySelectorAll(".navlinks a").forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+cur));
+},{passive:true});
+</script>
+</body>
+</html>
