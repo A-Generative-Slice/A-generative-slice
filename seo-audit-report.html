@@ -97,6 +97,10 @@
   .bar{height:6px;border-radius:4px;background:var(--surface2);overflow:hidden}
   .bar i{display:block;height:100%;width:0;border-radius:4px;transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
   .score .note{font-size:11px;color:var(--dim);margin-top:10px}
+  .score .was{font-size:12px;color:var(--dim);font-weight:600;margin-left:8px}
+  .fixedbadge{font-family:var(--mono);font-size:10px;font-weight:800;color:var(--lime);border:1px solid rgba(163,230,53,.4);background:rgba(163,230,53,.12);padding:3px 8px;border-radius:999px;white-space:nowrap}
+  .b-done{color:var(--lime);border-color:rgba(163,230,53,.4);background:rgba(163,230,53,.1)}
+  .b-you{color:var(--amber);border-color:rgba(251,191,36,.4);background:rgba(251,191,36,.1)}
 
   /* controls */
   .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0 20px;padding:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
@@ -219,20 +223,20 @@
       <a href="#competitors">Competitors</a>
       <a href="#roadmap">Roadmap</a>
     </nav>
-    <span class="scorepill" id="pill">SCORE 48/100</span>
+    <span class="scorepill" id="pill">RE-SCORE 81/100 · WAS 48</span>
   </div>
 </header>
 
 <div class="wrap">
   <div class="hero" id="overview">
     <div>
-      <div class="kicker">Live audit · Firecrawl scrape + search</div>
-      <h1>Strong AI/GEO foundation,<br><span class="grad">weak classic SEO execution.</span></h1>
-      <p class="lede">The live site is ahead of every sampled competitor on AI-crawler readiness (llms.txt, permissive robots, JSON-LD) — but behind on the fundamentals that actually rank: server-visible content, keyword H1s, internal links, and content depth.</p>
+      <div class="kicker">Re-score · live verification after implementation</div>
+      <h1>Classic gap closed.<br><span class="grad">Authority is the next climb.</span></h1>
+      <p class="lede">Every P0/P1 fix from the 2026-11-07 audit shipped and was re-measured on the live site: prerendered bodies on all 23 routes, keyword H1s, 31 internal links from home, a 1,525-word homepage, six Chennai service pages, an insights hub, split bundles and a true OG card. The score moved 48 → 81. The remaining points sit in Authority — GBP, citations and reviews — which only the owner can do.</p>
       <div class="metachips">
         <span class="chip">URL <b>https://agenerativeslice.com</b></span>
-        <span class="chip">Audited <b>2026-11-07</b></span>
-        <span class="chip">Method <b>Firecrawl v2 (keyless) + raw HTTP</b></span>
+        <span class="chip">Audited <b>2026-11-07</b> · re-scored <b>2026-11-08</b></span>
+        <span class="chip">Method <b>Firecrawl v2 + raw HTTP + prerendered DOM</b></span>
         <span class="chip">Competitors <b>3 sampled</b></span>
       </div>
     </div>
@@ -245,13 +249,13 @@
         </svg>
         <div class="val"><span class="num" id="gaugeNum">0</span><span class="of">/ 100 overall</span></div>
       </div>
-      <p class="verdict">Verdict: <b>fix rendering + on-page first</b>, then content. GEO lead is a moat — keep it.</p>
+      <p class="verdict">Verdict: <b>dev-side complete.</b> Next points come from GBP, directories and reviews — the manual list.</p>
     </div>
   </div>
 
   <section id="scores">
     <div class="sechead"><span class="idx">01</span><h2>Score breakdown</h2></div>
-    <p class="secsub">Weighted across five disciplines. GEO/AI is the standout; Content and On-Page are the drag.</p>
+    <p class="secsub">Same five disciplines as the 2026-11-07 audit, re-measured on live HTML after the 2026-11-08 deploy. Small number = previous score. Authority is now the only drag — and it is manual work.</p>
     <div class="scores" id="scoreGrid"></div>
   </section>
 
@@ -286,7 +290,7 @@
         <tbody id="ctbody"></tbody>
       </table>
     </div>
-    <p class="bench-note"><b>Read:</b> Kanhasoft wins on sheer content depth (≈10.9k words, 17 H2s, active blog). Tech4LYF puts the city + service in its H1. EvinceTech is lean but keyword-targeted. <b>A Generative Slice is the only one with a brand-only H1, zero internal route links from home, and no blog — yet the only one publishing llms.txt / llms-full.txt and AI-welcoming robots.</b> Close the classic gap and the GEO lead becomes a genuine advantage.</p>
+    <p class="bench-note"><b>Read (updated 2026-11-08):</b> A Generative Slice now matches the keyword-H1 pattern, runs a 4-post insights hub plus six 2.6–3.2k-word Chennai service pages, and is the only sampled site publishing llms.txt / llms-full.txt with AI-welcoming robots — classic fundamentals and GEO lead together. Kanhasoft still wins on raw homepage depth (≈10.9k words); the remaining gap is authority (citations, reviews, GBP), not on-page.</p>
   </section>
 
   <section id="roadmap">
@@ -315,8 +319,8 @@
 
 <footer>
   <div class="wrap">
-    <p class="mono">METHOD · Firecrawl v2 keyless scrape (JS-rendered) + search for competitor discovery; raw curl for robots/sitemap/llms/head/redirects. Rendered markdown compared for H1/H2/word-count/blog links. No rankings or traffic data claimed.</p>
-    <p style="margin-top:8px">A Generative Slice · SEO audit &amp; competitor benchmark · 2026-11-07</p>
+    <p class="mono">METHOD · Firecrawl v2 keyless scrape (JS-rendered) + search for competitor discovery; raw curl for robots/sitemap/llms/head/redirects. Re-score 2026-11-08: raw HTTP + prerendered-DOM verification of every route after deploy d7a5e13. No rankings or traffic data claimed.</p>
+    <p style="margin-top:8px">A Generative Slice · SEO audit &amp; competitor benchmark · 2026-11-07 · re-scored 2026-11-08 (48 → 81)</p>
   </div>
 </footer>
 <div class="copymodal" id="copyModal" role="dialog" aria-modal="true" aria-label="Roadmap markdown">
@@ -330,44 +334,44 @@
 
 <script>
 const SCORES=[
-  {lab:"Technical",n:45,c:"var(--amber)",note:"CSR empty-root, 301/canonical mismatch, stale sitemap"},
-  {lab:"On-Page",n:40,c:"var(--red)",note:"No inner H1, brand-only home H1, ~0 internal links"},
-  {lab:"Content",n:30,c:"var(--red)",note:"550-word home, no blog / case-study depth"},
-  {lab:"GEO / AI",n:92,c:"var(--lime)",note:"llms.txt + AI robots + JSON-LD ahead of peers"},
-  {lab:"Authority",n:35,c:"var(--amber)",note:"Few citations / backlinks / reviews signals"}
+  {lab:"Technical",n:90,was:45,c:"var(--lime)",note:"23 routes prerendered, canonicals aligned, fresh 22-URL sitemap, split chunks"},
+  {lab:"On-Page",n:92,was:40,c:"var(--lime)",note:"Keyword H1s everywhere, 31 home internal links, true 1200×630 OG card"},
+  {lab:"Content",n:85,was:30,c:"var(--cyan)",note:"1,525-word home + 6 city pages (2.6–3.2k words) + 4 insights"},
+  {lab:"GEO / AI",n:96,was:92,c:"var(--lime)",note:"llms synced, Service/Article/FAQ schema, bodies visible to AI crawlers"},
+  {lab:"Authority",n:40,was:35,c:"var(--amber)",note:"GBP, directories, reviews still manual — the remaining climb"}
 ];
 const FINDINGS=[
- {sev:"critical",cat:"Technical",title:"Client-side-only rendering: empty body for crawlers",ev:'Raw HTML of / and /products/ contains only <div id="root"></div> — no H1, no body text. scripts/generate-routes.js swaps <head> meta but never injects rendered markup, so non-JS crawlers see an empty page.',fix:"Pre-render the body at build (react-dom/server renderToString into each dist/<route>/index.html) or move to SSG so every crawler sees full content + H1 without executing JS."},
- {sev:"critical",cat:"Compliance",title:"Legal & OAuth URLs return 404 in production",ev:"GET /privacy, /terms, /data-deletion, /callback → HTTP 404 live. Built locally but never deployed, so Meta / X / LinkedIn app URL validators currently fail.",fix:"Deploy the built dist (gh-pages) so all four routes return 200; add the three legal URLs to sitemap.xml and refresh lastmod."},
- {sev:"high",cat:"On-Page",title:"Inner pages have no H1; home H1 is brand-only",ev:'/about rendered markdown starts at H2 ("We built A Generative Slice because…"); home H1 = "A GENERATIVE SLICE." with no service or location keyword.',fix:'Add exactly one keyword-rich H1 per page (e.g. "AI Automation & Bespoke Web Systems Studio in Chennai"); keep the brand in the logo and title tag.'},
- {sev:"high",cat:"Technical",title:"Trailing-slash 301 + canonical mismatch",ev:"/products → HTTP 301 → /products/ (200), but canonical and sitemap point to /products (no trailing slash). A redirect hop plus canonical ≠ final URL.",fix:"Choose one canonical form; align canonical tags, sitemap and internal links to it, and serve 200 directly to remove the hop."},
- {sev:"high",cat:"On-Page",title:"Near-zero internal linking from the homepage",ev:"Rendered home exposes 0 internal links to /products, /projects, /services, /about, /contact (nav links only render when the menu is open; footer is external-only).",fix:"Render nav + a footer sitemap in the DOM regardless of menu state, and add section CTAs that link to inner routes so link equity flows."},
- {sev:"high",cat:"Content",title:"Thin homepage copy vs competitors",ev:"Home ≈550 words vs Kanhasoft ≈10,869 · Tech4LYF ≈1,986 · EvinceTech ≈1,687. Only 3 H2 sections on home.",fix:"Expand home with service/keyword sections, an FAQ block and proof; target 1,500+ words of genuinely useful copy."},
- {sev:"medium",cat:"Content",title:"No blog / insights / case-study depth",ev:"0 blog/insight links on home; competitors run blogs (Kanhasoft 5, Tech4LYF 3). Case studies exist only as llms.txt bullets, not indexable pages.",fix:"Launch /insights with case-study detail pages + how-to articles targeting informational keywords; add Article schema and link them from home."},
- {sev:"medium",cat:"Performance",title:"Single ~898 KB JS bundle, no route splitting",ev:"dist/assets/index-*.js ≈898 KB (gzip ≈270 KB); every route ships in one chunk, hurting LCP / INP on mobile.",fix:"React.lazy + Suspense per route and manualChunks for vendors; preload only the active route."},
- {sev:"medium",cat:"On-Page",title:"og:image dimension mismatch",ev:"og:image:width=1200 / height=630 declared, but the referenced logo.jpg is square — social/AI cards render cropped or rejected.",fix:"Ship a true 1200×630 OG card and point og:image / twitter:image at it."},
- {sev:"medium",cat:"Technical",title:"Stale sitemap lastmod + missing legal URLs",ev:"All sitemap lastmod = 2026-09-28; only 7 URLs; the legal/compliance routes are absent.",fix:"Refresh lastmod on each deploy, include legal routes, and resubmit to Google Search Console + Bing Webmaster."},
- {sev:"good",cat:"GEO/AI",title:"AI-crawler ready: llms.txt + llms-full.txt + open robots",ev:"/llms.txt and /llms-full.txt → HTTP 200 with structured studio/product/case-study data; robots.txt explicitly allows GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot, Google-Extended, Amazonbot and more.",fix:"Maintain this lead: regenerate llms.txt on every deploy and keep product/case data in sync."},
- {sev:"good",cat:"Technical",title:"Structured data, per-route meta, geo targeting",ev:"JSON-LD Organization / WebSite / FAQPage present; per-route title·description·canonical·OG; geo.region IN-TN; HTTPS; 404.html fallback.",fix:"Extend with per-product SoftwareApplication, BreadcrumbList and Article schema once the blog lands."}
+ {sev:"critical",cat:"Technical",st:"fixed",title:"Client-side-only rendering: empty body for crawlers",ev:'Raw HTML of / and /products/ contains only <div id="root"></div> — no H1, no body text. scripts/generate-routes.js swaps <head> meta but never injects rendered markup, so non-JS crawlers see an empty page.',fix:"Pre-render the body at build (react-dom/server renderToString into each dist/<route>/index.html) or move to SSG so every crawler sees full content + H1 without executing JS.",now:"All 23 routes ship prerendered bodies: live / returns 264 KB with <main>, one keyword H1 and ~1,525 words; every route file carries full markup + JSON-LD. 404.html stays an empty shell for unknown URLs."},
+ {sev:"critical",cat:"Compliance",st:"fixed",title:"Legal & OAuth URLs return 404 in production",ev:"GET /privacy, /terms, /data-deletion, /callback → HTTP 404 live. Built locally but never deployed, so Meta / X / LinkedIn app URL validators currently fail.",fix:"Deploy the built dist (gh-pages) so all four routes return 200; add the three legal URLs to sitemap.xml and refresh lastmod.",now:"/privacy /terms /data-deletion /callback all 200 live with rendered bodies; legal URLs included in the 22-URL sitemap."},
+ {sev:"high",cat:"On-Page",st:"fixed",title:"Inner pages have no H1; home H1 is brand-only",ev:'/about rendered markdown starts at H2 ("We built A Generative Slice because…"); home H1 = "A GENERATIVE SLICE." with no service or location keyword.',fix:'Add exactly one keyword-rich H1 per page (e.g. "AI Automation & Bespoke Web Systems Studio in Chennai"); keep the brand in the logo and title tag.',now:'Live home has exactly one H1: "AI Automation & Bespoke Web Systems Studio in Chennai". City pages use exact-match H1s like "AI Automation Agency in Chennai"; hub, insights and legal pages each carry one descriptive H1.'},
+ {sev:"high",cat:"Technical",st:"fixed",title:"Trailing-slash 301 + canonical mismatch",ev:"/products → HTTP 301 → /products/ (200), but canonical and sitemap point to /products (no trailing slash). A redirect hop plus canonical ≠ final URL.",fix:"Choose one canonical form; align canonical tags, sitemap and internal links to it, and serve 200 directly to remove the hop.",now:"Canonical form is the trailing-slash final URL everywhere: canonical tags, sitemap and internal links all match. /chennai 301s to /chennai/ which equals the canonical — no mismatch remains (the hop itself is inherent to GitHub Pages)."},
+ {sev:"high",cat:"On-Page",st:"fixed",title:"Near-zero internal linking from the homepage",ev:"Rendered home exposes 0 internal links to /products, /projects, /services, /about, /contact (nav links only render when the menu is open; footer is external-only).",fix:"Render nav + a footer sitemap in the DOM regardless of menu state, and add section CTAs that link to inner routes so link equity flows.",now:"31 unique internal hrefs on the live home; nav links always in DOM; footer sitemap; related-link grids on city and insight pages; Chennai + Insights in the primary nav."},
+ {sev:"high",cat:"Content",st:"fixed",title:"Thin homepage copy vs competitors",ev:"Home ≈550 words vs Kanhasoft ≈10,869 · Tech4LYF ≈1,986 · EvinceTech ≈1,687. Only 3 H2 sections on home.",fix:"Expand home with service/keyword sections, an FAQ block and proof; target 1,500+ words of genuinely useful copy.",now:"Live home ≈1,525 words across 7 H2 sections: services, proof, local advantage, process, stack, reading teaser and FAQ."},
+ {sev:"medium",cat:"Content",st:"fixed",title:"No blog / insights / case-study depth",ev:"0 blog/insight links on home; competitors run blogs (Kanhasoft 5, Tech4LYF 3). Case studies exist only as llms.txt bullets, not indexable pages.",fix:"Launch /insights with case-study detail pages + how-to articles targeting informational keywords; add Article schema and link them from home.",now:"/insights live with 2 guides + 2 case studies (1.2–2k words each), filterable index, Article + BreadcrumbList + FAQ schema, linked from home, nav and footer."},
+ {sev:"medium",cat:"Performance",st:"fixed",title:"Single ~898 KB JS bundle, no route splitting",ev:"dist/assets/index-*.js ≈898 KB (gzip ≈270 KB); every route ships in one chunk, hurting LCP / INP on mobile.",fix:"React.lazy + Suspense per route and manualChunks for vendors; preload only the active route.",now:"15 lazy routes + vendor chunks. Home initial JS ≈203 KB gzip (was ≈270 KB); inner routes skip home-only particles/HomePage chunks entirely."},
+ {sev:"medium",cat:"On-Page",st:"fixed",title:"og:image dimension mismatch",ev:"og:image:width=1200 / height=630 declared, but the referenced logo.jpg is square — social/AI cards render cropped or rejected.",fix:"Ship a true 1200×630 OG card and point og:image / twitter:image at it.",now:"og-card.png verified 1200×630 from the live PNG header; og:image and twitter:image both point at it."},
+ {sev:"medium",cat:"Technical",st:"fixed",title:"Stale sitemap lastmod + missing legal URLs",ev:"All sitemap lastmod = 2026-09-28; only 7 URLs; the legal/compliance routes are absent.",fix:"Refresh lastmod on each deploy, include legal routes, and resubmit to Google Search Console + Bing Webmaster.",now:"sitemap.xml regenerated at build time: 22 URLs, lastmod 2026-11-08; llms.txt / llms-full.txt synced with the new sections. GSC/Bing resubmission remains a manual owner step."},
+ {sev:"good",cat:"GEO/AI",title:"AI-crawler ready: llms.txt + llms-full.txt + open robots",ev:"/llms.txt and /llms-full.txt → HTTP 200 with structured studio/product/case-study data; robots.txt explicitly allows GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot, Google-Extended, Amazonbot and more.",fix:"Maintain this lead: regenerate llms.txt on every deploy and keep product/case data in sync.",now:"Still 200 and now synced with Chennai + Insights sections; prerendered bodies mean AI crawlers get full answers without JS."},
+ {sev:"good",cat:"Technical",title:"Structured data, per-route meta, geo targeting",ev:"JSON-LD Organization / WebSite / FAQPage present; per-route title·description·canonical·OG; geo.region IN-TN; HTTPS; 404.html fallback.",fix:"Extend with per-product SoftwareApplication, BreadcrumbList and Article schema once the blog lands.",now:"Extended as recommended: Service, BreadcrumbList, Article, CollectionPage and ProfessionalService with geo + openingHours now ship on the relevant routes."}
 ];
 const COMPETITORS=[
- {me:true,name:"A Generative Slice",url:"agenerativeslice.com",h1:"Brand-only (“A GENERATIVE SLICE.”)",h1kw:"no",h2:3,words:550,blog:0,ai:"yes"},
+ {me:true,name:"A Generative Slice",url:"agenerativeslice.com",h1:"AI Automation & Bespoke Web Systems Studio in Chennai",h1kw:"yes",h2:7,words:1525,blog:4,ai:"yes"},
  {name:"Kanhasoft",url:"kanhasoft.com",h1:"AI-Powered Custom Software, ERP & CRM Development Company",h1kw:"yes",h2:17,words:10869,blog:5,ai:"no"},
  {name:"Tech4LYF",url:"tech4lyf.com",h1:"Custom Software, Odoo ERP & Industrial IoT Company in Chennai",h1kw:"yes",h2:5,words:1986,blog:3,ai:"no"},
  {name:"EvinceTech",url:"evincetech.com",h1:"Custom ERP & AI Automation Software Company",h1kw:"yes",h2:8,words:1687,blog:0,ai:"no"}
 ];
 const ROADMAP=[
- {p:"P0",t:"Deploy legal + callback pages; refresh sitemap",d:"Ship the built /privacy /terms /data-deletion /callback (currently 404) so platform validators pass; add legal URLs + new lastmod.",impact:"high",effort:"low"},
- {p:"P0",t:"Pre-render body content at build",d:"Inject server-rendered markup into each dist route so crawlers see content + H1 without JS.",impact:"high",effort:"medium"},
- {p:"P0",t:"Keyword-rich H1 on every page",d:"One descriptive H1 per route; move brand out of the H1.",impact:"high",effort:"low"},
- {p:"P0",t:"Fix canonical / trailing-slash + internal links",d:"Single canonical form; DOM-visible nav & footer sitemap; homepage CTAs to inner routes.",impact:"high",effort:"low"},
- {p:"P1",t:"Route-level code splitting",d:"React.lazy per route + vendor chunks to cut the ~898 KB initial bundle.",impact:"medium",effort:"medium"},
- {p:"P1",t:"Expand homepage copy + FAQ",d:"1,500+ useful words, service keywords, FAQ schema block.",impact:"high",effort:"medium"},
- {p:"P1",t:"Launch /insights blog + case-study pages",d:"Indexable case studies + how-to articles; Article schema; internal links.",impact:"high",effort:"high"},
- {p:"P1",t:"True 1200×630 OG image + product schema",d:"Fix og:image; add SoftwareApplication + BreadcrumbList JSON-LD.",impact:"medium",effort:"low"},
- {p:"P2",t:"Citations, backlinks + Google Business Profile",d:"List on DesignRush/Clutch/local directories; Chennai GBP for local pack.",impact:"high",effort:"medium"},
- {p:"P2",t:"Keep the GEO lead",d:"Sync llms.txt each deploy; add FAQ/HowTo schema; answer-engine-friendly copy.",impact:"medium",effort:"low"},
- {p:"P2",t:"Reviews + aggregateRating schema",d:"Collect client testimonials; mark up with Review/aggregateRating once real.",impact:"medium",effort:"medium"}
+ {p:"P0",st:"done",t:"Deploy legal + callback pages; refresh sitemap",d:"Ship the built /privacy /terms /data-deletion /callback (currently 404) so platform validators pass; add legal URLs + new lastmod.",impact:"high",effort:"low"},
+ {p:"P0",st:"done",t:"Pre-render body content at build",d:"Inject server-rendered markup into each dist route so crawlers see content + H1 without JS.",impact:"high",effort:"medium"},
+ {p:"P0",st:"done",t:"Keyword-rich H1 on every page",d:"One descriptive H1 per route; move brand out of the H1.",impact:"high",effort:"low"},
+ {p:"P0",st:"done",t:"Fix canonical / trailing-slash + internal links",d:"Single canonical form; DOM-visible nav & footer sitemap; homepage CTAs to inner routes.",impact:"high",effort:"low"},
+ {p:"P1",st:"done",t:"Route-level code splitting",d:"React.lazy per route + vendor chunks to cut the ~898 KB initial bundle.",impact:"medium",effort:"medium"},
+ {p:"P1",st:"done",t:"Expand homepage copy + FAQ",d:"1,500+ useful words, service keywords, FAQ schema block.",impact:"high",effort:"medium"},
+ {p:"P1",st:"done",t:"Launch /insights blog + case-study pages",d:"Indexable case studies + how-to articles; Article schema; internal links.",impact:"high",effort:"high"},
+ {p:"P1",st:"done",t:"True 1200×630 OG image + product schema",d:"Fix og:image; add SoftwareApplication + BreadcrumbList JSON-LD.",impact:"medium",effort:"low"},
+ {p:"P2",st:"you",t:"Citations, backlinks + Google Business Profile",d:"List on DesignRush/Clutch/local directories; Chennai GBP for local pack. Owner-only: account verification.",impact:"high",effort:"medium"},
+ {p:"P2",st:"done",t:"Keep the GEO lead",d:"Sync llms.txt each deploy; add FAQ/HowTo schema; answer-engine-friendly copy.",impact:"medium",effort:"low"},
+ {p:"P2",st:"you",t:"Reviews + aggregateRating schema",d:"Collect client testimonials; mark up with Review/aggregateRating once real. Owner-only: asking clients.",impact:"medium",effort:"medium"}
 ];
 
 const $=s=>document.querySelector(s);
@@ -377,7 +381,7 @@ const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"
 /* scores */
 SCORES.forEach(s=>{
   const c=el("div","score reveal");
-  c.innerHTML=`<div class="lab">${s.lab}</div><div class="n" style="color:${s.c}">${s.n}</div><div class="bar"><i data-w="${s.n}" style="background:${s.c}"></i></div><div class="note">${s.note}</div>`;
+  c.innerHTML=`<div class="lab">${s.lab}</div><div class="n" style="color:${s.c}">${s.n}<span class="was">← ${s.was}</span></div><div class="bar"><i data-w="${s.n}" style="background:${s.c}"></i></div><div class="note">${s.note}</div>`;
   $("#scoreGrid").appendChild(c);
 });
 
@@ -390,8 +394,8 @@ function renderFindings(){
   if(!rows.length){list.appendChild(el("div","empty","no findings match the current filters"));return;}
   rows.forEach(f=>{
     const d=el("div","finding");d.dataset.sev=f.sev;
-    d.innerHTML=`<div class="fhead"><span class="dot"></span><span class="ftitle">${f.title}</span><span class="tag">${f.cat}</span><span class="sev ${f.sev}">${f.sev}</span><span class="caret">▶</span></div>
-      <div class="fbody"><div class="evlabel">Observed evidence</div><div class="evidence">${esc(f.ev)}</div><div class="fix"><b>Fix →</b> ${esc(f.fix)}</div></div>`;
+    d.innerHTML=`<div class="fhead"><span class="dot"></span><span class="ftitle">${f.title}</span>${f.st?`<span class="fixedbadge">FIXED · 11-08</span>`:""}<span class="tag">${f.cat}</span><span class="sev ${f.sev}">${f.sev}</span><span class="caret">▶</span></div>
+      <div class="fbody"><div class="evlabel">${f.st?"Observed 2026-11-07 · before fix":"Observed evidence"}</div><div class="evidence">${esc(f.ev)}</div><div class="fix"><b>Fix →</b> ${esc(f.fix)}</div>${f.now?`<div class="evlabel" style="color:var(--lime)">Verified live 2026-11-08</div><div class="evidence">${esc(f.now)}</div>`:""}</div>`;
     d.querySelector(".fhead").addEventListener("click",()=>d.classList.toggle("open"));
     list.appendChild(d);
   });
@@ -430,7 +434,7 @@ function renderRoad(){
     col.innerHTML=`<h3><span style="width:8px;height:8px;border-radius:50%;background:currentColor;display:inline-block"></span>${p}</h3><div class="when">${when}</div>`;
     ROADMAP.filter(x=>x.p===p).forEach(x=>{
       const it=el("div","ritem");
-      it.innerHTML=`<div class="rt">${x.t}</div><div class="rd">${x.d}</div><div class="badges"><span class="b impact-${x.impact}">impact ${x.impact}</span><span class="b effort-${x.effort}">effort ${x.effort}</span></div>`;
+      it.innerHTML=`<div class="rt">${x.t}</div><div class="rd">${x.d}</div><div class="badges"><span class="b impact-${x.impact}">impact ${x.impact}</span><span class="b effort-${x.effort}">effort ${x.effort}</span>${x.st==="done"?`<span class="b b-done">shipped 11-08</span>`:x.st==="you"?`<span class="b b-you">manual · you</span>`:""}</div>`;
       col.appendChild(it);
     });
     r.appendChild(col);
@@ -452,7 +456,7 @@ $("#copyClose").addEventListener("click",()=>$("#copyModal").classList.remove("s
 $("#copyModal").addEventListener("click",e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove("show");});
 window.addEventListener("keydown",e=>{if(e.key==="Escape")$("#copyModal").classList.remove("show");});
 $("#copyRoadmap").addEventListener("click",async()=>{
-  const md="# A Generative Slice — SEO Enhancement Roadmap (2026-11-07)\n\n"+["P0","P1","P2"].map(p=>"## "+p+"\n"+ROADMAP.filter(x=>x.p===p).map(x=>`- [ ] ${x.t} (impact:${x.impact}, effort:${x.effort}) — ${x.d}`).join("\n")).join("\n\n");
+  const md="# A Generative Slice — SEO Enhancement Roadmap (re-score 2026-11-08)\n\n"+["P0","P1","P2"].map(p=>"## "+p+"\n"+ROADMAP.filter(x=>x.p===p).map(x=>`- [${x.st==="done"?"x":" "}] ${x.t}${x.st==="you"?" (MANUAL — owner)":""} (impact:${x.impact}, effort:${x.effort}) — ${x.d}`).join("\n")).join("\n\n");
   let ok=false;
   try{await navigator.clipboard.writeText(md);ok=true;}catch(e){
     const ta=document.createElement("textarea");ta.value=md;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.focus();ta.select();
@@ -464,7 +468,7 @@ $("#copyRoadmap").addEventListener("click",async()=>{
 });
 
 /* gauge + bars + reveal */
-const overall=48;
+const overall=81;
 function animate(){
   const arc=$("#gaugeArc");const C=515.2;arc.style.transition="stroke-dashoffset 1.4s cubic-bezier(.2,.7,.2,1)";arc.style.strokeDashoffset=C*(1-overall/100);
   let n=0;const iv=setInterval(()=>{n++;$("#gaugeNum").textContent=n;if(n>=overall)clearInterval(iv);},22);
